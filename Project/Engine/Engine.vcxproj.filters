@@ -232,6 +232,9 @@
     <Filter Include="Source\03. Component\03. Render\Dummy">
       <UniqueIdentifier>{ec2912af-6b45-45e2-b40e-9705b74b457e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Windows\C">
+      <UniqueIdentifier>{2106a0dd-903a-4ead-a04c-25cbba72fe41}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -477,6 +480,9 @@
     <ClInclude Include="EngineText.h">
       <Filter>Source\03. Component\03. Render\Text</Filter>
     </ClInclude>
+    <ClInclude Include="ScriptType.h">
+      <Filter>Windows\C</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp">
@@ -676,6 +682,9 @@
     </ClCompile>
     <ClCompile Include="EngineText.cpp">
       <Filter>Source\03. Component\03. Render\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptType.cpp">
+      <Filter>Windows\C</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
