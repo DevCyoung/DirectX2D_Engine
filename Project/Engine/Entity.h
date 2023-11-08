@@ -10,7 +10,7 @@ public:
 
 	void SetName(const std::wstring& name) { mName = name; }
 	const std::wstring& GetName() const { return mName; }
-	UINT GetEntityID() const { return mID; }
+	UINT GetID() const { return mID; }
 
 private:
 	inline static UINT sID = 0;

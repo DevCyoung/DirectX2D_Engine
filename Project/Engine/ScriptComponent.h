@@ -10,15 +10,13 @@ class ScriptComponent : public Component
 	friend class Collider2D;
 
 protected:
-	ScriptComponent(eScriptComponentType scriptComonentType);
+	ScriptComponent(const eScriptComponentType scriptComonentType);
 public:
 	virtual ~ScriptComponent();
 	ScriptComponent(const ScriptComponent&) = delete;
 	ScriptComponent& operator=(const ScriptComponent&) = delete;
 
-	eScriptComponentType GetScriptType() const { return mScriptType; }	
-
-	
+	eScriptComponentType GetScriptType() const { return mScriptComponentType; }	
 
 private:
 	virtual void initialize() override;
@@ -32,5 +30,5 @@ private:
 	virtual void onCollisionExit(Collider2D* other);
 
 private:
-	eScriptComponentType mScriptType;
+	eScriptComponentType mScriptComponentType;
 };

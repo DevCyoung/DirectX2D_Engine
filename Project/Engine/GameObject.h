@@ -31,41 +31,31 @@ public:
 		requires (std::is_base_of_v<Component, T>)
 	T* GetComponentOrNull() const;
 	template<typename T>
-		requires (is_component_type<T>::value)
-	T* GetComponent() const;	
+		requires (is_component<T>::value)
+	T* GetComponent() const;
 
 	Component* GetComponentOrNull(const eComponentType componentType) const;
 	ScriptComponent* GetComponentOrNull(const eScriptComponentType scriptComponentType) const;
 
-	const std::vector<ScriptComponent*>& GetScriptComponents() const { return mUserComponents; }
+	const std::vector<ScriptComponent*>& GetScriptComponents() const { return mScriptComponents; }
 
 	eState GetState() const { return mState; }
-	eLayerType GetLayer() const { return mLayerType; };
+	eLayerType GetLayer() const { return mLayerType; }
 
 	GameObject* GetParentOrNull() const { return mParent; }
 	GameSystem* GetGameSystem() const { return mGameSystem; }
-
-	//RenderTargetRenderer* GetRenderTargetRenderer() const
-	//{
-	//	Assert(mRenderTargetRenderer, WCHAR_IS_NULLPTR);
-	//
-	//	return mRenderTargetRenderer;
-	//}
 
 	//FIXME:
 	void SetParent(GameObject* const parent) { mParent = parent; }
 
 	template<typename T>
-		requires (is_component_type<T>::value)
+		requires (is_component<T>::value)
 	void AddComponent(T* const component);
 	template<typename T>
-		requires (is_component_type<T>::value)
+		requires (is_component<T>::value)
 	void AddComponent();
 	void AddComponent(ScriptComponent* const component);
 	void AddComponent(Component* const component);
-
-	void RemoveComponent(const eComponentType componentType);
-	void RemoveComponent(const eScriptComponentType scriptComponentType);
 
 private:
 	void initialize();	
@@ -76,16 +66,15 @@ private:
 
 private:
 	Component* mEngineComponents[static_cast<UINT>(eComponentType::End)];
-	std::vector<ScriptComponent*> mUserComponents;
+	std::vector<ScriptComponent*> mScriptComponents;
 	eLayerType mLayerType;
 	eState mState;
 	GameObject* mParent;
 	GameSystem* mGameSystem;
-	//RenderTargetRenderer* mRenderTargetRenderer;
 };
 
 template<typename T>
-	requires (is_component_type<T>::value)
+	requires (is_component<T>::value)
 inline void GameObject::AddComponent(T* const component)
 {	
 	Assert(component, WCHAR_IS_NULLPTR);
@@ -94,18 +83,22 @@ inline void GameObject::AddComponent(T* const component)
 
 	component->mOwner = this;
 
-	if constexpr (engine_component_type<T>::value)
+	if constexpr (engine_component_trait<T>::value)
 	{		
-		mEngineComponents[static_cast<UINT>(engine_component_type<T>::type)] = component;
+		mEngineComponents[static_cast<UINT>(engine_component_trait<T>::type)] = component;
 	}
-	else if constexpr (script_component_type<T>::value)
+	else if constexpr (script_component_trait<T>::value)
 	{		
-		mUserComponents.push_back(component);
+		mScriptComponents.push_back(component);
+	}
+	else
+	{
+		Assert(false, WCHAR_IS_INVALID_TYPE);
 	}
 }
 
 template<typename T>
-	requires (is_component_type<T>::value)
+	requires (is_component<T>::value)
 inline void GameObject::AddComponent()
 {
 	T* const component = new T();
@@ -117,57 +110,55 @@ template<typename T>
 	requires (std::is_base_of_v<Component, T>)
 inline T* GameObject::GetComponentOrNull() const
 {
-	T* component = nullptr;
+	T* result = nullptr;
 
-	if constexpr (engine_component_type<T>::value) // engine component
+	if constexpr (engine_component_trait<T>::value) // engine component
 	{
-		component = dynamic_cast<T*>(mEngineComponents[static_cast<UINT>(engine_component_type<T>::type)]);
+		result = static_cast<T*>(mEngineComponents[static_cast<UINT>
+			(engine_component_trait<T>::type)]);
 	}
-	else if constexpr (script_component_type<T>::value) // user component
+	else if constexpr (script_component_trait<T>::value) // script component
 	{
-		for (ScriptComponent* const script : mUserComponents)
+		for (ScriptComponent* const scriptComponent : mScriptComponents)
 		{
-			if (GetScriptComponentType(script) == script_component_type<T>::type)
+			if (GetScriptComponentType(scriptComponent) == script_component_trait<T>::type)
 			{
-				component = dynamic_cast<T*>(script);
+				result = static_cast<T*>(scriptComponent);
 
+				break;
+			}
+		}
+	}
+	else if constexpr (std::is_base_of_v<ScriptComponent, T>) // child script component
+	{
+		for (ScriptComponent* const scriptComponent : mScriptComponents)
+		{
+			result = dynamic_cast<T*>(scriptComponent);
+
+			if (result)
+			{
 				break;
 			}
 		}
 	}
 	else
 	{
-		if constexpr (std::is_base_of_v<ScriptComponent, T>)
+		for (Component* const engineComponent : mEngineComponents) // child engine component
 		{
-			for (ScriptComponent* scriptComponent : mUserComponents)
-			{
-				component = dynamic_cast<T*>(scriptComponent);
+			result = dynamic_cast<T*>(engineComponent);
 
-				if (component)
-				{
-					break;
-				}
+			if (result)
+			{
+				break;
 			}
 		}
-		else
-		{
-			for (Component* engineComponent : mEngineComponents)
-			{
-				component = dynamic_cast<T*>(engineComponent);
-
-				if (component)
-				{
-					break;
-				}
-			}
-
-		}		
 	}
-	return component;
+
+	return result;
 }
 
 template<typename T>
-	requires (is_component_type<T>::value)
+	requires (is_component<T>::value)
 inline T* GameObject::GetComponent() const
 {	
 	T* const component = GetComponentOrNull<T>();

@@ -128,8 +128,8 @@ void CollisionManagement2D::collide2DGameObject(const GameObject* const left,
 
 	CollisionID collisionID = {};
 
-	collisionID.entityID.LeftID = leftCollider->GetEntityID();
-	collisionID.entityID.RightID = rightCollider->GetEntityID();
+	collisionID.entityID.LeftID = leftCollider->GetID();
+	collisionID.entityID.RightID = rightCollider->GetID();
 
 	std::unordered_map<UINT_PTR, bool>::iterator iter
 		= mCollisionCheckMap.find(collisionID.id);

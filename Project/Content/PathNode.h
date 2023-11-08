@@ -1,6 +1,7 @@
 #pragma once
 #include <Engine/ScriptComponent.h>
 #include "EnumScriptComponent.h"
+#include <Engine/EnumLayer.h>
 
 REGISTER_SCRIPTCOMPONENT_TYPE(PathNode);
 

@@ -4,7 +4,7 @@
 
 ScriptComponent::ScriptComponent(const eScriptComponentType scriptComonentType)
 	: Component(eComponentType::ScriptComponent)
-	, mScriptType(scriptComonentType)	
+	, mScriptComponentType(scriptComonentType)	
 {
 }
 
@@ -33,17 +33,17 @@ void ScriptComponent::lastUpdate()
 {
 }
 
-void ScriptComponent::onCollisionEnter(Collider2D* other)
+void ScriptComponent::onCollisionEnter(Collider2D* const other)
 {
-	(void)other;
+	UNREFERENCED_PARAMETER(other);
 }
 
-void ScriptComponent::onCollisionStay(Collider2D* other)
+void ScriptComponent::onCollisionStay(Collider2D* const other)
 {
-	(void)other;
+	UNREFERENCED_PARAMETER(other);
 }
 
-void ScriptComponent::onCollisionExit(Collider2D* other)
+void ScriptComponent::onCollisionExit(Collider2D* const other)
 {
-	(void)other;
+	UNREFERENCED_PARAMETER(other);
 }

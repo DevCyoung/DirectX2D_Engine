@@ -18,6 +18,7 @@
 #include "Material.h"
 
 #include "Rigidbody2D.h"
+#include "GameObject.h"
 
 AfterImage::AfterImage()
 	: RenderComponent(eComponentType::AfterImage)

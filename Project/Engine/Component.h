@@ -1,13 +1,16 @@
 #pragma once
 #include "Entity.h"
-#include "GameObject.h"
+#include "EnumComponent.h"
+#include "EngineComponentTrait.h"
+
+class GameObject;
 
 class Component : public Entity
 {
 	friend class GameObject;
 
 protected:
-	Component(const eComponentType COMPONENT_TYPE);
+	Component(const eComponentType componentType);
 public:
 	virtual ~Component();
 	Component(const Component&) = delete;
@@ -28,4 +31,3 @@ private:
 	eComponentType mType;
 	GameObject* mOwner;
 };
-

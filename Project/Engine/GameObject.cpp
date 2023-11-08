@@ -6,7 +6,7 @@
 
 GameObject::GameObject()
 	: mEngineComponents{0, }
-	, mUserComponents()
+	, mScriptComponents()
 	, mLayerType(eLayerType::Default)
 	, mState(eState::Active)
 	, mParent(nullptr)
@@ -17,7 +17,7 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
-	memory::safe::DeleteVec(mUserComponents);
+	memory::safe::DeleteVec(mScriptComponents);
 	memory::unsafe::DeleteArray(mEngineComponents);
 }
 
@@ -33,7 +33,7 @@ void GameObject::initialize()
 		}
 	}
 
-	for (ScriptComponent* const script : mUserComponents)
+	for (ScriptComponent* const script : mScriptComponents)
 	{
 		script->initialize();
 	}
@@ -49,7 +49,7 @@ void GameObject::update()
 		}
 	}
 
-	for (ScriptComponent* const script : mUserComponents)
+	for (ScriptComponent* const script : mScriptComponents)
 	{
 		script->update();
 	}
@@ -65,7 +65,7 @@ void GameObject::fixedUpdate()
 		}
 	}
 
-	for (ScriptComponent* const script : mUserComponents)
+	for (ScriptComponent* const script : mScriptComponents)
 	{
 		script->fixedUpdate();
 	}
@@ -82,7 +82,7 @@ void GameObject::lateUpdate()
 		}
 	}
 
-	for (ScriptComponent* const script : mUserComponents)
+	for (ScriptComponent* const script : mScriptComponents)
 	{
 		script->lateUpdate();
 	}
@@ -99,7 +99,7 @@ void GameObject::lastUpdate()
 		}
 	}
 
-	for (ScriptComponent* const script : mUserComponents)
+	for (ScriptComponent* const script : mScriptComponents)
 	{
 		script->lastUpdate();
 	}
@@ -113,7 +113,7 @@ void GameObject::AddComponent(ScriptComponent* const scriptComponent)
 
 	scriptComponent->mOwner = this;
 
-	mUserComponents.push_back(scriptComponent);
+	mScriptComponents.push_back(scriptComponent);
 }
 
 void GameObject::AddComponent(Component* const component)
@@ -141,6 +141,9 @@ void GameObject::AddComponent(Component* const component)
 
 Component* GameObject::GetComponentOrNull(const eComponentType componentType) const
 {
+	Assert(static_cast<UINT>(eComponentType::End) > static_cast<UINT>(componentType),
+		WCHAR_IS_INVALID_TYPE);
+
 	return mEngineComponents[static_cast<UINT>(componentType)];
 }
 
@@ -148,7 +151,7 @@ ScriptComponent* GameObject::GetComponentOrNull(const eScriptComponentType scrip
 {
 	ScriptComponent* component = nullptr;
 
-	for (ScriptComponent* const curScript : mUserComponents)
+	for (ScriptComponent* const curScript : mScriptComponents)
 	{
 		if (curScript->GetScriptType() == scriptComponentType)
 		{
@@ -160,30 +163,4 @@ ScriptComponent* GameObject::GetComponentOrNull(const eScriptComponentType scrip
 
 	return component;
 
-}
-void GameObject::RemoveComponent(eComponentType componentType)
-{
-	Assert(false, WCHAR_IS_INVALID_TYPE);
-
-	SAFE_DELETE_POINTER(mEngineComponents[static_cast<UINT>(componentType)]);
-}
-
-void GameObject::RemoveComponent(eScriptComponentType scriptComponentType)
-{
-	Assert(false, WCHAR_IS_INVALID_TYPE);
-
-	std::vector<ScriptComponent*>::iterator iter = mUserComponents.begin();
-
-	for (; iter != mUserComponents.end(); ++iter)
-	{
-		if ((*iter)->GetScriptType() == scriptComponentType)
-		{
-			SAFE_DELETE_POINTER(*iter);
-			mUserComponents.erase(iter);
-
-			return;
-		}
-	}
-
-	Assert(false, WCHAR_IS_INVALID_TYPE);
 }

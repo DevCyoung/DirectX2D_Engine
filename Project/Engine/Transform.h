@@ -22,10 +22,10 @@ public:
 	const Matrix& GetWorldMatrix() const { return mWorld; }
 
 	template<typename T>
-		requires (is_component_type<T>::value)
+		requires (is_component<T>::value)
 	T* GetComponentOrNull() const;
 	template<typename T>
-		requires (is_component_type<T>::value)
+		requires (is_component<T>::value)
 	T* GetComponent() const;
 
 	bool GetFlipX() const;
@@ -59,14 +59,14 @@ private:
 };
 
 template<typename T>
-	requires (is_component_type<T>::value)
+	requires (is_component<T>::value)
 inline T* Transform::GetComponentOrNull() const
 {
 	return GetOwner()->GetComponentOrNull<T>();
 }
 
 template<typename T>
-	requires (is_component_type<T>::value)
+	requires (is_component<T>::value)
 inline T* Transform::GetComponent() const
 {
 	T* const component = GetComponentOrNull<T>();

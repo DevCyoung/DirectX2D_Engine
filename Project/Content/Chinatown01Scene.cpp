@@ -293,22 +293,22 @@ void Chinatown01Scene::AddMonsterObject()
 {
 	//1類
 	//monster
-	InstantiateMonster(eMonsterType::Cop, Vector2(-500, 150), true);
-	InstantiateMonster(eMonsterType::Shotgun, Vector2(-600, 150), true);
-	InstantiateMonster(eMonsterType::Shotgun, Vector2(-700, 150), true);	
-	//InstantiateMonster(eMonsterType::Shield, Vector2(-800, 150), true);
-	InstantiateMonster(eMonsterType::Cop, Vector2(-100, 150), true);	
-	InstantiateMonster(eMonsterType::Shield, Vector2(550, 150), true);
+	//InstantiateMonster(eMonsterType::Cop, Vector2(-500, 150), true);
+	//InstantiateMonster(eMonsterType::Shotgun, Vector2(-600, 150), true);
+	//InstantiateMonster(eMonsterType::Shotgun, Vector2(-700, 150), true);	
+	////InstantiateMonster(eMonsterType::Shield, Vector2(-800, 150), true);
+	//InstantiateMonster(eMonsterType::Cop, Vector2(-100, 150), true);	
+	//InstantiateMonster(eMonsterType::Shield, Vector2(550, 150), true);
 
-	//2類 豭薹
-	InstantiateMonster(eMonsterType::Shield, Vector2(-1700, 450), true);	
-	
-	//2類 螃艇薹
-	InstantiateMonster(eMonsterType::Cop, Vector2(0, 450));
-	InstantiateMonster(eMonsterType::Shotgun, Vector2(350, 450), true);
-	
-	//3類
-	InstantiateMonster(eMonsterType::Cop, Vector2(0, 700));	
+	////2類 豭薹
+	//InstantiateMonster(eMonsterType::Shield, Vector2(-1700, 450), true);	
+	//
+	////2類 螃艇薹
+	//InstantiateMonster(eMonsterType::Cop, Vector2(0, 450));
+	//InstantiateMonster(eMonsterType::Shotgun, Vector2(350, 450), true);
+	//
+	////3類
+	//InstantiateMonster(eMonsterType::Cop, Vector2(0, 700));	
 }
 
 void Chinatown01Scene::AddObject()
