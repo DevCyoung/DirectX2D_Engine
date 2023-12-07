@@ -2,7 +2,7 @@
 #include "InputManager.h"
 #include "Engine.h"
 
-constexpr static int ASCII[(UINT)eKeyCode::END] =
+constexpr static int ASCII[static_cast<UINT>(eKeyCode::END)] =
 {
 	VK_F1, VK_F2, VK_F3, VK_F4, VK_F5, VK_F6, VK_F7, VK_F8, VK_F9, VK_F10, VK_F11, VK_F12,
 	'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -40,16 +40,9 @@ InputManager::InputManager()
 }
 
 InputManager::~InputManager()
-{
+{	
 }
 
-bool InputManager::IsWindowMouseHoverd()
-{
-	const Vector2& WINDOW_SCREEN_SIZE = gEngine->GetWindowScreenSize();
-
-	return (0.f <= mMousePos.x && mMousePos.x <= WINDOW_SCREEN_SIZE.x) &&
-		(0.f <= mMousePos.y && mMousePos.y <= WINDOW_SCREEN_SIZE.y);
-}
 
 void InputManager::update(const HWND hWnd)
 {
@@ -112,6 +105,7 @@ void InputManager::update(const HWND hWnd)
 				break;
 			case eKeyState::Up:
 				keyInfo.state = eKeyState::None;
+				break;
 			default:
 				break;
 			}

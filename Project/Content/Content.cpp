@@ -31,11 +31,11 @@ Content::Content()
 	resourceInitialize();
 
 	//Scene* testScene = new Collide2DTestScene;
-	KatanaScene* testScene = new TitleScene();
+	//KatanaScene* testScene = new TitleScene();
 	//KatanaScene* testScene = new Chinatown01Scene();
 	//KatanaScene* testScene = new Chinatown04Scene();
 	//KatanaScene* testScene = new Chinatown05Scene();
-	//KatanaScene* testScene = new HeadHunterScene();
+	KatanaScene* testScene = new HeadHunterScene();
 	//Scene* testScene = new KissyfaceScene();
 	//Scene* testScene = new TestScene();
 	KatanaZeroSystem::initialize();

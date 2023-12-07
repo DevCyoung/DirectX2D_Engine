@@ -69,12 +69,10 @@ public:
 		return mMousePos;
 	}
 
-	const Vector2& GetMouseDir() const
+	const Vector2& GetMouseMoveDirection() const
 	{
 		return mMouseDir;
 	}
-
-	bool IsWindowMouseHoverd();
 
 private:
 	void update(const HWND hWnd);

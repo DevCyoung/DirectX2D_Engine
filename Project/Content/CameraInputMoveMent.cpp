@@ -126,7 +126,7 @@ void CameraInputMoveMent::update()
 
 		if (gInput->GetKey(eKeyCode::RBTN))
 		{			
-			Vector2 mouseDir = gInput->GetMouseDir();
+			Vector2 mouseDir = gInput->GetMouseMoveDirection();
 
 			rot.y += gDeltaTime	* mouseDir.x * 100.f;
 			rot.x -= gDeltaTime * mouseDir.y * 100.f;

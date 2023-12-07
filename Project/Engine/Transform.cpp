@@ -50,23 +50,22 @@ void Transform::lateUpdate()
 
 Matrix Transform::CreateWorldMatrix(const Vector3& position, const Vector3& rotation, const Vector3& scale)
 {
-	Matrix world = Matrix::Identity;
+	Matrix worldMatrix = Matrix::Identity;
 
 	Matrix scaleMatrix = Matrix::CreateScale(scale);
 
-	Matrix rotationMatrix = {};
-	rotationMatrix = Matrix::CreateRotationZ(Deg2Rad(rotation.z));
+	Matrix rotationMatrix = Matrix::CreateRotationZ(Deg2Rad(rotation.z));
 	rotationMatrix *= Matrix::CreateRotationY(Deg2Rad(rotation.y));
 	rotationMatrix *= Matrix::CreateRotationX(Deg2Rad(rotation.x));
 
-	Matrix positionMatrix = {};
+	Matrix positionMatrix = Matrix::Identity;
 	positionMatrix.Translation(position);
 
-	world *= scaleMatrix;
-	world *= rotationMatrix;
-	world *= positionMatrix;
+	worldMatrix *= scaleMatrix;
+	worldMatrix *= rotationMatrix;
+	worldMatrix *= positionMatrix;
 
-	return world;
+	return worldMatrix;
 }
 
 void Transform::SetFlipx(const bool bFlipx)
