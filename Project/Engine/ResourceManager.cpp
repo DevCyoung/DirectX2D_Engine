@@ -12,3 +12,8 @@ ResourceManager::~ResourceManager()
 		memory::safe::DeleteUnorderedMap(item);
 	}
 }
+
+const ResourceManager::Dictionary& ResourceManager::GetDictionary(const eResourceType type)
+{
+	return mResources[static_cast<UINT>(type)];
+}

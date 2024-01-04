@@ -97,15 +97,18 @@ void Engine::render()
 	SceneManager::GetInstance()->render(mRenderTargetWidth,
 				mRenderTargetHeight,				
 				mGraphicDevice->GetRenderTargetViewAddressOf(),
-				mGraphicDevice->GetDepthStencilView());	
-
-	mGraphicDevice->present();
+				mGraphicDevice->GetDepthStencilView());		
 }
 
 void Engine::eventUpdate()
 {
 	SceneManager::GetInstance()->eventUpdate();
 	MessageManager::GetInstance()->eventUpdate(mHwnd);
+}
+
+void Engine::present()
+{
+	mGraphicDevice->present();
 }
 
 void Engine::setWindowSize(const UINT windowScreenWidth, const UINT windowScreenHeight)

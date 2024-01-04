@@ -466,3 +466,8 @@ Collide2DTestScene::Collide2DTestScene()
 Collide2DTestScene::~Collide2DTestScene()
 {
 }
+
+Scene* Collide2DTestScene::Clone()
+{
+	return nullptr;
+}

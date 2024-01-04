@@ -13,6 +13,7 @@ public:
 	using Key = std::wstring;
 	using Value = Resource;
 	using Dictionary = std::unordered_map<Key, Value*>;
+	using Iterator = Dictionary::iterator;
 	using ConstIterator = Dictionary::const_iterator;
 
 public:
@@ -40,6 +41,24 @@ public:
 	template<typename T>
 		requires (is_engine_resource<T>::value)
 	void Insert(const Key& relativePathOrName, T* const value);
+
+	const Dictionary&  GetDictionary(const eResourceType type);
+
+	template<typename T>
+		requires (is_engine_resource<T>::value)
+	ConstIterator  CBegine();
+
+	template<typename T>
+		requires (is_engine_resource<T>::value)
+	ConstIterator  CEnd();
+
+	template<typename T>
+		requires (is_engine_resource<T>::value)
+	Iterator  Begine();
+
+	template<typename T>
+		requires (is_engine_resource<T>::value)
+	Iterator  End();
 
 private:
 	Dictionary mResources[static_cast<UINT>(eResourceType::End)];
@@ -131,4 +150,36 @@ inline void ResourceManager::Insert(const Key& relativePathOrName, T* const valu
 	Dictionary& resources = mResources[static_cast<UINT>(RES_TYPE)];
 
 	resources.insert(std::make_pair(relativePathOrName, value));
+}
+
+template<typename T>
+	requires (is_engine_resource<T>::value)
+inline ResourceManager::ConstIterator  ResourceManager::CBegine()
+{
+	constexpr eResourceType RES_TYPE = engine_resource_type<T>::type;
+	return  mResources[static_cast<UINT>(RES_TYPE)].cbegin();
+}
+
+template<typename T>
+	requires (is_engine_resource<T>::value)
+inline ResourceManager::ConstIterator  ResourceManager::CEnd()
+{
+	constexpr eResourceType RES_TYPE = engine_resource_type<T>::type;
+	return  mResources[static_cast<UINT>(RES_TYPE)].cend();
+}
+
+template<typename T>
+	requires (is_engine_resource<T>::value)
+inline ResourceManager::Iterator  ResourceManager::Begine()
+{
+	constexpr eResourceType RES_TYPE = engine_resource_type<T>::type;
+	return  mResources[static_cast<UINT>(RES_TYPE)].begin();
+}
+
+template<typename T>
+	requires (is_engine_resource<T>::value)
+inline ResourceManager::Iterator  ResourceManager::End()
+{
+	constexpr eResourceType RES_TYPE = engine_resource_type<T>::type;
+	return  mResources[static_cast<UINT>(RES_TYPE)].end();
 }

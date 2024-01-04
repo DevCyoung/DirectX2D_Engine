@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Windows">
+      <UniqueIdentifier>{49153210-a63f-4abb-98be-776c06a34bb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{a3c5b8c0-c1ff-4ef5-8d58-47cf8813f89f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Editor">
+      <UniqueIdentifier>{fec105ef-5702-4b59-9880-fe5cb40bc210}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\CustomUI">
+      <UniqueIdentifier>{f728e0ec-12dd-4276-8d0a-358f629f97a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Editor\PanelUI">
+      <UniqueIdentifier>{de9df3b7-8c21-4af3-bc93-a577231a1f67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Editor\ItemUI">
+      <UniqueIdentifier>{19c11746-4eed-4ea9-bd0a-3deb52b8fc4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Editor\PanelUIManager">
+      <UniqueIdentifier>{7fd5feaf-9be0-409b-b2af-55edad231d83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Editor\Inspector">
+      <UniqueIdentifier>{7601b6da-c9d6-47e9-aa1d-28b40be34f12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Editor\ResourceUI">
+      <UniqueIdentifier>{93c7702c-de19-4059-8153-d9076cf53f55}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelUI.h">
+      <Filter>Source\Editor\PanelUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemUI.h">
+      <Filter>Source\Editor\ItemUI</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorUIInitialize.h">
+      <Filter>Source\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor.h">
+      <Filter>Source\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="TestUI.h">
+      <Filter>Source\CustomUI</Filter>
+    </ClInclude>
+    <ClInclude Include="TestUI2.h">
+      <Filter>Source\CustomUI</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelUIManager.h">
+      <Filter>Source\Editor\PanelUIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ESCUI.h">
+      <Filter>Source\CustomUI</Filter>
+    </ClInclude>
+    <ClInclude Include="InspectorUI.h">
+      <Filter>Source\Editor\Inspector</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceUI.h">
+      <Filter>Source\Editor\ResourceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderUI.h">
+      <Filter>Source\Editor\Inspector</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="PanelUI.cpp">
+      <Filter>Source\Editor\PanelUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemUI.cpp">
+      <Filter>Source\Editor\ItemUI</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorUIInitialize.cpp">
+      <Filter>Source\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="Editor.cpp">
+      <Filter>Source\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="TestUI.cpp">
+      <Filter>Source\CustomUI</Filter>
+    </ClCompile>
+    <ClCompile Include="TestUI2.cpp">
+      <Filter>Source\CustomUI</Filter>
+    </ClCompile>
+    <ClCompile Include="PanelUIManager.cpp">
+      <Filter>Source\Editor\PanelUIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ESCUI.cpp">
+      <Filter>Source\CustomUI</Filter>
+    </ClCompile>
+    <ClCompile Include="InspectorUI.cpp">
+      <Filter>Source\Editor\Inspector</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceUI.cpp">
+      <Filter>Source\Editor\ResourceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderUI.cpp">
+      <Filter>Source\Editor\Inspector</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

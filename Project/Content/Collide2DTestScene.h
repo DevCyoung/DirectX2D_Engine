@@ -9,5 +9,9 @@ public:
 	Collide2DTestScene(const Collide2DTestScene&) = delete;
 	Collide2DTestScene& operator=(const Collide2DTestScene&) = delete;
 
+
+	// Scene을(를) 통해 상속됨
+	Scene* Clone() override;
+
 };
 

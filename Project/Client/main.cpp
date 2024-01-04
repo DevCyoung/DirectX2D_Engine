@@ -3,16 +3,20 @@
 #include "framework.h"
 #include <Engine/Engine.h>
 #include <Content/Content.h>
+#include <Editor/Editor.h>
 
 #ifdef _DEBUG
 #pragma comment(lib, "Engine/Debug/Engine_d")
 #pragma comment(lib, "Content/Debug/Content_d")
+#pragma comment(lib, "Editor/Debug/Editor_d")
 #else
 #pragma comment(lib, "Engine/Release/Engine")
 #pragma comment(lib, "Content/Release/Content")
+#pragma comment(lib, "Editor/Release/Editor")
 #endif
 
 #define MAX_LOADSTRING 100
+//#define EDITOR_MODE
 
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
@@ -63,8 +67,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	Engine::initialize(gHwnd, KATANA_SCREEN_WIDTH, KATANA_SCREEN_HEIGHT);
 	Content::initialize();	
 
+#ifdef EDITOR_MODE
+	Editor::initialize();
+#endif // !
+
+	
+
 	//Mose Cursor
-	ShowCursor(FALSE);
+	//ShowCursor(FALSE);
 
 	while (true)
 	{	
@@ -82,13 +92,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		else
 		{
-			Engine::GetInstance()->run();
+			Engine::GetInstance()->run();		
+#ifdef EDITOR_MODE
+			Editor::GetInstance()->run();
+#else
+#endif
+			Engine::GetInstance()->present();
 		}
 	}
 
+#ifdef EDITOR_MODE
+	Editor::deleteInstance();
+#endif
+
 	Content::deleteInstance();	
 	Engine::deleteInstance();
-
 	return static_cast<int>(msg.wParam);
 }
 
@@ -107,7 +125,15 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 	wcex.cbSize = sizeof(WNDCLASSEX);
 
 	wcex.style = CS_HREDRAW | CS_VREDRAW;
+
+#ifdef EDITOR_MODE
+	wcex.lpfnWndProc = WndProcImGUI;
+#else
 	wcex.lpfnWndProc = WndProc;
+#endif // EDITOR_MODE
+
+	
+
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = hInstance;

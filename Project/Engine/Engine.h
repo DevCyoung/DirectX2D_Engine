@@ -38,7 +38,7 @@ private:
 	void lateUpdate();
 	void render();
 	void eventUpdate();
-
+	void present();
 private:
 	HWND mHwnd;
 	UINT mRenderTargetWidth;
