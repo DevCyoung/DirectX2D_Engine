@@ -24,5 +24,10 @@ ItemUI* ItemUI::FindItemUIOrNull(const std::string& itemUIName)
 
 void ItemUI::render()
 {
-	ImGui::BulletText(mItemName.c_str());
+	ImGui::Bullet();
+	ImGui::Selectable(mItemName.c_str(), false);
+	if (ImGui::IsItemClicked())
+	{
+		ImGui::SetMouseCursor(0);
+	}		
 }

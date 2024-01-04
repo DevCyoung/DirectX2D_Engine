@@ -16,7 +16,7 @@
 #endif
 
 #define MAX_LOADSTRING 100
-//#define EDITOR_MODE
+#define EDITOR_MODE
 
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
@@ -92,7 +92,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		else
 		{
-			Engine::GetInstance()->run();		
+			Engine::GetInstance()->run();
+
 #ifdef EDITOR_MODE
 			Editor::GetInstance()->run();
 #else
