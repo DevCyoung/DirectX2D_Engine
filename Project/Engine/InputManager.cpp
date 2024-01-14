@@ -2,7 +2,9 @@
 #include "InputManager.h"
 #include "Engine.h"
 
-constexpr static int ASCII[(UINT)eKeyCode::END] =
+#define SIGN_BIT 0x8000
+
+constexpr static int INPUT_ASCII_TABLE[(UINT)eKeyCode::END] =
 {
 	VK_F1, VK_F2, VK_F3, VK_F4, VK_F5, VK_F6, VK_F7, VK_F8, VK_F9, VK_F10, VK_F11, VK_F12,
 	'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -61,7 +63,7 @@ void InputManager::update(const HWND hWnd)
 		{
 			const UINT INDEX = static_cast<UINT>(keyInfo.key);
 
-			if (GetAsyncKeyState(ASCII[INDEX]) & 0x8000)
+			if (GetAsyncKeyState(INPUT_ASCII_TABLE[INDEX]) & SIGN_BIT)
 			{
 				if (keyInfo.bPressed == false)
 				{
@@ -106,13 +108,18 @@ void InputManager::update(const HWND hWnd)
 			switch (keyInfo.state)
 			{
 			case eKeyState::Down:
+				[[fallthrough]];
 			case eKeyState::Pressed:
 				keyInfo.state = eKeyState::Up;
-				keyInfo.bPressed = false;
+				keyInfo.bPressed = false;			
 				break;
 			case eKeyState::Up:
 				keyInfo.state = eKeyState::None;
+				break;
+			case eKeyState::None:
+				break;
 			default:
+				Assert(false, WCHAR_IS_INVALID_TYPE);
 				break;
 			}
 		}
