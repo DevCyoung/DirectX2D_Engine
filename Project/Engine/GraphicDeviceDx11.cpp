@@ -203,12 +203,12 @@ GraphicDeviceDX11::GraphicDeviceDX11(const HWND hWnd,
 
 GraphicDeviceDX11::~GraphicDeviceDX11()
 {
-	SAFE_DELETE_POINTER(mSBCollection);
-	SAFE_DELETE_POINTER(mSMCollection);
-	SAFE_DELETE_POINTER(mDSCollection);
-	SAFE_DELETE_POINTER(mBSCollection);
-	SAFE_DELETE_POINTER(mRSCollection);
-	SAFE_DELETE_POINTER(mCBCollection);
+	DELETE_POINTER_NOT_NULL(mSBCollection);
+	DELETE_POINTER_NOT_NULL(mSMCollection);
+	DELETE_POINTER_NOT_NULL(mDSCollection);
+	DELETE_POINTER_NOT_NULL(mBSCollection);
+	DELETE_POINTER_NOT_NULL(mRSCollection);
+	DELETE_POINTER_NOT_NULL(mCBCollection);
 }
 
 void GraphicDeviceDX11::BindIA(const Shader* const shader) const

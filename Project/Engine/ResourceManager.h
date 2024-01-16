@@ -61,7 +61,7 @@ public:
 	Iterator  End();
 
 private:
-	Dictionary mResources[static_cast<UINT>(eResourceType::End)];
+	Dictionary mResourceMapArray[static_cast<UINT>(eResourceType::End)];
 };
 #define gResourceManager ResourceManager::GetInstance()
 
@@ -72,7 +72,7 @@ inline T* ResourceManager::FindOrNull(const Key& relativePathOrName) const
 	T* res = nullptr;
 
 	constexpr eResourceType RES_TYPE = engine_resource_type<T>::type;
-	const Dictionary& RESOURCES = mResources[static_cast<UINT>(RES_TYPE)];
+	const Dictionary& RESOURCES = mResourceMapArray[static_cast<UINT>(RES_TYPE)];
 	ConstIterator iter = RESOURCES.find(relativePathOrName);
 
 	if (iter != RESOURCES.end())
@@ -122,7 +122,7 @@ inline void ResourceManager::Load(const Key& relativePathOrName)
 
 	T* resource = new T();
 	constexpr eResourceType RES_TYPE = engine_resource_type<T>::type;
-	Dictionary& resources = mResources[static_cast<UINT>(RES_TYPE)];
+	Dictionary& resources = mResourceMapArray[static_cast<UINT>(RES_TYPE)];
 	const std::wstring FILE_PATH = PathManager::GetInstance()->GetResourcePath() + relativePathOrName;
 
 	resource->Load(FILE_PATH);
@@ -147,7 +147,7 @@ inline void ResourceManager::Insert(const Key& relativePathOrName, T* const valu
 	value->mRelativePath = relativePathOrName;
 
 	constexpr eResourceType RES_TYPE = engine_resource_type<T>::type;
-	Dictionary& resources = mResources[static_cast<UINT>(RES_TYPE)];
+	Dictionary& resources = mResourceMapArray[static_cast<UINT>(RES_TYPE)];
 
 	resources.insert(std::make_pair(relativePathOrName, value));
 }
@@ -157,7 +157,7 @@ template<typename T>
 inline ResourceManager::ConstIterator  ResourceManager::CBegine()
 {
 	constexpr eResourceType RES_TYPE = engine_resource_type<T>::type;
-	return  mResources[static_cast<UINT>(RES_TYPE)].cbegin();
+	return  mResourceMapArray[static_cast<UINT>(RES_TYPE)].cbegin();
 }
 
 template<typename T>
@@ -165,7 +165,7 @@ template<typename T>
 inline ResourceManager::ConstIterator  ResourceManager::CEnd()
 {
 	constexpr eResourceType RES_TYPE = engine_resource_type<T>::type;
-	return  mResources[static_cast<UINT>(RES_TYPE)].cend();
+	return  mResourceMapArray[static_cast<UINT>(RES_TYPE)].cend();
 }
 
 template<typename T>
@@ -173,7 +173,7 @@ template<typename T>
 inline ResourceManager::Iterator  ResourceManager::Begine()
 {
 	constexpr eResourceType RES_TYPE = engine_resource_type<T>::type;
-	return  mResources[static_cast<UINT>(RES_TYPE)].begin();
+	return  mResourceMapArray[static_cast<UINT>(RES_TYPE)].begin();
 }
 
 template<typename T>
@@ -181,5 +181,5 @@ template<typename T>
 inline ResourceManager::Iterator  ResourceManager::End()
 {
 	constexpr eResourceType RES_TYPE = engine_resource_type<T>::type;
-	return  mResources[static_cast<UINT>(RES_TYPE)].end();
+	return  mResourceMapArray[static_cast<UINT>(RES_TYPE)].end();
 }

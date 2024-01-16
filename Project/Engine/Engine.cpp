@@ -42,7 +42,7 @@ Engine::~Engine()
 	
 	FontManager::deleteInstance();
 	Fmod::Release();
-	SAFE_DELETE_POINTER(mGraphicDevice);	
+	DELETE_POINTER_NOT_NULL(mGraphicDevice);	
 }
 
 void Engine::initialize(const HWND hWnd, const UINT renderTargetWidth, const UINT renderTargetHeight)

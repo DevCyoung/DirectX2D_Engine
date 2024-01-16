@@ -7,13 +7,10 @@ ResourceManager::ResourceManager()
 
 ResourceManager::~ResourceManager()
 {
-	for (Dictionary& item : mResources)
-	{
-		memory::safe::DeleteUnorderedMap(item);
-	}
+	mem::del::DeleteUnorderedMapArrayElements(&mResourceMapArray);
 }
 
 const ResourceManager::Dictionary& ResourceManager::GetDictionary(const eResourceType type)
 {
-	return mResources[static_cast<UINT>(type)];
+	return mResourceMapArray[static_cast<UINT>(type)];
 }

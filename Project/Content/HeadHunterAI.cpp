@@ -41,7 +41,7 @@ HeadHunterAI::HeadHunterAI()
 
 HeadHunterAI::~HeadHunterAI()
 {
-    SAFE_DELETE_POINTER(mFSM);
+    DELETE_POINTER_NOT_NULL(mFSM);
 }
 
 void HeadHunterAI::CreateAnimation()

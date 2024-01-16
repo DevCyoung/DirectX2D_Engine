@@ -26,7 +26,7 @@ SBCollection::~SBCollection()
 {
 	for (UINT i = 0; i < static_cast<UINT>(eSBType::End); ++i)
 	{
-		SAFE_DELETE_POINTER(mStructuredBuffers[i]);
+		DELETE_POINTER_NOT_NULL(mStructuredBuffers[i]);
 	}
 }
 
@@ -39,7 +39,7 @@ void SBCollection::ReSizeStructuredBuffer(const eSBType SBType,
 {	
 	const UINT slot = static_cast<UINT>(SBType);
 
-	SAFE_DELETE_POINTER(mStructuredBuffers[slot]);
+	DELETE_POINTER_NOT_NULL(mStructuredBuffers[slot]);
 
 	mStructuredBuffers[slot] = new StructuredBuffer(SBType, SRVType, dataSize, stride, dataOrNull, device);
 }

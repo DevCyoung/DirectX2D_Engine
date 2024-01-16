@@ -22,7 +22,7 @@ PlayerController::PlayerController()
 
 PlayerController::~PlayerController()
 {
-	SAFE_DELETE_POINTER(mPlayerFSM);
+	DELETE_POINTER_NOT_NULL(mPlayerFSM);
 }
 
 void PlayerController::ChangeHurtState()

@@ -9,7 +9,7 @@ Prefab::Prefab(GameObject* gameObject)
 
 Prefab::~Prefab()
 {
-	SAFE_DELETE_POINTER(mRoot);
+	DELETE_POINTER_NOT_NULL(mRoot);
 }
 
 HRESULT Prefab::Load(const std::wstring& filePath)

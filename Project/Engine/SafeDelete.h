@@ -1,75 +1,95 @@
 #pragma once
 
-#define SAFE_DELETE_POINTER(p)  { Assert(p, ASSERT_MSG_NULL); delete   p; p = nullptr; }
-#define SAFE_DELETE_ARRAY(p)	{ Assert(p, ASSERT_MSG_NULL); delete[] p; p = nullptr; }
-
 #define DELETE_POINTER(p)		{ delete   p; p = nullptr; }
 #define DELETE_ARRAY(p)			{ delete[] p; p = nullptr; }
 
-namespace memory::safe
+#define DELETE_POINTER_NOT_NULL(p)  { Assert(p, ASSERT_MSG_NULL); DELETE_POINTER(p) }
+#define DELETE_ARRAY_NOT_NULL(p)	{ Assert(p, ASSERT_MSG_NULL); DELETE_ARRAY(p) }
+
+namespace mem
 {
 	template<typename T, UINT Size>
-	void DeleteArray(T* (&arr)[Size])
+	void DeletePointerArrayElements(T* (* const pPointerArray)[Size])
 	{
-		for (UINT i = 0; i < Size; ++i)
+		for (auto& value : (*pPointerArray))
 		{
-			SAFE_DELETE_POINTER(arr[i]);
-		}
-	}
-
-	template<typename Pointer>
-	void DeleteVec(std::vector<Pointer>& vector)
-	{
-		for (size_t i = 0; i < vector.size(); ++i)
-		{
-			SAFE_DELETE_POINTER(vector[i]);
-		}
-
-		vector.clear();
-	}
-
-	template<typename Key, typename Pointer>
-	void DeleteUnorderedMap(std::unordered_map<Key, Pointer>& unordered_map)
-	{
-		for (auto& value : unordered_map)
-		{
-			SAFE_DELETE_POINTER(value.second);
-		}
-
-		unordered_map.clear();
-	}
-}
-
-namespace memory::unsafe
-{
-	template<typename T, UINT Size>
-	void DeleteArray(T* (&arr)[Size])
-	{
-		for (UINT i = 0; i < Size; ++i)
-		{
-			DELETE_POINTER(arr[i]);
+			DELETE_POINTER(value);
 		}
 	}
 
 	template<typename T>
-	void DeleteVec(std::vector<T>& vector)
+	void DeleteMapElements(T* const pMap)
 	{
-		for (size_t i = 0; i < vector.size(); ++i)
-		{
-			DELETE_POINTER(vector[i]);
-		}
-
-		vector.clear();
-	}
-
-	template<typename Key, typename T>
-	void DeleteUnorderedMap(std::unordered_map<Key, T>& unordered_map)
-	{
-		for (auto& value : unordered_map)
+		for (auto& value : (*pMap))
 		{
 			DELETE_POINTER(value.second);
 		}
 
-		unordered_map.clear();
+		pMap->clear();
+	}
+
+	template<typename T>
+	void DeleteContainerElements(T* const pContainer)
+	{
+		for (auto& value : (*pContainer))
+		{
+			DELETE_POINTER(value);
+		}
+
+		pContainer->clear();
+	}
+}
+
+namespace mem::del
+{	
+	template<typename T, UINT Size>
+	void DeletePointerArrayElements(T* (*const pPointerArray)[Size])
+	{		
+		mem::DeletePointerArrayElements(pPointerArray);
+	}	
+
+	template<typename Pointer>
+	void DeleteVectorElements(std::vector<Pointer>* const pVector)
+	{
+		mem::DeleteContainerElements(pVector);
+	}
+
+	template<typename Key, typename Pointer>
+	void DeleteMapElements(std::map<Key, Pointer>* const map)
+	{
+		mem::DeleteMapElements(map);
+	}
+
+	template<typename Key, typename Pointer>
+	void DeleteUnorderedMapElements(std::unordered_map<Key, Pointer>* const pUnorderedMap)
+	{
+		mem::DeleteMapElements(pUnorderedMap);
+	}
+
+	template<typename Pointer, UINT Size>
+	void DeleteVectorArrayElements(std::vector<Pointer>(* const pVectorArray)[Size])
+	{
+		for (auto& value : (*pVectorArray))
+		{
+			DeleteVectorElements(&value);
+		}
+	}
+
+	template<typename Key, typename Pointer, UINT Size>
+	void DeleteMapArrayElements(std::map<Key, Pointer> (*const pMapArray)[Size])
+	{
+		for (auto& value : (*pMapArray))
+		{
+			DeleteMapElements(&value);
+		}
+	}
+
+	template<typename Key, typename Pointer, UINT Size>
+	void DeleteUnorderedMapArrayElements(std::unordered_map<Key, Pointer> (*const pUnorderedMapArray)[Size])
+	{		
+		for (auto& value : (*pUnorderedMapArray))
+		{
+			DeleteUnorderedMapElements(&value);
+		}
 	}
 }

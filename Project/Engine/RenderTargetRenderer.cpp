@@ -40,7 +40,7 @@ RenderTargetRenderer::RenderTargetRenderer()
 
 RenderTargetRenderer::~RenderTargetRenderer()
 {
-	SAFE_DELETE_POINTER(mDebugRenderer);
+	DELETE_POINTER_NOT_NULL(mDebugRenderer);
 }
 
 void RenderTargetRenderer::registerRenderCamera(Camera* const camera)

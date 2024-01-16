@@ -23,8 +23,8 @@ Scene::Scene()
 
 Scene::~Scene()
 {
-	SAFE_DELETE_POINTER(mGameSystem);
-	SAFE_DELETE_POINTER(mCollisionManagement2D);
+	DELETE_POINTER_NOT_NULL(mGameSystem);
+	DELETE_POINTER_NOT_NULL(mCollisionManagement2D);
 }
 
 void Scene::initialize()
@@ -113,7 +113,7 @@ void Scene::renderFlush()
 
 void Scene::eventUpdate()
 {
-	memory::safe::DeleteVec(mGarbages);
+	mem::del::DeleteVectorElements(&mGarbages);
 
 	for (auto& message : mEventMessages)
 	{

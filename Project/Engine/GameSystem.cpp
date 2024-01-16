@@ -15,8 +15,8 @@ GameSystem::GameSystem(Scene* const scene)
 
 GameSystem::~GameSystem()
 {
-	SAFE_DELETE_POINTER(mRenderTargetRenderer);
-	SAFE_DELETE_POINTER(mPhysics2D);
+	DELETE_POINTER_NOT_NULL(mRenderTargetRenderer);
+	DELETE_POINTER_NOT_NULL(mPhysics2D);
 }
 
 GameObject* GameSystem::FindGameObjectOrNull(const std::wstring& name, const eLayerType type) const

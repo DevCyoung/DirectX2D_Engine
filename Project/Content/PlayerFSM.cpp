@@ -34,21 +34,21 @@ PlayerFSM::PlayerFSM(GameObject* const owner)
 
 PlayerFSM::~PlayerFSM()
 {
-	SAFE_DELETE_POINTER(mPlayerIdleState);
-	SAFE_DELETE_POINTER(mPlayerRunState);
-	SAFE_DELETE_POINTER(mPlayerAttackState);
-	SAFE_DELETE_POINTER(mPlayerRollState);
-	SAFE_DELETE_POINTER(mPlayerCrouchState);
-	SAFE_DELETE_POINTER(mPlayerJumpState);
-	SAFE_DELETE_POINTER(mPlayerFallState);
-	SAFE_DELETE_POINTER(mPlayerDoorBreakFullState);
-	SAFE_DELETE_POINTER(mPlayerDoorState);
-	SAFE_DELETE_POINTER(mPlayerFlipState);
-	SAFE_DELETE_POINTER(mPlayerWallSlideState);
-	SAFE_DELETE_POINTER(mPlayerGlobalState);
-	SAFE_DELETE_POINTER(mPlayerRecoverState);
-	SAFE_DELETE_POINTER(mPlayerHurtGroundState);
-	SAFE_DELETE_POINTER(mPlayerHurtState);
+	DELETE_POINTER_NOT_NULL(mPlayerIdleState);
+	DELETE_POINTER_NOT_NULL(mPlayerRunState);
+	DELETE_POINTER_NOT_NULL(mPlayerAttackState);
+	DELETE_POINTER_NOT_NULL(mPlayerRollState);
+	DELETE_POINTER_NOT_NULL(mPlayerCrouchState);
+	DELETE_POINTER_NOT_NULL(mPlayerJumpState);
+	DELETE_POINTER_NOT_NULL(mPlayerFallState);
+	DELETE_POINTER_NOT_NULL(mPlayerDoorBreakFullState);
+	DELETE_POINTER_NOT_NULL(mPlayerDoorState);
+	DELETE_POINTER_NOT_NULL(mPlayerFlipState);
+	DELETE_POINTER_NOT_NULL(mPlayerWallSlideState);
+	DELETE_POINTER_NOT_NULL(mPlayerGlobalState);
+	DELETE_POINTER_NOT_NULL(mPlayerRecoverState);
+	DELETE_POINTER_NOT_NULL(mPlayerHurtGroundState);
+	DELETE_POINTER_NOT_NULL(mPlayerHurtState);
 
 }
 

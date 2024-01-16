@@ -17,8 +17,8 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
-	memory::safe::DeleteVec(mScriptComponents);
-	memory::unsafe::DeleteArray(mEngineComponents);
+	mem::del::DeleteVectorElements(&mScriptComponents);
+	mem::del::DeletePointerArrayElements(&mEngineComponents);
 }
 
 void GameObject::initialize()

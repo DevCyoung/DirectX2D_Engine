@@ -23,9 +23,9 @@ GameManager::GameManager()
 
 GameManager::~GameManager()
 {
-	SAFE_DELETE_POINTER(mPathInfo);
-	SAFE_DELETE_POINTER(mRewindManager);	
-	SAFE_DELETE_POINTER(mEffectManager);
-	SAFE_DELETE_POINTER(mEventManager);
-	SAFE_DELETE_POINTER(mTimeController);
+	DELETE_POINTER_NOT_NULL(mPathInfo);
+	DELETE_POINTER_NOT_NULL(mRewindManager);	
+	DELETE_POINTER_NOT_NULL(mEffectManager);
+	DELETE_POINTER_NOT_NULL(mEventManager);
+	DELETE_POINTER_NOT_NULL(mTimeController);
 }

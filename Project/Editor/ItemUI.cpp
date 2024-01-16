@@ -7,7 +7,7 @@ ItemUI::ItemUI()
 
 ItemUI::~ItemUI()
 {
-	memory::safe::DeleteVec(mChildItemUIs);
+	mem::del::DeleteVectorElements(&mChildItemUIs);
 }
 
 ItemUI* ItemUI::FindItemUIOrNull(const std::string& itemUIName)

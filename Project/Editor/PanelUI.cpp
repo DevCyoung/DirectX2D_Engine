@@ -10,8 +10,8 @@ PanelUI::PanelUI()
 
 PanelUI::~PanelUI()
 {
-	memory::safe::DeleteVec(mItemUIs);
-	memory::safe::DeleteVec(mChildPanels);
+	mem::del::DeleteVectorElements(&mItemUIs);
+	mem::del::DeleteVectorElements(&mChildPanels);
 }
 
 void PanelUI::render()

@@ -37,7 +37,7 @@ Animator2D::Animator2D()
 
 Animator2D::~Animator2D()
 {
-	memory::safe::DeleteUnorderedMap(mAnimationMap);
+	mem::del::DeleteUnorderedMapElements(&mAnimationMap);
 }
 
 void Animator2D::Play(const std::wstring& animKey, const bool bLoop)

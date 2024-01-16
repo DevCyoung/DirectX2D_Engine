@@ -10,7 +10,7 @@ PanelUIManager::PanelUIManager()
 
 PanelUIManager::~PanelUIManager()
 {
-	memory::safe::DeleteVec(mPanelUIs);
+	mem::del::DeleteVectorElements(&mPanelUIs);
 }
 
 void PanelUIManager::AddPanel(PanelUI* const panelUI)

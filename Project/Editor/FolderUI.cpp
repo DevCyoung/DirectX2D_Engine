@@ -8,8 +8,8 @@ FolderUI::FolderUI()
 
 FolderUI::~FolderUI()
 {
-	memory::safe::DeleteVec(mFiles);
-	memory::safe::DeleteVec(mForderUIs);
+	mem::del::DeleteVectorElements(&mFiles);
+	mem::del::DeleteVectorElements(&mForderUIs);
 }
 
 

@@ -9,7 +9,7 @@ Layer::Layer()
 
 Layer::~Layer()
 {
-	memory::safe::DeleteVec(mGameObjects);
+	mem::del::DeleteVectorElements(&mGameObjects);
 }
 
 void Layer::initialize()
