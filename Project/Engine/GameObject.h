@@ -37,6 +37,9 @@ public:
 	Component* GetComponentOrNull(const eComponentType componentType) const;
 	ScriptComponent* GetComponentOrNull(const eScriptComponentType scriptComponentType) const;
 
+	Component* GetComponent(const eComponentType componentType) const;
+	ScriptComponent* GetComponent(const eScriptComponentType scriptComponentType) const;
+
 	const std::vector<ScriptComponent*>& GetScriptComponents() const { return mScriptComponents; }
 
 	eState GetState() const { return mState; }
@@ -92,8 +95,9 @@ inline void GameObject::AddComponent(T* const component)
 		mScriptComponents.push_back(component);
 	}
 	else
-	{
-		Assert(false, WCHAR_IS_INVALID_TYPE);
+	{		
+		/*Static_Assert(!engine_component_trait<T>::value ||  
+			script_component_trait<T>::value, "asd");*/
 	}
 }
 

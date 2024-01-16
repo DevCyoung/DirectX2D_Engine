@@ -164,3 +164,21 @@ ScriptComponent* GameObject::GetComponentOrNull(const eScriptComponentType scrip
 	return component;
 
 }
+
+Component* GameObject::GetComponent(const eComponentType componentType) const
+{
+	Component* const component = GetComponentOrNull(componentType);
+
+	Assert(component, WCHAR_IS_NULLPTR);
+
+	return component;
+}
+
+ScriptComponent* GameObject::GetComponent(const eScriptComponentType scriptComponentType) const
+{
+	ScriptComponent* const scriptComponent = GetComponentOrNull(scriptComponentType);
+
+	Assert(scriptComponent, WCHAR_IS_NULLPTR);
+
+	return scriptComponent;
+}

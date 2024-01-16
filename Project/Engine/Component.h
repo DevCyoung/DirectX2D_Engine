@@ -1,9 +1,11 @@
 #pragma once
 #include "Entity.h"
 #include "EnumComponent.h"
-#include "EngineComponentTrait.h"
+#include "ComponentTrait.h"
 
 class GameObject;
+class ScriptComponent;
+enum class eScriptComponentType;
 
 class Component : public Entity
 {
@@ -20,6 +22,20 @@ public:
 	GameObject* GetOwner() const { Assert(mOwner, WCHAR_IS_NULLPTR); return mOwner; }	
 	eComponentType GetType() const { return mType; }
 
+	template<typename T, typename Object = GameObject>
+		requires (std::is_base_of_v<Component, T>)
+	T* GetComponentOrNull() const;
+	template<typename T, typename Object = GameObject>
+		requires (is_component<T>::value)
+	T* GetComponent() const;
+
+	Component* GetComponentOrNull(const eComponentType componentType) const;
+	ScriptComponent* GetComponentOrNull(const eScriptComponentType scriptComponentType) const;
+
+	Component* GetComponent(const eComponentType componentType) const;
+	ScriptComponent* GetComponent(const eScriptComponentType scriptComponentType) const;
+
+
 private:
 	virtual void initialize();
 	virtual void update();
@@ -31,3 +47,17 @@ private:
 	eComponentType mType;
 	GameObject* mOwner;
 };
+
+template<typename T, typename Object>
+	requires (std::is_base_of_v<Component, T>)
+inline T* Component::GetComponentOrNull() const
+{	
+	return static_cast<Object*>(mOwner)->GetComponentOrNull<T>();
+}
+
+template<typename T, typename Object>
+	requires (is_component<T>::value)
+inline T* Component::GetComponent() const
+{	
+	return static_cast<Object*>(mOwner)->GetComponent<T>();
+}
