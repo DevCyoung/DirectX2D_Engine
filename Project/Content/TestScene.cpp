@@ -98,3 +98,8 @@ TestScene::TestScene()
 TestScene::~TestScene()
 {
 }
+
+Scene* TestScene::Clone()
+{
+	return nullptr;
+}

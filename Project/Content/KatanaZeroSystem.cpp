@@ -31,7 +31,7 @@ KatanaZeroSystem::~KatanaZeroSystem()
 
 void KatanaZeroSystem::SetCurentScene(KatanaScene* const katanaScene)
 {
-	Assert(katanaScene, WCHAR_IS_NULLPTR);
+	Assert(katanaScene, ASSERT_MSG_NULL);
 
 	eKatanaSceneType nextType = katanaScene->GetKatanaSceneType();
 
@@ -46,10 +46,10 @@ void KatanaZeroSystem::SetCurentScene(KatanaScene* const katanaScene)
 KatanaScene* KatanaZeroSystem::GetCurrentScene() const
 {
 	Scene* scene = SceneManager::GetInstance()->GetCurrentScene();
-	Assert(scene, WCHAR_IS_NULLPTR);
+	Assert(scene, ASSERT_MSG_NULL);
 
 	KatanaScene* katanaScene = dynamic_cast<KatanaScene*>(scene);
-	Assert(katanaScene, WCHAR_IS_NULLPTR);
+	Assert(katanaScene, ASSERT_MSG_NULL);
 
 	return katanaScene;
 }

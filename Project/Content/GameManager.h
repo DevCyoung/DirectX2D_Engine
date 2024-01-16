@@ -15,20 +15,20 @@ class GameManager
 public:
 	static void initialize()
 	{
-		Assert(!sInstance, WCHAR_IS_NOT_NULLPTR);
+		Assert(!sInstance, ASSERT_MSG_NOT_NULL);
 		sInstance = new GameManager();
 	}
 
 	static void deleteInstance()
 	{
-		Assert(sInstance, WCHAR_IS_NULLPTR);
+		Assert(sInstance, ASSERT_MSG_NULL);
 		delete sInstance;
 		sInstance = nullptr;
 	}
 
 	static GameManager* GetInstance()
 	{
-		Assert(sInstance, WCHAR_IS_NULLPTR);
+		Assert(sInstance, ASSERT_MSG_NULL);
 		return sInstance;
 	}
 

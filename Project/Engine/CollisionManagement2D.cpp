@@ -170,7 +170,7 @@ void CollisionManagement2D::collide2DGameObject(const GameObject* const left,
 		}
 		else
 		{
-			Assert(false, WCHAR_IS_INVALID_TYPE);
+			Assert(false, ASSERT_MSG_INVALID);
 		}
 	}
 	else

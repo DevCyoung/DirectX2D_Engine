@@ -8,7 +8,7 @@
 		, mSize(bufferSize)
 		, mBuffer(nullptr)
 	{
-		Assert(device, WCHAR_IS_NULLPTR);
+		Assert(device, ASSERT_MSG_NULL);
 		Assert((mSize % 16) == 0, "data not al 16 byte!");		
 
 		mDesc.ByteWidth = mSize;
@@ -17,7 +17,7 @@
 		mDesc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
 
 		device->CreateBuffer(&mDesc, nullptr, mBuffer.GetAddressOf());
-		Assert(mBuffer.Get(), WCHAR_IS_NULLPTR);
+		Assert(mBuffer.Get(), ASSERT_MSG_NULL);
 	}
 
 	ConstantBuffer::~ConstantBuffer()

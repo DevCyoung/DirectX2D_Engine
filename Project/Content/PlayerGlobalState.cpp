@@ -14,22 +14,22 @@ PlayerGlobalState::~PlayerGlobalState()
 
 void PlayerGlobalState::InputUpdate()
 {
-	Assert(false, WCHAR_IS_INVALID_TYPE);
+	Assert(false, ASSERT_MSG_INVALID);
 }
 
 void PlayerGlobalState::Update()
 {
-	Assert(false, WCHAR_IS_INVALID_TYPE);
+	Assert(false, ASSERT_MSG_INVALID);
 }
 
 void PlayerGlobalState::Enter()
 {
-	Assert(false, WCHAR_IS_INVALID_TYPE);
+	Assert(false, ASSERT_MSG_INVALID);
 }
 
 void PlayerGlobalState::Exit()
 {
-	Assert(false, WCHAR_IS_INVALID_TYPE);
+	Assert(false, ASSERT_MSG_INVALID);
 }
 
 void PlayerGlobalState::RunToIdle()

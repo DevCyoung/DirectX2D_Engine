@@ -279,7 +279,7 @@ void DebugRenderer2D::DrawGrid2D(const Vector3& worldPos,
 
 void DebugRenderer2D::render(const Camera* const camera) const
 {
-	Assert(camera, WCHAR_IS_NULLPTR);
+	Assert(camera, ASSERT_MSG_NULL);
 
 	if (mDebugDrawInfos.empty())
 	{
@@ -299,8 +299,8 @@ void DebugRenderer2D::render(const Camera* const camera) const
 		const Mesh* const P_MESH = debugMat.debugMesh;
 		const Shader* const P_SHADER = debugMat.debugShader;
 
-		Assert(P_MESH, WCHAR_IS_NULLPTR);
-		Assert(P_SHADER, WCHAR_IS_NULLPTR);
+		Assert(P_MESH, ASSERT_MSG_NULL);
+		Assert(P_SHADER, ASSERT_MSG_NULL);
 
 		CBTransform.World = DRAW_INFO.WorldMatrix;
 
@@ -344,7 +344,7 @@ void DebugRenderer2D::render(const Camera* const camera) const
 			break;
 
 		default:
-			Assert(false, WCHAR_IS_INVALID_TYPE);
+			Assert(false, ASSERT_MSG_INVALID);
 			break;
 		}
 

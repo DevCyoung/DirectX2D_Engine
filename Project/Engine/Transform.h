@@ -71,7 +71,7 @@ inline T* Transform::GetComponent() const
 {
 	T* const component = GetComponentOrNull<T>();
 
-	Assert(component, WCHAR_IS_NULLPTR);
+	Assert(component, ASSERT_MSG_NULL);
 
 	return component;
 }

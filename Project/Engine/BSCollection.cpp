@@ -4,7 +4,7 @@
 BSCollection::BSCollection(ID3D11Device* const device)
 	: mBStates{0, }
 {
-	Assert(device, WCHAR_IS_NULLPTR);
+	Assert(device, ASSERT_MSG_NULL);
 
 	D3D11_BLEND_DESC blendDesc = {};
 
@@ -24,7 +24,7 @@ BSCollection::BSCollection(ID3D11Device* const device)
 	blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
 	device->CreateBlendState(&blendDesc
 		, mBStates[(UINT)eBSType::AlphaBlend].GetAddressOf());
-	Assert(mBStates[static_cast<UINT>(eBSType::AlphaBlend)].Get(), WCHAR_IS_NULLPTR);
+	Assert(mBStates[static_cast<UINT>(eBSType::AlphaBlend)].Get(), ASSERT_MSG_NULL);
 
 	//One and one
 	blendDesc.AlphaToCoverageEnable = false;
@@ -36,7 +36,7 @@ BSCollection::BSCollection(ID3D11Device* const device)
 	blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
 	device->CreateBlendState(&blendDesc
 		, mBStates[(UINT)eBSType::OneOne].GetAddressOf());
-	Assert(mBStates[static_cast<UINT>(eBSType::AlphaBlend)].Get(), WCHAR_IS_NULLPTR);
+	Assert(mBStates[static_cast<UINT>(eBSType::AlphaBlend)].Get(), ASSERT_MSG_NULL);
 
 }
 

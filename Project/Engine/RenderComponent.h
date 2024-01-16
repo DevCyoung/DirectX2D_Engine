@@ -16,12 +16,12 @@ protected:
 	RenderComponent& operator=(const RenderComponent&) = delete;
 
 public:
-	Mesh* GetMesh() const { Assert(mMesh, WCHAR_IS_NULLPTR); return mMesh; }
-	Material* GetMaterial() const { Assert(mMaterial, WCHAR_IS_NULLPTR); return mMaterial; }
+	Mesh* GetMesh() const { Assert(mMesh, ASSERT_MSG_NULL); return mMesh; }
+	Material* GetMaterial() const { Assert(mMaterial, ASSERT_MSG_NULL); return mMaterial; }
 	bool IsVisible() const { return mbVisible; }
 
-	void SetMesh(Mesh* const mesh) { Assert(mesh, WCHAR_IS_NULLPTR); mMesh = mesh; }
-	void SetMaterial(Material* const material) { Assert(material, WCHAR_IS_NULLPTR); mMaterial = material; }
+	void SetMesh(Mesh* const mesh) { Assert(mesh, ASSERT_MSG_NULL); mMesh = mesh; }
+	void SetMaterial(Material* const material) { Assert(material, ASSERT_MSG_NULL); mMaterial = material; }
 	//void SetVisible(const bool visible) { mbVisible = visible; }
 
 	void TurnOnVisiblelity() { mbVisible = true; }

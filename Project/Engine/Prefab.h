@@ -13,7 +13,7 @@ public:
 
 	virtual HRESULT Load(const std::wstring& filePath) override final;
 
-	GameObject* GetGameObject() const { Assert(mRoot, WCHAR_IS_NULLPTR); return mRoot; }
+	GameObject* GetGameObject() const { Assert(mRoot, ASSERT_MSG_NULL); return mRoot; }
 
 private:
 	GameObject* mRoot;

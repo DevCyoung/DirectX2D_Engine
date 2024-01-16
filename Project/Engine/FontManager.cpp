@@ -13,14 +13,14 @@ FontManager::FontManager()
 {
 	if (FAILED(FW1CreateFactory(FW1_VERSION, &mFW1Factory)))
 	{
-		Assert(false, WCHAR_IS_INVALID_TYPE);
+		Assert(false, ASSERT_MSG_INVALID);
 	}
 
 	ID3D11Device* pDevice = Engine::GetInstance()->GetGraphicDevice()->UnSafe_GetDevice();
 
 	if (FAILED(mFW1Factory->CreateFontWrapper(pDevice, L"Russo", &mFontWrapper)))
 	{
-		Assert(false, WCHAR_IS_INVALID_TYPE);
+		Assert(false, ASSERT_MSG_INVALID);
 	}
 }
 

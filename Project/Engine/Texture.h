@@ -23,6 +23,7 @@ public:
 	virtual HRESULT Load(const std::wstring& filePath) override;
 
 	ID3D11Texture2D* GetID3D11Texture2D() const { return mTexture.Get(); }
+	ID3D11ShaderResourceView* GetID3D11ShaderResourceView() { return mSRV.Get(); }
 
 private:
 	ScratchImage mImage;

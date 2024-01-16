@@ -47,16 +47,16 @@ void RenderTargetRenderer::registerRenderCamera(Camera* const camera)
 {
 	const eCameraPriorityType CAMERA_PRIORITY_TYPE = camera->GetPriorityType();
 
-	Assert(camera, WCHAR_IS_NULLPTR);
-	Assert(CAMERA_PRIORITY_TYPE != eCameraPriorityType::End, WCHAR_IS_INVALID_TYPE);
-	Assert(!mCameras[static_cast<UINT>(CAMERA_PRIORITY_TYPE)], WCHAR_IS_NOT_NULLPTR);
+	Assert(camera, ASSERT_MSG_NULL);
+	Assert(CAMERA_PRIORITY_TYPE != eCameraPriorityType::End, ASSERT_MSG_INVALID);
+	Assert(!mCameras[static_cast<UINT>(CAMERA_PRIORITY_TYPE)], ASSERT_MSG_NOT_NULL);
 
 	mCameras[static_cast<UINT>(CAMERA_PRIORITY_TYPE)] = camera;
 }
 
 void RenderTargetRenderer::registerRenderComponent(RenderComponent* const renderComponent)
 {
-	Assert(renderComponent, WCHAR_IS_NULLPTR);
+	Assert(renderComponent, ASSERT_MSG_NULL);
 
 	const eRenderPriorityType RENDER_PRIORITY_TYPE = renderComponent->GetMaterial()->GetRenderType();
 

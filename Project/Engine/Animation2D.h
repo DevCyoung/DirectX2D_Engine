@@ -57,13 +57,13 @@ public:
 	Animation2D& operator=(const Animation2D&) = delete;
 
 	const tFrame& GetCurFrame() const { return mFrames[mCurFrameIdx]; }
-	Texture* GetAtlas() const { Assert(mAtlas, WCHAR_IS_NULLPTR); return mAtlas; }
+	Texture* GetAtlas() const { Assert(mAtlas, ASSERT_MSG_NULL); return mAtlas; }
 
 	bool IsFinished() const { return mbFinished; }
 
 	void SetFrameEndEvent(UINT frameIdx, std::function<void()> func)
 	{
-		Assert(frameIdx < mFrames.size(), WCHAR_IS_INVALID_TYPE);
+		Assert(frameIdx < mFrames.size(), ASSERT_MSG_INVALID);
 
 		mFrames[frameIdx].endEvent = std::move(func);
 		mFrames[frameIdx].bEndEvent = true;
@@ -71,7 +71,7 @@ public:
 
 	void SetFrameStartEvent(UINT frameIdx, std::function<void()> func)
 	{
-		Assert(frameIdx < mFrames.size(), WCHAR_IS_INVALID_TYPE);
+		Assert(frameIdx < mFrames.size(), ASSERT_MSG_INVALID);
 
 		mFrames[frameIdx].startEvent = std::move(func);
 		mFrames[frameIdx].bStartEvent = true;
@@ -79,14 +79,14 @@ public:
 
 	void SetFirstFrameEndEvent(std::function<void()> func)
 	{
-		Assert(!mFrames.empty(), WCHAR_IS_INVALID_TYPE);
+		Assert(!mFrames.empty(), ASSERT_MSG_INVALID);
 
 		SetFrameEndEvent(0, std::move(func));
 	}
 
 	void SetLastFrameEndEvent(std::function<void()> func)
 	{
-		Assert(!mFrames.empty(), WCHAR_IS_INVALID_TYPE);
+		Assert(!mFrames.empty(), ASSERT_MSG_INVALID);
 
 		SetFrameEndEvent(static_cast<int>(mFrames.size()) - 1, std::move(func));
 	}

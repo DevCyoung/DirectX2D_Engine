@@ -29,7 +29,7 @@ Mesh::Mesh(
 
 	if (FAILED(gGraphicDevice->UnSafe_GetDevice()->CreateBuffer(&mVertexDesc, &outVertexSub, mVertexBuffer.GetAddressOf())))
 	{
-		Assert(false, L"failed to create vertex buffer");
+		Assert(false, ASSERT_MSG("failed to create vertex buffer"));
 	}
 	
 	mIdexDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_INDEX_BUFFER;
@@ -42,7 +42,7 @@ Mesh::Mesh(
 
 	if (FAILED(gGraphicDevice->UnSafe_GetDevice()->CreateBuffer(&mIdexDesc, &tIndexSub, mIndexBuffer.GetAddressOf())))
 	{
-		Assert(false, L"failed to create index buffer");
+		Assert(false, ASSERT_MSG("failed to create index buffer"));
 	}
 }
 
@@ -52,7 +52,7 @@ Mesh::~Mesh()
 
 HRESULT Mesh::Load(const std::wstring& filePath)
 {
-	Assert(false, L"");
+	Assert(false, ASSERT_MSG(""));
 
 	(void)filePath;
 	return E_NOTIMPL;

@@ -3,16 +3,25 @@
 #include "framework.h"
 #include <Engine/Engine.h>
 #include <Content/Content.h>
+#include <Editor/Editor.h>
 
 #ifdef _DEBUG
 #pragma comment(lib, "Engine/Debug/Engine_d")
 #pragma comment(lib, "Content/Debug/Content_d")
+#pragma comment(lib, "Editor/Debug/Editor_d")
 #else
 #pragma comment(lib, "Engine/Release/Engine")
 #pragma comment(lib, "Content/Release/Content")
+#pragma comment(lib, "Editor/Release/Editor")
 #endif
 
+static constexpr UINT EDIT_SCREEN_WIDTH = 1600;
+static constexpr UINT EDIT_SCREEN_HEIGHT = 900;
+static constexpr UINT KATANA_SCREEN_WIDTH = 1280;
+static constexpr UINT KATANA_SCREEN_HEIGHT = 720;
+
 #define MAX_LOADSTRING 100
+//#define EDITOR_MODE
 
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
@@ -53,18 +62,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
 	MSG msg;
 
-	//constexpr UINT EDIT_SCREEN_WIDTH = 1600;
-	//constexpr UINT EDIT_SCREEN_HEIGHT = 900;	
-
-
-	constexpr UINT KATANA_SCREEN_WIDTH = 1280;
-	constexpr UINT KATANA_SCREEN_HEIGHT = 720;
-
 	Engine::initialize(gHwnd, KATANA_SCREEN_WIDTH, KATANA_SCREEN_HEIGHT);
 	Content::initialize();	
 
+	FIXME(ASSERT_MSG("반드시해야지"));
+	//Assert Test
+	//Assert(false, ASSERT_MSG("this is message"));
+
+#ifdef EDITOR_MODE
+	Editor::initialize();
+#endif
+
+	
+
 	//Mose Cursor
-	ShowCursor(FALSE);
+	//ShowCursor(FALSE);
 
 	while (true)
 	{	
@@ -83,12 +95,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		else
 		{
 			Engine::GetInstance()->run();
+
+#ifdef EDITOR_MODE
+			Editor::GetInstance()->run();
+#endif
+			Engine::GetInstance()->present();
 		}
 	}
 
+#ifdef EDITOR_MODE
+	Editor::deleteInstance();
+#endif
+
 	Content::deleteInstance();	
 	Engine::deleteInstance();
-
 	return static_cast<int>(msg.wParam);
 }
 
@@ -107,7 +127,15 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 	wcex.cbSize = sizeof(WNDCLASSEX);
 
 	wcex.style = CS_HREDRAW | CS_VREDRAW;
+
+#ifdef EDITOR_MODE
+	wcex.lpfnWndProc = WndProcImGUI;
+#else
 	wcex.lpfnWndProc = WndProc;
+#endif // EDITOR_MODE
+
+	
+
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = hInstance;

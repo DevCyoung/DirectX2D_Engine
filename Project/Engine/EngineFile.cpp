@@ -81,12 +81,12 @@ namespace helper
 	{
 		_wfopen_s(&mFile, path.path.c_str(), L"wb");
 
-		Assert(mFile, WCHAR_IS_INVALID_TYPE);
+		Assert(mFile, ASSERT_MSG_INVALID);
 	}
 
 	FileWriter::~FileWriter()
 	{
-		Assert(mFile, WCHAR_IS_INVALID_TYPE);
+		Assert(mFile, ASSERT_MSG_INVALID);
 
 		fclose(mFile);	
 	}

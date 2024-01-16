@@ -14,7 +14,7 @@ FiniteStateMachine::~FiniteStateMachine()
 
 void FiniteStateMachine::ChangeState(FSMState* const state)
 {
-	Assert(state, WCHAR_IS_NULLPTR);
+	Assert(state, ASSERT_MSG_NULL);
 
 	//FIXME: 입력받을때 초기화를 어떻게 설정할까
 	//if (state == mCurState)

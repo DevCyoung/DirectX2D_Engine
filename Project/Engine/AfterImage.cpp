@@ -190,7 +190,7 @@ void AfterImage::render(const Camera* const camera)
 		gGraphicDevice->BindRS(mMaterial->GetShader()->GetRSType());
 
 		const Texture* const P_ATLAS = info.texture;
-		Assert(P_ATLAS, WCHAR_IS_NULLPTR);
+		Assert(P_ATLAS, ASSERT_MSG_NULL);
 
 		tCBAnimationInfo CBAnimationInfo = info.CBAnimationInfo;
 		{

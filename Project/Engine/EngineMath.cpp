@@ -99,8 +99,8 @@ namespace helper::math
 {
 	void INT2MinAndMax(const XMINT2& a, const XMINT2& b, XMINT2* const outMin, XMINT2* const outMax)
 	{
-		Assert(outMin, WCHAR_IS_NULLPTR);
-		Assert(outMax, WCHAR_IS_NULLPTR);
+		Assert(outMin, ASSERT_MSG_NULL);
+		Assert(outMax, ASSERT_MSG_NULL);
 
 		outMin->x = min(a.x, b.x);
 		outMin->y = min(a.y, b.y);
@@ -111,8 +111,8 @@ namespace helper::math
 
 	void floatMinAndMax(const float a, const float b, float* const outMin, float* const outMax)
 	{
-		Assert(outMin, WCHAR_IS_NULLPTR);
-		Assert(outMax, WCHAR_IS_NULLPTR);
+		Assert(outMin, ASSERT_MSG_NULL);
+		Assert(outMax, ASSERT_MSG_NULL);
 
 		*outMin = min(a, b);
 		*outMax = max(a, b);
@@ -120,8 +120,8 @@ namespace helper::math
 
 	void Vector2MinAndMax(const Vector2& a, const Vector2& b, Vector2* const outMin, Vector2* const outMax)
 	{
-		Assert(outMin, WCHAR_IS_NULLPTR);
-		Assert(outMax, WCHAR_IS_NULLPTR);
+		Assert(outMin, ASSERT_MSG_NULL);
+		Assert(outMax, ASSERT_MSG_NULL);
 
 		outMin->x = min(a.x, b.x);
 		outMin->y = min(a.y, b.y);
@@ -132,8 +132,8 @@ namespace helper::math
 
 	void Vector3MinAndMax(const Vector3& a, const Vector3& b, Vector3* const outMin, Vector3* const outMax)
 	{
-		Assert(outMin, WCHAR_IS_NULLPTR);
-		Assert(outMax, WCHAR_IS_NULLPTR);
+		Assert(outMin, ASSERT_MSG_NULL);
+		Assert(outMax, ASSERT_MSG_NULL);
 
 		outMin->x = min(a.x, b.x);
 		outMin->y = min(a.y, b.y);
@@ -157,7 +157,7 @@ namespace helper::math
 	bool LineAndLineCollision(const Vector3& s1, const Vector3& e1,
 		const Vector3& s2, const Vector3& e2, Vector2* const outInter)
 	{
-		Assert(outInter, WCHAR_IS_NULLPTR);
+		Assert(outInter, ASSERT_MSG_NULL);
 
 		return _LineAndLineCollision(s1.x, s1.y, e1.x, e1.y, s2.x, s2.y, e2.x, e2.y, &outInter->x, &outInter->y);
 	}
@@ -167,7 +167,7 @@ namespace helper::math
 		const Vector2& s2, const Vector2& e2,
 		Vector2* const outInter)
 	{
-		Assert(outInter, WCHAR_IS_NULLPTR);
+		Assert(outInter, ASSERT_MSG_NULL);
 
 		return _LineAndLineCollision(s1.x, s1.y, e1.x, e1.y, s2.x, s2.y, e2.x, e2.y, &outInter->x, &outInter->y);
 	}

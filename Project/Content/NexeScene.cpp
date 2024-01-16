@@ -80,7 +80,7 @@ void NexeScene::LoadNextScene(eKatanaSceneType sceneType)
 		SceneManager::GetInstance()->RegisterLoadScene(new HeadHunterScene);
 		break;
 	default:
-		Assert(false, WCHAR_IS_INVALID_TYPE);
+		Assert(false, ASSERT_MSG_INVALID);
 		break;
 	}
 }

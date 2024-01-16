@@ -62,10 +62,10 @@ public:
 	BasicMonsterAI(const BasicMonsterAI&) = delete;
 	BasicMonsterAI& operator=(const BasicMonsterAI&) = delete;
 
-	void SetHandObject(GameObject* const handObject) { Assert(handObject, WCHAR_IS_NULLPTR); mHandObject = handObject; }
-	void SetGunObject(GameObject* const gunObject) { Assert(gunObject, WCHAR_IS_NULLPTR); mGunObject = gunObject; }
+	void SetHandObject(GameObject* const handObject) { Assert(handObject, ASSERT_MSG_NULL); mHandObject = handObject; }
+	void SetGunObject(GameObject* const gunObject) { Assert(gunObject, ASSERT_MSG_NULL); mGunObject = gunObject; }
 	void SetMonsterType(const eMonsterType monsterType) { mMonsterType = monsterType; }
-	void SetEmotion(GameObject* const emotion) { Assert(emotion, WCHAR_IS_NULLPTR); mEmotion = emotion; }
+	void SetEmotion(GameObject* const emotion) { Assert(emotion, ASSERT_MSG_NULL); mEmotion = emotion; }
 	void ChangeState(eMonsterState state);
 	bool IsDead() { return mbDead; }
 

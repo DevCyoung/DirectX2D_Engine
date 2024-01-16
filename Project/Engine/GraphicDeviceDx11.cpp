@@ -47,7 +47,7 @@ GraphicDeviceDX11::GraphicDeviceDX11(const HWND hWnd,
 	, mSMCollection(nullptr)
 	, mSBCollection(nullptr)
 {
-	Assert(hWnd, WCHAR_IS_NULLPTR);
+	Assert(hWnd, ASSERT_MSG_NULL);
 
 #pragma region Create Device And Context
 
@@ -66,12 +66,12 @@ GraphicDeviceDX11::GraphicDeviceDX11(const HWND hWnd,
 		mDevice.GetAddressOf(), &featureLevel,
 		mContext.GetAddressOf())))
 	{
-		Assert(false, L"failed to create device");
+		Assert(false, ASSERT_MSG("failed to create device"));
 		return;
 	}
 
-	Assert(mDevice.Get(), WCHAR_IS_NULLPTR);
-	Assert(mContext.Get(), WCHAR_IS_NULLPTR);
+	Assert(mDevice.Get(), ASSERT_MSG_NULL);
+	Assert(mContext.Get(), ASSERT_MSG_NULL);
 
 #pragma endregion
 
@@ -101,37 +101,37 @@ GraphicDeviceDX11::GraphicDeviceDX11(const HWND hWnd,
 
 	if (FAILED(mDevice->QueryInterface(__uuidof(IDXGIDevice), reinterpret_cast<void**>(pDXGIDevice.GetAddressOf()))))
 	{
-		Assert(false, L"failed to create IDXGIDevice");
+		Assert(false, ASSERT_MSG("failed to create IDXGIDevice"));
 		return;
 	}
 
 	if (FAILED(pDXGIDevice->GetParent(__uuidof(IDXGIAdapter), reinterpret_cast<void**>(pDXGIAdapter.GetAddressOf()))))
 	{
-		Assert(false, L"failed to create IDXGIAdapter");
+		Assert(false, ASSERT_MSG("failed to create IDXGIAdapter"));
 		return;
 	}
 
 	if (FAILED(pDXGIAdapter->GetParent(__uuidof(IDXGIFactory), reinterpret_cast<void**>(pDXGIFactory.GetAddressOf()))))
 	{
-		Assert(false, L"failed to create IDXGIFactory");
+		Assert(false, ASSERT_MSG("failed to create IDXGIFactory"));
 		return;
 	}
 
 	if (FAILED(pDXGIFactory->CreateSwapChain(mDevice.Get(), &swapChainDesc, mSwapChain.GetAddressOf())))
 	{
-		Assert(false, L"failed to create IDXGISwapChain");
+		Assert(false, ASSERT_MSG("failed to create IDXGISwapChain"));
 		return;
 	}
 
 	if (FAILED(mSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(mRenderTargetTexture.GetAddressOf()))))
 	{
-		Assert(false, L"failed to get buffer");
+		Assert(false, ASSERT_MSG("failed to get buffer"));
 		return;
 	}
 
 	if (FAILED(mDevice->CreateRenderTargetView(mRenderTargetTexture.Get(), nullptr, mRenderTargetView.GetAddressOf())))
 	{
-		Assert(false, L"failed to create render target view");
+		Assert(false, ASSERT_MSG("failed to create render target view"));
 		return;
 	}
 #pragma endregion
@@ -150,13 +150,13 @@ GraphicDeviceDX11::GraphicDeviceDX11(const HWND hWnd,
 
 	if (FAILED(mDevice->CreateTexture2D(&depthStencilDesc, nullptr, mDepthStencilTexture.GetAddressOf())))
 	{
-		Assert(false, L"failed to create depth stencil texture");
+		Assert(false, ASSERT_MSG("failed to create depth stencil texture"));
 		return;
 	}
 
 	if (FAILED(mDevice->CreateDepthStencilView(mDepthStencilTexture.Get(), nullptr, mDepthStencilView.GetAddressOf())))
 	{
-		Assert(false, L"failed to create depth stencil view");
+		Assert(false, ASSERT_MSG("failed to create depth stencil view"));
 		return;
 	}
 #pragma endregion
@@ -213,8 +213,8 @@ GraphicDeviceDX11::~GraphicDeviceDX11()
 
 void GraphicDeviceDX11::BindIA(const Shader* const shader) const
 {
-	Assert(shader, WCHAR_IS_NULLPTR);
-	Assert(shader->mInputLayout.Get(), WCHAR_IS_NULLPTR);
+	Assert(shader, ASSERT_MSG_NULL);
+	Assert(shader->mInputLayout.Get(), ASSERT_MSG_NULL);
 
 	mContext->IASetInputLayout(shader->mInputLayout.Get());
 	mContext->IASetPrimitiveTopology(shader->mTopology);
@@ -222,8 +222,8 @@ void GraphicDeviceDX11::BindIA(const Shader* const shader) const
 
 void GraphicDeviceDX11::BindMesh(const Mesh* const mesh) const
 {
-	Assert(mesh, WCHAR_IS_NULLPTR);
-	Assert(mesh->mVertexBuffer, WCHAR_IS_NULLPTR);
+	Assert(mesh, ASSERT_MSG_NULL);
+	Assert(mesh->mVertexBuffer, ASSERT_MSG_NULL);
 
 	const UINT OFFSET = 0;
 	const UINT STRIDE = static_cast<UINT>(mesh->mVertexSize);
@@ -236,9 +236,9 @@ void GraphicDeviceDX11::BindSRV(const eShaderBindType stageType,
 	const UINT startSlot,
 	const Texture* const texture) const
 {
-	Assert(eShaderBindType::End != stageType, WCHAR_IS_INVALID_TYPE);
-	Assert(texture, WCHAR_IS_NULLPTR);
-	Assert(texture->mSRV, WCHAR_IS_NULLPTR);
+	Assert(eShaderBindType::End != stageType, ASSERT_MSG_INVALID);
+	Assert(texture, ASSERT_MSG_NULL);
+	Assert(texture->mSRV, ASSERT_MSG_NULL);
 
 	switch (stageType)
 	{
@@ -261,15 +261,15 @@ void GraphicDeviceDX11::BindSRV(const eShaderBindType stageType,
 		mContext->CSSetShaderResources(startSlot, 1, texture->mSRV.GetAddressOf());
 		break;
 	default:
-		Assert(false, WCHAR_SWITCH_DEFAULT);
+		Assert(false, ASSERT_MSG_SWITCH_DEFAULT);
 		break;
 	}
 }
 
 void GraphicDeviceDX11::BindUAV(const UINT startSlot, const Texture* const texture) const
 {	
-	Assert(texture, WCHAR_IS_NULLPTR);
-	Assert(texture->mUAV, WCHAR_IS_NULLPTR);
+	Assert(texture, ASSERT_MSG_NULL);
+	Assert(texture->mUAV, ASSERT_MSG_NULL);
 
 	UINT i = static_cast<UINT>(-1);	
 	mContext->CSSetUnorderedAccessViews(startSlot, 1, texture->mUAV.GetAddressOf(), &i);	
@@ -285,8 +285,8 @@ void GraphicDeviceDX11::UnBindUAV(const UINT startSlot) const
 
 void GraphicDeviceDX11::BindCB(const eCBType CBType, const eShaderBindType stageType) const
 {
-	Assert(eCBType::End != CBType, WCHAR_IS_INVALID_TYPE);
-	Assert(eShaderBindType::End != stageType, WCHAR_IS_INVALID_TYPE);
+	Assert(eCBType::End != CBType, ASSERT_MSG_INVALID);
+	Assert(eShaderBindType::End != stageType, ASSERT_MSG_INVALID);
 
 	const ConstantBuffer& CB = mCBCollection->GetConstantBuffer(CBType);
 	const UINT START_SLOT = static_cast<UINT>(CB.mType);
@@ -312,21 +312,21 @@ void GraphicDeviceDX11::BindCB(const eCBType CBType, const eShaderBindType stage
 		mContext->CSSetConstantBuffers(START_SLOT, 1, CB.mBuffer.GetAddressOf());
 		break;
 	default:
-		Assert(false, WCHAR_SWITCH_DEFAULT);
+		Assert(false, ASSERT_MSG_SWITCH_DEFAULT);
 		break;
 	}
 }
 
 void GraphicDeviceDX11::PassCB(const eCBType CBType, const UINT dataSize, const void* const data) const
 {
-	Assert(eCBType::End != CBType, WCHAR_IS_INVALID_TYPE);
-	Assert(data, WCHAR_IS_NULLPTR);
+	Assert(eCBType::End != CBType, ASSERT_MSG_INVALID);
+	Assert(data, ASSERT_MSG_NULL);
 
 	UNREFERENCED_PARAMETER(dataSize);
 
 	ConstantBuffer& CB = mCBCollection->GetConstantBuffer(CBType);
 
-	Assert(CB.mSize == dataSize, L"data size not ali 16");
+	Assert(CB.mSize == dataSize, ASSERT_MSG("data size not ali 16"));
 
 	D3D11_MAPPED_SUBRESOURCE subResource = {};
 
@@ -339,8 +339,8 @@ void GraphicDeviceDX11::PassCB(const eCBType CBType, const UINT dataSize, const 
 
 void GraphicDeviceDX11::BindSB(const eSBType SBType, const eShaderBindType stageType) const
 {
-	Assert(eSBType::End != SBType, WCHAR_IS_INVALID_TYPE);
-	Assert(eShaderBindType::End != stageType, WCHAR_IS_INVALID_TYPE);
+	Assert(eSBType::End != SBType, ASSERT_MSG_INVALID);
+	Assert(eShaderBindType::End != stageType, ASSERT_MSG_INVALID);
 
 	const StructuredBuffer* SB = mSBCollection->GetStructuredBuffer(SBType);	
 	const UINT START_SLOT = static_cast<UINT>(SB->mSRVType);	
@@ -366,7 +366,7 @@ void GraphicDeviceDX11::BindSB(const eSBType SBType, const eShaderBindType stage
 		mContext->CSSetShaderResources(START_SLOT, 1, SB->mSRV.GetAddressOf());
 		break;
 	default:
-		Assert(false, WCHAR_SWITCH_DEFAULT);
+		Assert(false, ASSERT_MSG_SWITCH_DEFAULT);
 		break;
 	}	
 }
@@ -376,12 +376,12 @@ void GraphicDeviceDX11::PassSB(const eSBType SBType,
 	const UINT stride, 
 	const void* const data) const
 {
-	Assert(eSBType::End != SBType, WCHAR_IS_INVALID_TYPE);
+	Assert(eSBType::End != SBType, ASSERT_MSG_INVALID);
 	//Assert(data, WCHAR_IS_NULLPTR);
 
 	StructuredBuffer* SB = mSBCollection->GetStructuredBuffer(SBType);
 
-	Assert(SB, WCHAR_IS_NULLPTR);
+	Assert(SB, ASSERT_MSG_NULL);
 
 	if (SB->mSize * SB->mStride < dataSize * stride)
 	{
@@ -401,52 +401,52 @@ void GraphicDeviceDX11::PassSB(const eSBType SBType,
 
 void GraphicDeviceDX11::BindVS(const Shader* const shader) const
 {
-	Assert(shader, WCHAR_IS_NULLPTR);
-	Assert(shader->mVS.Get(), WCHAR_IS_NULLPTR);
+	Assert(shader, ASSERT_MSG_NULL);
+	Assert(shader->mVS.Get(), ASSERT_MSG_NULL);
 
 	mContext->VSSetShader(shader->mVS.Get(), nullptr, 0);
 }
 
 void GraphicDeviceDX11::BindPS(const Shader* const shader) const
 {
-	Assert(shader, WCHAR_IS_NULLPTR);
-	Assert(shader->mPS.Get(), WCHAR_IS_NULLPTR);
+	Assert(shader, ASSERT_MSG_NULL);
+	Assert(shader->mPS.Get(), ASSERT_MSG_NULL);
 
 	mContext->PSSetShader(shader->mPS.Get(), nullptr, 0);
 }
 
 void GraphicDeviceDX11::BindCS(const ComputeShader* const computShader) const
 {
-	Assert(computShader, WCHAR_IS_NULLPTR);
-	Assert(computShader->mCS.Get(), WCHAR_IS_NULLPTR);
+	Assert(computShader, ASSERT_MSG_NULL);
+	Assert(computShader->mCS.Get(), ASSERT_MSG_NULL);
 
 	mContext->CSSetShader(computShader->mCS.Get(), nullptr, 0);	
 }
 
 void GraphicDeviceDX11::BindBS(const eBSType BSType) const
 {
-	Assert(eBSType::End != BSType, WCHAR_IS_INVALID_TYPE);
+	Assert(eBSType::End != BSType, ASSERT_MSG_INVALID);
 
 	mContext->OMSetBlendState(mBSCollection->mBStates[static_cast<UINT>(BSType)].Get(), nullptr, 0xffffffff);
 }
 
 void GraphicDeviceDX11::BindDS(const eDSType DSType) const
 {
-	Assert(eDSType::End != DSType, WCHAR_IS_INVALID_TYPE);
+	Assert(eDSType::End != DSType, ASSERT_MSG_INVALID);
 
 	mContext->OMSetDepthStencilState(mDSCollection->mDStates[static_cast<UINT>(DSType)].Get(), 0);
 }
 
 void GraphicDeviceDX11::BindRS(const eRSType RSType) const
 {
-	Assert(eRSType::End != RSType, WCHAR_IS_INVALID_TYPE);
+	Assert(eRSType::End != RSType, ASSERT_MSG_INVALID);
 
 	mContext->RSSetState(mRSCollection->mRStates[static_cast<UINT>(RSType)].Get());
 }
 
 void GraphicDeviceDX11::Draw(const Mesh* const mesh) const
 {
-	Assert(mesh, WCHAR_IS_NULLPTR);
+	Assert(mesh, ASSERT_MSG_NULL);
 
 	const UINT INDEX_COUNT = mesh->GetIndexCount();
 	const UINT START_VERTEX_LOCATION = 0;
@@ -469,8 +469,8 @@ void GraphicDeviceDX11::ClearRenderTarget(ID3D11RenderTargetView* const* const p
 
 void GraphicDeviceDX11::CopyResource(ID3D11Resource* const dst, ID3D11Resource* const src)
 {
-	Assert(dst, WCHAR_IS_NULLPTR);
-	Assert(src, WCHAR_IS_NULLPTR);
+	Assert(dst, ASSERT_MSG_NULL);
+	Assert(src, ASSERT_MSG_NULL);
 
 	mContext->CopyResource(dst, src);
 }

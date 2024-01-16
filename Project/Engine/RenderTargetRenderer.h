@@ -32,13 +32,13 @@ public:
 
 	Camera* GetRegisteredRenderCamera(const eCameraPriorityType priorityType) const
 	{		
-		Assert(mCameras[static_cast<UINT>(priorityType)], WCHAR_IS_NULLPTR);
+		Assert(mCameras[static_cast<UINT>(priorityType)], ASSERT_MSG_NULL);
 
 		return mCameras[static_cast<UINT>(priorityType)];
 	}
 
 
-	DebugRenderer2D* GetDebugRenderer2D() const { Assert(mDebugRenderer, WCHAR_IS_NULLPTR); return mDebugRenderer; }
+	DebugRenderer2D* GetDebugRenderer2D() const { Assert(mDebugRenderer, ASSERT_MSG_NULL); return mDebugRenderer; }
 
 	void TurnOnAllCamera()  { mCameraMask = 0XFFFFFFFF; }
 	void TurnOffAllCamera() { mCameraMask = 0; }

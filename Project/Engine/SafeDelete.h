@@ -1,7 +1,7 @@
 #pragma once
 
-#define SAFE_DELETE_POINTER(p)  { Assert(p, WCHAR_IS_NULLPTR); delete   p; p = nullptr; }
-#define SAFE_DELETE_ARRAY(p)	{ Assert(p, WCHAR_IS_NULLPTR); delete[] p; p = nullptr; }
+#define SAFE_DELETE_POINTER(p)  { Assert(p, ASSERT_MSG_NULL); delete   p; p = nullptr; }
+#define SAFE_DELETE_ARRAY(p)	{ Assert(p, ASSERT_MSG_NULL); delete[] p; p = nullptr; }
 
 #define DELETE_POINTER(p)		{ delete   p; p = nullptr; }
 #define DELETE_ARRAY(p)			{ delete[] p; p = nullptr; }

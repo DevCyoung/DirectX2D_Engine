@@ -22,7 +22,7 @@ StructuredBuffer::StructuredBuffer(const eSBType SBType,
 	mStride = stride;
 
 	// 16바이트 단위 메모리 정렬
-	Assert((mSize % 16) == 0, WCHAR_IS_INVALID_TYPE);
+	Assert((mSize % 16) == 0, ASSERT_MSG_INVALID);
 
 	mDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_SHADER_RESOURCE;
 	mDesc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
@@ -34,7 +34,7 @@ StructuredBuffer::StructuredBuffer(const eSBType SBType,
 	if (nullptr == dataOrNull)
 	{
 		HRESULT hr = device->CreateBuffer(&mDesc, nullptr, mBuffer.GetAddressOf());
-		Assert(SUCCEEDED(hr), WCHAR_IS_INVALID_TYPE);
+		Assert(SUCCEEDED(hr), ASSERT_MSG_INVALID);
 		(void)hr;
 	}
 	else
@@ -43,7 +43,7 @@ StructuredBuffer::StructuredBuffer(const eSBType SBType,
 		tSubData.pSysMem = dataOrNull;
 
 		HRESULT hr = device->CreateBuffer(&mDesc, &tSubData, mBuffer.GetAddressOf());
-		Assert(SUCCEEDED(hr), WCHAR_IS_INVALID_TYPE);
+		Assert(SUCCEEDED(hr), ASSERT_MSG_INVALID);
 		(void)hr;
 	}
 
@@ -52,7 +52,7 @@ StructuredBuffer::StructuredBuffer(const eSBType SBType,
 	srvDesc.ViewDimension = D3D_SRV_DIMENSION::D3D_SRV_DIMENSION_BUFFEREX;
 
 	HRESULT hr  = device->CreateShaderResourceView(mBuffer.Get(), &srvDesc, mSRV.GetAddressOf());
-	Assert(SUCCEEDED(hr), WCHAR_IS_INVALID_TYPE);
+	Assert(SUCCEEDED(hr), ASSERT_MSG_INVALID);
 	(void)hr;
 }
 

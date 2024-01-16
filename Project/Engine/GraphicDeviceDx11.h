@@ -34,8 +34,8 @@ private:
 	GraphicDeviceDX11& operator=(const GraphicDeviceDX11&) = delete;
 
 public:
-	ID3D11Device* UnSafe_GetDevice() const { Assert(mDevice, WCHAR_IS_NULLPTR); return mDevice.Get(); }
-	ID3D11DeviceContext* UnSafe_Context() const { Assert(mContext, WCHAR_IS_NULLPTR); return mContext.Get(); }
+	ID3D11Device* UnSafe_GetDevice() const { Assert(mDevice, ASSERT_MSG_NULL); return mDevice.Get(); }
+	ID3D11DeviceContext* UnSafe_Context() const { Assert(mContext, ASSERT_MSG_NULL); return mContext.Get(); }
 
 	void BindIA(const Shader* const shader) const;
 	void BindMesh(const Mesh* const mesh) const;
@@ -70,13 +70,13 @@ public:
 
 	const SMCollection* GetIEDCollection() const
 	{
-		Assert(mSMCollection, WCHAR_IS_NULLPTR);
+		Assert(mSMCollection, ASSERT_MSG_NULL);
 		return mSMCollection;
 	}
 
 	ID3D11Texture2D* GetRenderTargetTexture() const
 	{
-		Assert(mRenderTargetTexture, WCHAR_IS_NULLPTR);
+		Assert(mRenderTargetTexture, ASSERT_MSG_NULL);
 
 		return mRenderTargetTexture.Get();
 	}
@@ -86,14 +86,14 @@ private:
 
 	ID3D11RenderTargetView** GetRenderTargetViewAddressOf()
 	{
-		Assert(mRenderTargetView, WCHAR_IS_NULLPTR);
+		Assert(mRenderTargetView, ASSERT_MSG_NULL);
 
 		return mRenderTargetView.GetAddressOf();
 	}
 
 	ID3D11DepthStencilView* GetDepthStencilView()
 	{
-		Assert(mDepthStencilView, WCHAR_IS_NULLPTR);
+		Assert(mDepthStencilView, ASSERT_MSG_NULL);
 
 		return mDepthStencilView.Get();
 	}

@@ -5,19 +5,19 @@
 private:													\
 	static void initialize()								\
 	{														\
-		Assert(!sInstance, WCHAR_IS_NOT_NULLPTR);			\
+		Assert(!sInstance, ASSERT_MSG_NOT_NULL);			\
 		sInstance = new CLASSNAME();						\
 	}														\
 static void deleteInstance()								\
 	{														\
-		Assert(sInstance, WCHAR_IS_NULLPTR);				\
+		Assert(sInstance, ASSERT_MSG_NULL);				\
 		delete sInstance;									\
 		sInstance = nullptr;								\
 	}														\
 public:														\
 	static CLASSNAME* GetInstance()							\
 	{														\
-		Assert(sInstance, WCHAR_IS_NULLPTR);				\
+		Assert(sInstance, ASSERT_MSG_NULL);				\
 		return sInstance;									\
 	}														\
 private:													\

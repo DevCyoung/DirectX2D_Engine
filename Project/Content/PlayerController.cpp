@@ -196,7 +196,7 @@ void PlayerController::initialize()
 
 void PlayerController::update()
 {
-	Assert(mPlayerFSM, WCHAR_IS_NULLPTR);
+	Assert(mPlayerFSM, ASSERT_MSG_NULL);
 
 	if (gInput->GetKeyDown(eKeyCode::K))
 	{

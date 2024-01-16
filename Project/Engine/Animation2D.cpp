@@ -113,7 +113,7 @@ void Animation2D::reset()
 
 void Animation2D::reset(const UINT frameIdx)
 {
-	Assert(mFrames.size() > mCurFrameIdx, WCHAR_IS_INVALID_TYPE);
+	Assert(mFrames.size() > mCurFrameIdx, ASSERT_MSG_INVALID);
 
 	mCurFrameIdx = frameIdx;
 	mCurFramePlayTime = 0.f;

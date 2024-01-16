@@ -48,7 +48,7 @@ Texture::Texture(UINT _Width, UINT _Height,
 
 	if (FAILED(device->CreateTexture2D(&m_Desc, nullptr, mTexture.GetAddressOf())))
 	{
-		Assert(false, WCHAR_IS_INVALID_TYPE);
+		Assert(false, ASSERT_MSG_INVALID);
 	}
 
 	// 바인드 플래그에 맞는 View 를 생성해준다.
@@ -56,7 +56,7 @@ Texture::Texture(UINT _Width, UINT _Height,
 	{
 		if (FAILED(device->CreateDepthStencilView(mTexture.Get(), nullptr, mDSV.GetAddressOf())))
 		{
-			Assert(false, WCHAR_IS_INVALID_TYPE);
+			Assert(false, ASSERT_MSG_INVALID);
 		}
 	}
 	else
@@ -65,7 +65,7 @@ Texture::Texture(UINT _Width, UINT _Height,
 		{
 			if (FAILED(device->CreateRenderTargetView(mTexture.Get(), nullptr, mRTV.GetAddressOf())))
 			{
-				Assert(false, WCHAR_IS_INVALID_TYPE);
+				Assert(false, ASSERT_MSG_INVALID);
 			}
 		}
 
@@ -73,7 +73,7 @@ Texture::Texture(UINT _Width, UINT _Height,
 		{
 			if (FAILED(device->CreateShaderResourceView(mTexture.Get(), nullptr, mSRV.GetAddressOf())))
 			{
-				Assert(false, WCHAR_IS_INVALID_TYPE);
+				Assert(false, ASSERT_MSG_INVALID);
 			}
 		}
 
@@ -81,7 +81,7 @@ Texture::Texture(UINT _Width, UINT _Height,
 		{
 			if (FAILED(device->CreateUnorderedAccessView(mTexture.Get(), nullptr, mUAV.GetAddressOf())))
 			{
-				Assert(false, WCHAR_IS_INVALID_TYPE);
+				Assert(false, ASSERT_MSG_INVALID);
 			}
 		}
 	}
@@ -111,14 +111,14 @@ HRESULT Texture::Load(const std::wstring& filePath)
 	{
 		if (FAILED(LoadFromDDSFile(filePath.c_str(), DDS_FLAGS::DDS_FLAGS_NONE, nullptr, mImage)))
 		{
-			Assert(false, L"fail load file .dds");
+			Assert(false, ASSERT_MSG("fail load file .dds"));
 		}
 	}
 	else if (FILE_EXTENSION == L".tga" || FILE_EXTENSION == L".TGA")
 	{
 		if (FAILED(LoadFromTGAFile(filePath.c_str(), nullptr, mImage)))
 		{
-			Assert(false, L"fail load file .tga");
+			Assert(false, ASSERT_MSG("fail load file .tga"));
 		}
 	}
 	else if (FILE_EXTENSION == L".png" || FILE_EXTENSION == L".PNG" ||
@@ -128,12 +128,12 @@ HRESULT Texture::Load(const std::wstring& filePath)
 	{
 		if (FAILED(LoadFromWICFile(filePath.c_str(), WIC_FLAGS::WIC_FLAGS_NONE, nullptr, mImage)))
 		{
-			Assert(false, L"fail load file other");
+			Assert(false, ASSERT_MSG("fail load file other"));
 		}
 	}
 	else
 	{				
-		Assert(false, L"is not supported");
+		Assert(false, ASSERT_MSG("is not supported"));
 	}
 
 	if (FAILED(CreateShaderResourceView(gGraphicDevice->UnSafe_GetDevice()
@@ -141,10 +141,10 @@ HRESULT Texture::Load(const std::wstring& filePath)
 		, mImage.GetImageCount()
 		, mImage.GetMetadata(), mSRV.GetAddressOf())))
 	{
-		Assert(false, L"fail create resource view");
+		Assert(false, ASSERT_MSG("fail create resource view"));
 	}
 
-	Assert(mSRV, WCHAR_IS_NULLPTR);
+	Assert(mSRV, ASSERT_MSG_NULL);
 
 	mSRV->GetResource(reinterpret_cast<ID3D11Resource**>(mTexture.GetAddressOf()));
 

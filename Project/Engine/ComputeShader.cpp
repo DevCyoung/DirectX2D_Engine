@@ -53,7 +53,7 @@ void ComputeShader::Execute()
 HRESULT ComputeShader::Load(const std::wstring& filePath)
 {
 	(void)filePath;
-	Assert(false, WCHAR_IS_INVALID_TYPE);
+	Assert(false, ASSERT_MSG_INVALID);
 
 	return E_NOTIMPL;
 }

@@ -37,6 +37,9 @@ public:
 	Component* GetComponentOrNull(const eComponentType componentType) const;
 	ScriptComponent* GetComponentOrNull(const eScriptComponentType scriptComponentType) const;
 
+	Component* GetComponent(const eComponentType componentType) const;
+	ScriptComponent* GetComponent(const eScriptComponentType scriptComponentType) const;
+
 	const std::vector<ScriptComponent*>& GetScriptComponents() const { return mScriptComponents; }
 
 	eState GetState() const { return mState; }
@@ -76,12 +79,12 @@ private:
 template<typename T>
 	requires (is_component<T>::value)
 inline void GameObject::AddComponent(T* const component)
-{	
-	Assert(component, WCHAR_IS_NULLPTR);
-	Assert(!(component->mOwner), WCHAR_IS_NOT_NULLPTR);
-	Assert(!(GetComponentOrNull<T>()), WCHAR_IS_NOT_NULLPTR);
+{		
+	Assert(component, ASSERT_MSG_NULL);
+	Assert(!(component->mOwner), ASSERT_MSG_NOT_NULL);
+	Assert(!(GetComponentOrNull<T>()), ASSERT_MSG_NOT_NULL);
 
-	component->mOwner = this;
+	component->mOwner = this;	
 
 	if constexpr (engine_component_trait<T>::value)
 	{		
@@ -92,8 +95,8 @@ inline void GameObject::AddComponent(T* const component)
 		mScriptComponents.push_back(component);
 	}
 	else
-	{
-		Assert(false, WCHAR_IS_INVALID_TYPE);
+	{		
+		Assert(false, ASSERT_MSG_INVALID);
 	}
 }
 
@@ -163,7 +166,7 @@ inline T* GameObject::GetComponent() const
 {	
 	T* const component = GetComponentOrNull<T>();
 
-	Assert(component, WCHAR_IS_NULLPTR);
+	Assert(component, ASSERT_MSG_NULL);
 
 	return component;
 }
