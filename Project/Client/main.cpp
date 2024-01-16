@@ -15,8 +15,13 @@
 #pragma comment(lib, "Editor/Release/Editor")
 #endif
 
+static constexpr UINT EDIT_SCREEN_WIDTH = 1600;
+static constexpr UINT EDIT_SCREEN_HEIGHT = 900;
+static constexpr UINT KATANA_SCREEN_WIDTH = 1280;
+static constexpr UINT KATANA_SCREEN_HEIGHT = 720;
+
 #define MAX_LOADSTRING 100
-#define EDITOR_MODE
+//#define EDITOR_MODE
 
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
@@ -57,22 +62,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
 	MSG msg;
 
-	//constexpr UINT EDIT_SCREEN_WIDTH = 1600;
-	//constexpr UINT EDIT_SCREEN_HEIGHT = 900;	
-
-
-	constexpr UINT KATANA_SCREEN_WIDTH = 1280;
-	constexpr UINT KATANA_SCREEN_HEIGHT = 720;
-
 	Engine::initialize(gHwnd, KATANA_SCREEN_WIDTH, KATANA_SCREEN_HEIGHT);
 	Content::initialize();	
 
+	FIXME(ASSERT_MSG("반드시해야지"));
 	//Assert Test
 	//Assert(false, ASSERT_MSG("this is message"));
 
 #ifdef EDITOR_MODE
 	Editor::initialize();
-#endif // !
+#endif
 
 	
 
@@ -99,7 +98,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 #ifdef EDITOR_MODE
 			Editor::GetInstance()->run();
-#else
 #endif
 			Engine::GetInstance()->present();
 		}

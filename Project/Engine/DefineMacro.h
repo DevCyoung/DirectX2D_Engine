@@ -10,4 +10,4 @@
 #define Assert(expression, message) assert(expression && L_PREFIX(message))
 #define Static_Assert(expression, message) static_assert(expression, message)
 
-#define FIXME(message) MessageBox(nullptr, message, L_PREFIX(message), MB_OK | MB_ICONWARNING)
+#define FIXME(message) MessageBox(nullptr, L_PREFIX(message), L_PREFIX(message), MB_OK | MB_ICONWARNING)
