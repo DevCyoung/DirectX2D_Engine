@@ -57,9 +57,9 @@ public:
 	KissyfaceAI& operator=(const KissyfaceAI&) = delete;
 
 
-	void SetAxe(GameObject* const axe) { Assert(axe, WCHAR_IS_NULLPTR); mAxe = axe; }
-	void SetBrokenAxe(GameObject* const brokenAxe) { Assert(brokenAxe, WCHAR_IS_NULLPTR); mBrokenAxe = brokenAxe; }
-	void SetHead(GameObject* const head) { Assert(head, WCHAR_IS_NULLPTR); mHead = head; }
+	void SetAxe(GameObject* const axe) { Assert(axe, ASSERT_MSG_NULL); mAxe = axe; }
+	void SetBrokenAxe(GameObject* const brokenAxe) { Assert(brokenAxe, ASSERT_MSG_NULL); mBrokenAxe = brokenAxe; }
+	void SetHead(GameObject* const head) { Assert(head, ASSERT_MSG_NULL); mHead = head; }
 
 private:
 	virtual void initialize() override final;

@@ -78,7 +78,7 @@ inline T* ResourceManager::FindOrNull(const Key& relativePathOrName) const
 	if (iter != RESOURCES.end())
 	{
 		res = dynamic_cast<T*>(iter->second);
-		Assert(res, WCHAR_IS_NULLPTR);
+		Assert(res, ASSERT_MSG_NULL);
 	}
 
 	return res;
@@ -103,7 +103,7 @@ inline T* ResourceManager::Find(const Key& relativePathOrName)
 		resource = FindOrNull<T>(relativePathOrName);
 	}
 
-	Assert(resource, WCHAR_IS_NULLPTR);
+	Assert(resource, ASSERT_MSG_NULL);
 	return resource;
 }
 
@@ -118,7 +118,7 @@ template<typename T>
 	requires (is_engine_resource<T>::value)
 inline void ResourceManager::Load(const Key& relativePathOrName)
 {	
-	Assert(!FindOrNull<T>(relativePathOrName), WCHAR_IS_NOT_NULLPTR);
+	Assert(!FindOrNull<T>(relativePathOrName), ASSERT_MSG_NOT_NULL);
 
 	T* resource = new T();
 	constexpr eResourceType RES_TYPE = engine_resource_type<T>::type;
@@ -141,8 +141,8 @@ template<typename T>
 	requires (is_engine_resource<T>::value)
 inline void ResourceManager::Insert(const Key& relativePathOrName, T* const value)
 {
-	Assert(value, WCHAR_IS_NULLPTR);
-	Assert(!(FindOrNull<T>(relativePathOrName)), WCHAR_IS_NOT_NULLPTR);
+	Assert(value, ASSERT_MSG_NULL);
+	Assert(!(FindOrNull<T>(relativePathOrName)), ASSERT_MSG_NOT_NULL);
 
 	value->mRelativePath = relativePathOrName;
 

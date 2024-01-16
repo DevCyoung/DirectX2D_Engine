@@ -55,7 +55,7 @@ bool InputManager::IsWindowMouseHoverd()
 
 void InputManager::update(const HWND hWnd)
 {
-	Assert(hWnd, WCHAR_IS_NULLPTR);
+	Assert(hWnd, ASSERT_MSG_NULL);
 
 	if (GetFocus())
 	{
@@ -119,7 +119,7 @@ void InputManager::update(const HWND hWnd)
 			case eKeyState::None:
 				break;
 			default:
-				Assert(false, WCHAR_IS_INVALID_TYPE);
+				Assert(false, ASSERT_MSG_INVALID);
 				break;
 			}
 		}

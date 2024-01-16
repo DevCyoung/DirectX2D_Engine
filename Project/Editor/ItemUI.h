@@ -11,7 +11,7 @@ public:
 
 	void AddChildItemUI(ItemUI* const itemUI) 
 	{ 
-		Assert(itemUI, WCHAR_IS_NOT_NULLPTR); 
+		Assert(itemUI, ASSERT_MSG_NOT_NULL); 
 		mChildItemUIs.push_back(itemUI); 
 	}
 

@@ -113,9 +113,9 @@ void SpriteRenderer::lateUpdate()
 
 void SpriteRenderer::render(const Camera* const camera)
 {
-	Assert(mMesh, WCHAR_IS_NULLPTR);
-	Assert(mMaterial, WCHAR_IS_NULLPTR);
-	Assert(camera, WCHAR_IS_NULLPTR);
+	Assert(mMesh, ASSERT_MSG_NULL);
+	Assert(mMaterial, ASSERT_MSG_NULL);
+	Assert(camera, ASSERT_MSG_NULL);
 
 	tCBTransform CBTransform = {};
 	{

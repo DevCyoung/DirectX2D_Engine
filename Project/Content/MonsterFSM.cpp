@@ -19,8 +19,8 @@ MonsterFSM::~MonsterFSM()
 
 void MonsterFSM::Initialize(int idx)
 {
-	Assert(idx < MAX_MONSTER_STATES, WCHAR_IS_INVALID_TYPE);
-	Assert(mMonsterStates[idx], WCHAR_IS_NULLPTR);
+	Assert(idx < MAX_MONSTER_STATES, ASSERT_MSG_INVALID);
+	Assert(mMonsterStates[idx], ASSERT_MSG_NULL);
 
 	for (MonsterState* state : mMonsterStates)
 	{
@@ -47,16 +47,16 @@ void MonsterFSM::GlobalUpdate()
 
 void MonsterFSM::Update()
 {
-	Assert(mCurrentState, WCHAR_IS_NULLPTR);
+	Assert(mCurrentState, ASSERT_MSG_NULL);
 
 	mCurrentState->Update();
 }
 
 void MonsterFSM::AddState(int idx, MonsterState* state)
 {
-	Assert(state, WCHAR_IS_NULLPTR);
-	Assert(idx < MAX_MONSTER_STATES, WCHAR_IS_INVALID_TYPE);
-	Assert(!mMonsterStates[idx], WCHAR_IS_NOT_NULLPTR);
+	Assert(state, ASSERT_MSG_NULL);
+	Assert(idx < MAX_MONSTER_STATES, ASSERT_MSG_INVALID);
+	Assert(!mMonsterStates[idx], ASSERT_MSG_NOT_NULL);
 
 	state->mMonsterFSM = this;
 	state->mGameObject = mOwner;
@@ -67,9 +67,9 @@ void MonsterFSM::AddState(int idx, MonsterState* state)
 
 void MonsterFSM::ChangeState(int idx)
 {
-	Assert(mCurrentState, WCHAR_IS_NULLPTR);
-	Assert(idx < MAX_MONSTER_STATES, WCHAR_IS_INVALID_TYPE);
-	Assert(mMonsterStates[idx], WCHAR_IS_NULLPTR);
+	Assert(mCurrentState, ASSERT_MSG_NULL);
+	Assert(idx < MAX_MONSTER_STATES, ASSERT_MSG_INVALID);
+	Assert(mMonsterStates[idx], ASSERT_MSG_NULL);
 	//Assert(!mRegisterEnterState, WCHAR_IS_NOT_NULLPTR);
 
 	mRegisterEnterState = mMonsterStates[idx];

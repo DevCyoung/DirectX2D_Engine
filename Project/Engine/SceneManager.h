@@ -12,7 +12,7 @@ class SceneManager
 
 public:
 	void LoadScene(Scene* const scene);
-	Scene* GetCurrentScene() const { Assert(mCurrentScene, WCHAR_IS_NULLPTR); return mCurrentScene; }
+	Scene* GetCurrentScene() const { Assert(mCurrentScene, ASSERT_MSG_NULL); return mCurrentScene; }
 
 public:
 	void Initialize(Scene* const scene) const

@@ -67,6 +67,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	Engine::initialize(gHwnd, KATANA_SCREEN_WIDTH, KATANA_SCREEN_HEIGHT);
 	Content::initialize();	
 
+	//Assert Test
+	//Assert(false, ASSERT_MSG("this is message"));
+
 #ifdef EDITOR_MODE
 	Editor::initialize();
 #endif // !

@@ -17,7 +17,7 @@ void EditorUIInitialize()
 
 void AddPanel(PanelUI* const panelUI)
 {
-	Assert(panelUI, WCHAR_IS_NULLPTR);
+	Assert(panelUI, ASSERT_MSG_NULL);
 
 	PanelUIManager::GetInstance()->AddPanel(panelUI);
 }

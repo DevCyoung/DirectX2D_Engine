@@ -79,12 +79,12 @@ private:
 template<typename T>
 	requires (is_component<T>::value)
 inline void GameObject::AddComponent(T* const component)
-{	
-	Assert(component, WCHAR_IS_NULLPTR);
-	Assert(!(component->mOwner), WCHAR_IS_NOT_NULLPTR);
-	Assert(!(GetComponentOrNull<T>()), WCHAR_IS_NOT_NULLPTR);
+{		
+	Assert(component, ASSERT_MSG_NULL);
+	Assert(!(component->mOwner), ASSERT_MSG_NOT_NULL);
+	Assert(!(GetComponentOrNull<T>()), ASSERT_MSG_NOT_NULL);
 
-	component->mOwner = this;
+	component->mOwner = this;	
 
 	if constexpr (engine_component_trait<T>::value)
 	{		
@@ -96,8 +96,7 @@ inline void GameObject::AddComponent(T* const component)
 	}
 	else
 	{		
-		/*Static_Assert(!engine_component_trait<T>::value ||  
-			script_component_trait<T>::value, "asd");*/
+		Assert(false, ASSERT_MSG_INVALID);
 	}
 }
 
@@ -167,7 +166,7 @@ inline T* GameObject::GetComponent() const
 {	
 	T* const component = GetComponentOrNull<T>();
 
-	Assert(component, WCHAR_IS_NULLPTR);
+	Assert(component, ASSERT_MSG_NULL);
 
 	return component;
 }

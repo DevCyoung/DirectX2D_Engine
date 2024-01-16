@@ -19,7 +19,7 @@ public:
 	Component& operator=(const Component&) = delete;
 
 public:
-	GameObject* GetOwner() const { Assert(mOwner, WCHAR_IS_NULLPTR); return mOwner; }	
+	GameObject* GetOwner() const { Assert(mOwner, ASSERT_MSG_NULL); return mOwner; }	
 	eComponentType GetType() const { return mType; }
 
 	template<typename T, typename Object = GameObject>

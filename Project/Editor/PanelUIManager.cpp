@@ -15,7 +15,7 @@ PanelUIManager::~PanelUIManager()
 
 void PanelUIManager::AddPanel(PanelUI* const panelUI)
 {
-	Assert(panelUI, WCHAR_IS_NULLPTR);
+	Assert(panelUI, ASSERT_MSG_NULL);
 	
 	mPanelUIs.push_back(panelUI);
 }

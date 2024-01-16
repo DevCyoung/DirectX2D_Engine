@@ -59,7 +59,7 @@ GameObject* GameSystem::FindGameObject(const std::wstring& name, const eLayerTyp
 {	
 	GameObject* result = FindGameObjectOrNull(name ,type);
 
-	Assert(result, WCHAR_IS_NULLPTR);
+	Assert(result, ASSERT_MSG_NULL);
 	return result;
 }
 
@@ -67,7 +67,7 @@ GameObject* GameSystem::FindGameObject(const std::wstring& name) const
 {
 	GameObject* result = FindGameObjectOrNull(name);
 
-	Assert(result, WCHAR_IS_NULLPTR);
+	Assert(result, ASSERT_MSG_NULL);
 	return result;
 }
 

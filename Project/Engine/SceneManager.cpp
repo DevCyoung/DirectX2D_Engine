@@ -24,8 +24,8 @@ void SceneManager::LoadScene(Scene* const scene)
 
 void SceneManager::RegisterLoadScene(Scene* const scene)
 {
-	Assert(scene, WCHAR_IS_NULLPTR);
-	Assert(!mNextScene, WCHAR_IS_NOT_NULLPTR);
+	Assert(scene, ASSERT_MSG_NULL);
+	Assert(!mNextScene, ASSERT_MSG_NOT_NULL);
 
 	mNextScene = scene;
 }

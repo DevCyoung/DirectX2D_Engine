@@ -26,7 +26,7 @@ public:
 		return Vector2(static_cast<float>(mWindowScreenWidth), static_cast<float>(mWindowScreenHeight));
 	}
 
-	HWND GetHwnd() const { Assert(mHwnd, WCHAR_IS_NULLPTR); return mHwnd; }
+	HWND GetHwnd() const { Assert(mHwnd, ASSERT_MSG_NULL); return mHwnd; }
 	GraphicDeviceDX11* GetGraphicDevice() const { return mGraphicDevice; }
 
 private:

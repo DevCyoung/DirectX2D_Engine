@@ -65,14 +65,14 @@ void Camera::CalculateCamera()
 	}
 	break;
 	default:
-		Assert(false, WCHAR_IS_INVALID_TYPE);
+		Assert(false, ASSERT_MSG_INVALID);
 		break;
 	}
 }
 
 void Camera::initialize()
 {
-	Assert(mRenderTargetSize != Vector2::Zero, WCHAR_IS_NULLPTR);
+	Assert(mRenderTargetSize != Vector2::Zero, ASSERT_MSG_NULL);
 
 	GetOwner()->GetGameSystem()->GetRenderTargetRenderer()->registerRenderCamera(this);
 }

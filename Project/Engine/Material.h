@@ -16,12 +16,12 @@ public:
 	Material& operator=(const Material&) = delete;
 
 public:
-	const Texture*  GetTexture() const { Assert(mTexture, WCHAR_IS_NULLPTR); return mTexture; }
-	const Shader* GetShader() const { Assert(mShader, WCHAR_IS_NULLPTR); return mShader; }
+	const Texture*  GetTexture() const { Assert(mTexture, ASSERT_MSG_NULL); return mTexture; }
+	const Shader* GetShader() const { Assert(mShader, ASSERT_MSG_NULL); return mShader; }
 	eRenderPriorityType GetRenderType() const { return mRenderType; }
 
-	void SetShader(Shader* const shader) { Assert(shader, WCHAR_IS_NULLPTR); mShader = shader; }
-	void SetTexture(Texture* const texture) { Assert(texture, WCHAR_IS_NULLPTR); mTexture = texture; }
+	void SetShader(Shader* const shader) { Assert(shader, ASSERT_MSG_NULL); mShader = shader; }
+	void SetTexture(Texture* const texture) { Assert(texture, ASSERT_MSG_NULL); mTexture = texture; }
 
 	virtual HRESULT Load(const std::wstring& filePath) override final;
 

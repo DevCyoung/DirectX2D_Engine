@@ -26,7 +26,7 @@ public:
 
 	void SetState(eAxeMovementState state) { mState = state; }	
 
-	void SetKissyfaace(GameObject* const kissyface) { Assert(kissyface, WCHAR_IS_NULLPTR); mKissyface = kissyface; }
+	void SetKissyfaace(GameObject* const kissyface) { Assert(kissyface, ASSERT_MSG_NULL); mKissyface = kissyface; }
 	void SetRotationDistance(float rotationDistance) { mRotationDistance = rotationDistance; }
 
 

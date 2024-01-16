@@ -23,7 +23,7 @@ GameObject::~GameObject()
 
 void GameObject::initialize()
 {
-	Assert(mGameSystem, WCHAR_IS_NULLPTR);
+	Assert(mGameSystem, ASSERT_MSG_NULL);
 
 	for (Component* const component : mEngineComponents)
 	{
@@ -107,9 +107,9 @@ void GameObject::lastUpdate()
 
 void GameObject::AddComponent(ScriptComponent* const scriptComponent)
 {
-	Assert(scriptComponent, WCHAR_IS_NULLPTR);
-	Assert(!(scriptComponent->mOwner), WCHAR_IS_NOT_NULLPTR);
-	Assert(!(GetComponentOrNull(scriptComponent->GetScriptType())), WCHAR_IS_NOT_NULLPTR);
+	Assert(scriptComponent, ASSERT_MSG_NULL);
+	Assert(!(scriptComponent->mOwner), ASSERT_MSG_NOT_NULL);
+	Assert(!(GetComponentOrNull(scriptComponent->GetScriptType())), ASSERT_MSG_NOT_NULL);
 
 	scriptComponent->mOwner = this;
 
@@ -118,8 +118,8 @@ void GameObject::AddComponent(ScriptComponent* const scriptComponent)
 
 void GameObject::AddComponent(Component* const component)
 {
-	Assert(component, WCHAR_IS_NULLPTR);
-	Assert(!(component->mOwner), WCHAR_IS_NOT_NULLPTR);
+	Assert(component, ASSERT_MSG_NULL);
+	Assert(!(component->mOwner), ASSERT_MSG_NOT_NULL);
 
 	component->mOwner = this;
 
@@ -127,13 +127,13 @@ void GameObject::AddComponent(Component* const component)
 	{
 		ScriptComponent* const scriptComponent = dynamic_cast<ScriptComponent*>(component);
 
-		Assert(scriptComponent, WCHAR_IS_NULLPTR);
+		Assert(scriptComponent, ASSERT_MSG_NULL);
 
 		AddComponent(scriptComponent);
 	}
 	else
 	{
-		Assert(!mEngineComponents[static_cast<UINT>(component->GetType())], WCHAR_IS_NOT_NULLPTR);
+		Assert(!mEngineComponents[static_cast<UINT>(component->GetType())], ASSERT_MSG_NOT_NULL);
 
 		mEngineComponents[static_cast<UINT>(component->GetType())] = component;
 	}
@@ -142,7 +142,7 @@ void GameObject::AddComponent(Component* const component)
 Component* GameObject::GetComponentOrNull(const eComponentType componentType) const
 {
 	Assert(static_cast<UINT>(eComponentType::End) > static_cast<UINT>(componentType),
-		WCHAR_IS_INVALID_TYPE);
+		ASSERT_MSG_INVALID);
 
 	return mEngineComponents[static_cast<UINT>(componentType)];
 }
@@ -169,7 +169,7 @@ Component* GameObject::GetComponent(const eComponentType componentType) const
 {
 	Component* const component = GetComponentOrNull(componentType);
 
-	Assert(component, WCHAR_IS_NULLPTR);
+	Assert(component, ASSERT_MSG_NULL);
 
 	return component;
 }
@@ -178,7 +178,7 @@ ScriptComponent* GameObject::GetComponent(const eScriptComponentType scriptCompo
 {
 	ScriptComponent* const scriptComponent = GetComponentOrNull(scriptComponentType);
 
-	Assert(scriptComponent, WCHAR_IS_NULLPTR);
+	Assert(scriptComponent, ASSERT_MSG_NULL);
 
 	return scriptComponent;
 }

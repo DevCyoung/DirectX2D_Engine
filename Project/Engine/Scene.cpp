@@ -118,7 +118,7 @@ void Scene::eventUpdate()
 	for (auto& message : mEventMessages)
 	{
 		const eEvent EVENT_TYPE = message.EventOfSceneType;
-		Assert(message.EventGameObject, WCHAR_IS_NULLPTR);
+		Assert(message.EventGameObject, ASSERT_MSG_NULL);
 
 		switch (EVENT_TYPE)
 		{
@@ -134,13 +134,13 @@ void Scene::eventUpdate()
 			break;
 
 		case eEvent::AddGameObject:
-			Assert(message.LayerType != eLayerType::End, WCHAR_IS_INVALID_TYPE);
+			Assert(message.LayerType != eLayerType::End, ASSERT_MSG_INVALID);
 
 			AddGameObject(message.EventGameObject, message.LayerType);
 			message.EventGameObject->initialize();
 			break;		
 		default:
-			Assert(false, WCHAR_IS_INVALID_TYPE);
+			Assert(false, ASSERT_MSG_INVALID);
 			break;
 		}
 	}
@@ -151,8 +151,8 @@ void Scene::eventUpdate()
 void Scene::RegisterEventAddGameObject(GameObject* const gameObject,
 	const eLayerType layerType, const std::source_location& location)
 {
-	Assert(gameObject, WCHAR_IS_NULLPTR);
-	Assert(layerType != eLayerType::End, WCHAR_IS_INVALID_TYPE);
+	Assert(gameObject, ASSERT_MSG_NULL);
+	Assert(layerType != eLayerType::End, ASSERT_MSG_INVALID);
 
 	tEventMessageScene message = {};
 
@@ -167,13 +167,13 @@ void Scene::RegisterEventAddGameObject(GameObject* const gameObject,
 void Scene::RegisterEventSetDestroy(GameObject* const gameObject
 	, const std::source_location& location)
 {
-	Assert(gameObject, WCHAR_IS_NULLPTR);
+	Assert(gameObject, ASSERT_MSG_NULL);
 	if (gameObject->mState == GameObject::eState::Destroy)
 	{
 		return;
 	}
 
-	Assert(gameObject->mState != GameObject::eState::Destroy, WCHAR_IS_INVALID_TYPE);
+	Assert(gameObject->mState != GameObject::eState::Destroy, ASSERT_MSG_INVALID);
 
 	tEventMessageScene message = {};
 	message.EventOfSceneType = eEvent::DestroyGameObject;
@@ -185,9 +185,9 @@ void Scene::RegisterEventSetDestroy(GameObject* const gameObject
 
 void Scene::AddGameObject(GameObject* const gameObject, const eLayerType layerType)
 {
-	Assert(gameObject, WCHAR_IS_NULLPTR);
-	Assert(layerType != eLayerType::End, WCHAR_IS_INVALID_TYPE);
-	Assert(mGameSystem, WCHAR_IS_NULLPTR);
+	Assert(gameObject, ASSERT_MSG_NULL);
+	Assert(layerType != eLayerType::End, ASSERT_MSG_INVALID);
+	Assert(mGameSystem, ASSERT_MSG_NULL);
 
 	gameObject->mLayerType = layerType;
 	gameObject->mGameSystem = mGameSystem;
@@ -196,7 +196,7 @@ void Scene::AddGameObject(GameObject* const gameObject, const eLayerType layerTy
 
 HRESULT Scene::Load(const std::wstring& filePath)
 {
-	Assert(false, L"");
+	Assert(false, ASSERT_MSG(""));
 	(void)filePath;
 
 	return E_NOTIMPL;

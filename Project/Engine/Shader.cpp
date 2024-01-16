@@ -23,9 +23,9 @@ Shader::Shader(const D3D11_PRIMITIVE_TOPOLOGY topology,
 	, mDSType(DSType)
 	, mBSType(BSType)
 {
-	Assert(eRSType::End != RSType, WCHAR_IS_INVALID_TYPE);
-	Assert(eDSType::End != DSType, WCHAR_IS_INVALID_TYPE);
-	Assert(eBSType::End != BSType, WCHAR_IS_INVALID_TYPE);
+	Assert(eRSType::End != RSType, ASSERT_MSG_INVALID);
+	Assert(eDSType::End != DSType, ASSERT_MSG_INVALID);
+	Assert(eBSType::End != BSType, ASSERT_MSG_INVALID);
 
 	createVSShader(VSRelativePath, VSFunName, SMType);
 	createPSShader(PSRelativePath, PSFunName);
@@ -50,7 +50,7 @@ void Shader::createVSShader(const std::wstring& VSRelativePath,
 	const std::wstring& VSFunName,
 	const eSMType SMType)
 {
-	Assert(!mVS.Get(), WCHAR_IS_NOT_NULLPTR);
+	Assert(!mVS.Get(), ASSERT_MSG_NOT_NULL);
 
 	Microsoft::WRL::ComPtr<ID3DBlob> vsBlob;
 	Microsoft::WRL::ComPtr<ID3DBlob> errBlob;
@@ -61,7 +61,7 @@ void Shader::createVSShader(const std::wstring& VSRelativePath,
 		vsBlob->GetBufferSize(), nullptr, mVS.GetAddressOf())))
 	{
 		OutputDebugStringA(reinterpret_cast<LPCSTR>((errBlob)->GetBufferPointer()));
-		Assert(false, L"failed to create vertex shader");
+		Assert(false, ASSERT_MSG("failed to create vertex shader"));
 		return;
 	}
 
@@ -75,14 +75,14 @@ void Shader::createVSShader(const std::wstring& VSRelativePath,
 		vsBlob->GetBufferSize(),
 		mInputLayout.GetAddressOf())))
 	{
-		Assert(false, L"failed to create input layout");
+		Assert(false, ASSERT_MSG("failed to create input layout"));
 		return;
 	}
 }
 
 void Shader::createPSShader(const std::wstring& PSRelativePath, const std::wstring& PSFunName)
 {
-	Assert(!mPS.Get(), WCHAR_IS_NOT_NULLPTR);
+	Assert(!mPS.Get(), ASSERT_MSG_NOT_NULL);
 
 	Microsoft::WRL::ComPtr<ID3DBlob> psBlob;
 	Microsoft::WRL::ComPtr<ID3DBlob> errBlob;
@@ -95,7 +95,7 @@ void Shader::createPSShader(const std::wstring& PSRelativePath, const std::wstri
 		mPS.GetAddressOf())))
 	{
 		OutputDebugStringA(reinterpret_cast<LPCSTR>((errBlob)->GetBufferPointer()));
-		Assert(false, L"failed to create pixel shader");
+		Assert(false, ASSERT_MSG("failed to create pixel shader"));
 		return;
 	}
 }
@@ -114,14 +114,14 @@ void Shader::shaderCompile(const std::wstring& relativePath,
 		FUN_NAME.c_str(), VERSION_NAME.c_str(), 0, 0, ppBlob, ppErrorBlob)))
 	{
 		OutputDebugStringA(reinterpret_cast<LPCSTR>((*ppErrorBlob)->GetBufferPointer()));
-		Assert(false, L"failed to compile shader");
+		Assert(false, ASSERT_MSG("failed to compile shader"));
 		return;
 	}
 }
 
 HRESULT Shader::Load(const std::wstring& filePath)
 {
-	Assert(false, L"");
+	Assert(false, ASSERT_MSG(""));
 
 	(void)filePath;
 	return E_NOTIMPL;

@@ -22,13 +22,13 @@ public:
 
 	void AddItemUI(ItemUI* const itemUI)
 	{
-		Assert(itemUI, WCHAR_IS_NOT_NULLPTR);
+		Assert(itemUI, ASSERT_MSG_NOT_NULL);
 		mItemUIs.push_back(itemUI);
 	}
 
 	void AddPanelUI(PanelUI* const itemUI)
 	{
-		Assert(itemUI, WCHAR_IS_NOT_NULLPTR);
+		Assert(itemUI, ASSERT_MSG_NOT_NULL);
 		mChildPanels.push_back(itemUI);
 	}
 

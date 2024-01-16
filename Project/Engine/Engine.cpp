@@ -47,8 +47,8 @@ Engine::~Engine()
 
 void Engine::initialize(const HWND hWnd, const UINT renderTargetWidth, const UINT renderTargetHeight)
 {
-	Assert(hWnd, WCHAR_IS_NULLPTR);
-	Assert(!sInstance, WCHAR_IS_NOT_NULLPTR);
+	Assert(hWnd, ASSERT_MSG_NULL);
+	Assert(!sInstance, ASSERT_MSG_NOT_NULL);
 
 	sInstance = new Engine(hWnd, renderTargetWidth, renderTargetHeight);
 
@@ -71,7 +71,7 @@ void Engine::run()
 
 void Engine::updateWindowInfo()
 {
-	Assert(mHwnd, WCHAR_IS_NULLPTR);
+	Assert(mHwnd, ASSERT_MSG_NULL);
 
 	RECT windowRect;
 	GetClientRect(mHwnd, &windowRect);
@@ -113,7 +113,7 @@ void Engine::present()
 
 void Engine::setWindowSize(const UINT windowScreenWidth, const UINT windowScreenHeight)
 {
-	Assert(mHwnd, WCHAR_IS_NULLPTR);
+	Assert(mHwnd, ASSERT_MSG_NULL);
 
 	RECT windowScreen =
 	{

@@ -114,8 +114,8 @@ bool Physics2D::RayCastHit2D(const Vector2& origin,
 	const eLayerType layerType,
 	RayCast2DHitInfo* const outHitInfo)
 {
-	Assert(mScene, WCHAR_IS_NULLPTR);
-	Assert(outHitInfo, WCHAR_IS_NULLPTR);
+	Assert(mScene, ASSERT_MSG_NULL);
+	Assert(outHitInfo, ASSERT_MSG_NULL);
 
 	ZeroMemory(outHitInfo, sizeof(RayCast2DHitInfo));
 

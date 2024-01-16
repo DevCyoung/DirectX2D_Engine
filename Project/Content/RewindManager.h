@@ -54,7 +54,7 @@ public:
 
 	void Initialize(Scene* Scene);
 	void LateUpdate();
-	void RegisterRewindObject(GameObject* const obj) { Assert(obj, WCHAR_IS_NULLPTR), mRewindObjects.push_back(obj); };
+	void RegisterRewindObject(GameObject* const obj) { Assert(obj, ASSERT_MSG_NULL), mRewindObjects.push_back(obj); };
 	
 	eRewindState GetRewindState() const { return mState; }
 	void SetRewindState(const eRewindState state) { mState = state; }

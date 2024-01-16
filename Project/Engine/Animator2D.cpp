@@ -44,7 +44,7 @@ void Animator2D::Play(const std::wstring& animKey, const bool bLoop)
 {
 	Animation2D* animation = FindAnimationOrNull(animKey);
 
-	Assert(animation, WCHAR_IS_NULLPTR);
+	Assert(animation, ASSERT_MSG_NULL);
 
 	mCurAnimation = animation;
 	bRepeat = bLoop;
@@ -55,7 +55,7 @@ void Animator2D::PlayFrame(const std::wstring& animKey, const UINT frameIdx, con
 {
 	Animation2D* animation = FindAnimationOrNull(animKey);
 
-	Assert(animation, WCHAR_IS_NULLPTR);
+	Assert(animation, ASSERT_MSG_NULL);
 
 	mCurAnimation = animation;
 	bRepeat = bLoop;
@@ -71,7 +71,7 @@ void Animator2D::CreateAnimation(const std::wstring& animName,
 	const XMINT2 frameoffset,
 	const float duration)
 {
-	Assert(mAnimationMap.find(animName) == mAnimationMap.end(), WCHAR_IS_NOT_NULLPTR);
+	Assert(mAnimationMap.find(animName) == mAnimationMap.end(), ASSERT_MSG_NOT_NULL);
 
 	Animation2D* const animation2D = new Animation2D(animName,
 		atlas,
@@ -104,7 +104,7 @@ tCBAnimationInfo Animator2D::GetCBAnimationInfo() const
 {
 	const Texture* const P_ATLAS = mCurAnimation->GetAtlas();
 
-	Assert(P_ATLAS, WCHAR_IS_NULLPTR);
+	Assert(P_ATLAS, ASSERT_MSG_NULL);
 
 	const Animation2D::tFrame& CUR_FRAME = mCurAnimation->GetCurFrame();
 
@@ -151,7 +151,7 @@ Animator2D::Events* Animator2D::FindEvents(const std::wstring animName) const
 {
 	auto iter = mEvents.find(animName);
 
-	Assert(iter != mEvents.end(), WCHAR_IS_NULLPTR);
+	Assert(iter != mEvents.end(), ASSERT_MSG_NULL);
 
 	return iter->second;
 }
@@ -276,9 +276,9 @@ void Animator2D::lateUpdate()
 
 void Animator2D::render(const Camera* const camera)
 {
-	Assert(mMesh, WCHAR_IS_NULLPTR);
-	Assert(mMaterial, WCHAR_IS_NULLPTR);
-	Assert(camera, WCHAR_IS_NULLPTR);
+	Assert(mMesh, ASSERT_MSG_NULL);
+	Assert(mMaterial, ASSERT_MSG_NULL);
+	Assert(camera, ASSERT_MSG_NULL);
 
 	if (nullptr == mCurAnimation)
 	{
@@ -329,7 +329,7 @@ void Animator2D::render(const Camera* const camera)
 
 
 	const Texture* const P_ATLAS = mCurAnimation->GetAtlas();
-	Assert(P_ATLAS, WCHAR_IS_NULLPTR);
+	Assert(P_ATLAS, ASSERT_MSG_NULL);
 
 	tCBAnimationInfo CBAnimationInfo = GetCBAnimationInfo();			
 	gGraphicDevice->PassCB(eCBType::Animation2DInfo, sizeof(CBAnimationInfo), &CBAnimationInfo);

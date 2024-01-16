@@ -37,7 +37,7 @@ namespace helper
 		errno_t err = _wsplitpath_s(filePath.c_str(), nullptr, 0, nullptr, 0, nullptr, 0, szExtension, FILE_PATH_MAX_LEN);
 		(void)(err);
 
-		Assert(!err, L"error file path");
+		Assert(!err, ASSERT_MSG("error file path"));
 
 		return szExtension;
 	}
@@ -45,8 +45,8 @@ namespace helper
 	void String::SplitDirectoryPathAndFileName(const std::wstring& filePath,
 		std::wstring* outDirectoryPath, std::wstring* outFileName)
 	{
-		Assert(outDirectoryPath, WCHAR_IS_NULLPTR);
-		Assert(outFileName, WCHAR_IS_NULLPTR);
+		Assert(outDirectoryPath, ASSERT_MSG_NULL);
+		Assert(outFileName, ASSERT_MSG_NULL);
 
 		std::wstring copyPath = filePath;
 		std::wstring retDirectoryPath;
@@ -82,8 +82,8 @@ namespace helper
 	void String::SplitRootNameAndFilePath(const std::wstring& filePath, 
 		std::wstring* outRootName, std::wstring* outFilePath)
 	{
-		Assert(outRootName, WCHAR_IS_NULLPTR);
-		Assert(outFilePath, WCHAR_IS_NULLPTR);
+		Assert(outRootName, ASSERT_MSG_NULL);
+		Assert(outFilePath, ASSERT_MSG_NULL);
 
 		constexpr UINT FILE_PATH_MAX_LEN = 512;
 		int check = 0;

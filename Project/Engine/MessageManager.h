@@ -9,7 +9,7 @@ class MessageManager
 public:
 	void AddTitleMessage(const std::wstring& message)
 	{
-		Assert(IsAddTitleMessage(), WCHAR_IS_INVALID_TYPE);
+		Assert(IsAddTitleMessage(), ASSERT_MSG_INVALID);
 
 		mTitleMessages.push_back(message);
 	}
