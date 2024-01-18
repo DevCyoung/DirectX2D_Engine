@@ -822,10 +822,13 @@ void GameObjectBuilder::AddUI(Scene* const scene)
 
 }
 
+
+
 GameObject* GameObjectBuilder::AddCamera(Scene* const scene)
 {
 	//UI
-	const Vector2 screenSize = gEngine->GetRenderTargetSize();
+	const Vector2 screenSize = gEngine->GetRenderTargetSize();	
+	//const Vector2 screenSize = Vector2(1280, 720); //Katana Scene Size
 	GameObject* result = nullptr;
 
 	//Main Camera

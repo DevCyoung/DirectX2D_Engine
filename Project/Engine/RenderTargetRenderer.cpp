@@ -154,12 +154,14 @@ void RenderTargetRenderer::Render(const UINT renderTargetWidth,
 	const Camera* const P_MAIN_CAMERA = mCameras[static_cast<UINT>(eCameraPriorityType::Main)];
 	Texture* const copyTexture = gResourceManager->Find<Texture>(L"CopyRenderTargetTexture");	
 
-	for (RenderComponent* const postProcessComponent : mPostProcessComponents)
+	//다음에 고치러 오시오
+	(void)copyTexture;
+	/*for (RenderComponent* const postProcessComponent : mPostProcessComponents)
 	{				
 		gGraphicDevice->CopyResource(copyTexture->GetID3D11Texture2D(), gGraphicDevice->GetRenderTargetTexture());
 		gGraphicDevice->BindSRV(eShaderBindType::PS, 10, copyTexture);
 		postProcessComponent->render(P_MAIN_CAMERA);
-	}
+	}*/
 	
 	if (mbDebugRender)
 	{
@@ -171,17 +173,17 @@ void RenderTargetRenderer::flush()
 {
 
 	//TEST CODE
-	if (gInput->GetKeyDown(eKeyCode::L))
-	{
-		if (IsVisibleDebugRenderer())
-		{
-			TurnOffDebugRenderer();
-		}
-		else
-		{
-			TurnOnDebugRenderer();
-		}
-	}
+	//if (gInput->GetKeyDown(eKeyCode::L))
+	//{
+	//	if (IsVisibleDebugRenderer())
+	//	{
+	//		TurnOffDebugRenderer();
+	//	}
+	//	else
+	//	{
+	//		TurnOnDebugRenderer();
+	//	}
+	//}
 
 
 	mDebugRenderer->flush();

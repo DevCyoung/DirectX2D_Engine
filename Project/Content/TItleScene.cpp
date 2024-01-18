@@ -53,7 +53,8 @@ void TitleScene::AddCameraObject()
 void TitleScene::AddUIObject()
 {
 #pragma region UI
-	const Vector2& SCREEN_SIZE = gEngine->GetRenderTargetSize();
+	//const Vector2& SCREEN_SIZE = gEngine->GetRenderTargetSize();
+	const Vector2& SCREEN_SIZE = Vector2(1280, 720);
 
 	GameObject* const backgroundParent = new GameObject();
 

@@ -22,6 +22,27 @@ void SceneManager::LoadScene(Scene* const scene)
 	scene->initialize();
 }
 
+void SceneManager::Render(Scene* const scene, 
+	const UINT renderTargetWidth, 
+	const UINT renderTargetHeight, 
+	const FLOAT (&clearColor4)[4],
+	ID3D11RenderTargetView** const ppRenderTargetView, 
+	ID3D11DepthStencilView* const pDepthStencilView) const
+{	
+	(void)scene;
+	(void)renderTargetHeight;
+	(void)renderTargetWidth;
+	(void)clearColor4;
+
+	gGraphicDevice->ClearRenderTarget(ppRenderTargetView,
+		pDepthStencilView, clearColor4);
+
+	scene->Render(renderTargetWidth,
+		renderTargetHeight,
+		ppRenderTargetView,
+		pDepthStencilView);	
+}
+
 void SceneManager::RegisterLoadScene(Scene* const scene)
 {
 	Assert(scene, ASSERT_MSG_NULL);
@@ -60,17 +81,17 @@ void SceneManager::render(const UINT renderTargetWidth,
 	ID3D11DepthStencilView* const depthStencilView)
 {
 	const Vector4& color = mCurrentScene->GetBackgroundColor();
-
 	const FLOAT backgroundColor[4] = { color.x, color.y, color.z, color.w };
 
-	gGraphicDevice->ClearRenderTarget(ppRenderTargetView,
-		depthStencilView,
-		backgroundColor);
-
-	mCurrentScene->render(renderTargetWidth,
-		renderTargetHeight,		
-		ppRenderTargetView,
+	Render(mCurrentScene, 
+		renderTargetWidth, 
+		renderTargetHeight,
+		backgroundColor,
+		ppRenderTargetView, 
 		depthStencilView);
+}
 
+void SceneManager::flush()
+{
 	mCurrentScene->renderFlush();
 }

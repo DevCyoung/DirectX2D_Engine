@@ -16,7 +16,7 @@ PanelUIManager::~PanelUIManager()
 void PanelUIManager::AddPanel(PanelUI* const panelUI)
 {
 	Assert(panelUI, ASSERT_MSG_NULL);
-	
+
 	mPanelUIs.push_back(panelUI);
 }
 
@@ -36,18 +36,24 @@ PanelUI* PanelUIManager::FindPanelUIOrNull(const std::string& title)
 	return resultPanelUI;
 }
 
-void PanelUIManager::run()
+void PanelUIManager::update()
 {
 	for (PanelUI* panelUI : mPanelUIs)
 	{
 		panelUI->update();
 	}
+}
 
+void PanelUIManager::finalUpdate()
+{
 	for (PanelUI* panelUI : mPanelUIs)
 	{
 		panelUI->finalUpdate();
 	}
+}
 
+void PanelUIManager::render()
+{
 	for (PanelUI* panelUI : mPanelUIs)
 	{
 		panelUI->render();

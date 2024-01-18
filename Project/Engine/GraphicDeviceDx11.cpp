@@ -46,6 +46,7 @@ GraphicDeviceDX11::GraphicDeviceDX11(const HWND hWnd,
 	, mDSCollection(nullptr)
 	, mSMCollection(nullptr)
 	, mSBCollection(nullptr)
+	, mDxStateData{}
 {
 	Assert(hWnd, ASSERT_MSG_NULL);
 
@@ -279,8 +280,8 @@ void GraphicDeviceDX11::UnBindUAV(const UINT startSlot) const
 {
 	ID3D11UnorderedAccessView* const pUAV = nullptr;	
 
-	UINT i = static_cast<UINT>(-1);
-	mContext->CSSetUnorderedAccessViews(startSlot, 1, &pUAV, &i);
+	//UINT i = static_cast<UINT>(-1);
+	mContext->CSSetUnorderedAccessViews(startSlot, 1, &pUAV, nullptr);
 }
 
 void GraphicDeviceDX11::BindCB(const eCBType CBType, const eShaderBindType stageType) const
@@ -423,10 +424,10 @@ void GraphicDeviceDX11::BindCS(const ComputeShader* const computShader) const
 	mContext->CSSetShader(computShader->mCS.Get(), nullptr, 0);	
 }
 
-void GraphicDeviceDX11::BindBS(const eBSType BSType) const
+void GraphicDeviceDX11::BindBS(const eBSType BSType)
 {
 	Assert(eBSType::End != BSType, ASSERT_MSG_INVALID);
-
+	mDxStateData.BS = BSType;
 	mContext->OMSetBlendState(mBSCollection->mBStates[static_cast<UINT>(BSType)].Get(), nullptr, 0xffffffff);
 }
 
@@ -437,10 +438,10 @@ void GraphicDeviceDX11::BindDS(const eDSType DSType) const
 	mContext->OMSetDepthStencilState(mDSCollection->mDStates[static_cast<UINT>(DSType)].Get(), 0);
 }
 
-void GraphicDeviceDX11::BindRS(const eRSType RSType) const
+void GraphicDeviceDX11::BindRS(const eRSType RSType)
 {
 	Assert(eRSType::End != RSType, ASSERT_MSG_INVALID);
-
+	mDxStateData.RS = RSType;
 	mContext->RSSetState(mRSCollection->mRStates[static_cast<UINT>(RSType)].Get());
 }
 
@@ -461,7 +462,7 @@ void GraphicDeviceDX11::Distpatch(const ComputeShader* const computeShader) cons
 
 void GraphicDeviceDX11::ClearRenderTarget(ID3D11RenderTargetView* const* const ppRnderTargetView,
 	ID3D11DepthStencilView* const depthStencilView,
-	const FLOAT backgroundColor[4]) const
+	const FLOAT (&backgroundColor)[4]) const
 {
 	mContext->ClearRenderTargetView(*ppRnderTargetView, backgroundColor);
 	mContext->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);

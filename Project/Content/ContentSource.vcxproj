@@ -720,6 +720,8 @@ call ScriptGen.exe ScriptComponent $(SolutionDir)Project\Content $(SolutionDir)P
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Output\bin\Resources\Shader\VSAlphaTo.hlsl" />
+    <None Include="..\..\Output\bin\Resources\Shader\PSAlphaTo.hlsl" />
     <None Include="..\..\Output\bin\Resources\Shader\Header\ConstantBuffer.fxh">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </EntryPointName>

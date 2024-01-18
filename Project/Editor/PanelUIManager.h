@@ -11,9 +11,11 @@ class PanelUIManager
 public:
 	void AddPanel(PanelUI* const panelUI);
 	PanelUI* FindPanelUIOrNull(const std::string& title);
+	void update();
 
 private:
-	void run();
+	void finalUpdate();
+	void render();
 
 private:
 	std::vector<PanelUI*> mPanelUIs;

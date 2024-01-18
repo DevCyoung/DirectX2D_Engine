@@ -13,20 +13,44 @@
     <Filter Include="Source\CustomUI">
       <UniqueIdentifier>{f728e0ec-12dd-4276-8d0a-358f629f97a7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Editor\PanelUI">
-      <UniqueIdentifier>{de9df3b7-8c21-4af3-bc93-a577231a1f67}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Editor\ItemUI">
-      <UniqueIdentifier>{19c11746-4eed-4ea9-bd0a-3deb52b8fc4a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Editor\PanelUIManager">
+    <Filter Include="Source\PanelManager">
       <UniqueIdentifier>{7fd5feaf-9be0-409b-b2af-55edad231d83}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Editor\Inspector">
+    <Filter Include="Source\Panel">
+      <UniqueIdentifier>{de9df3b7-8c21-4af3-bc93-a577231a1f67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Panel\Resource">
+      <UniqueIdentifier>{93c7702c-de19-4059-8153-d9076cf53f55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Panel\Inspector">
       <UniqueIdentifier>{7601b6da-c9d6-47e9-aa1d-28b40be34f12}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Editor\ResourceUI">
-      <UniqueIdentifier>{93c7702c-de19-4059-8153-d9076cf53f55}</UniqueIdentifier>
+    <Filter Include="Source\Panel\Item">
+      <UniqueIdentifier>{19c11746-4eed-4ea9-bd0a-3deb52b8fc4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Editor\EditorHelper">
+      <UniqueIdentifier>{dcfbb994-e4d9-43d8-976f-fbb27ed13c7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\UIHelper">
+      <UniqueIdentifier>{52a4441f-b19b-4bcb-9eae-24b5074522da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Panel\View">
+      <UniqueIdentifier>{4ae1b263-7816-4516-88a1-251bc4e230e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\AlphaHelper">
+      <UniqueIdentifier>{ab6da451-8003-4f82-8f4b-ec15a89dd730}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\View">
+      <UniqueIdentifier>{a1cf5775-9392-4f0e-bfd4-c710f474e993}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\View\SceneView">
+      <UniqueIdentifier>{7ce5c965-142d-49ae-bb0b-00a94234db92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\View\EditorVIew">
+      <UniqueIdentifier>{0339ef9b-249f-4d0f-9d61-ffda9bd52bba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Log">
+      <UniqueIdentifier>{b183d20b-e28f-47bd-8e41-0016e78d6c10}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -37,10 +61,10 @@
       <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="PanelUI.h">
-      <Filter>Source\Editor\PanelUI</Filter>
+      <Filter>Source\Panel</Filter>
     </ClInclude>
     <ClInclude Include="ItemUI.h">
-      <Filter>Source\Editor\ItemUI</Filter>
+      <Filter>Source\Panel\Item</Filter>
     </ClInclude>
     <ClInclude Include="EditorUIInitialize.h">
       <Filter>Source\Editor</Filter>
@@ -55,19 +79,40 @@
       <Filter>Source\CustomUI</Filter>
     </ClInclude>
     <ClInclude Include="PanelUIManager.h">
-      <Filter>Source\Editor\PanelUIManager</Filter>
+      <Filter>Source\PanelManager</Filter>
     </ClInclude>
     <ClInclude Include="ESCUI.h">
       <Filter>Source\CustomUI</Filter>
     </ClInclude>
     <ClInclude Include="InspectorUI.h">
-      <Filter>Source\Editor\Inspector</Filter>
+      <Filter>Source\Panel\Inspector</Filter>
     </ClInclude>
     <ClInclude Include="ResourceUI.h">
-      <Filter>Source\Editor\ResourceUI</Filter>
+      <Filter>Source\Panel\Resource</Filter>
     </ClInclude>
     <ClInclude Include="FolderUI.h">
-      <Filter>Source\Editor\Inspector</Filter>
+      <Filter>Source\Panel\Inspector</Filter>
+    </ClInclude>
+    <ClInclude Include="DockSpace.h">
+      <Filter>Source\Editor\EditorHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="GameVIewUI.h">
+      <Filter>Source\View\SceneView</Filter>
+    </ClInclude>
+    <ClInclude Include="UIHelper.h">
+      <Filter>Source\UIHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorViewUI.h">
+      <Filter>Source\View\EditorVIew</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineResourceLoader.h">
+      <Filter>Source\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="AlphaHelper.h">
+      <Filter>Source\AlphaHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="LogUI.h">
+      <Filter>Source\Log</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -75,10 +120,10 @@
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="PanelUI.cpp">
-      <Filter>Source\Editor\PanelUI</Filter>
+      <Filter>Source\Panel</Filter>
     </ClCompile>
     <ClCompile Include="ItemUI.cpp">
-      <Filter>Source\Editor\ItemUI</Filter>
+      <Filter>Source\Panel\Item</Filter>
     </ClCompile>
     <ClCompile Include="EditorUIInitialize.cpp">
       <Filter>Source\Editor</Filter>
@@ -93,19 +138,40 @@
       <Filter>Source\CustomUI</Filter>
     </ClCompile>
     <ClCompile Include="PanelUIManager.cpp">
-      <Filter>Source\Editor\PanelUIManager</Filter>
+      <Filter>Source\PanelManager</Filter>
     </ClCompile>
     <ClCompile Include="ESCUI.cpp">
       <Filter>Source\CustomUI</Filter>
     </ClCompile>
     <ClCompile Include="InspectorUI.cpp">
-      <Filter>Source\Editor\Inspector</Filter>
+      <Filter>Source\Panel\Inspector</Filter>
     </ClCompile>
     <ClCompile Include="ResourceUI.cpp">
-      <Filter>Source\Editor\ResourceUI</Filter>
+      <Filter>Source\Panel\Resource</Filter>
     </ClCompile>
     <ClCompile Include="FolderUI.cpp">
-      <Filter>Source\Editor\Inspector</Filter>
+      <Filter>Source\Panel\Inspector</Filter>
+    </ClCompile>
+    <ClCompile Include="DockSpace.cpp">
+      <Filter>Source\Editor\EditorHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="GameVIewUI.cpp">
+      <Filter>Source\View\SceneView</Filter>
+    </ClCompile>
+    <ClCompile Include="UIHelper.cpp">
+      <Filter>Source\UIHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorViewUI.cpp">
+      <Filter>Source\View\EditorVIew</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineResourceLoader.cpp">
+      <Filter>Source\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="AlphaHelper.cpp">
+      <Filter>Source\AlphaHelper</Filter>
+    </ClCompile>
+    <ClCompile Include="LogUI.cpp">
+      <Filter>Source\Log</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -45,6 +45,19 @@ Engine::~Engine()
 	DELETE_POINTER_NOT_NULL(mGraphicDevice);	
 }
 
+void Engine::OmSet()
+{
+	const Vector2& RENDER_TARGET_SIZE = GetRenderTargetSize();
+
+	const UINT RENDER_TARGET_WIDHTH = static_cast<UINT>(RENDER_TARGET_SIZE.x);
+	const UINT RENDER_TARGET_HEIGHT = static_cast<UINT>(RENDER_TARGET_SIZE.y);
+
+	gGraphicDevice->BindRenderTarget(RENDER_TARGET_WIDHTH,
+		RENDER_TARGET_HEIGHT,
+		gGraphicDevice->GetRenderTargetViewAddressOf(),
+		gGraphicDevice->GetDepthStencilView());
+}
+
 void Engine::initialize(const HWND hWnd, const UINT renderTargetWidth, const UINT renderTargetHeight)
 {
 	Assert(hWnd, ASSERT_MSG_NULL);
@@ -94,10 +107,17 @@ void Engine::lateUpdate()
 
 void Engine::render()
 {
-	SceneManager::GetInstance()->render(mRenderTargetWidth,
-				mRenderTargetHeight,				
+	//Engine::GetInstance()->OmSet();
+
+	/*SceneManager::GetInstance()->render(mRenderTargetWidth,
+				mRenderTargetHeight,
 				mGraphicDevice->GetRenderTargetViewAddressOf(),
-				mGraphicDevice->GetDepthStencilView());		
+				mGraphicDevice->GetDepthStencilView());		*/
+
+	FLOAT backgroundColor[4] = { 1.0f, 0.0f, 1.0f, 0.1f };
+	gGraphicDevice->ClearRenderTarget(
+		mGraphicDevice->GetRenderTargetViewAddressOf(),
+		mGraphicDevice->GetDepthStencilView(), backgroundColor);
 }
 
 void Engine::eventUpdate()
@@ -109,6 +129,8 @@ void Engine::eventUpdate()
 void Engine::present()
 {
 	mGraphicDevice->present();
+
+	SceneManager::GetInstance()->flush();
 }
 
 void Engine::setWindowSize(const UINT windowScreenWidth, const UINT windowScreenHeight)
@@ -127,7 +149,7 @@ void Engine::setWindowSize(const UINT windowScreenWidth, const UINT windowScreen
 	const int ADJUST_HEIGHT = static_cast<int>(windowScreen.bottom - windowScreen.top);
 
 	const int LEFT_X_POS = GetSystemMetrics(SM_CXSCREEN) / 2 - static_cast<int>(ADJUST_WIDTH) / 2;
-	const int LEFT_Y_POS = GetSystemMetrics(SM_CYSCREEN) / 2 - static_cast<int>(ADJUST_HEIGHT) / 2;
+	const int LEFT_Y_POS = GetSystemMetrics(SM_CYSCREEN) / 2 - static_cast<int>(ADJUST_HEIGHT) / 2 - 17;
 
 	SetWindowPos(mHwnd, nullptr,
 		LEFT_X_POS, LEFT_Y_POS,

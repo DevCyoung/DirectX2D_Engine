@@ -24,5 +24,11 @@ float4 main(tVSLightOut In) : SV_TARGET
 	CalcLight2D(In.vWorldPos, LightColor);
 	
 	outColor.rgb *= (LightColor.vDiffuse.rgb + LightColor.vAmbient.rgb);
+	
+	if (outColor.a <= 0.f)
+	{
+		discard;
+	}
+	
 	return outColor;
 }

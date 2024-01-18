@@ -11,6 +11,7 @@ enum class eCBType
 	GlobalInfo,
 	Sprite2D,
 	Wave,
+	Material,
 	End,
 };
 

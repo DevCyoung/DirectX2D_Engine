@@ -10,5 +10,7 @@
 // 여기에 미리 컴파일하려는 헤더 추가
 #include "framework.h"
 #include <Engine/EngineIncludes.h>
-
+#include <ImGUI/imgui.h>
+#include <ImGUI/imgui_impl_dx11.h>
+#include <ImGUI/imgui_impl_win32.h>
 #endif //PCH_H

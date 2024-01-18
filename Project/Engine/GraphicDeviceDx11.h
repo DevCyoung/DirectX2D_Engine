@@ -24,9 +24,21 @@ enum class eBSType;
 enum class eDSType;
 enum class eShaderBindType;
 
+struct tDx11StateData
+{
+	eCBType			CBS;
+	eSBType			SB;
+	eRSType			RS;
+	eBSType			BS;
+	eDSType			DS;
+	eShaderBindType	ShaderBindType;
+};
+
 class GraphicDeviceDX11
 {
 	friend class Engine;
+	friend class Editor;
+
 private:
 	GraphicDeviceDX11(const HWND hWnd, const UINT renderTargetWidth, const UINT renderTargetHeight);
 	virtual ~GraphicDeviceDX11();
@@ -42,7 +54,6 @@ public:
 	void BindSRV(const eShaderBindType stageType, const UINT startSlot, const Texture* const texture) const;
 	void BindUAV(const UINT startSlot, const Texture* const texture) const;
 	void UnBindUAV(const UINT startSlot) const;
-
 	void BindCB(const eCBType CBType, const eShaderBindType stageType) const;
 	void PassCB(const eCBType CBType, const UINT dataSize, const void* const data) const;
 	void BindSB(const eSBType SBType, const eShaderBindType stageType) const;
@@ -50,11 +61,10 @@ public:
 	void BindVS(const Shader* const shader) const;
 	void BindPS(const Shader* const shader) const;
 	void BindCS(const ComputeShader* const shader) const;
-	void BindBS(const eBSType BSType) const;
+	void BindBS(const eBSType BSType) ;
 	void BindDS(const eDSType DSType) const;
-	void BindRS(const eRSType RSType) const;
-	void BindRenderTarget(const UINT renderTargetWidth,
-		const UINT renderTargetHeight,
+	void BindRS(const eRSType RSType) ;
+	void BindRenderTarget(const UINT renderTargetWidth, const UINT renderTargetHeight,
 		ID3D11RenderTargetView* const* const ppRnderTargetView,
 		ID3D11DepthStencilView* const depthStencilView) const;
 
@@ -64,7 +74,7 @@ public:
 
 	void ClearRenderTarget(ID3D11RenderTargetView* const* const ppRnderTargetView,
 		ID3D11DepthStencilView* const depthStencilView,
-		const FLOAT backgroundColor[4]) const;
+		const FLOAT(&backgroundColor)[4]) const;
 
 	void CopyResource(ID3D11Resource* const dst, ID3D11Resource* const src);
 
@@ -80,6 +90,8 @@ public:
 
 		return mRenderTargetTexture.Get();
 	}
+
+	const tDx11StateData& GetStateData() { return mDxStateData; };
 
 private:
 	void present();
@@ -116,5 +128,7 @@ private:
 	DSCollection* mDSCollection;
 	SMCollection* mSMCollection;
 	SBCollection* mSBCollection;
+
+	tDx11StateData	mDxStateData;
 };
 

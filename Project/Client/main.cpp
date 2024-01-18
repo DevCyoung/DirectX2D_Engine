@@ -15,14 +15,15 @@
 #pragma comment(lib, "Editor/Release/Editor")
 #endif
 
-static constexpr UINT EDIT_SCREEN_WIDTH = 1600;
-static constexpr UINT EDIT_SCREEN_HEIGHT = 900;
+static constexpr UINT EDIT_SCREEN_WIDTH = 1900;
+static constexpr UINT EDIT_SCREEN_HEIGHT = 1000;
+
 static constexpr UINT KATANA_SCREEN_WIDTH = 1280;
 static constexpr UINT KATANA_SCREEN_HEIGHT = 720;
 
 #define MAX_LOADSTRING 100
-//#define EDITOR_MODE
-
+#define EDITOR_MODE
+#include <Editor/PanelUIManager.h>
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
@@ -62,10 +63,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
 	MSG msg;
 
-	Engine::initialize(gHwnd, KATANA_SCREEN_WIDTH, KATANA_SCREEN_HEIGHT);
+	Engine::initialize(gHwnd, EDIT_SCREEN_WIDTH, EDIT_SCREEN_HEIGHT);
 	Content::initialize();	
 
-	FIXME(ASSERT_MSG("반드시해야지"));
+	//FIXME(ASSERT_MSG("반드시해야지"));
 	//Assert Test
 	//Assert(false, ASSERT_MSG("this is message"));
 
@@ -95,7 +96,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		else
 		{
 			Engine::GetInstance()->run();
-
 #ifdef EDITOR_MODE
 			Editor::GetInstance()->run();
 #endif

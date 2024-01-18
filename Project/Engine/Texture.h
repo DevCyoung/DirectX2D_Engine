@@ -22,8 +22,30 @@ public:
 
 	virtual HRESULT Load(const std::wstring& filePath) override;
 
-	ID3D11Texture2D* GetID3D11Texture2D() const { return mTexture.Get(); }
-	ID3D11ShaderResourceView* GetID3D11ShaderResourceView() { return mSRV.Get(); }
+	ID3D11Texture2D* GetID3D11Texture2D() const 
+	{
+		Assert(mTexture.Get(), ASSERT_MSG_NULL); return mTexture.Get();
+	}
+	ID3D11ShaderResourceView* GetSRV() const 
+	{ 
+		Assert(mSRV.Get(), ASSERT_MSG_NULL); return mSRV.Get();
+	}
+	ID3D11RenderTargetView* GetRTV() const 
+	{ 
+		Assert(mRTV.Get(), ASSERT_MSG_NULL); return mRTV.Get();
+	}
+	ID3D11DepthStencilView* GetDSV() const 
+	{ 
+		Assert(mDSV.Get(), ASSERT_MSG_NULL); return mDSV.Get();
+	}
+	ID3D11UnorderedAccessView* GetUAV() const 
+	{
+		Assert(mUAV.Get(), ASSERT_MSG_NULL); return mUAV.Get();
+	}
+	ID3D11RenderTargetView** GetAddressOf()
+	{
+		Assert(mRTV.GetAddressOf(), ASSERT_MSG_NULL); return mRTV.GetAddressOf();
+	}
 
 private:
 	ScratchImage mImage;

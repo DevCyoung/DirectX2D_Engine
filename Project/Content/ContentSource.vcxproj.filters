@@ -382,6 +382,9 @@
     <Filter Include="Source\KatanaZero\Monster\HeadHunter\State\Die">
       <UniqueIdentifier>{fed197c8-9669-43aa-817c-d987598a2ff1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShaderCode\AlphaTo">
+      <UniqueIdentifier>{7201c858-a042-4236-877b-61cf4596e9cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -1197,6 +1200,12 @@
     </None>
     <None Include="..\..\Output\bin\Resources\Shader\PSNextScene.hlsl">
       <Filter>ShaderCode\NextScene</Filter>
+    </None>
+    <None Include="..\..\Output\bin\Resources\Shader\PSAlphaTo.hlsl">
+      <Filter>ShaderCode\AlphaTo</Filter>
+    </None>
+    <None Include="..\..\Output\bin\Resources\Shader\VSAlphaTo.hlsl">
+      <Filter>ShaderCode\AlphaTo</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

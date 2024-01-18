@@ -13,6 +13,7 @@ CBCollection::CBCollection(ID3D11Device* const device)
 		ConstantBuffer(eCBType::GlobalInfo, sizeof(tGlobalInfo), device),
 		ConstantBuffer(eCBType::Sprite2D, sizeof(tSprite2DInfo), device),
 		ConstantBuffer(eCBType::Wave, sizeof(tWaveInfo), device),
+		ConstantBuffer(eCBType::Material, sizeof(tMaterial), device),
 	}
 {
 }

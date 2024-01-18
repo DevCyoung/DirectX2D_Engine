@@ -104,5 +104,11 @@ float4 main(tVSOut In) : SV_TARGET
 {
 	float4 outColor = animationColor(In.UV);
 	
+	if (outColor.a <= 0.f)
+	{
+		discard;
+	}
+	
+	
 	return outColor;
 }

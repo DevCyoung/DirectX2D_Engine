@@ -41,6 +41,10 @@ public:
 	const Vector4& GetBackgroundColor() const { return mBackgroundColor; }
 	void SetBackgroundColor(const Vector4& color) { mBackgroundColor = color; }
 
+	virtual void Render(const UINT renderTargetWidth,
+		const UINT renderTargetHeight,
+		ID3D11RenderTargetView** const ppRenderTargetView,
+		ID3D11DepthStencilView* const depthStencilView) const;
 
 private:
 	enum class eEvent
@@ -66,10 +70,7 @@ protected:
 	virtual void lateUpdate();
 
 	//virtual void physicsUpdate
-	virtual void render(const UINT renderTargetWidth,
-		const UINT renderTargetHeight,
-		ID3D11RenderTargetView** const ppRenderTargetView,
-		ID3D11DepthStencilView* const depthStencilView) const;
+	
 
 	virtual void renderFlush();
 	virtual void eventUpdate();

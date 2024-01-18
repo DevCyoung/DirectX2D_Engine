@@ -7,6 +7,7 @@ enum class eBSType
 {
 	Default,
 	AlphaBlend,
+	OneZero,
 	OneOne,
 	End,
 };

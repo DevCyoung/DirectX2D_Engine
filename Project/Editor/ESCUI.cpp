@@ -3,6 +3,7 @@
 #include <Engine/Texture.h>
 #include <Engine/InputManager.h>
 #include <Engine/ResourceManager.h>
+#include "UIHelper.h"
 
 void ESCUI::drawForm()
 {
@@ -10,12 +11,13 @@ void ESCUI::drawForm()
 	static int counter = 0;
 
 	Texture* renderTex = ResourceManager::GetInstance()->Find<Texture>(L"CopyRenderTargetTexture");
-	ID3D11ShaderResourceView* renderTexView = renderTex->GetID3D11ShaderResourceView();
+	ID3D11ShaderResourceView* renderTexView = renderTex->GetSRV();
 
 	ImGui::Begin("DirectX11 Texture Test");
 	ImGui::Text("pointer = %p", renderTexView);
 	ImGui::Text("size = %d x %d", renderTex->GetWidth(), renderTex->GetHeight());
 	ImGui::Image((void*)renderTexView, ImVec2(renderTex->GetWidth(), renderTex->GetHeight()));
+	//ImGui::DrawTextrue(*Texture, )
 	ImGui::End();
 }
 

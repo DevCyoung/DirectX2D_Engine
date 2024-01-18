@@ -34,15 +34,9 @@ public:
 	void Render(Scene* const scene,
 		const UINT renderTargetWidth,
 		const UINT renderTargetHeight,
-		ID3D11RenderTargetView**
-		const ppRenderTargetView,
-		ID3D11DepthStencilView* const depthStencilView) const
-	{
-		scene->render(renderTargetWidth,
-			renderTargetHeight,
-			ppRenderTargetView,
-			depthStencilView);
-	}
+		const FLOAT(&clearColor4)[4],
+		ID3D11RenderTargetView** const ppRenderTargetView,
+		ID3D11DepthStencilView* const depthStencilView) const;
 
 	void EventUpdate(Scene* const scene) const
 	{
@@ -67,6 +61,7 @@ private:
 		const UINT renderTargetHeight,
 		ID3D11RenderTargetView** const ppRenderTargetView,
 		ID3D11DepthStencilView* const depthStencilView);
+	void flush();
 
 private:
 	Scene* mCurrentScene;

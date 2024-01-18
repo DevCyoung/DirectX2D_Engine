@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "ItemUI.h"
-
+#include "LogUI.h"
 ItemUI::ItemUI()
 {
 }
@@ -29,5 +29,6 @@ void ItemUI::render()
 	if (ImGui::IsItemClicked())
 	{
 		ImGui::SetMouseCursor(0);
+		LogUI::Log("click resource %s\n", mItemName.c_str());
 	}		
 }

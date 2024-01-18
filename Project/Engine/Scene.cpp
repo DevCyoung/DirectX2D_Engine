@@ -95,7 +95,7 @@ void Scene::lateUpdate()
 	}
 }
 
-void Scene::render(const UINT renderTargetWidth,
+void Scene::Render(const UINT renderTargetWidth,
 	const UINT renderTargetHeight,
 	ID3D11RenderTargetView** const ppRenderTargetView,
 	ID3D11DepthStencilView* const depthStencilView) const

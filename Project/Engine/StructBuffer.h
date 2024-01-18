@@ -144,3 +144,56 @@ struct alignas(16) tWaveInfo // b6
 	float WaveSpeed;	
 	float dummy2;
 };
+
+struct alignas(16) tMaterial // b7
+{
+	// 재질 계수
+	Vector4 g_vDiff;
+	Vector4 g_vSpec;
+	Vector4 g_vAmb;
+	Vector4 g_vEmv;
+
+	// 재질 상수
+	int g_int_0;
+	int g_int_1;
+	int g_int_2;
+	int g_int_3;
+
+	float g_float_0;
+	float g_float_1;
+	float g_float_2;
+	float g_float_3;
+
+	Vector2 g_vec2_0;
+	Vector2 g_vec2_1;
+	Vector2 g_vec2_2;
+	Vector2 g_vec2_3;
+
+	Vector4 g_vec4_0;
+	Vector4 g_vec4_1;
+	Vector4 g_vec4_2;
+	Vector4 g_vec4_3;
+
+	Matrix g_mat_0;
+	Matrix g_mat_1;
+	Matrix g_mat_2;
+	Matrix g_mat_3;
+
+	int g_btex_0;
+	int g_btex_1;
+	int g_btex_2;
+	int g_btex_3;
+	int g_btex_4;
+	int g_btex_5;
+	int g_btex_6;
+	int g_btex_7;
+	int g_btexcube_0;
+	int g_btexcube_1;
+	int g_btexarr_0;
+	int g_btexarr_1;
+
+	// 3D Animation 정보
+	int                 g_iAnim;
+	int                 g_iBoneCount;
+	int                 padding[2];
+};

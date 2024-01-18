@@ -29,6 +29,8 @@ public:
 	HWND GetHwnd() const { Assert(mHwnd, ASSERT_MSG_NULL); return mHwnd; }
 	GraphicDeviceDX11* GetGraphicDevice() const { return mGraphicDevice; }
 
+	void OmSet();
+
 private:
 	static void initialize(const HWND hWnd, const UINT renderTargetWidth, const UINT renderTargetHeight);
 	void setWindowSize(const UINT windowScreenWidth, const UINT windowScreenHeight);

@@ -2,12 +2,11 @@
 #include "Editor.h"
 #include "PanelUIManager.h"
 #include "EditorUIInitialize.h"
+#include "DockSpace.h"
+#include "EngineResourceLoader.h"
 #include <d3d11.h>
 #include <Engine/Engine.h>
 #include <Engine/GraphicDeviceDx11.h>
-#include <ImGUI/imgui.h>
-#include <ImGUI/imgui_impl_dx11.h>
-#include <ImGUI/imgui_impl_win32.h>
 
 
 #ifdef _DEBUG
@@ -55,8 +54,9 @@ Editor::Editor()
 	ImGui_ImplDX11_Init(engine->GetGraphicDevice()->UnSafe_GetDevice(),
 		engine->GetGraphicDevice()->UnSafe_Context());
 
-
-	PanelUIManager::initialize();
+	//initialize
+	EngineResourceLoader();
+	PanelUIManager::initialize();	
 	EditorUIInitialize();	
 }
 
@@ -71,26 +71,39 @@ Editor::~Editor()
 }
 
 void Editor::run()
-{
+{		
+	PanelUIManager::GetInstance()->update();
+
 	// Start the Dear ImGui frame
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
-	ImGui::NewFrame();
 	
-	PanelUIManager::GetInstance()->run();
+	ImGui::NewFrame();	
+
+	bool show_app_dockspace = true;
+	if (show_app_dockspace)
+	{
+		ShowExampleAppDockSpace(&show_app_dockspace);
+	}
+
+	
+	PanelUIManager::GetInstance()->finalUpdate();
+	PanelUIManager::GetInstance()->render();
 
 	// Rendering
 	ImGui::Render();
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+
+	//PanelUIManager::GetInstance()->update();
 
 	// Update and Render additional Platform Windows
 	if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
 	{
 		ImGui::UpdatePlatformWindows();
 		ImGui::RenderPlatformWindowsDefault();
-	}
+	}		
 }
 
 static UINT	g_ResizeWidth = 0, g_ResizeHeight = 0;
@@ -130,3 +143,5 @@ LRESULT WINAPI WndProcImGUI(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	}
 	return ::DefWindowProcW(hWnd, msg, wParam, lParam);
 }
+
+
