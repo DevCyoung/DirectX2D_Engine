@@ -395,6 +395,7 @@ call ScriptGen.exe ScriptComponent $(SolutionDir)Project\Content $(SolutionDir)P
       </SubType>
     </ClInclude>
     <ClInclude Include="RewindManager.h" />
+    <ClInclude Include="ScreenSize.h" />
     <ClInclude Include="ShieldCop.h">
       <SubType>
       </SubType>

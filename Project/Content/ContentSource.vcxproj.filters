@@ -735,6 +735,7 @@
     <ClInclude Include="HeadHunterDie.h">
       <Filter>Source\KatanaZero\Monster\HeadHunter\State\Die</Filter>
     </ClInclude>
+    <ClInclude Include="ScreenSize.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

@@ -230,8 +230,12 @@ void EngineResourceLoader::loadTexture()
 	}
 
 	{
-		XMUINT2 size = { static_cast<UINT>(gEngine->GetRenderTargetSize().x),  
-						 static_cast<UINT>(gEngine->GetRenderTargetSize().y)};
+		/*XMUINT2 size = { static_cast<UINT>(gEngine->GetRenderTargetSize().x),  
+						 static_cast<UINT>(gEngine->GetRenderTargetSize().y)};*/
+		//FIXME 다시 고칠것 하드코딩으로 해결
+
+		XMUINT2 size = { static_cast<UINT>(1280),
+						 static_cast<UINT>(720) };
 
 		Texture* const copyRenderTargetTexture = new Texture(size.x, size.y,
 			DXGI_FORMAT::DXGI_FORMAT_R8G8B8A8_UNORM,

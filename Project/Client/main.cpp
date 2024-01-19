@@ -3,7 +3,9 @@
 #include "framework.h"
 #include <Engine/Engine.h>
 #include <Content/Content.h>
+#include <Content/ScreenSize.h>
 #include <Editor/Editor.h>
+#include <Editor/PanelUIManager.h>
 
 #ifdef _DEBUG
 #pragma comment(lib, "Engine/Debug/Engine_d")
@@ -15,15 +17,8 @@
 #pragma comment(lib, "Editor/Release/Editor")
 #endif
 
-static constexpr UINT EDIT_SCREEN_WIDTH = 1900;
-static constexpr UINT EDIT_SCREEN_HEIGHT = 1000;
-
-static constexpr UINT KATANA_SCREEN_WIDTH = 1280;
-static constexpr UINT KATANA_SCREEN_HEIGHT = 720;
-
 #define MAX_LOADSTRING 100
-#define EDITOR_MODE
-#include <Editor/PanelUIManager.h>
+
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
@@ -49,7 +44,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	//_CrtSetBreakAlloc(18203);
 #endif
 
-	// 전역 문자열을 초기화합니다.
+#pragma region LoadStringW
+		// 전역 문자열을 초기화합니다.
 	LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
 	LoadStringW(hInstance, IDC_CLIENT, szWindowClass, MAX_LOADSTRING);
 	MyRegisterClass(hInstance);
@@ -58,27 +54,26 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	if (!InitInstance(hInstance, nCmdShow))
 	{
 		return static_cast<int>(FALSE);
-	}	
+	}
 
 	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
 	MSG msg;
+#pragma endregion
 
-	Engine::initialize(gHwnd, EDIT_SCREEN_WIDTH, EDIT_SCREEN_HEIGHT);
-	Content::initialize();	
+#pragma region Mouse
+	//Mose Cursor
+	//ShowCursor(FALSE);
 
 	//FIXME(ASSERT_MSG("반드시해야지"));
 	//Assert Test
 	//Assert(false, ASSERT_MSG("this is message"));
+#pragma endregion
 
+	Engine::initialize(gHwnd, WINDOW_SCREEN_WIDTH, WINDOW_SCREEN_HEIGHT);
+	Content::initialize();
 #ifdef EDITOR_MODE
 	Editor::initialize();
 #endif
-
-	
-
-	//Mose Cursor
-	//ShowCursor(FALSE);
-
 	while (true)
 	{	
 		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
@@ -117,9 +112,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 //  용도: 창 클래스를 등록합니다.
 //
-
 //#define USE_MENU
-
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
 	WNDCLASSEXW wcex;
@@ -133,9 +126,6 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 #else
 	wcex.lpfnWndProc = WndProc;
 #endif // EDITOR_MODE
-
-	
-
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = hInstance;

@@ -56,8 +56,9 @@ bool InputManager::IsWindowMouseHoverd()
 void InputManager::update(const HWND hWnd)
 {
 	Assert(hWnd, ASSERT_MSG_NULL);
+	HWND focusWindow = GetFocus();
 
-	if (GetFocus())
+	if (focusWindow)
 	{
 		for (tKeyInfo& keyInfo : mKeyInfos)
 		{
@@ -91,8 +92,14 @@ void InputManager::update(const HWND hWnd)
 
 		POINT ptMousePos = {};
 		GetCursorPos(&ptMousePos);
-		ScreenToClient(hWnd, &ptMousePos);
-
+		//ScreenToClient(hWnd, &ptMousePos);
+		ScreenToClient(focusWindow, &ptMousePos);
+		if (gInput->GetKeyDown(eKeyCode::Q))
+		{
+			//ImVec2 cursurPos = ImGui::GetCursorPos();
+			int a = 3;
+			(void)a;
+		}
 		mMousePos.x = static_cast<float>(ptMousePos.x);
 		mMousePos.y = static_cast<float>(ptMousePos.y);
 
@@ -100,6 +107,21 @@ void InputManager::update(const HWND hWnd)
 		mMouseDir.y *= -1;
 
 		mPrevMousePos = mMousePos;
+
+		if (false == IsWindowMouseHoverd())
+		{
+			if (GetKeyState(eKeyCode::LBTN) != eKeyState::None)
+			{
+				mKeyInfos[static_cast<UINT>(eKeyCode::LBTN)].bPressed = false;
+				mKeyInfos[static_cast<UINT>(eKeyCode::LBTN)].state = eKeyState::None;
+			}
+			if (GetKeyState(eKeyCode::RBTN) != eKeyState::None)
+			{
+				mKeyInfos[static_cast<UINT>(eKeyCode::RBTN)].bPressed = false;
+				mKeyInfos[static_cast<UINT>(eKeyCode::RBTN)].state = eKeyState::None;
+			}
+		}
+		
 	}
 	else
 	{

@@ -293,6 +293,7 @@ call ScriptGen.exe Component $(SolutionDir)Project\Engine $(SolutionDir)Project\
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="WindowManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation2D.cpp" />
@@ -413,6 +414,7 @@ call ScriptGen.exe Component $(SolutionDir)Project\Engine $(SolutionDir)Project\
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="component.priority" />

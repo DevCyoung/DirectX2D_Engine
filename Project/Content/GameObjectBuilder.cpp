@@ -675,8 +675,8 @@ void GameObjectBuilder::AddUI(Scene* const scene)
 
 #pragma region UIGameOBject
 	//UI
-	const Vector2 screenSize = gEngine->GetRenderTargetSize();
-	const float hudPosY = gEngine->GetRenderTargetSize().y / 2.f - 23.f;
+	const Vector2 screenSize = Vector2(1280, 720);
+	const float hudPosY = screenSize.y / 2.f - 23.f;
 
 	//UI Cursur
 	{
@@ -827,8 +827,8 @@ void GameObjectBuilder::AddUI(Scene* const scene)
 GameObject* GameObjectBuilder::AddCamera(Scene* const scene)
 {
 	//UI
-	const Vector2 screenSize = gEngine->GetRenderTargetSize();	
-	//const Vector2 screenSize = Vector2(1280, 720); //Katana Scene Size
+	//const Vector2 screenSize = gEngine->GetRenderTargetSize();	
+	const Vector2 screenSize = Vector2(1280, 720); //Katana Scene Size
 	GameObject* result = nullptr;
 
 	//Main Camera
@@ -841,7 +841,7 @@ GameObject* GameObjectBuilder::AddCamera(Scene* const scene)
 		mainCamera->AddComponent<RewindComponent>();
 		mainCamera->AddComponent<RectCollider2D>();
 
-		mainCamera->GetComponent<RectCollider2D>()->SetSize(gEngine->GetRenderTargetSize());
+		mainCamera->GetComponent<RectCollider2D>()->SetSize(screenSize);
 
 
 		mainCamera->GetComponent<Transform>()->SetPosition(0.f, 0.f, -10.f);

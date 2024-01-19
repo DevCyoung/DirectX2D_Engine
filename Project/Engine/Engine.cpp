@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include "GraphicDeviceDx11.h"
 #include "TimeManager.h"
+#include "WindowManager.h"
 #include "MessageManager.h"
 #include "InputManager.h"
 #include "PathManager.h"
@@ -24,6 +25,7 @@ Engine::Engine(const HWND hWnd, const UINT renderTargetWidth, const UINT renderT
 	Fmod::Initialize();	
 
 	//TimeManager::initialize();
+	WindowManager::initialize();
 	MessageManager::initialize();
 	PathManager::initialize();
 	InputManager::initialize();
@@ -38,6 +40,7 @@ Engine::~Engine()
 	InputManager::deleteInstance();
 	PathManager::deleteInstance();
 	MessageManager::deleteInstance();
+	WindowManager::deleteInstance();
 	//TimeManager::deleteInstance();
 	
 	FontManager::deleteInstance();

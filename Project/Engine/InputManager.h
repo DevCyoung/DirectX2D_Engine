@@ -83,7 +83,7 @@ private:
 	std::vector<tKeyInfo> mKeyInfos;
 	Vector2 mMousePos;
 	Vector2 mPrevMousePos;
-	Vector2 mMouseDir;
+	Vector2 mMouseDir;	
 };
 
 #define gInput InputManager::GetInstance()

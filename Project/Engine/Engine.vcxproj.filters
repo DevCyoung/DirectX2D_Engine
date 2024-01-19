@@ -235,6 +235,9 @@
     <Filter Include="Windows\C">
       <UniqueIdentifier>{2106a0dd-903a-4ead-a04c-25cbba72fe41}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\01. Manager\07. Window">
+      <UniqueIdentifier>{7118e619-bde9-4a0f-b1d6-4096e5e78bd4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -483,6 +486,9 @@
     <ClInclude Include="ScriptType.h">
       <Filter>Windows\C</Filter>
     </ClInclude>
+    <ClInclude Include="WindowManager.h">
+      <Filter>Source\01. Manager\07. Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp">
@@ -685,6 +691,9 @@
     </ClCompile>
     <ClCompile Include="ScriptType.cpp">
       <Filter>Windows\C</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowManager.cpp">
+      <Filter>Source\01. Manager\07. Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

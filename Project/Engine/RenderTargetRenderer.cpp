@@ -12,13 +12,10 @@
 #include "Transform.h"
 
 #include "EnumShaderBindStage.h"
-
 #include "CBCollection.h"
 #include "StructBuffer.h"
 #include "TimeManager.h"
-
 #include "ResourceManager.h"
-
 #include "Texture.h"
 
 #include "InputManager.h"
@@ -150,18 +147,28 @@ void RenderTargetRenderer::Render(const UINT renderTargetWidth,
 	}
 
 
-	
+	//PostProcess
 	const Camera* const P_MAIN_CAMERA = mCameras[static_cast<UINT>(eCameraPriorityType::Main)];
-	Texture* const copyTexture = gResourceManager->Find<Texture>(L"CopyRenderTargetTexture");	
+	Texture* const copyTexture = gResourceManager->Find<Texture>(L"CopyRenderTargetTexture");
 
 	//다음에 고치러 오시오
+	//해상도마다 복사본 텍스처 사이즈가 달라짐
+	//FIXME
 	(void)copyTexture;
-	/*for (RenderComponent* const postProcessComponent : mPostProcessComponents)
+	for (RenderComponent* const postProcessComponent : mPostProcessComponents)
 	{				
-		gGraphicDevice->CopyResource(copyTexture->GetID3D11Texture2D(), gGraphicDevice->GetRenderTargetTexture());
+		//FIXME참조카운팅
+		ID3D11Resource* renderTargetTexture = nullptr;
+		(*ppRenderTargetView)->GetResource(&renderTargetTexture);
+		Assert(renderTargetTexture, ASSERT_MSG_NULL);
+
+		gGraphicDevice->CopyResource(copyTexture->GetID3D11Texture2D(), renderTargetTexture);
 		gGraphicDevice->BindSRV(eShaderBindType::PS, 10, copyTexture);
 		postProcessComponent->render(P_MAIN_CAMERA);
-	}*/
+
+		renderTargetTexture->Release();
+		renderTargetTexture = nullptr;
+	}
 	
 	if (mbDebugRender)
 	{
