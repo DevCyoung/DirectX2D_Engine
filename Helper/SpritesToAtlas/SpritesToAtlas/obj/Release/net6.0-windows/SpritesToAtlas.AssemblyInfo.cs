@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpritesToAtlas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a46d3dbf1f4eae43d8c088ccf5a5d69ee1116e6b")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpritesToAtlas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpritesToAtlas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

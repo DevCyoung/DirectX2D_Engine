@@ -1,0 +1,15 @@
+C:\source\DirectX2D_Engine\Project\Editor\Helper\EditorGen\Release\net8.0\EditorGen.exe
+C:\source\DirectX2D_Engine\Project\Editor\Helper\EditorGen\Release\net8.0\EditorGen.deps.json
+C:\source\DirectX2D_Engine\Project\Editor\Helper\EditorGen\Release\net8.0\EditorGen.runtimeconfig.json
+C:\source\DirectX2D_Engine\Project\Editor\Helper\EditorGen\Release\net8.0\EditorGen.dll
+C:\source\DirectX2D_Engine\Project\Editor\Helper\EditorGen\Release\net8.0\EditorGen.pdb
+C:\source\DirectX2D_Engine\Helper\EditorGen\EditorGen\obj\Release\net8.0\EditorGen.GeneratedMSBuildEditorConfig.editorconfig
+C:\source\DirectX2D_Engine\Helper\EditorGen\EditorGen\obj\Release\net8.0\EditorGen.AssemblyInfoInputs.cache
+C:\source\DirectX2D_Engine\Helper\EditorGen\EditorGen\obj\Release\net8.0\EditorGen.AssemblyInfo.cs
+C:\source\DirectX2D_Engine\Helper\EditorGen\EditorGen\obj\Release\net8.0\EditorGen.csproj.CoreCompileInputs.cache
+C:\source\DirectX2D_Engine\Helper\EditorGen\EditorGen\obj\Release\net8.0\EditorGen.sourcelink.json
+C:\source\DirectX2D_Engine\Helper\EditorGen\EditorGen\obj\Release\net8.0\EditorGen.dll
+C:\source\DirectX2D_Engine\Helper\EditorGen\EditorGen\obj\Release\net8.0\refint\EditorGen.dll
+C:\source\DirectX2D_Engine\Helper\EditorGen\EditorGen\obj\Release\net8.0\EditorGen.pdb
+C:\source\DirectX2D_Engine\Helper\EditorGen\EditorGen\obj\Release\net8.0\EditorGen.genruntimeconfig.cache
+C:\source\DirectX2D_Engine\Helper\EditorGen\EditorGen\obj\Release\net8.0\ref\EditorGen.dll

@@ -7,11 +7,12 @@
 #include "AudioSource.h"
 #include "Camera.h"
 #include "CircleCollider2D.h"
-#include "EngineText.h"
+#include "Collider2D.h"
 #include "Light2D.h"
 #include "LineCollider2D.h"
 #include "ParticleSystem.h"
 #include "RectCollider2D.h"
+#include "RenderComponent.h"
 #include "Rigidbody2D.h"
 #include "SpriteRenderer.h"
 
@@ -23,11 +24,12 @@ static constexpr const wchar_t* const ComponentNames[static_cast<UINT>(eComponen
 	L"AudioSource",
 	L"Camera",
 	L"CircleCollider2D",
-	L"EngineText",
+	L"Collider2D",
 	L"Light2D",
 	L"LineCollider2D",
 	L"ParticleSystem",
 	L"RectCollider2D",
+	L"RenderComponent",
 	L"Rigidbody2D",
 	L"SpriteRenderer",
 };
@@ -54,8 +56,8 @@ Component* CreateComponentByName(const std::wstring& componentName)
 		component = new Camera;
 	else if (L"CircleCollider2D" == componentName)
 		component = new CircleCollider2D;
-	else if (L"EngineText" == componentName)
-		component = new EngineText;
+	else if (L"Collider2D" == componentName)
+		component = new Collider2D;
 	else if (L"Light2D" == componentName)
 		component = new Light2D;
 	else if (L"LineCollider2D" == componentName)
@@ -64,6 +66,8 @@ Component* CreateComponentByName(const std::wstring& componentName)
 		component = new ParticleSystem;
 	else if (L"RectCollider2D" == componentName)
 		component = new RectCollider2D;
+	else if (L"RenderComponent" == componentName)
+		component = new RenderComponent;
 	else if (L"Rigidbody2D" == componentName)
 		component = new Rigidbody2D;
 	else if (L"SpriteRenderer" == componentName)
@@ -97,8 +101,8 @@ Component* CreateComponentByEnum(const eComponentType type)
 	case eComponentType::CircleCollider2D:
 		component = new CircleCollider2D;
 		break;
-	case eComponentType::EngineText:
-		component = new EngineText;
+	case eComponentType::Collider2D:
+		component = new Collider2D;
 		break;
 	case eComponentType::Light2D:
 		component = new Light2D;
@@ -111,6 +115,9 @@ Component* CreateComponentByEnum(const eComponentType type)
 		break;
 	case eComponentType::RectCollider2D:
 		component = new RectCollider2D;
+		break;
+	case eComponentType::RenderComponent:
+		component = new RenderComponent;
 		break;
 	case eComponentType::Rigidbody2D:
 		component = new Rigidbody2D;

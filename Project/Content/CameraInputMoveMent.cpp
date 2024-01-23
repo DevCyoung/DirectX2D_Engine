@@ -10,6 +10,8 @@ CameraInputMoveMent::CameraInputMoveMent()
 {
 }
 
+
+
 CameraInputMoveMent::~CameraInputMoveMent()
 {
 }

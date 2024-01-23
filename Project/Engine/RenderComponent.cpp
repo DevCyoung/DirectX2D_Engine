@@ -5,6 +5,14 @@
 #include "GameSystem.h"
 
 
+RenderComponent::RenderComponent()
+	: Component(eComponentType::RenderComponent)
+	, mbVisible(true)
+	, mMesh(nullptr)
+	, mMaterial(nullptr)
+{
+}
+
 RenderComponent::RenderComponent(const eComponentType componentType)
 	: Component(componentType)
 	, mbVisible(true)

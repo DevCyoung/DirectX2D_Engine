@@ -58,6 +58,18 @@
     <Filter Include="Source\Panel\Resorce">
       <UniqueIdentifier>{f03369ea-9262-40d6-9992-b8c71145fe60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Component">
+      <UniqueIdentifier>{1ead07eb-b646-4a61-9c40-98f998dca0e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\ComponentUIRender">
+      <UniqueIdentifier>{b4abaf8c-c656-43c0-a7e8-d77fa1035c3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Engine">
+      <UniqueIdentifier>{425f879a-4d7b-4b9f-aac5-daf2dd15eeb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Script">
+      <UniqueIdentifier>{4d2d6e39-fbac-46d8-8a86-6f76ce3b7bfb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -126,7 +138,9 @@
     <ClInclude Include="InspectorUI.h">
       <Filter>Source\Panel\Inspector</Filter>
     </ClInclude>
-    <ClInclude Include="ComponentUI.h" />
+    <ClInclude Include="ComponentUIRender.h">
+      <Filter>Component\ComponentUIRender</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -192,6 +206,56 @@
     <ClCompile Include="InspectorUI.cpp">
       <Filter>Source\Panel\Inspector</Filter>
     </ClCompile>
-    <ClCompile Include="ComponentUI.cpp" />
+    <ClCompile Include="ComponentUIRender.cpp">
+      <Filter>Component\ComponentUIRender</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptComponentUIRender.cpp">
+      <Filter>Component\ComponentUIRender</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioListenerUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioSourceUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider2DUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Light2DUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="RectCollider2DUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderComponentUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody2DUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptComponentUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteRendererUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraInputMoveMentUI.cpp">
+      <Filter>Component\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="CursorMovementUI.cpp">
+      <Filter>Component\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="LineCollider2DUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

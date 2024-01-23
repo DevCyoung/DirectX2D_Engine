@@ -471,9 +471,6 @@
     <ClInclude Include="FontManager.h">
       <Filter>Source\01. Manager\06. Font</Filter>
     </ClInclude>
-    <ClInclude Include="EngineText.h">
-      <Filter>Source\03. Component\03. Render\Text</Filter>
-    </ClInclude>
     <ClInclude Include="ScriptType.h">
       <Filter>Windows\C</Filter>
     </ClInclude>
@@ -673,9 +670,6 @@
     </ClCompile>
     <ClCompile Include="FontManager.cpp">
       <Filter>Source\01. Manager\06. Font</Filter>
-    </ClCompile>
-    <ClCompile Include="EngineText.cpp">
-      <Filter>Source\03. Component\03. Render\Text</Filter>
     </ClCompile>
     <ClCompile Include="ScriptType.cpp">
       <Filter>Windows\C</Filter>

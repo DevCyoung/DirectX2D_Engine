@@ -5,13 +5,16 @@ class Mesh;
 class Material;
 class Camera;
 
+REGISTER_COMPONENT_TYPE(RenderComponent);
+
 class RenderComponent : public Component
 {
 	friend class RenderTargetRenderer;
 
-protected:
-	RenderComponent(const eComponentType componentType);
+public:
+	RenderComponent();
 	virtual ~RenderComponent();
+	RenderComponent(const eComponentType componentType);
 	//RenderComponent(const RenderComponent&);
 	RenderComponent& operator=(const RenderComponent&) = delete;
 
@@ -27,14 +30,20 @@ public:
 	void TurnOnVisiblelity() { mbVisible = true; }
 	void TurnOffVisiblelity() { mbVisible = false; }
 
-	//CLONE(RenderComponent)
+	
+	CLONE(RenderComponent)
+
 protected:
 	virtual void update() override;
 
 private:
 	virtual void initialize() override;	
 	virtual void lateUpdate() override;
-	virtual void render(const Camera* const camera) = 0;
+	virtual void render(const Camera* const camera)
+	{
+		(void)camera;
+		Assert(false, ASSERT_MSG_INVALID);
+	};
 
 protected:	
 	bool mbVisible;

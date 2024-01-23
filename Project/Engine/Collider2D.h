@@ -9,13 +9,17 @@ enum class eCollider2DType
 	BoxCircle = Box | Circle,
 };
 
+REGISTER_COMPONENT_TYPE(Collider2D);
+
+
 class Collider2D : public Component
 {
 	friend class CollisionManagement2D;
 public:
+	Collider2D();
+	virtual ~Collider2D();
 	Collider2D(const eComponentType componentType,
 		const eCollider2DType mColllider2DType);
-	virtual ~Collider2D();
 	Collider2D(const Collider2D&);
 	Collider2D& operator=(const Collider2D&) = delete;
 
@@ -44,7 +48,7 @@ public:
 
 	void SetColor(const Vector4& color) { mColor = color; }	
 
-	//CLONE(Collider2D)
+	CLONE(Collider2D)
 private:
 	virtual void initialize() override;
 	virtual void update() override;

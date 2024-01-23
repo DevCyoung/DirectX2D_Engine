@@ -227,6 +227,9 @@ namespace engine
 
 			operator XMVECTOR() const noexcept { return XMLoadFloat3(this); }
 
+			typedef float(&f3)[3];
+			operator f3() const { return (f3)x; }
+
 			// Comparison operators
 			bool operator == (const Vector3& V) const noexcept;
 			bool operator != (const Vector3& V) const noexcept;

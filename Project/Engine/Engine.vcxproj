@@ -205,10 +205,6 @@ call ScriptGen.exe Component $(SolutionDir)Project\Engine $(SolutionDir)Project\
     <ClInclude Include="EngineIncludes.h" />
     <ClInclude Include="EngineMath.h" />
     <ClInclude Include="EngineResourceLoader.h" />
-    <ClInclude Include="EngineText.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EnumComponent.h" />
     <ClInclude Include="EnumFlag.h" />
@@ -331,10 +327,6 @@ call ScriptGen.exe Component $(SolutionDir)Project\Engine $(SolutionDir)Project\
     <ClCompile Include="DXMath.cpp" />
     <ClCompile Include="EngineMath.cpp" />
     <ClCompile Include="EngineResourceLoader.cpp" />
-    <ClCompile Include="EngineText.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EnumComponent.cpp" />
     <ClCompile Include="Fmod.cpp" />

@@ -5,6 +5,12 @@
 #include "DebugRenderer2D.h"
 #include "ScriptComponent.h"
 
+Collider2D::Collider2D()
+	:Component(eComponentType::Collider2D)
+{
+
+}
+
 Collider2D::Collider2D(const eComponentType componentType,
 	const eCollider2DType colllider2DType)
 	: Component(componentType)
