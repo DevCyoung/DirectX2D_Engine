@@ -30,6 +30,7 @@ public:
 		const std::source_location& location = std::source_location::current());
 
 	const Layer& GetLayer(const eLayerType layerType) const { return mLayers[static_cast<UINT>(layerType)]; }
+	Layer& GetLayer(const eLayerType layerType) { return mLayers[static_cast<UINT>(layerType)]; }
 
 	void AddGameObject(GameObject* const gameObject, const eLayerType layerType);
 

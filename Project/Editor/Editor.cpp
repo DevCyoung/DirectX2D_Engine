@@ -1,9 +1,9 @@
 ﻿#include "pch.h"
 #include "Editor.h"
 #include "PanelUIManager.h"
-#include "EditorUIInitialize.h"
+#include "EditorPanelInitialize.h"
 #include "DockSpace.h"
-#include "EngineResourceLoader.h"
+#include "EditorResourceLoader.h"
 #include <d3d11.h>
 #include <Engine/Engine.h>
 #include <Engine/GraphicDeviceDx11.h>
@@ -55,9 +55,9 @@ Editor::Editor()
 		engine->GetGraphicDevice()->UnSafe_Context());
 
 	//initialize
-	EngineResourceLoader();
+	EditorResourceLoader();
 	PanelUIManager::initialize();	
-	EditorUIInitialize();	
+	EditorPanelInitialize();	
 }
 
 Editor::~Editor()

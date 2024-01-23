@@ -16,7 +16,7 @@ public:
 	Collider2D(const eComponentType componentType,
 		const eCollider2DType mColllider2DType);
 	virtual ~Collider2D();
-	Collider2D(const Collider2D&) = delete;
+	Collider2D(const Collider2D&);
 	Collider2D& operator=(const Collider2D&) = delete;
 
 	eCollider2DType GetCollideType() const { return mColllider2DType; }
@@ -44,6 +44,7 @@ public:
 
 	void SetColor(const Vector4& color) { mColor = color; }	
 
+	//CLONE(Collider2D)
 private:
 	virtual void initialize() override;
 	virtual void update() override;

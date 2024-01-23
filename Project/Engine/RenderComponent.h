@@ -12,7 +12,7 @@ class RenderComponent : public Component
 protected:
 	RenderComponent(const eComponentType componentType);
 	virtual ~RenderComponent();
-	RenderComponent(const RenderComponent&) = delete;
+	//RenderComponent(const RenderComponent&);
 	RenderComponent& operator=(const RenderComponent&) = delete;
 
 public:
@@ -27,6 +27,7 @@ public:
 	void TurnOnVisiblelity() { mbVisible = true; }
 	void TurnOffVisiblelity() { mbVisible = false; }
 
+	//CLONE(RenderComponent)
 protected:
 	virtual void update() override;
 

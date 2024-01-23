@@ -23,7 +23,7 @@ public:
 
 	GameObject();
 	virtual ~GameObject();
-	GameObject(const GameObject&) = delete;
+	GameObject(const GameObject&);
 	GameObject& operator=(const GameObject&) = delete;
 
 public:
@@ -41,6 +41,7 @@ public:
 	ScriptComponent* GetComponent(const eScriptComponentType scriptComponentType) const;
 
 	const std::vector<ScriptComponent*>& GetScriptComponents() const { return mScriptComponents; }
+	std::vector<ScriptComponent*>& GetScriptComponents() { return mScriptComponents; }
 
 	eState GetState() const { return mState; }
 	eLayerType GetLayer() const { return mLayerType; }
@@ -67,6 +68,7 @@ private:
 	void lateUpdate();
 	void lastUpdate();
 
+	CLONE(GameObject);
 private:
 	Component* mEngineComponents[static_cast<UINT>(eComponentType::End)];
 	std::vector<ScriptComponent*> mScriptComponents;

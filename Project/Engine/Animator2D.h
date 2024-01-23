@@ -35,7 +35,7 @@ public:
 public:
 	Animator2D();
 	virtual ~Animator2D();
-	Animator2D(const Animator2D&) = delete;
+	Animator2D(const Animator2D& other);
 	Animator2D& operator=(const Animator2D&) = delete;
 
 	void Play(const std::wstring& animKey, const bool bLoop);
@@ -79,6 +79,7 @@ public:
 	void MulColor(float r, float g, float b, float a);
 	void MulColorReset();
 
+	CLONE(Animator2D)
 private:
 	virtual void initialize() override final;
 	virtual void update() override final;

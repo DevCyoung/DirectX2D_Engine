@@ -8,9 +8,10 @@ class RectCollider2D : public Collider2D
 public:
 	RectCollider2D();
 	virtual ~RectCollider2D();
-	RectCollider2D(const RectCollider2D&) = delete;
+	//RectCollider2D(const RectCollider2D& other);
 	RectCollider2D& operator=(const RectCollider2D&) = delete;
 
+	CLONE(RectCollider2D)
 
 private:
 	virtual void initialize() override final;

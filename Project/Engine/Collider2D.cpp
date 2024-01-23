@@ -26,6 +26,11 @@ Collider2D::~Collider2D()
 {
 }
 
+Collider2D::Collider2D(const Collider2D& other)
+	:Component(other)
+{
+}
+
 void Collider2D::initialize()
 {
 }

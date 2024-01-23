@@ -208,9 +208,6 @@
     <Filter Include="Source\03. Component\06. Rigidbody2D">
       <UniqueIdentifier>{e0fb13e6-d5c3-43e9-9aff-744c3fe9c3f4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\03. Component\03. Render\03. AfterImage">
-      <UniqueIdentifier>{c862b4f1-45ec-4e04-a4ed-31923ef3e6d1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Audio">
       <UniqueIdentifier>{84b1566b-cbf0-4271-a06b-5c2150a76802}</UniqueIdentifier>
     </Filter>
@@ -228,9 +225,6 @@
     </Filter>
     <Filter Include="Source\03. Component\03. Render\Text">
       <UniqueIdentifier>{43db21eb-7836-4c21-bfd9-9f8702a11762}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\03. Component\03. Render\Dummy">
-      <UniqueIdentifier>{ec2912af-6b45-45e2-b40e-9705b74b457e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Windows\C">
       <UniqueIdentifier>{2106a0dd-903a-4ead-a04c-25cbba72fe41}</UniqueIdentifier>
@@ -462,9 +456,6 @@
     <ClInclude Include="Rigidbody2D.h">
       <Filter>Source\03. Component\06. Rigidbody2D</Filter>
     </ClInclude>
-    <ClInclude Include="AfterImage.h">
-      <Filter>Source\03. Component\03. Render\03. AfterImage</Filter>
-    </ClInclude>
     <ClInclude Include="AudioClip.h">
       <Filter>Source\Audio\AudioClip</Filter>
     </ClInclude>
@@ -667,9 +658,6 @@
     </ClCompile>
     <ClCompile Include="Rigidbody2D.cpp">
       <Filter>Source\03. Component\06. Rigidbody2D</Filter>
-    </ClCompile>
-    <ClCompile Include="AfterImage.cpp">
-      <Filter>Source\03. Component\03. Render\03. AfterImage</Filter>
     </ClCompile>
     <ClCompile Include="AudioClip.cpp">
       <Filter>Source\Audio\AudioClip</Filter>

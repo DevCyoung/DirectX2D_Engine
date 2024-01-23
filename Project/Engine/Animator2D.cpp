@@ -40,6 +40,11 @@ Animator2D::~Animator2D()
 	mem::del::DeleteUnorderedMapElements(&mAnimationMap);
 }
 
+Animator2D::Animator2D(const Animator2D& other)
+	:RenderComponent(other)
+{
+}
+
 void Animator2D::Play(const std::wstring& animKey, const bool bLoop)
 {
 	Animation2D* animation = FindAnimationOrNull(animKey);

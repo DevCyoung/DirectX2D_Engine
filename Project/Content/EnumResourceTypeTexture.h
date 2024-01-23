@@ -26,6 +26,7 @@ enum class eResTexture
 	Chinatown01_spr_chinatown_parallax_1,
 	Chinatown01_spr_chinatown_parallax_2,
 	Chinatown01_spr_chinatown_parallax_3,
+	ddsTest_c7100_armor_a,
 	Map_Chinatown01_spr_chinatown_parallax_1,
 	Map_Chinatown01_spr_chinatown_parallax_2,
 	Map_Chinatown01_spr_chinatown_parallax_3,
@@ -132,7 +133,6 @@ enum class eResTexture
 	TILE,
 	TitleHud,
 	TitleTextHud,
-	walk,
 	End
 };
 

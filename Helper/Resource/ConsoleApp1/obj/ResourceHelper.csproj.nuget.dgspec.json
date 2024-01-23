@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tkdlq\\Desktop\\assort\\DirectX2D_Engine\\Helper\\Resource\\ConsoleApp1\\ResourceHelper.csproj": {}
+    "C:\\source\\DirectX2D_Engine\\Helper\\Resource\\ConsoleApp1\\ResourceHelper.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tkdlq\\Desktop\\assort\\DirectX2D_Engine\\Helper\\Resource\\ConsoleApp1\\ResourceHelper.csproj": {
+    "C:\\source\\DirectX2D_Engine\\Helper\\Resource\\ConsoleApp1\\ResourceHelper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tkdlq\\Desktop\\assort\\DirectX2D_Engine\\Helper\\Resource\\ConsoleApp1\\ResourceHelper.csproj",
+        "projectUniqueName": "C:\\source\\DirectX2D_Engine\\Helper\\Resource\\ConsoleApp1\\ResourceHelper.csproj",
         "projectName": "ResourceHelper",
-        "projectPath": "C:\\Users\\tkdlq\\Desktop\\assort\\DirectX2D_Engine\\Helper\\Resource\\ConsoleApp1\\ResourceHelper.csproj",
+        "projectPath": "C:\\source\\DirectX2D_Engine\\Helper\\Resource\\ConsoleApp1\\ResourceHelper.csproj",
         "packagesPath": "C:\\Users\\tkdlq\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tkdlq\\Desktop\\assort\\DirectX2D_Engine\\Helper\\Resource\\ConsoleApp1\\obj\\",
+        "outputPath": "C:\\source\\DirectX2D_Engine\\Helper\\Resource\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\tkdlq\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,12 +50,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.26, 6.0.26]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.26, 6.0.26]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.26, 6.0.26]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.26, 6.0.26]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

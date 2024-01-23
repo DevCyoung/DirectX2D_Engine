@@ -5,7 +5,7 @@
 
 public class MyProgram
 {
-    static string PRAGMA_ONCE = "#pragma once\n\n";
+    static string PRAGMA_ONCE = "#pragma once\r\n\r\n";
     static string SHARP_INCLUDE = "#include";
     static string BEGIN_ENGINE_NAMESPACE = ""; //"namespace engine\n{\n";
     static string END_ENGINE_NAMESPACE   = ""; //"}//namespace engine End";
@@ -280,19 +280,19 @@ public class MyProgram
 
         header += BEGIN_ENGINE_NAMESPACE;
         {
-            header += "enum class " + "eRes" + enumType + "\n";
-            header += "{\n";
+            header += "enum class " + "eRes" + enumType + "\r\n";
+            header += "{\r\n";
 
             foreach (string enumName in enumNames)
             {
-                header += "\t" + enumName + ",\n";
+                header += "\t" + enumName + ",\r\n";
             }
-            header += "" + "\tEnd\n";
-            header += "};\n\n";
+            header += "" + "\tEnd\r\n";
+            header += "};\r\n\r\n";
 
             if (enumNames.Count > 0)
             {
-                header += $"{RETURN_TYPE} EnumResourcePath(eRes{enumType} type);\n";
+                header += $"{RETURN_TYPE} EnumResourcePath(eRes{enumType} type);\r\n";
             }
 
         }
@@ -309,35 +309,32 @@ public class MyProgram
         string enumResourcePathArray = $"{eResEnumType}Path";
 
 
-        cpp += $"{SHARP_INCLUDE} \"pch.h\"\n";
-        cpp += $"{SHARP_INCLUDE} \"EnumResourceType{enumType}.h\"\n\n";
+        cpp += $"{SHARP_INCLUDE} \"pch.h\"\r\n";
+        cpp += $"{SHARP_INCLUDE} \"EnumResourceType{enumType}.h\"\r\n\r\n";
 
         cpp += BEGIN_ENGINE_NAMESPACE;
         {
             //const wchar
             if (relativePaths.Count > 0)
             {
-                cpp += $"{STRING_TYPE} {enumResourcePathArray}[static_cast<UINT>({eResEnumType}::End)]\n";
-                cpp += "{\n";
+                cpp += $"{STRING_TYPE} {enumResourcePathArray}[static_cast<UINT>({eResEnumType}::End)]\r\n";
+                cpp += "{\r\n";
 
                 foreach (string relativePath in relativePaths)
                 {
                     //리소스 하위로가져온다.
-                    cpp += $"\tL\"{relativePath}\",\n";
+                    cpp += $"\tL\"{relativePath}\",\r\n";
                 }
-                cpp += "};\n";
-                cpp += "\n";
-                cpp += $"{RETURN_TYPE} EnumResourcePath(eRes{enumType} type)\n";
-                cpp += "{\n";
-                cpp += $"\treturn {enumResourcePathArray}[static_cast<UINT>(type)];\n";
-                cpp += "}\n";
+                cpp += "};\r\n";
+                cpp += "\r\n";
+                cpp += $"{RETURN_TYPE} EnumResourcePath(eRes{enumType} type)\r\n";
+                cpp += "{\r\n";
+                cpp += $"\treturn {enumResourcePathArray}[static_cast<UINT>(type)];\r\n";
+                cpp += "}\r\n";
             }
         }
         cpp += END_ENGINE_NAMESPACE;
 
         return cpp;
     }
-
-
-
 }

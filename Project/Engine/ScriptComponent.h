@@ -13,11 +13,12 @@ protected:
 	ScriptComponent(const eScriptComponentType scriptComonentType);
 public:
 	virtual ~ScriptComponent();
-	ScriptComponent(const ScriptComponent&) = delete;
+	ScriptComponent(const ScriptComponent&);
 	ScriptComponent& operator=(const ScriptComponent&) = delete;
 
 	eScriptComponentType GetScriptType() const { return mScriptComponentType; }	
 
+	CLONE(ScriptComponent)
 private:
 	virtual void initialize() override;
 	virtual void update() override;

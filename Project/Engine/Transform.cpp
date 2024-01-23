@@ -18,7 +18,6 @@ Transform::Transform()
 Transform::~Transform()
 {
 }
-
 void Transform::initialize()
 {
 }

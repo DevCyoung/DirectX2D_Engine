@@ -197,10 +197,6 @@ call ScriptGen.exe Component $(SolutionDir)Project\Engine $(SolutionDir)Project\
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="AfterImage.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="EngineComponentTrait.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="DirectXTex.h" />
@@ -333,10 +329,6 @@ call ScriptGen.exe Component $(SolutionDir)Project\Engine $(SolutionDir)Project\
     <ClCompile Include="DSCollection.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="DXMath.cpp" />
-    <ClCompile Include="AfterImage.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="EngineMath.cpp" />
     <ClCompile Include="EngineResourceLoader.cpp" />
     <ClCompile Include="EngineText.cpp">

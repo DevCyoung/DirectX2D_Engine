@@ -9,7 +9,7 @@ class Transform : public Component
 public:
 	Transform();
 	virtual ~Transform();
-	Transform(const Transform&) = delete;
+	//Transform(const Transform& other);
 	Transform& operator=(const Transform&) = delete;
 
 	const Vector3& GetPosition() const { return mPosition; }
@@ -48,6 +48,7 @@ private:
 	virtual void update() override final;
 	virtual void lateUpdate() override final;	
 
+	CLONE(Transform)
 private:
 	Vector3 mPosition;
 	Vector3 mRotation;

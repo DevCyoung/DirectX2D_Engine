@@ -2,11 +2,10 @@
 #include "EnumComponent.h"
 
 #include "Transform.h"
-#include "Camera.h"
-#include "AfterImage.h"
 #include "Animator2D.h"
 #include "AudioListener.h"
 #include "AudioSource.h"
+#include "Camera.h"
 #include "CircleCollider2D.h"
 #include "EngineText.h"
 #include "Light2D.h"
@@ -19,11 +18,10 @@
 static constexpr const wchar_t* const ComponentNames[static_cast<UINT>(eComponentType::End)]
 {
 	L"Transform",
-	L"Camera",
-	L"AfterImage",
 	L"Animator2D",
 	L"AudioListener",
 	L"AudioSource",
+	L"Camera",
 	L"CircleCollider2D",
 	L"EngineText",
 	L"Light2D",
@@ -46,16 +44,14 @@ Component* CreateComponentByName(const std::wstring& componentName)
 
 	if (L"Transform" == componentName)
 		component = new Transform;
-	else if (L"Camera" == componentName)
-		component = new Camera;
-	else if (L"AfterImage" == componentName)
-		component = new AfterImage;
 	else if (L"Animator2D" == componentName)
 		component = new Animator2D;
 	else if (L"AudioListener" == componentName)
 		component = new AudioListener;
 	else if (L"AudioSource" == componentName)
 		component = new AudioSource;
+	else if (L"Camera" == componentName)
+		component = new Camera;
 	else if (L"CircleCollider2D" == componentName)
 		component = new CircleCollider2D;
 	else if (L"EngineText" == componentName)
@@ -86,12 +82,6 @@ Component* CreateComponentByEnum(const eComponentType type)
 	case eComponentType::Transform:
 		component = new Transform;
 		break;
-	case eComponentType::Camera:
-		component = new Camera;
-		break;
-	case eComponentType::AfterImage:
-		component = new AfterImage;
-		break;
 	case eComponentType::Animator2D:
 		component = new Animator2D;
 		break;
@@ -100,6 +90,9 @@ Component* CreateComponentByEnum(const eComponentType type)
 		break;
 	case eComponentType::AudioSource:
 		component = new AudioSource;
+		break;
+	case eComponentType::Camera:
+		component = new Camera;
 		break;
 	case eComponentType::CircleCollider2D:
 		component = new CircleCollider2D;

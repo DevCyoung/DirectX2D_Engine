@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "K+unCNnI/v6UhGjNAcCNGsn8njATKsGxc2bYTtiMeNz+797PVqnQzRQfwF72Ji/5fECdHI8hz9R98zdttaIZCw==",
+  "dgSpecHash": "crMKTtLk9fopv5KBXQWBnaNUxL06fIUlaAs1RXezKgGHA6dar3OVzkfTnEnHBfuO5+SL49e07S51Raz+DiSGzQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tkdlq\\Desktop\\assort\\DirectX2D_Engine\\Helper\\Resource\\ConsoleApp1\\ResourceHelper.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\source\\DirectX2D_Engine\\Helper\\Resource\\ConsoleApp1\\ResourceHelper.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tkdlq\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\tkdlq\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\tkdlq\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\tkdlq\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.26\\microsoft.netcore.app.host.win-x64.6.0.26.nupkg.sha512"
+  ],
   "logs": []
 }

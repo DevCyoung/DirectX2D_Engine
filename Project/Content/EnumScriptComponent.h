@@ -5,14 +5,8 @@ class ScriptComponent;
 
 enum class eScriptComponentType 
 {
-	AfterImage,
 	CameraInputMoveMent,
 	CursorMovement,
-	GalssWindow,
-	GlassParticle,
-	GridPainter,
-	HeadHunterLazer,
-	SimpleEditorCollider2D,
 	End
 };
 

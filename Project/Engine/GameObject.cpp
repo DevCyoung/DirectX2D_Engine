@@ -21,6 +21,30 @@ GameObject::~GameObject()
 	mem::del::DeletePointerArrayElements(&mEngineComponents);
 }
 
+GameObject::GameObject(const GameObject& other)
+	: mEngineComponents{0, }
+	, mScriptComponents()
+	, mLayerType(other.mLayerType)
+	, mState(other.mState)
+	, mParent(other.mParent)
+	, mGameSystem(other.mGameSystem)
+{
+	//AddComponent<Transform>();
+
+	for (UINT i = 0; i < static_cast<UINT>(eComponentType::End); i++)
+	{
+		if (other.mEngineComponents[i])
+		{
+			AddComponent(other.mEngineComponents[i]->Clone());			
+		}
+	}
+
+	for (UINT i = 0; i < mScriptComponents.size(); i++)
+	{
+		AddComponent(other.mScriptComponents[i]->Clone());
+	}
+}
+
 void GameObject::initialize()
 {
 	Assert(mGameSystem, ASSERT_MSG_NULL);

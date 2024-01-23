@@ -15,7 +15,7 @@ protected:
 	Component(const eComponentType componentType);
 public:
 	virtual ~Component();
-	Component(const Component&) = delete;
+	Component(const Component&);
 	Component& operator=(const Component&) = delete;
 
 public:
@@ -35,7 +35,7 @@ public:
 	Component* GetComponent(const eComponentType componentType) const;
 	ScriptComponent* GetComponent(const eScriptComponentType scriptComponentType) const;
 
-
+	CLONE(Component)
 private:
 	virtual void initialize();
 	virtual void update();

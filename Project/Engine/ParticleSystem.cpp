@@ -10,6 +10,11 @@ ParticleSystem::~ParticleSystem()
 {
 }
 
+ParticleSystem::ParticleSystem(const ParticleSystem& other)
+	: RenderComponent(other)
+{
+}
+
 void ParticleSystem::initialize()
 {
 }

@@ -7,6 +7,7 @@ class Layer
 
 public:
 	const std::vector<GameObject*>& GetGameObjects() const { return mGameObjects; }
+	std::vector<GameObject*>& GetGameObjects() { return mGameObjects; }
 
 private:
 	Layer();

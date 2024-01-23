@@ -13,7 +13,7 @@ class SpriteRenderer : public RenderComponent
 public:
 	SpriteRenderer();
 	virtual ~SpriteRenderer();
-	SpriteRenderer(const SpriteRenderer&) = delete;
+	//SpriteRenderer(const SpriteRenderer&);
 	SpriteRenderer& operator=(const SpriteRenderer&) = delete;
 
 	void SetTestColor(const Vector4& color) { mTestColor = color; }
@@ -35,7 +35,7 @@ public:
 	void MulColorReset();
 
 
-
+	CLONE(SpriteRenderer)
 private:
 	virtual void initialize() override final;
 	virtual void update() override final;

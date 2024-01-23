@@ -27,6 +27,7 @@ static constexpr const wchar_t* eResTexturePath[static_cast<UINT>(eResTexture::E
 	L"\\Texture\\Chinatown01\\spr_chinatown_parallax_1.png",
 	L"\\Texture\\Chinatown01\\spr_chinatown_parallax_2.png",
 	L"\\Texture\\Chinatown01\\spr_chinatown_parallax_3.png",
+	L"\\Texture\\ddsTest\\c7100_armor_a.dds",
 	L"\\Texture\\Map\\Chinatown01\\spr_chinatown_parallax_1.png",
 	L"\\Texture\\Map\\Chinatown01\\spr_chinatown_parallax_2.png",
 	L"\\Texture\\Map\\Chinatown01\\spr_chinatown_parallax_3.png",
@@ -133,7 +134,6 @@ static constexpr const wchar_t* eResTexturePath[static_cast<UINT>(eResTexture::E
 	L"\\Texture\\TILE.bmp",
 	L"\\Texture\\TitleHud.png",
 	L"\\Texture\\TitleTextHud.png",
-	L"\\Texture\\walk.bmp",
 };
 
 const wchar_t* EnumResourcePath(eResTexture type)

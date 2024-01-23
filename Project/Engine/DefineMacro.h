@@ -11,3 +11,6 @@
 #define Static_Assert(expression, message) static_assert(expression, message)
 
 #define FIXME(message) MessageBox(nullptr, L_PREFIX(message), L_PREFIX(message), MB_OK | MB_ICONWARNING)
+
+#define CLONE(type) public: virtual type* Clone() { return new type(*this); }
+#define CLONE_DISABLE(type) public: virtual type* Clone() { return nullptr; assert(nullptr); }

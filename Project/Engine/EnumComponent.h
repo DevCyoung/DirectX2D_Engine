@@ -6,11 +6,10 @@ class Component;
 enum class eComponentType 
 {
 	Transform,
-	Camera,
-	AfterImage,
 	Animator2D,
 	AudioListener,
 	AudioSource,
+	Camera,
 	CircleCollider2D,
 	EngineText,
 	Light2D,

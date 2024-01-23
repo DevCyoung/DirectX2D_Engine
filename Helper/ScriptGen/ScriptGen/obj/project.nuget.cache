@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "EDieQp9TBPxl1zwpDC1qmn8pYysiVj/2XsokKDlMgk0RGvhzI1/sNujvUimE8aEujHPZLP07YNMiD3DmUaScCA==",
+  "dgSpecHash": "D5MT3dlV+mUD9YM8k+0SuK09XqQFstPwsNemUNI1VMQt3dVnxxMAr1NTYhNBDsnAhHlhKixY3jqeWU2V1Gp4+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tkdlq\\Desktop\\DirectX2D_Engine\\Helper\\ScriptGen\\ScriptGen\\ScriptGen.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\source\\DirectX2D_Engine\\Helper\\ScriptGen\\ScriptGen\\ScriptGen.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tkdlq\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\tkdlq\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\tkdlq\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\tkdlq\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.26\\microsoft.netcore.app.host.win-x64.6.0.26.nupkg.sha512"
+  ],
   "logs": []
 }

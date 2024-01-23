@@ -94,6 +94,7 @@ public:
 	const std::wstring& GetKey() const { return mKey; }
 	UINT GetFrameIdx() const { return static_cast<UINT>(mCurFrameIdx); }
 
+	//CLONE(Animation2D)
 private:
 	void lateUpdate();
 	void reset();

@@ -26,6 +26,11 @@ Camera::~Camera()
 {
 }
 
+Camera::Camera(const Camera& other)
+	: Component(other)
+{
+}
+
 void Camera::CalculateCamera()
 {
 	const Transform* const P_TRANSFORM = GetOwner()->GetComponent<Transform>();

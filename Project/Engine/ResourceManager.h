@@ -40,6 +40,10 @@ public:
 
 	template<typename T>
 		requires (is_engine_resource<T>::value)
+	T* FindAndLoad(const Key& relativePathOrName);
+
+	template<typename T>
+		requires (is_engine_resource<T>::value)
 	void Insert(const Key& relativePathOrName, T* const value);
 
 	const Dictionary&  GetDictionary(const eResourceType type);
@@ -135,6 +139,22 @@ template<typename T>
 inline void ResourceManager::LoadByEnum(const typename engine_resource_type<T>::eResEnumType resNameType)
 {
 	Load<T>(EnumResourcePath(resNameType));
+}
+
+template<typename T>
+	requires (is_engine_resource<T>::value)
+T* ResourceManager::FindAndLoad(const Key& relativePathOrName)
+{
+	T* resource = FindOrNull<T>(relativePathOrName);
+	if (nullptr == resource)
+	{
+		Load<T>(relativePathOrName);
+		resource = FindOrNull<T>(relativePathOrName);
+	}
+
+	Assert(resource, ASSERT_MSG_NULL);
+
+	return resource;
 }
 
 template<typename T>

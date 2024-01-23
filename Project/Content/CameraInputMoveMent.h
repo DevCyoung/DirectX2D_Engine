@@ -9,9 +9,10 @@ class CameraInputMoveMent : public ScriptComponent
 public:
 	CameraInputMoveMent();
 	virtual ~CameraInputMoveMent();
-	CameraInputMoveMent(const CameraInputMoveMent&) = delete;
+	//CameraInputMoveMent(const CameraInputMoveMent&) = delete;
 	CameraInputMoveMent& operator=(const CameraInputMoveMent&) = delete;
 
+	CLONE(CameraInputMoveMent)
 private:
 	virtual void initialize() override final;
 	virtual void update() override final;

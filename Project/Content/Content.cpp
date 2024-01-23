@@ -14,6 +14,8 @@
 #include <Engine/Camera.h>
 #include <Engine/Transform.h>
 #include "SoundManager.h"
+#include "CameraInputMoveMent.h"
+#include <Engine/SpriteRenderer.h>
 Content::Content()
 {
 	//resourceInitialize();
@@ -42,17 +44,56 @@ Content::Content()
 		GameObject* const mainCamera = new GameObject();		
 		mainCamera->AddComponent<Camera>();
 		mainCamera->GetComponent<Camera>()->SetProjectionType(eCameraProjectionType::Perspective);
-		//mainCamera->AddComponent<CameraInputMoveMent>();
+		mainCamera->AddComponent<CameraInputMoveMent>();
 
 		mainCamera->GetComponent<Transform>()->SetPosition(0.f, 0.f, -3000.f);
 		mainCamera->GetComponent<Camera>()->SetPriorityType(eCameraPriorityType::Main);
 		mainCamera->GetComponent<Camera>()->SetRenderTargetSize(screenSize);
 		mainCamera->GetComponent<Camera>()->TurnOnAllLayer();		
 
+		mainCamera->SetName(L"mainCamera");
 		testScene->AddGameObject(mainCamera, eLayerType::Default);
 	}
 
 
+	{
+		Material* const material = new Material();
+
+		Texture* texture = 
+			gResourceManager->FindAndLoad<Texture>(EnumResourcePath(eResTexture::Map_Chinatown01_Tilemap));
+
+		Shader* shader = 
+			gResourceManager->FindAndLoad<Shader>(L"Sprite2D");
+
+		Mesh* rectMesh =
+			gResourceManager->FindAndLoad<Mesh>(L"FillRect2D");
+
+		material->SetTexture(texture);
+		material->SetShader(shader);
+		gResourceManager->Insert<Material>(L"default mat", material);
+
+
+		GameObject* obj = new GameObject();
+		obj->AddComponent<SpriteRenderer>();
+
+		obj->GetComponent<SpriteRenderer>()->SetMaterial(material);
+		obj->GetComponent<SpriteRenderer>()->SetMesh(rectMesh);
+		obj->SetName(L"Map");
+
+		GameObject* copyObj = obj->Clone(); 
+		Transform* const transform = copyObj->GetComponent<Transform>();
+		Vector3 pos = transform->GetPosition();
+		pos.y += 2000.f;
+		transform->SetPosition(pos);
+
+		copyObj->SetName(L"CopyMap");
+		transform->SetRotation(Vector3(0.f, 0.f, 30.f));
+
+		testScene->AddGameObject(obj, eLayerType::Default);
+		testScene->AddGameObject(copyObj, eLayerType::Door);
+		//material->SetTexture()
+
+	}
 	////Material
 	//{
 	//	Material* const material =

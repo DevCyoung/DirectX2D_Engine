@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ResourceHelper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+993735987f25b5f6c15d54d843e619e7ec987778")]
 [assembly: System.Reflection.AssemblyProductAttribute("ResourceHelper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ResourceHelper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

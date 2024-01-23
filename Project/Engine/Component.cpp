@@ -12,6 +12,13 @@ Component::~Component()
 {
 }
 
+Component::Component(const Component& other)
+	: mType(other.mType)
+	, mOwner(nullptr)
+{
+
+}
+
 Component* Component::GetComponentOrNull(const eComponentType componentType) const
 {
 	return GetOwner()->GetComponentOrNull(componentType);

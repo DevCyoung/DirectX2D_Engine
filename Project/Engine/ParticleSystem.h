@@ -13,8 +13,10 @@ class ParticleSystem : public RenderComponent
 public:
 	ParticleSystem();
 	virtual ~ParticleSystem();
-	ParticleSystem(const ParticleSystem&) = delete;
+	ParticleSystem(const ParticleSystem& other);
 	ParticleSystem& operator=(const ParticleSystem&) = delete;
+
+	CLONE(ParticleSystem)
 
 private:
 	virtual void initialize() override final;

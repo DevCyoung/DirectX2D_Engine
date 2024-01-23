@@ -153,14 +153,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AlphaHelper.h" />
+    <ClInclude Include="ComponentUI.h" />
     <ClInclude Include="DockSpace.h" />
     <ClInclude Include="Editor.h" />
-    <ClInclude Include="EngineResourceLoader.h" />
+    <ClInclude Include="EditorResourceLoader.h" />
     <ClInclude Include="EditorViewUI.h" />
     <ClInclude Include="ESCUI.h" />
     <ClInclude Include="FolderUI.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="EditorUIInitialize.h" />
+    <ClInclude Include="EditorPanelInitialize.h" />
+    <ClInclude Include="GameObjectViewUI.h" />
     <ClInclude Include="InspectorUI.h" />
     <ClInclude Include="ItemUI.h" />
     <ClInclude Include="LogUI.h" />
@@ -169,19 +171,22 @@
     <ClInclude Include="PanelUI.h" />
     <ClInclude Include="ResourceUI.h" />
     <ClInclude Include="GameViewUI.h" />
+    <ClInclude Include="ResourceViewUI.h" />
     <ClInclude Include="TestUI.h" />
     <ClInclude Include="TestUI2.h" />
     <ClInclude Include="UIHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlphaHelper.cpp" />
+    <ClCompile Include="ComponentUI.cpp" />
     <ClCompile Include="DockSpace.cpp" />
     <ClCompile Include="Editor.cpp" />
-    <ClCompile Include="EngineResourceLoader.cpp" />
-    <ClCompile Include="EditorUIInitialize.cpp" />
+    <ClCompile Include="EditorResourceLoader.cpp" />
+    <ClCompile Include="EditorPanelInitialize.cpp" />
     <ClCompile Include="EditorViewUI.cpp" />
     <ClCompile Include="ESCUI.cpp" />
     <ClCompile Include="FolderUI.cpp" />
+    <ClCompile Include="GameObjectViewUI.cpp" />
     <ClCompile Include="InspectorUI.cpp" />
     <ClCompile Include="ItemUI.cpp" />
     <ClCompile Include="LogUI.cpp" />
@@ -195,6 +200,7 @@
     <ClCompile Include="PanelUI.cpp" />
     <ClCompile Include="ResourceUI.cpp" />
     <ClCompile Include="GameViewUI.cpp" />
+    <ClCompile Include="ResourceViewUI.cpp" />
     <ClCompile Include="TestUI.cpp" />
     <ClCompile Include="TestUI2.cpp" />
     <ClCompile Include="UIHelper.cpp" />

@@ -13,7 +13,7 @@ class Camera : public Component
 public:
 	Camera();
 	virtual ~Camera();
-	Camera(const Camera&) = delete;
+	Camera(const Camera& other);
 	Camera& operator=(const Camera&) = delete;
 
 	float GetFOV() const { return mFOV; }
@@ -44,6 +44,7 @@ public:
 
 	void CalculateCamera();
 
+	CLONE(Camera)
 private:
 	virtual void initialize() override final;
 	virtual void update() override final;

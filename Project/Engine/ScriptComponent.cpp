@@ -12,6 +12,12 @@ ScriptComponent::~ScriptComponent()
 {
 }
 
+ScriptComponent::ScriptComponent(const ScriptComponent& other)
+	: Component(other)
+	, mScriptComponentType(other.mScriptComponentType)
+{
+}
+
 void ScriptComponent::initialize()
 {
 }
