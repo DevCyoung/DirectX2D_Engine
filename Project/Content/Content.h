@@ -7,13 +7,13 @@ class Content
 		LPWSTR lpCmdLine, int nCmdShow);
 	SINGLETON_DECLARE(Content);
 
-private:
-	void loadShader();	
-	void loadTexture();
-	void loadMaterial();
-	void loadUIMaterial();	
-
-private:
-	void resourceInitialize();
-	void testSceneInitialize();
+//private:
+//	void loadShader();	
+//	void loadTexture();
+//	void loadMaterial();
+//	void loadUIMaterial();	
+//
+//private:
+//	void resourceInitialize();
+//	void testSceneInitialize();
 };

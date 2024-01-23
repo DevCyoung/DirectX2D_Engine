@@ -7,6 +7,30 @@
     <Filter Include="Windows\diff">
       <UniqueIdentifier>{a3755df9-006f-44d9-9b02-2f1ca79c02bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{979c0109-8357-4852-b535-29e01dc23a1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\01. ScriptComponent">
+      <UniqueIdentifier>{de857324-cd4d-4a4d-80a7-707699222472}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\01. ScriptComponent\Camera">
+      <UniqueIdentifier>{f33adfa7-ae53-4c27-b2dc-1f5fa529591d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\01. ScriptComponent\Cursur">
+      <UniqueIdentifier>{f0c38e71-c5ab-4474-874a-981d4a959921}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enum">
+      <UniqueIdentifier>{c34d8bbf-e30d-458e-8f53-43db7792fa6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{df7c758c-f2a8-43fd-9b81-4685458a5dcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content">
+      <UniqueIdentifier>{696114eb-0954-476b-85b0-ef47c3412d7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{faede2d2-c3d9-43c8-ba24-6bec305df60e}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ShaderCode">
       <UniqueIdentifier>{2c32228f-6400-4c12-ba3a-80bcc9e68287}</UniqueIdentifier>
     </Filter>
@@ -43,6 +67,9 @@
     <Filter Include="ShaderCode\Animation2D\Default">
       <UniqueIdentifier>{94448bfb-0a9c-49b0-be0b-e372b3e909ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShaderCode\Animation2D\Func">
+      <UniqueIdentifier>{46deedfb-ba22-4e88-95bb-c97fb76e3859}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ShaderCode\UI2D">
       <UniqueIdentifier>{aee2bc8d-d011-4783-9a74-cbcb67812661}</UniqueIdentifier>
     </Filter>
@@ -51,9 +78,6 @@
     </Filter>
     <Filter Include="ShaderCode\CS">
       <UniqueIdentifier>{79fab949-91ff-4944-bcfd-33db9e478b16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source">
-      <UniqueIdentifier>{979c0109-8357-4852-b535-29e01dc23a1e}</UniqueIdentifier>
     </Filter>
     <Filter Include="ShaderCode\PostProcess">
       <UniqueIdentifier>{c153dbaa-2d4f-402b-8399-f18f9cb1e231}</UniqueIdentifier>
@@ -67,9 +91,6 @@
     <Filter Include="ShaderCode\PostProcess\Wave">
       <UniqueIdentifier>{7a53df83-11e2-4b51-a365-71eca2be745e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ShaderCode\Animation2D\Func">
-      <UniqueIdentifier>{46deedfb-ba22-4e88-95bb-c97fb76e3859}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ShaderCode\ColorFun">
       <UniqueIdentifier>{903e7170-e939-465b-abe1-b003ce72f52d}</UniqueIdentifier>
     </Filter>
@@ -79,314 +100,14 @@
     <Filter Include="ShaderCode\NextScene">
       <UniqueIdentifier>{5b54fdfb-721b-4509-a6f6-46a87bc3fcc1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\KatanaZero">
-      <UniqueIdentifier>{bd805b6d-a635-4b4c-b992-e73a01994808}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster">
-      <UniqueIdentifier>{600d1667-160f-4bf2-af48-23cf36204ae5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\Basic">
-      <UniqueIdentifier>{4e0cd81e-9b66-4b75-9a18-720716927c97}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\Kissyface">
-      <UniqueIdentifier>{f2910e30-2ca8-4d61-ae07-eaa20936041b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\Kissyface\Axe">
-      <UniqueIdentifier>{84be3502-5932-4a03-84f2-6a055c43bdad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter">
-      <UniqueIdentifier>{ce691067-684e-4315-9fb0-b79f362b1580}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\State">
-      <UniqueIdentifier>{4a59bafa-d671-4b24-8b41-9f305f0f9ed2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\State\BoomShot">
-      <UniqueIdentifier>{79e0fcab-a05f-4bba-8615-058dbf2f2d6b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\State\Idle">
-      <UniqueIdentifier>{2adfc449-7c31-4e20-a09b-b6b07c429fef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\State\SwordDash">
-      <UniqueIdentifier>{db3b7e04-4fc9-4a4b-a359-e108d43e5dd0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\State\Aim">
-      <UniqueIdentifier>{f63c070f-67ac-4ace-b4f3-9d44195a9caf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\State\Sweep">
-      <UniqueIdentifier>{c56d4e22-b502-40c4-8479-d3297cd6eab8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\State\TeleportShot">
-      <UniqueIdentifier>{989f1f7a-db9a-4df2-afe2-0ad5117f2ced}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\State\TelpoertShotGround">
-      <UniqueIdentifier>{3d4ed7c8-14a8-4a07-84c0-52692a77021f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\State\WallJump">
-      <UniqueIdentifier>{81d9dd3e-81d2-4354-9aa0-7d8405000602}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\State\Roll">
-      <UniqueIdentifier>{34c6e296-d897-45b0-8d8e-c4fe97d3b43e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\State\Hurt">
-      <UniqueIdentifier>{d4c73121-fe5e-49de-b8de-2aa283aea242}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\HeadHunterBullet">
-      <UniqueIdentifier>{ac3fe21c-edd9-4ea2-87e4-1500e4941246}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\MonsterFSM">
-      <UniqueIdentifier>{c8b5f6f0-6984-4981-b8cc-445f789eabd2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\MonsterState">
-      <UniqueIdentifier>{9d429bc3-594e-46d5-9e32-76a9b55f47fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\Lazer">
-      <UniqueIdentifier>{83346e43-78e9-4dea-9a5f-3cb1ea792c50}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent">
-      <UniqueIdentifier>{de857324-cd4d-4a4d-80a7-707699222472}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\Enum">
-      <UniqueIdentifier>{c34d8bbf-e30d-458e-8f53-43db7792fa6e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\Movement">
-      <UniqueIdentifier>{d9d4e410-c75a-4f94-b17b-90014d16b5bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\Movement\Bullet">
-      <UniqueIdentifier>{58311b9c-d575-4f29-af48-66c9f6f89ad7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\Movement\Cursur">
-      <UniqueIdentifier>{f0c38e71-c5ab-4474-874a-981d4a959921}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\Movement\Camera">
-      <UniqueIdentifier>{f33adfa7-ae53-4c27-b2dc-1f5fa529591d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\Movement\Player">
-      <UniqueIdentifier>{4a8600b9-3ddd-42b4-826d-d1d3defbd9bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\Movement\Head">
-      <UniqueIdentifier>{41f1b473-d3ff-4578-b067-76cb627f7fda}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\Test">
-      <UniqueIdentifier>{71fc1149-d8c0-4313-a60e-2304d41cfd1c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\Controller">
-      <UniqueIdentifier>{cf4bab5e-0fe1-4d3f-afb9-7f1f0515b5a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\Painter">
-      <UniqueIdentifier>{a2c84493-1cd2-4ce6-9a07-185f34f86f27}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\SimpleEditor">
-      <UniqueIdentifier>{dc9908f6-6253-49b2-963f-ff9c695470ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\Camera">
-      <UniqueIdentifier>{b39585e2-de8f-4609-a019-8700bab21ccf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\DrawPoint">
-      <UniqueIdentifier>{ddb57e3c-7a62-4907-87ca-5c9768ba5b66}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\MonsterAttack">
-      <UniqueIdentifier>{c9b7d216-58c6-47f4-9a8c-d65b79663168}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\TitleController">
-      <UniqueIdentifier>{c854c235-690a-427c-a675-ae1c280e3eb7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\CameraWall">
-      <UniqueIdentifier>{cd965ccd-c04f-4654-ba75-091be96bb144}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Door">
-      <UniqueIdentifier>{60c28fe2-5f39-429d-8151-916c09e4e024}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Effect">
-      <UniqueIdentifier>{5ed3a29f-a158-4708-b1d6-9b82fdea2cb9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Emotion">
-      <UniqueIdentifier>{dddb7728-15ab-4432-9bbf-4eec6be55dc7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM">
-      <UniqueIdentifier>{3b3dedf0-265a-41e4-8441-2f709e68542b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player">
-      <UniqueIdentifier>{93ff9403-9d95-4578-8af6-73b327337cbf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State">
-      <UniqueIdentifier>{d8c2f1bf-d77c-44ae-808e-2d4c7d2eeb6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\Global">
-      <UniqueIdentifier>{d1103c1c-2f4a-41a0-96d3-0ffbad04b644}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\Attack">
-      <UniqueIdentifier>{61b52298-f13f-48f1-83be-996192c64b14}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\Crouch">
-      <UniqueIdentifier>{13d7c632-10a6-4acd-8466-6f08d85520d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\Door">
-      <UniqueIdentifier>{2d28dd69-8f6b-4427-9be8-a71239a3216a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\Fall">
-      <UniqueIdentifier>{24228ce0-afec-4db7-920f-22100996a1d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\Flip">
-      <UniqueIdentifier>{c3bf0f49-871c-4ce4-a627-0a3b24079934}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\Idle">
-      <UniqueIdentifier>{683210c4-220e-4b18-b70d-721370c4d910}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\Jump">
-      <UniqueIdentifier>{fd1fe958-b913-402f-84d0-7f72851df129}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\Roll">
-      <UniqueIdentifier>{5890842c-539b-4190-9c21-2deb63c2758e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\Run">
-      <UniqueIdentifier>{1a2bb23a-2c3c-48b3-80d9-e9ea3f7dbbac}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\BaseState">
-      <UniqueIdentifier>{fd59b941-2690-4f0d-9ee2-0a6ddc84008a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\WallSlide">
-      <UniqueIdentifier>{33c5125e-4f82-4620-8594-385476bbc988}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\Recover">
-      <UniqueIdentifier>{a6c80dec-83f3-4a97-afd0-0a92118aec78}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\HurtGroudn">
-      <UniqueIdentifier>{81fe54c4-5f9f-4372-87ba-dfbc3286e4b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\State\Hurt">
-      <UniqueIdentifier>{fc5fccb3-bc31-476b-b9d2-6e92361b3812}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Player\FSM">
-      <UniqueIdentifier>{4796df72-b367-4664-b396-22777fb27ae0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\FSM">
-      <UniqueIdentifier>{dcc40d4d-ab21-4cf7-a907-f3d7474a44c5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\FSM\FSM">
-      <UniqueIdentifier>{81adf7ee-b7b9-4911-ac4f-2bae707e204e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\FSM\State">
-      <UniqueIdentifier>{206682db-1b1a-4a7d-b997-d2530a1890d3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\FSM\Monster">
-      <UniqueIdentifier>{edfc66bc-1933-448d-b349-9c174e736569}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\GlassWindow">
-      <UniqueIdentifier>{1d25ce4d-bb4a-4ede-9ea9-ef5a9462ae11}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Helper">
-      <UniqueIdentifier>{62501ae3-1002-480d-bc13-d492a198f2ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Helper\Builder">
-      <UniqueIdentifier>{459c7f76-89f1-41a4-a31e-c85b091c460f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Helper\ResourceManager">
-      <UniqueIdentifier>{b5760e71-803f-4f22-9af7-d44435ab071e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Helper\UI">
-      <UniqueIdentifier>{f941533d-3a3d-44f6-830e-e9959d0a18dc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Manager">
-      <UniqueIdentifier>{c40f4645-f0d2-44e3-bef5-55aa4a96612c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Manager\Sound">
-      <UniqueIdentifier>{9dc54863-4ef6-4da2-a1ca-66faeadde459}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Manager\Effect">
-      <UniqueIdentifier>{b28c5fd4-583c-4a26-a2f6-05ba7ef87782}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Manager\Camera">
-      <UniqueIdentifier>{a58ebbe2-24dc-41d4-91f1-7bb225f2ebb6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Manager\Event">
-      <UniqueIdentifier>{fa21994b-0f88-46a9-ad93-339efc045536}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Manager\Rewinde">
-      <UniqueIdentifier>{d1ae7589-6668-489c-8d74-f07e20bee401}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Manager\TimeController">
-      <UniqueIdentifier>{1bcc050a-6438-4d10-884f-2f6bbbf54afd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\NextScene">
-      <UniqueIdentifier>{68619888-a282-41fa-87ed-ceeddada52e8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\PathInfo">
-      <UniqueIdentifier>{5965c590-ce0e-4b11-9085-f0d65e1a1f9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\PathNode">
-      <UniqueIdentifier>{6536535c-c17c-4074-aaeb-fa920f5ad003}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\PlayerPath">
-      <UniqueIdentifier>{b96618cf-3dc6-4e1b-b53c-503e07065bf0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Resources">
-      <UniqueIdentifier>{df7c758c-f2a8-43fd-9b81-4685458a5dcf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Scene">
-      <UniqueIdentifier>{dc9dacee-4c8c-4f52-a1b7-a2548ff7810f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Scene\CollideTest">
-      <UniqueIdentifier>{429f4d90-ac74-41bc-989e-ed00f2f0aa4a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Scene\Scene">
-      <UniqueIdentifier>{cc7e087a-78df-4419-bf59-204d1219fdb7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Scene\TestScene">
-      <UniqueIdentifier>{b4cc37bf-4262-411a-a8c1-6ad544b0e563}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Scene\KatanaScene">
-      <UniqueIdentifier>{d36bb7c3-ff5b-4762-84ae-c8c39b76cd9a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Scene\KatanaScene\HeadHunter">
-      <UniqueIdentifier>{5bb296e2-92d1-45c0-b3c4-2d5be6c8f361}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Scene\KatanaScene\Chinatown05">
-      <UniqueIdentifier>{20332b64-296c-4050-bb16-34cb7cddc831}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Scene\KatanaScene\Chinatown04">
-      <UniqueIdentifier>{e8cd688f-3ebd-4352-a0f3-3a059f04198c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Scene\KatanaScene\Chianatown01">
-      <UniqueIdentifier>{da98e5d6-9aba-4417-8f28-dcfa99b62c7b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Scene\KatanaScene\TitleScene">
-      <UniqueIdentifier>{96946f4c-9e4a-43d1-9bde-9ef81cae4896}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Scene\KatanaScene\Kissyface">
-      <UniqueIdentifier>{ac7d4fa4-5d8b-402c-bf96-d058c3592e5f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Slash">
-      <UniqueIdentifier>{3dc28996-3fd3-4727-a7e6-07ba64206727}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\KatanaSystem">
-      <UniqueIdentifier>{12266bf0-d4c2-4c80-ba1d-26b18ee46056}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\ClearController">
-      <UniqueIdentifier>{7590177d-b653-4065-b9c1-0c88bcfacdf9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\CCTVText">
-      <UniqueIdentifier>{bc8fee25-c2c4-4118-9856-4f129f7980d2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\01. ScriptComponent\DieController">
-      <UniqueIdentifier>{ebf54f7e-703d-44e3-8b12-fa37ec0ddfab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\State\PreJump">
-      <UniqueIdentifier>{45a9cb49-0df6-46ca-ae94-0cb810dbc0be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\Bullet">
-      <UniqueIdentifier>{35a816ee-b9cc-45c2-88b5-31e577562eee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\KatanaZero\Monster\HeadHunter\State\Die">
-      <UniqueIdentifier>{fed197c8-9669-43aa-817c-d987598a2ff1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ShaderCode\AlphaTo">
       <UniqueIdentifier>{7201c858-a042-4236-877b-61cf4596e9cb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Default">
-      <UniqueIdentifier>{849936a0-7dc3-4133-90e3-bb684b81563e}</UniqueIdentifier>
+    <Filter Include="Manager\Sound">
+      <UniqueIdentifier>{9dc54863-4ef6-4da2-a1ca-66faeadde459}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Content">
-      <UniqueIdentifier>{696114eb-0954-476b-85b0-ef47c3412d7f}</UniqueIdentifier>
+    <Filter Include="Manager\Resource">
+      <UniqueIdentifier>{b5760e71-803f-4f22-9af7-d44435ab071e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -397,697 +118,97 @@
       <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="Content.h">
-      <Filter>Source\Content</Filter>
+      <Filter>Content</Filter>
     </ClInclude>
     <ClInclude Include="EnumResourceTypeAnimation.h">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="EnumResourceTypeFont.h">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="EnumResourceTypeMaterial.h">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="EnumResourceTypeMesh.h">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="EnumResourceTypeShader.h">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="EnumResourceTypeSound.h">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="EnumResourceTypeTexture.h">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="EnumResourceTypeScene.h">
-      <Filter>Source\KatanaZero\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjectBuilder.h">
-      <Filter>Source\KatanaZero\Helper\Builder</Filter>
-    </ClInclude>
-    <ClInclude Include="MaterialBuilder.h">
-      <Filter>Source\KatanaZero\Helper\Builder</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
-      <Filter>Source\KatanaZero\Helper\ResourceManager</Filter>
+      <Filter>Manager\Resource</Filter>
     </ClInclude>
     <ClInclude Include="EnumScriptComponent.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Enum</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerMovementTest.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Movement\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Bugiman.h">
-      <Filter>Source\KatanaZero\Helper\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="ShiftController.h">
-      <Filter>Source\KatanaZero\Helper\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="TestScript.h">
-      <Filter>Source\KatanaZero\Helper\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="UIEffect.h">
-      <Filter>Source\KatanaZero\Helper\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Collide2DTestScene.h">
-      <Filter>Source\KatanaZero\Scene\CollideTest</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletMovement.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Movement\Bullet</Filter>
+      <Filter>Enum</Filter>
     </ClInclude>
     <ClInclude Include="CursorMovement.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Movement\Cursur</Filter>
+      <Filter>Source\01. ScriptComponent\Cursur</Filter>
     </ClInclude>
     <ClInclude Include="CameraInputMoveMent.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Movement\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="LerpTest.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="InputMovementTest.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="ChildTest.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="ParentTest.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>Source\KatanaZero\Scene\KatanaScene\TitleScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Chinatown01Scene.h">
-      <Filter>Source\KatanaZero\Scene\KatanaScene\Chianatown01</Filter>
-    </ClInclude>
-    <ClInclude Include="NoiseTest.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="Chinatown04Scene.h">
-      <Filter>Source\KatanaZero\Scene\KatanaScene\Chinatown04</Filter>
-    </ClInclude>
-    <ClInclude Include="Chinatown04Controller.h">
-      <Filter>Source\KatanaZero\Scene\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Chinatown05Scene.h">
-      <Filter>Source\KatanaZero\Scene\KatanaScene\Chinatown05</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterScene.h">
-      <Filter>Source\KatanaZero\Scene\KatanaScene\HeadHunter</Filter>
-    </ClInclude>
-    <ClInclude Include="PickPixelTest.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerController.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerFSM.h">
-      <Filter>Source\KatanaZero\FSM\Player\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="FiniteStateMachine.h">
-      <Filter>Source\KatanaZero\FSM\FSM\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="FSMState.h">
-      <Filter>Source\KatanaZero\FSM\FSM\State</Filter>
-    </ClInclude>
-    <ClInclude Include="GridPainter.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Painter</Filter>
-    </ClInclude>
-    <ClInclude Include="Rect2DInterpolation.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerAttackState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\Attack</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerCrouchState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\Crouch</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerDoorBreakFullState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\Door</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerDoorState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\Door</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerGlobalState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\Global</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerFallState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\Fall</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerFlipState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\Flip</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerIdleState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\Idle</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerJumpState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\Jump</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerRollState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\Roll</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerRunState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\Run</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\BaseState</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerWallSlideState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\WallSlide</Filter>
-    </ClInclude>
-    <ClInclude Include="TestScene.h">
-      <Filter>Source\KatanaZero\Scene\TestScene</Filter>
-    </ClInclude>
-    <ClInclude Include="SimpleEditorCollider2D.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\SimpleEditor</Filter>
-    </ClInclude>
-    <ClInclude Include="FolowPlayer.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="SimpleDrawPoint.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\DrawPoint</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Source\KatanaZero\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="PathInfo.h">
-      <Filter>Source\KatanaZero\PathInfo</Filter>
-    </ClInclude>
-    <ClInclude Include="PathNode.h">
-      <Filter>Source\KatanaZero\PathNode</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerPath.h">
-      <Filter>Source\KatanaZero\PlayerPath</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerRecoverState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\Recover</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerHurtGroundState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\HurtGroudn</Filter>
-    </ClInclude>
-    <ClInclude Include="RewindManager.h">
-      <Filter>Source\KatanaZero\Manager\Rewinde</Filter>
-    </ClInclude>
-    <ClInclude Include="RewindComponent.h">
-      <Filter>Source\KatanaZero\Manager\Rewinde</Filter>
-    </ClInclude>
-    <ClInclude Include="KatanaScene.h">
-      <Filter>Source\KatanaZero\Scene\KatanaScene</Filter>
-    </ClInclude>
-    <ClInclude Include="KissyfaceScene.h">
-      <Filter>Source\KatanaZero\Scene\KatanaScene\Kissyface</Filter>
-    </ClInclude>
-    <ClInclude Include="AxeMovement.h">
-      <Filter>Source\KatanaZero\Monster\Kissyface\Axe</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterAttack.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\MonsterAttack</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerHurtState.h">
-      <Filter>Source\KatanaZero\FSM\Player\State\Hurt</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadMovement.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Movement\Head</Filter>
+      <Filter>Source\01. ScriptComponent\Camera</Filter>
     </ClInclude>
     <ClInclude Include="EnumResourceTypeAudioClip.h">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="SoundManager.h">
-      <Filter>Source\KatanaZero\Manager\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="SlashComponent.h">
-      <Filter>Source\KatanaZero\Slash</Filter>
-    </ClInclude>
-    <ClInclude Include="DoorController.h">
-      <Filter>Source\KatanaZero\Door</Filter>
-    </ClInclude>
-    <ClInclude Include="EffectManager.h">
-      <Filter>Source\KatanaZero\Manager\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Effect2D.h">
-      <Filter>Source\KatanaZero\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraManager.h">
-      <Filter>Source\KatanaZero\Manager\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="EventManager.h">
-      <Filter>Source\KatanaZero\Manager\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraWall.h">
-      <Filter>Source\KatanaZero\CameraWall</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeController.h">
-      <Filter>Source\KatanaZero\Manager\TimeController</Filter>
-    </ClInclude>
-    <ClInclude Include="BasicMonsterAI.h">
-      <Filter>Source\KatanaZero\Monster\Basic</Filter>
-    </ClInclude>
-    <ClInclude Include="CopAI.h">
-      <Filter>Source\KatanaZero\Monster\Basic</Filter>
-    </ClInclude>
-    <ClInclude Include="GangsterAI.h">
-      <Filter>Source\KatanaZero\Monster\Basic</Filter>
-    </ClInclude>
-    <ClInclude Include="KissyfaceAI.h">
-      <Filter>Source\KatanaZero\Monster\Kissyface</Filter>
-    </ClInclude>
-    <ClInclude Include="ShieldCop.h">
-      <Filter>Source\KatanaZero\Monster\Basic</Filter>
-    </ClInclude>
-    <ClInclude Include="ShotGunAI.h">
-      <Filter>Source\KatanaZero\Monster\Basic</Filter>
-    </ClInclude>
-    <ClInclude Include="GalssWindow.h">
-      <Filter>Source\KatanaZero\GlassWindow</Filter>
-    </ClInclude>
-    <ClInclude Include="GlassParticle.h">
-      <Filter>Source\KatanaZero\GlassWindow</Filter>
-    </ClInclude>
-    <ClInclude Include="Emotion.h">
-      <Filter>Source\KatanaZero\Emotion</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterState.h">
-      <Filter>Source\KatanaZero\Monster\MonsterState</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterFSM.h">
-      <Filter>Source\KatanaZero\Monster\MonsterFSM</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterBullet.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\HeadHunterBullet</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterSwordDash.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\SwordDash</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterIdle.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\Idle</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterBoomShot.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\BoomShot</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterAim.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\Aim</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterAI.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterSweep.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\Sweep</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterTeleport.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\TeleportShot</Filter>
-    </ClInclude>
-    <ClInclude Include="TeleportGround.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\TelpoertShotGround</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterWallJump.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\WallJump</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterRoll.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\Roll</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterLazer.h">
-      <Filter>Source\KatanaZero\Monster\Lazer</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterHurt.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\Hurt</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleController.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\TitleController</Filter>
-    </ClInclude>
-    <ClInclude Include="NexeScene.h">
-      <Filter>Source\KatanaZero\NextScene</Filter>
-    </ClInclude>
-    <ClInclude Include="KatanaZeroSystem.h">
-      <Filter>Source\KatanaZero\KatanaSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="ClearController.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\ClearController</Filter>
-    </ClInclude>
-    <ClInclude Include="CCTVTextDrawer.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\CCTVText</Filter>
-    </ClInclude>
-    <ClInclude Include="DieController.h">
-      <Filter>Source\KatanaZero\01. ScriptComponent\DieController</Filter>
-    </ClInclude>
-    <ClInclude Include="SlashEffectMovement.h">
-      <Filter>Source\KatanaZero\Slash</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterPreJump.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\PreJump</Filter>
-    </ClInclude>
-    <ClInclude Include="HeadHunterDie.h">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\Die</Filter>
+      <Filter>Manager\Sound</Filter>
     </ClInclude>
     <ClInclude Include="ScreenSize.h" />
-    <ClInclude Include="DefaultScene.h">
-      <Filter>Source\Default</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="Content.cpp">
-      <Filter>Source\Content</Filter>
+      <Filter>Content</Filter>
     </ClCompile>
     <ClCompile Include="EnumResourceTypeAnimation.cpp">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="EnumResourceTypeFont.cpp">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="EnumResourceTypeMaterial.cpp">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="EnumResourceTypeMesh.cpp">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="EnumResourceTypeShader.cpp">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="EnumResourceTypeSound.cpp">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="EnumResourceTypeTexture.cpp">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="EnumResourceTypeScene.cpp">
-      <Filter>Source\KatanaZero\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObjectBuilder.cpp">
-      <Filter>Source\KatanaZero\Helper\Builder</Filter>
-    </ClCompile>
-    <ClCompile Include="MaterialBuilder.cpp">
-      <Filter>Source\KatanaZero\Helper\Builder</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="EnumScriptComponent.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Enum</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerMovementTest.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Movement\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Bugiman.cpp">
-      <Filter>Source\KatanaZero\Helper\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="ShiftController.cpp">
-      <Filter>Source\KatanaZero\Helper\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="TestScript.cpp">
-      <Filter>Source\KatanaZero\Helper\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="UIEffect.cpp">
-      <Filter>Source\KatanaZero\Helper\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Collide2DTestScene.cpp">
-      <Filter>Source\KatanaZero\Scene\CollideTest</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletMovement.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Movement\Bullet</Filter>
+      <Filter>Enum</Filter>
     </ClCompile>
     <ClCompile Include="CursorMovement.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Movement\Cursur</Filter>
+      <Filter>Source\01. ScriptComponent\Cursur</Filter>
     </ClCompile>
     <ClCompile Include="CameraInputMoveMent.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Movement\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="LerpTest.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="InputMovementTest.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="ChildTest.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="ParentTest.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>Source\KatanaZero\Scene\KatanaScene\TitleScene</Filter>
-    </ClCompile>
-    <ClCompile Include="Chinatown01Scene.cpp">
-      <Filter>Source\KatanaZero\Scene\KatanaScene\Chianatown01</Filter>
-    </ClCompile>
-    <ClCompile Include="NoiseTest.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Chinatown04Scene.cpp">
-      <Filter>Source\KatanaZero\Scene\KatanaScene\Chinatown04</Filter>
-    </ClCompile>
-    <ClCompile Include="Chinatown04Controller.cpp">
-      <Filter>Source\KatanaZero\Scene\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Chinatown05Scene.cpp">
-      <Filter>Source\KatanaZero\Scene\KatanaScene\Chinatown05</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterScene.cpp">
-      <Filter>Source\KatanaZero\Scene\KatanaScene\HeadHunter</Filter>
-    </ClCompile>
-    <ClCompile Include="PickPixelTest.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerController.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerFSM.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="FiniteStateMachine.cpp">
-      <Filter>Source\KatanaZero\FSM\FSM\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="FSMState.cpp">
-      <Filter>Source\KatanaZero\FSM\FSM\State</Filter>
-    </ClCompile>
-    <ClCompile Include="GridPainter.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Painter</Filter>
-    </ClCompile>
-    <ClCompile Include="Rect2DInterpolation.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerAttackState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\Attack</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerCrouchState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\Crouch</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerDoorBreakFullState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\Door</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerDoorState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\Door</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerGlobalState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\Global</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerFallState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\Fall</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerFlipState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\Flip</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerIdleState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\Idle</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerJumpState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\Jump</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerRollState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\Roll</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerRunState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\Run</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\BaseState</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerWallSlideState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\WallSlide</Filter>
-    </ClCompile>
-    <ClCompile Include="TestScene.cpp">
-      <Filter>Source\KatanaZero\Scene\TestScene</Filter>
-    </ClCompile>
-    <ClCompile Include="SimpleEditorCollider2D.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\SimpleEditor</Filter>
-    </ClCompile>
-    <ClCompile Include="FolowPlayer.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="SimpleDrawPoint.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\DrawPoint</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Source\KatanaZero\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="PathInfo.cpp">
-      <Filter>Source\KatanaZero\PathInfo</Filter>
-    </ClCompile>
-    <ClCompile Include="PathNode.cpp">
-      <Filter>Source\KatanaZero\PathNode</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerPath.cpp">
-      <Filter>Source\KatanaZero\PlayerPath</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerRecoverState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\Recover</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerHurtGroundState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\HurtGroudn</Filter>
-    </ClCompile>
-    <ClCompile Include="RewindManager.cpp">
-      <Filter>Source\KatanaZero\Manager\Rewinde</Filter>
-    </ClCompile>
-    <ClCompile Include="RewindComponent.cpp">
-      <Filter>Source\KatanaZero\Manager\Rewinde</Filter>
-    </ClCompile>
-    <ClCompile Include="KatanaScene.cpp">
-      <Filter>Source\KatanaZero\Scene\KatanaScene</Filter>
-    </ClCompile>
-    <ClCompile Include="KissyfaceScene.cpp">
-      <Filter>Source\KatanaZero\Scene\KatanaScene\Kissyface</Filter>
-    </ClCompile>
-    <ClCompile Include="AxeMovement.cpp">
-      <Filter>Source\KatanaZero\Monster\Kissyface\Axe</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterAttack.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\MonsterAttack</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerHurtState.cpp">
-      <Filter>Source\KatanaZero\FSM\Player\State\Hurt</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadMovement.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\Movement\Head</Filter>
+      <Filter>Source\01. ScriptComponent\Camera</Filter>
     </ClCompile>
     <ClCompile Include="EnumResourceTypeAudioClip.cpp">
-      <Filter>Source\KatanaZero\Resources</Filter>
+      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="SoundManager.cpp">
-      <Filter>Source\KatanaZero\Manager\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="SlashComponent.cpp">
-      <Filter>Source\KatanaZero\Slash</Filter>
-    </ClCompile>
-    <ClCompile Include="DoorController.cpp">
-      <Filter>Source\KatanaZero\Door</Filter>
-    </ClCompile>
-    <ClCompile Include="EffectManager.cpp">
-      <Filter>Source\KatanaZero\Manager\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Effect2D.cpp">
-      <Filter>Source\KatanaZero\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraManager.cpp">
-      <Filter>Source\KatanaZero\Manager\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="EventManager.cpp">
-      <Filter>Source\KatanaZero\Manager\Event</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraWall.cpp">
-      <Filter>Source\KatanaZero\CameraWall</Filter>
-    </ClCompile>
-    <ClCompile Include="TimeController.cpp">
-      <Filter>Source\KatanaZero\Manager\TimeController</Filter>
-    </ClCompile>
-    <ClCompile Include="BasicMonsterAI.cpp">
-      <Filter>Source\KatanaZero\Monster\Basic</Filter>
-    </ClCompile>
-    <ClCompile Include="CopAI.cpp">
-      <Filter>Source\KatanaZero\Monster\Basic</Filter>
-    </ClCompile>
-    <ClCompile Include="GangsterAI.cpp">
-      <Filter>Source\KatanaZero\Monster\Basic</Filter>
-    </ClCompile>
-    <ClCompile Include="KissyfaceAI.cpp">
-      <Filter>Source\KatanaZero\Monster\Kissyface</Filter>
-    </ClCompile>
-    <ClCompile Include="ShieldCop.cpp">
-      <Filter>Source\KatanaZero\Monster\Basic</Filter>
-    </ClCompile>
-    <ClCompile Include="ShotGunAI.cpp">
-      <Filter>Source\KatanaZero\Monster\Basic</Filter>
-    </ClCompile>
-    <ClCompile Include="GalssWindow.cpp">
-      <Filter>Source\KatanaZero\GlassWindow</Filter>
-    </ClCompile>
-    <ClCompile Include="GlassParticle.cpp">
-      <Filter>Source\KatanaZero\GlassWindow</Filter>
-    </ClCompile>
-    <ClCompile Include="Emotion.cpp">
-      <Filter>Source\KatanaZero\Emotion</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterState.cpp">
-      <Filter>Source\KatanaZero\Monster\MonsterState</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterFSM.cpp">
-      <Filter>Source\KatanaZero\Monster\MonsterFSM</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterBullet.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\HeadHunterBullet</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterSwordDash.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\SwordDash</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterIdle.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\Idle</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterBoomShot.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\BoomShot</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterAim.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\Aim</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterAI.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterSweep.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\Sweep</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterTeleport.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\TeleportShot</Filter>
-    </ClCompile>
-    <ClCompile Include="TeleportGround.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\TelpoertShotGround</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterWallJump.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\WallJump</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterRoll.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\Roll</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterLazer.cpp">
-      <Filter>Source\KatanaZero\Monster\Lazer</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterHurt.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\Hurt</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleController.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\TitleController</Filter>
-    </ClCompile>
-    <ClCompile Include="NexeScene.cpp">
-      <Filter>Source\KatanaZero\NextScene</Filter>
-    </ClCompile>
-    <ClCompile Include="KatanaZeroSystem.cpp">
-      <Filter>Source\KatanaZero\KatanaSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="ClearController.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\ClearController</Filter>
-    </ClCompile>
-    <ClCompile Include="CCTVTextDrawer.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\CCTVText</Filter>
-    </ClCompile>
-    <ClCompile Include="DieController.cpp">
-      <Filter>Source\KatanaZero\01. ScriptComponent\DieController</Filter>
-    </ClCompile>
-    <ClCompile Include="SlashEffectMovement.cpp">
-      <Filter>Source\KatanaZero\Slash</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterPreJump.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\PreJump</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadHunterDie.cpp">
-      <Filter>Source\KatanaZero\Monster\HeadHunter\State\Die</Filter>
-    </ClCompile>
-    <ClCompile Include="DefaultScene.cpp">
-      <Filter>Source\Default</Filter>
+      <Filter>Manager\Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
