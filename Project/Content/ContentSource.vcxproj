@@ -227,6 +227,7 @@ call ScriptGen.exe ScriptComponent $(SolutionDir)Project\Content $(SolutionDir)P
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="DefaultScene.h" />
     <ClInclude Include="DieController.h">
       <SubType>
       </SubType>
@@ -499,6 +500,7 @@ call ScriptGen.exe ScriptComponent $(SolutionDir)Project\Content $(SolutionDir)P
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="DefaultScene.cpp" />
     <ClCompile Include="DieController.cpp">
       <SubType>
       </SubType>

@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "GameVIewUI.h"
+#include "GameViewUI.h"
 
 #include <Engine/Engine.h>
 #include <Engine/Texture.h>
@@ -14,7 +14,7 @@
 
 #include <Engine/TimeManager.h>
 #include <Engine/InputManager.h>
-void GameVIewUI::update()
+void GameViewUI::update()
 {
 	//Mouse
 	
@@ -28,7 +28,7 @@ void GameVIewUI::update()
 	Texture* renderTex = ResourceManager::GetInstance()->Find<Texture>(L"/Editor/HDRenderTexture");
 	Texture* depThTex = ResourceManager::GetInstance()->Find<Texture>(L"/Editor/HDDepthTexture");
 	Scene* currentScene = SceneManager::GetInstance()->GetCurrentScene();	
-	FLOAT backgroundColor[4] = {0.f, 1.0f, 1.f, 1.f};
+	FLOAT backgroundColor[4] = {0.5f, 0.5f, 0.5f, 1.f};
 	//currentScene->Render()
 
 	gGraphicDevice->ClearRenderTarget(
@@ -52,7 +52,7 @@ void GameVIewUI::update()
 	//float time = TimeManager::GetInstance()->EndTime(&start);
 	Engine::GetInstance()->OmSet();
 }
-void GameVIewUI::drawForm()
+void GameViewUI::drawForm()
 {
 	Texture* renderTex = ResourceManager::GetInstance()->Find<Texture>(L"/Editor/HDRenderTexture");
 	ID3D11ShaderResourceView* texture = renderTex->GetSRV();

@@ -7,7 +7,7 @@
 #include "ESCUI.h"
 #include "InspectorUI.h"
 #include "EditorViewUI.h"
-#include "GameVIewUI.h"
+#include "GameViewUI.h"
 #include "LogUI.h"
 void EditorUIInitialize()
 {		
@@ -16,7 +16,7 @@ void EditorUIInitialize()
 	AddPanel(new ESCUI);
 	AddPanel(new InspectorUI);
 	AddPanel(new EditorViewUI);
-	AddPanel(new GameVIewUI);
+	AddPanel(new GameViewUI);
 	AddPanel(new LogUI);
 }
 

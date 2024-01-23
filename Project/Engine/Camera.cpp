@@ -74,7 +74,7 @@ void Camera::initialize()
 {
 	Assert(mRenderTargetSize != Vector2::Zero, ASSERT_MSG_NULL);
 
-	GetOwner()->GetGameSystem()->GetRenderTargetRenderer()->registerRenderCamera(this);
+	GetOwner()->GetGameSystem()->GetRenderTargetRenderer()->RegisterRenderCamera(this);
 }
 
 void Camera::update()

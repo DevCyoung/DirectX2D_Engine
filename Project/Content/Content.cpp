@@ -26,35 +26,72 @@
 #include "SoundManager.h"
 #include "KatanaZeroSystem.h"
 
+#include "Collide2DTestScene.h"
+#include "GameObjectBuilder.h"
 Content::Content()
 {
 	resourceInitialize();
-
+	Scene* testScene = new Scene;
 	//Scene* testScene = new Collide2DTestScene;
-	KatanaScene* testScene = new TitleScene();
+	//KatanaScene* testScene = new TitleScene();
 	//KatanaScene* testScene = new Chinatown01Scene();
 	//KatanaScene* testScene = new Chinatown04Scene();
 	//KatanaScene* testScene = new Chinatown05Scene();
 	//KatanaScene* testScene = new HeadHunterScene();
 	//Scene* testScene = new KissyfaceScene();
 	//Scene* testScene = new TestScene();
-	KatanaZeroSystem::initialize();
+	//KatanaZeroSystem::initialize();
 	//KatanaZeroSystem::GetInstance()->SetCurentScene(testScene);
 
-	SoundManager::initialize();
+	//SoundManager::initialize();
 	//SoundManager::GetInstance()->PlayBackGround(eResAudioClip::song_chinatown, 0.2f);
 
-	TimeManager::initialize();
+	//TimeManager::initialize();
 
 	//KatanaScene* const currentScene = KatanaZeroSystem::GetInstance()->GetCurrentScene();
+
+	//main Camera
+	{
+		const Vector2 screenSize = Vector2(1280, 720);
+		GameObject* const mainCamera = new GameObject();		
+		mainCamera->AddComponent<Camera>();
+		mainCamera->GetComponent<Camera>()->SetProjectionType(eCameraProjectionType::Perspective);
+		//mainCamera->AddComponent<CameraInputMoveMent>();
+
+		mainCamera->GetComponent<Transform>()->SetPosition(0.f, 0.f, -3000.f);
+		mainCamera->GetComponent<Camera>()->SetPriorityType(eCameraPriorityType::Main);
+		mainCamera->GetComponent<Camera>()->SetRenderTargetSize(screenSize);
+		mainCamera->GetComponent<Camera>()->TurnOnAllLayer();		
+
+		testScene->AddGameObject(mainCamera, eLayerType::Default);
+	}
+
+
+	//Material
+	{
+		Material* const material =
+			MaterialBuilder::Sprite2D(
+				eRenderPriorityType::Opqaue, eResTexture::Map_Chinatown01_Tilemap);
+		gResourceManager->Insert(L"TestMap", material);
+	}
+
+	//Map
+	{
+		GameObject* const tile = GameObjectBuilder::Default2D(L"TestMap");
+		testScene->AddGameObject(tile, eLayerType::TileMap);
+	}
+
+	//Object
+
+
 	SceneManager::GetInstance()->LoadScene(testScene);
 }
 
 Content::~Content()
 {
-	TimeManager::deleteInstance();
-	SoundManager::deleteInstance();
-	KatanaZeroSystem::deleteInstance();
+	//TimeManager::deleteInstance();
+	//SoundManager::deleteInstance();
+	//KatanaZeroSystem::deleteInstance();
 }
 
 void Content::resourceInitialize()

@@ -24,7 +24,7 @@ Engine::Engine(const HWND hWnd, const UINT renderTargetWidth, const UINT renderT
 	setWindowSize(mRenderTargetWidth, mRenderTargetHeight);
 	Fmod::Initialize();	
 
-	//TimeManager::initialize();
+	TimeManager::initialize();
 	WindowManager::initialize();
 	MessageManager::initialize();
 	PathManager::initialize();
@@ -41,7 +41,7 @@ Engine::~Engine()
 	PathManager::deleteInstance();
 	MessageManager::deleteInstance();
 	WindowManager::deleteInstance();
-	//TimeManager::deleteInstance();
+	TimeManager::deleteInstance();
 	
 	FontManager::deleteInstance();
 	Fmod::Release();

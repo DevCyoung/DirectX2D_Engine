@@ -168,7 +168,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PanelUI.h" />
     <ClInclude Include="ResourceUI.h" />
-    <ClInclude Include="GameVIewUI.h" />
+    <ClInclude Include="GameViewUI.h" />
     <ClInclude Include="TestUI.h" />
     <ClInclude Include="TestUI2.h" />
     <ClInclude Include="UIHelper.h" />
@@ -194,7 +194,7 @@
     </ClCompile>
     <ClCompile Include="PanelUI.cpp" />
     <ClCompile Include="ResourceUI.cpp" />
-    <ClCompile Include="GameVIewUI.cpp" />
+    <ClCompile Include="GameViewUI.cpp" />
     <ClCompile Include="TestUI.cpp" />
     <ClCompile Include="TestUI2.cpp" />
     <ClCompile Include="UIHelper.cpp" />

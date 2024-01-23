@@ -40,6 +40,9 @@ public:
 
 	DebugRenderer2D* GetDebugRenderer2D() const { Assert(mDebugRenderer, ASSERT_MSG_NULL); return mDebugRenderer; }
 
+	void SetCameraLayerMask(const UINT layerMask) { mCameraMask = layerMask; }
+	UINT GetCameraLayerMask() const { return mCameraMask; }
+
 	void TurnOnAllCamera()  { mCameraMask = 0XFFFFFFFF; }
 	void TurnOffAllCamera() { mCameraMask = 0; }
 	bool IsVisibleDebugRenderer() const { return mbDebugRender; }
@@ -57,8 +60,8 @@ public:
 	void TurnOnDebugRenderer() { mbDebugRender = true; }
 	void TurnOffDebugRenderer() { mbDebugRender = false; }
 
+	void RegisterRenderCamera(Camera* const camera);
 private:
-	void registerRenderCamera(Camera* const camera);
 	void registerRenderComponent(RenderComponent* const renderComponent);
 	void registerLightInfo(const tLightInfo& light2DInfo);
 

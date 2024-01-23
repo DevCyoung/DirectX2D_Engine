@@ -96,7 +96,7 @@
     <ClInclude Include="DockSpace.h">
       <Filter>Source\Editor\EditorHelper</Filter>
     </ClInclude>
-    <ClInclude Include="GameVIewUI.h">
+    <ClInclude Include="GameViewUI.h">
       <Filter>Source\View\SceneView</Filter>
     </ClInclude>
     <ClInclude Include="UIHelper.h">
@@ -155,7 +155,7 @@
     <ClCompile Include="DockSpace.cpp">
       <Filter>Source\Editor\EditorHelper</Filter>
     </ClCompile>
-    <ClCompile Include="GameVIewUI.cpp">
+    <ClCompile Include="GameViewUI.cpp">
       <Filter>Source\View\SceneView</Filter>
     </ClCompile>
     <ClCompile Include="UIHelper.cpp">

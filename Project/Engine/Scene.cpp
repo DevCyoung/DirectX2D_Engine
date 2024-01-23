@@ -201,3 +201,9 @@ HRESULT Scene::Load(const std::wstring& filePath)
 
 	return E_NOTIMPL;
 }
+
+Scene* Scene::Clone()
+{
+	Assert(false, ASSERT_MSG_NULL);
+	return nullptr;
+}

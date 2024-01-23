@@ -40,7 +40,7 @@ RenderTargetRenderer::~RenderTargetRenderer()
 	DELETE_POINTER_NOT_NULL(mDebugRenderer);
 }
 
-void RenderTargetRenderer::registerRenderCamera(Camera* const camera)
+void RenderTargetRenderer::RegisterRenderCamera(Camera* const camera)
 {
 	const eCameraPriorityType CAMERA_PRIORITY_TYPE = camera->GetPriorityType();
 

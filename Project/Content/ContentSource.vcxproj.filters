@@ -142,9 +142,6 @@
     <Filter Include="Source\KatanaZero\Monster\Lazer">
       <UniqueIdentifier>{83346e43-78e9-4dea-9a5f-3cb1ea792c50}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\KatanaZero\00. Content">
-      <UniqueIdentifier>{696114eb-0954-476b-85b0-ef47c3412d7f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\KatanaZero\01. ScriptComponent">
       <UniqueIdentifier>{de857324-cd4d-4a4d-80a7-707699222472}</UniqueIdentifier>
     </Filter>
@@ -385,6 +382,12 @@
     <Filter Include="ShaderCode\AlphaTo">
       <UniqueIdentifier>{7201c858-a042-4236-877b-61cf4596e9cb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Default">
+      <UniqueIdentifier>{849936a0-7dc3-4133-90e3-bb684b81563e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Content">
+      <UniqueIdentifier>{696114eb-0954-476b-85b0-ef47c3412d7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -394,7 +397,7 @@
       <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="Content.h">
-      <Filter>Source\KatanaZero\00. Content</Filter>
+      <Filter>Source\Content</Filter>
     </ClInclude>
     <ClInclude Include="EnumResourceTypeAnimation.h">
       <Filter>Source\KatanaZero\Resources</Filter>
@@ -736,13 +739,16 @@
       <Filter>Source\KatanaZero\Monster\HeadHunter\State\Die</Filter>
     </ClInclude>
     <ClInclude Include="ScreenSize.h" />
+    <ClInclude Include="DefaultScene.h">
+      <Filter>Source\Default</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="Content.cpp">
-      <Filter>Source\KatanaZero\00. Content</Filter>
+      <Filter>Source\Content</Filter>
     </ClCompile>
     <ClCompile Include="EnumResourceTypeAnimation.cpp">
       <Filter>Source\KatanaZero\Resources</Filter>
@@ -1079,6 +1085,9 @@
     </ClCompile>
     <ClCompile Include="HeadHunterDie.cpp">
       <Filter>Source\KatanaZero\Monster\HeadHunter\State\Die</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultScene.cpp">
+      <Filter>Source\Default</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
