@@ -32,6 +32,8 @@ public:
     void SetFrictionScale(float frictionScale) { mFrictionScale = frictionScale; }
     void SetGravityAccel(float accel) { mGravityAccel = accel; }
 
+    bool IsGravity() { return mbGravityUse; }
+
     void TurnOnGravity() { mbGravityUse = true; }
     void TurnOffGravity() { mbGravityUse = false; }
 

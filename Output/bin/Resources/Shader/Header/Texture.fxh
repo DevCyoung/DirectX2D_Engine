@@ -2,6 +2,8 @@
 #define TEXTURE_FXHH
 
 Texture2D MeshRenderer00 : register(t0);
+Texture2D MeshRendererNormal : register(t1);
+
 
 Texture2D Noise01 : register(t7);
 Texture2D Rendertarget : register(t10);

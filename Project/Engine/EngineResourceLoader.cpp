@@ -9,6 +9,8 @@
 #include "StructVertex.h"
 #include "EngineMath.h"
 
+#define USE2D 0
+
 void EngineResourceLoader::loadResource()
 {
 	loadMesh();
@@ -19,6 +21,9 @@ void EngineResourceLoader::loadResource()
 
 void EngineResourceLoader::loadMesh()
 {
+	///////
+	//2D///
+	//////
 	//fill rect mesh
 	{
 		constexpr UINT VERTEX_COUNT = 4;
@@ -26,21 +31,21 @@ void EngineResourceLoader::loadMesh()
 		//0---1
 		//|   |
 		//3---2
-		vertexArray[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
-		vertexArray[0].color = Vector4(1.0f, 0.4f, 1.0f, 1.0f);
-		vertexArray[0].uv = Vector2(0.0f, 0.0f);
+		vertexArray[0].Position = Vector3(-0.5f, 0.5f, 0.0f);
+		vertexArray[0].Color = Vector4(1.0f, 0.4f, 1.0f, 1.0f);
+		vertexArray[0].UV = Vector2(0.0f, 0.0f);
 
-		vertexArray[1].pos = Vector3(0.5f, 0.5f, 0.0f);
-		vertexArray[1].color = Vector4(0.0f, 0.3f, 1.0f, 1.0f);
-		vertexArray[1].uv = Vector2(1.0f, 0.0f);
+		vertexArray[1].Position = Vector3(0.5f, 0.5f, 0.0f);
+		vertexArray[1].Color = Vector4(0.0f, 0.3f, 1.0f, 1.0f);
+		vertexArray[1].UV = Vector2(1.0f, 0.0f);
 
-		vertexArray[2].pos = Vector3(+0.5f, -0.5f, 0.0f);
-		vertexArray[2].color = Vector4(0.0f, 0.0f, 0.4f, 1.0f);
-		vertexArray[2].uv = Vector2(1.0f, 1.0f);
+		vertexArray[2].Position = Vector3(+0.5f, -0.5f, 0.0f);
+		vertexArray[2].Color = Vector4(0.0f, 0.0f, 0.4f, 1.0f);
+		vertexArray[2].UV = Vector2(1.0f, 1.0f);
 
-		vertexArray[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
-		vertexArray[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-		vertexArray[3].uv = Vector2(0.0f, 1.0f);
+		vertexArray[3].Position = Vector3(-0.5f, -0.5f, 0.0f);
+		vertexArray[3].Color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		vertexArray[3].UV = Vector2(0.0f, 1.0f);
 
 		std::vector<UINT> indexes;
 		indexes.reserve(10);
@@ -65,21 +70,21 @@ void EngineResourceLoader::loadMesh()
 		//0---1
 		//|   |
 		//3---2
-		vertexArray[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
-		vertexArray[0].color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
-		vertexArray[0].uv = Vector2(0.0f, 0.0f);
+		vertexArray[0].Position = Vector3(-0.5f, 0.5f, 0.0f);
+		vertexArray[0].Color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
+		vertexArray[0].UV = Vector2(0.0f, 0.0f);
 
-		vertexArray[1].pos = Vector3(0.5f, 0.5f, 0.0f);
-		vertexArray[1].color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
-		vertexArray[1].uv = Vector2(1.0f, 0.0f);
+		vertexArray[1].Position = Vector3(0.5f, 0.5f, 0.0f);
+		vertexArray[1].Color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
+		vertexArray[1].UV = Vector2(1.0f, 0.0f);
 
-		vertexArray[2].pos = Vector3(+0.5f, -0.5f, 0.0f);
-		vertexArray[2].color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
-		vertexArray[2].uv = Vector2(1.0f, 1.0f);
+		vertexArray[2].Position = Vector3(+0.5f, -0.5f, 0.0f);
+		vertexArray[2].Color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
+		vertexArray[2].UV = Vector2(1.0f, 1.0f);
 
-		vertexArray[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
-		vertexArray[3].color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
-		vertexArray[3].uv = Vector2(0.0f, 1.0f);
+		vertexArray[3].Position = Vector3(-0.5f, -0.5f, 0.0f);
+		vertexArray[3].Color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
+		vertexArray[3].UV = Vector2(0.0f, 1.0f);
 
 		std::vector<UINT> indexes;
 		indexes.reserve(10);
@@ -105,9 +110,9 @@ void EngineResourceLoader::loadMesh()
 		//3---2
 
 		// pivot
-		vertexArray[0].pos = Vector3(0.0f, 0.0f, 0.0f);
-		vertexArray[0].color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
-		vertexArray[0].uv = Vector2(0.0f, 0.0f);
+		vertexArray[0].Position = Vector3(0.0f, 0.0f, 0.0f);
+		vertexArray[0].Color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
+		vertexArray[0].UV = Vector2(0.0f, 0.0f);
 
 		const float anglePer = 360.f / (VERTEX_COUNT - 1);
 
@@ -122,9 +127,9 @@ void EngineResourceLoader::loadMesh()
 
 			//cos(Rad2DE)
 
-			vertexArray[i].pos = Vector3(x, y, 0.0f);
-			vertexArray[i].color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
-			vertexArray[i].uv = Vector2(uvx, uvy);
+			vertexArray[i].Position = Vector3(x, y, 0.0f);
+			vertexArray[i].Color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
+			vertexArray[i].UV = Vector2(uvx, uvy);
 		}
 
 		std::vector<UINT> indexes;
@@ -159,9 +164,9 @@ void EngineResourceLoader::loadMesh()
 		//3---2
 
 		// pivot
-		vertexArray[0].pos = Vector3(0.0f, 0.0f, 0.0f);
-		vertexArray[0].color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
-		vertexArray[0].uv = Vector2(0.0f, 0.0f);
+		vertexArray[0].Position = Vector3(0.0f, 0.0f, 0.0f);
+		vertexArray[0].Color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
+		vertexArray[0].UV = Vector2(0.0f, 0.0f);
 
 		const float anglePer = 360.f / (VERTEX_COUNT);
 
@@ -173,9 +178,9 @@ void EngineResourceLoader::loadMesh()
 			const float uvx = x + 0.5f;
 			const float uvy = -y + 0.5f;
 
-			vertexArray[i].pos = Vector3(x, y, 0.0f);
-			vertexArray[i].color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
-			vertexArray[i].uv = Vector2(uvx, uvy);
+			vertexArray[i].Position = Vector3(x, y, 0.0f);
+			vertexArray[i].Color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
+			vertexArray[i].UV = Vector2(uvx, uvy);
 		}
 
 		std::vector<UINT> indexes;
@@ -198,13 +203,13 @@ void EngineResourceLoader::loadMesh()
 		constexpr UINT VERTEX_COUNT = 2;
 		tVertex vertexArray[VERTEX_COUNT] = {};
 
-		vertexArray[0].pos = Vector3(-0.5f, 0.0f, 0.0f);
-		vertexArray[0].color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
-		vertexArray[0].uv = Vector2(0.0f, 0.0f);
+		vertexArray[0].Position = Vector3(-0.5f, 0.0f, 0.0f);
+		vertexArray[0].Color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
+		vertexArray[0].UV = Vector2(0.0f, 0.0f);
 
-		vertexArray[1].pos = Vector3(0.5f, 0.0f, 0.0f);
-		vertexArray[1].color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
-		vertexArray[1].uv = Vector2(1.0f, 1.0f);
+		vertexArray[1].Position = Vector3(0.5f, 0.0f, 0.0f);
+		vertexArray[1].Color = Vector4(1.0f, 0.0f, 1.0f, 1.0f);
+		vertexArray[1].UV = Vector2(1.0f, 1.0f);
 
 		std::vector<UINT> indexes;
 		indexes.reserve(10);
@@ -215,6 +220,90 @@ void EngineResourceLoader::loadMesh()
 		gResourceManager->Insert(L"Line",
 			new Mesh(vertexArray, VERTEX_COUNT, sizeof(tVertex),
 				indexes.data(), indexes.size(), sizeof(UINT)));
+	}
+
+
+	///////
+	//3D///
+	//////
+	{
+		// =============
+		// RectMesh 생성
+		// =============
+		// 0 --- 1 
+		// |  \  |
+		// 3 --- 2
+		constexpr UINT VERTEX_COUNT = 4;
+		tVertex vertexArray[VERTEX_COUNT] = {};
+
+		vertexArray[0].Position = Vector3(-0.5f, 0.5f, 0.f);
+		vertexArray[0].Color = Vector4(1.f, 0.f, 0.f, 1.f);
+		vertexArray[0].UV = Vector2(0.f, 0.f);
+
+		vertexArray[0].Normal = Vector3(0.f, 0.f, -1.f);
+		vertexArray[0].Tangent = Vector3(1.f, 0.f, 0.f);
+		vertexArray[0].Binormal = Vector3(0.f, -1.f, 0.f);
+		//vecVtx.push_back(v);
+
+		vertexArray[1].Position = Vector3(0.5f, 0.5f, 0.f);
+		vertexArray[1].Color = Vector4(0.f, 1.f, 0.f, 1.f);
+		vertexArray[1].UV = Vector2(1.f, 0.f);
+
+		vertexArray[1].Normal = Vector3(0.f, 0.f, -1.f);
+		vertexArray[1].Tangent = Vector3(1.f, 0.f, 0.f);
+		vertexArray[1].Binormal = Vector3(0.f, -1.f, 0.f);
+		//vecVtx.push_back(v);
+
+		vertexArray[2].Position = Vector3(0.5f, -0.5f, 0.f);
+		vertexArray[2].Color = Vector4(0.f, 0.f, 1.f, 1.f);
+		vertexArray[2].UV = Vector2(1.f, 1.f);
+
+		vertexArray[2].Normal = Vector3(0.f, 0.f, -1.f);
+		vertexArray[2].Tangent = Vector3(1.f, 0.f, 0.f);
+		vertexArray[2].Binormal = Vector3(0.f, -1.f, 0.f);
+		//vecVtx.push_back(v);
+
+		vertexArray[3].Position = Vector3(-0.5f, -0.5f, 0.f);
+		vertexArray[3].Color = Vector4(0.f, 0.f, 0.f, 1.f);
+		vertexArray[3].UV = Vector2(0.f, 1.f);
+
+		vertexArray[3].Normal = Vector3(0.f, 0.f, -1.f);
+		vertexArray[3].Tangent = Vector3(1.f, 0.f, 0.f);
+		vertexArray[3].Binormal = Vector3(0.f, -1.f, 0.f);
+		//vecVtx.push_back(v);
+
+		std::vector<UINT> indexes;
+		indexes.reserve(10);
+
+		indexes.push_back(0);
+		indexes.push_back(2);
+		indexes.push_back(3);
+
+		indexes.push_back(0);
+		indexes.push_back(1);
+		indexes.push_back(2);
+
+		gResourceManager->Insert(L"Panel",
+			new Mesh(vertexArray, VERTEX_COUNT, sizeof(tVertex),
+				indexes.data(), indexes.size(), sizeof(UINT)));
+
+		//pMesh = new CMesh(true);
+		//pMesh->Create(vecVtx.data(), (UINT)vecVtx.size(), vecIdx.data(), (UINT)vecIdx.size());
+		//AddRes(L"RectMesh", pMesh);
+
+		//vecIdx.clear();
+		//vecIdx.push_back(0);
+		//vecIdx.push_back(1);
+		//vecIdx.push_back(2);
+		//vecIdx.push_back(3);
+		//vecIdx.push_back(0);
+
+		//pMesh = new CMesh(true);
+		//pMesh->Create(vecVtx.data(), (UINT)vecVtx.size(), vecIdx.data(), (UINT)vecIdx.size());
+		//AddRes(L"RectMesh_Debug", pMesh);
+
+		//vecVtx.clear();
+		//vecIdx.clear();
 	}
 }
 
@@ -230,9 +319,9 @@ void EngineResourceLoader::loadTexture()
 	}
 
 	{
-		/*XMUINT2 size = { static_cast<UINT>(gEngine->GetRenderTargetSize().x),  
+		/*XMUINT2 size = { static_cast<UINT>(gEngine->GetRenderTargetSize().x),
 						 static_cast<UINT>(gEngine->GetRenderTargetSize().y)};*/
-		//FIXME 다시 고칠것 하드코딩으로 해결
+						 //FIXME 다시 고칠것 하드코딩으로 해결
 
 		XMUINT2 size = { static_cast<UINT>(1280),
 						 static_cast<UINT>(720) };
@@ -254,6 +343,9 @@ void EngineResourceLoader::loadTexture()
 
 void EngineResourceLoader::loadShader()
 {
+
+#ifdef  USE2D
+#pragma region 2D SHader
 	//Animation2D
 	{
 		Shader* const animationShader =
@@ -414,6 +506,23 @@ void EngineResourceLoader::loadShader()
 				eBSType::AlphaBlend);
 
 		gResourceManager->Insert(L"WavePostProcess", wavePostProcess);
+	}
+#pragma endregion
+#endif //  USE2D
+	
+
+	//std3D
+	{
+		Shader* const wavePostProcess =
+			new Shader(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST,
+				L"\\Shader\\std3d.hlsl", L"VS_Std3D",
+				L"\\Shader\\std3d.hlsl", L"PS_Std3D",
+				eSMType::Std3D,					
+				eRSType::CullBack,
+				eDSType::LessEqual,
+				eBSType::Default);
+
+		gResourceManager->Insert(L"Std3D", wavePostProcess);
 	}
 }
 

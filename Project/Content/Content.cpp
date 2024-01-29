@@ -16,27 +16,10 @@
 #include "SoundManager.h"
 #include "CameraInputMoveMent.h"
 #include <Engine/SpriteRenderer.h>
+#include <Engine/MeshRenderer.h>
 Content::Content()
 {
-	//resourceInitialize();
 	Scene* testScene = new Scene;
-	//Scene* testScene = new Collide2DTestScene;
-	//KatanaScene* testScene = new TitleScene();
-	//KatanaScene* testScene = new Chinatown01Scene();
-	//KatanaScene* testScene = new Chinatown04Scene();
-	//KatanaScene* testScene = new Chinatown05Scene();
-	//KatanaScene* testScene = new HeadHunterScene();
-	//Scene* testScene = new KissyfaceScene();
-	//Scene* testScene = new TestScene();
-	//KatanaZeroSystem::initialize();
-	//KatanaZeroSystem::GetInstance()->SetCurentScene(testScene);
-
-	//SoundManager::initialize();
-	//SoundManager::GetInstance()->PlayBackGround(eResAudioClip::song_chinatown, 0.2f);
-
-	//TimeManager::initialize();
-
-	//KatanaScene* const currentScene = KatanaZeroSystem::GetInstance()->GetCurrentScene();
 
 	//main Camera
 	{
@@ -52,47 +35,62 @@ Content::Content()
 		mainCamera->GetComponent<Camera>()->TurnOnAllLayer();		
 
 		mainCamera->SetName(L"mainCamera");
+
+		mainCamera->GetComponent<Transform>()->SetPosition(Vector3(772.f, 2250.f, -3690.f));
+		//mainCamera->GetComponent<Transform>()->SetRotation(Vector3(24.f, 4.f, 0.f));
+
+
 		testScene->AddGameObject(mainCamera, eLayerType::Default);
 	}
 
 
+
 	{
 		Material* const material = new Material();
+		//Texture* texture =  gResourceManager->FindAndLoad<Texture>(L"\\texture\\TILE_01.tga");
+		Texture* texture = gResourceManager->FindAndLoad<Texture>(L"\\texture\\TILE_01.tga");
 
-		Texture* texture = 
-			gResourceManager->FindAndLoad<Texture>(EnumResourcePath(eResTexture::Map_Chinatown01_Tilemap));
+		Texture* texture2 =
+			gResourceManager->FindAndLoad<Texture>(L"\\texture\\TILE_01_N.tga");
 
 		Shader* shader = 
-			gResourceManager->FindAndLoad<Shader>(L"Sprite2D");
+			gResourceManager->FindAndLoad<Shader>(L"Std3D");
 
-		Mesh* rectMesh =
-			gResourceManager->FindAndLoad<Mesh>(L"FillRect2D");
+		Mesh* panelMesh =
+			gResourceManager->FindAndLoad<Mesh>(L"Panel");
 
-		material->SetTexture(texture);
 		material->SetShader(shader);
+		material->SetTexture(TEX_0, texture);
+		material->SetTexture(TEX_1, texture2);
 		gResourceManager->Insert<Material>(L"default mat", material);
 
 
-		GameObject* obj = new GameObject();
-		obj->AddComponent<SpriteRenderer>();
+		{
+			GameObject* obj = new GameObject();
+			obj->AddComponent<MeshRenderer>();
+			obj->GetComponent<MeshRenderer>()->SetMaterial(material);
+			obj->GetComponent<MeshRenderer>()->SetMesh(panelMesh);
+			obj->SetName(L"Map");
+			Vector3 rotation = obj->GetComponent<Transform>()->GetRotation();
+			rotation.x = 90;
+			obj->GetComponent<Transform>()->SetRotation(rotation);
+			testScene->AddGameObject(obj, eLayerType::TileMap);
+		}		
 
-		obj->GetComponent<SpriteRenderer>()->SetMaterial(material);
-		obj->GetComponent<SpriteRenderer>()->SetMesh(rectMesh);
-		obj->SetName(L"Map");
+		{
+			GameObject* obj = new GameObject();
+			obj->AddComponent<MeshRenderer>();
 
-		GameObject* copyObj = obj->Clone(); 
-		Transform* const transform = copyObj->GetComponent<Transform>();
-		Vector3 pos = transform->GetPosition();
-		pos.y += 2000.f;
-		transform->SetPosition(pos);
+			obj->GetComponent<MeshRenderer>()->SetMaterial(material);
+			obj->GetComponent<MeshRenderer>()->SetMesh(panelMesh);
 
-		copyObj->SetName(L"CopyMap");
-		transform->SetRotation(Vector3(0.f, 0.f, 30.f));
-
-		testScene->AddGameObject(obj, eLayerType::Default);
-		testScene->AddGameObject(copyObj, eLayerType::Door);
-		//material->SetTexture()
-
+			obj->GetComponent<Transform>()->SetPosition(100.f, 100.f, 0.f);
+			obj->SetName(L"Map");
+			//Vector3 rotation = obj->GetComponent<Transform>()->GetRotation();
+			//rotation.x = 90;
+			//obj->GetComponent<Transform>()->SetRotation(rotation);
+			testScene->AddGameObject(obj, eLayerType::TileMap);
+		}
 	}
 	////Material
 	//{

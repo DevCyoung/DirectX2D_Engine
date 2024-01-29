@@ -422,6 +422,17 @@ call ScriptGen.exe ScriptComponent $(SolutionDir)Project\Content $(SolutionDir)P
     <None Include="..\..\Output\bin\Resources\Shader\PSNextScene.hlsl">
       <FileType>Document</FileType>
     </None>
+    <FxCompile Include="..\..\Output\bin\Resources\Shader\std3d.hlsl">
+      <FileType>Document</FileType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </EntryPointName>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+    </FxCompile>
     <FxCompile Include="..\..\Output\bin\Resources\Shader\VSAnimation2D.hlsl" />
     <None Include="..\..\Output\bin\Resources\Shader\VSUI2D.hlsl">
       <FileType>Document</FileType>

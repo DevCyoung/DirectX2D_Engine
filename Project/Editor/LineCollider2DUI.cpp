@@ -3,6 +3,5 @@
 
 
 void LineCollider2DUI(LineCollider2D* component)
-{
-
+{	
 }

@@ -47,6 +47,8 @@ public:
 		Assert(mRTV.GetAddressOf(), ASSERT_MSG_NULL); return mRTV.GetAddressOf();
 	}
 
+	//void UpdateDate(const int slot);
+
 private:
 	ScratchImage mImage;
 	UINT mWidth;

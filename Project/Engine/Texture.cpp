@@ -153,3 +153,4 @@ HRESULT Texture::Load(const std::wstring& filePath)
 
 	return S_OK;
 }
+

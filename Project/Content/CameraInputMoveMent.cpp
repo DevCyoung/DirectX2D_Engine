@@ -126,6 +126,7 @@ void CameraInputMoveMent::update()
 			pos += gDeltaTime * right * fSpeed;
 		}
 
+		//FIXME
 		if (gInput->GetKey(eKeyCode::RBTN))
 		{			
 			Vector2 mouseDir = gInput->GetMouseDir();

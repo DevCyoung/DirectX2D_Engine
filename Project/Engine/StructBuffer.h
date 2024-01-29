@@ -5,7 +5,10 @@ struct alignas(16) tCBTransform // b0
 	Matrix World;
 	Matrix View;
 	Matrix Proj;
-}; // 48 bytes
+
+	Matrix WV;
+	Matrix WVP;
+}; // 80 bytes
 
 
 struct /*alignas(16)*/ tCBColorInfo // b1

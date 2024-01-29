@@ -13,6 +13,8 @@ class Camera;
 void CameraUI(Camera* component);
 class Collider2D;
 void Collider2DUI(Collider2D* component);
+class CircleCollider2D;
+void CircleCollider2DUI(CircleCollider2D* component);
 class LineCollider2D;
 void LineCollider2DUI(LineCollider2D* component);
 class RectCollider2D;
@@ -21,6 +23,12 @@ class Light2D;
 void Light2DUI(Light2D* component);
 class RenderComponent;
 void RenderComponentUI(RenderComponent* component);
+class Animator2D;
+void Animator2DUI(Animator2D* component);
+class MeshRenderer;
+void MeshRendererUI(MeshRenderer* component);
+class ParticleSystem;
+void ParticleSystemUI(ParticleSystem* component);
 class SpriteRenderer;
 void SpriteRendererUI(SpriteRenderer* component);
 class Rigidbody2D;
@@ -46,6 +54,9 @@ void ComponentUIRender(Component* component)
 	case eComponentType::Collider2D:
 		Collider2DUI((Collider2D*)component);
 		break;
+	case eComponentType::CircleCollider2D:
+		CircleCollider2DUI((CircleCollider2D*)component);
+		break;
 	case eComponentType::LineCollider2D:
 		LineCollider2DUI((LineCollider2D*)component);
 		break;
@@ -57,6 +68,15 @@ void ComponentUIRender(Component* component)
 		break;
 	case eComponentType::RenderComponent:
 		RenderComponentUI((RenderComponent*)component);
+		break;
+	case eComponentType::Animator2D:
+		Animator2DUI((Animator2D*)component);
+		break;
+	case eComponentType::MeshRenderer:
+		MeshRendererUI((MeshRenderer*)component);
+		break;
+	case eComponentType::ParticleSystem:
+		ParticleSystemUI((ParticleSystem*)component);
 		break;
 	case eComponentType::SpriteRenderer:
 		SpriteRendererUI((SpriteRenderer*)component);

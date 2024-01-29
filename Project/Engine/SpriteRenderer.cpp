@@ -120,7 +120,8 @@ void SpriteRenderer::render(const Camera* const camera)
 	tCBTransform CBTransform = {};
 	{
 		const Vector3& SCALE 
-			= Vector3(mMaterial->GetTexture()->GetWidth(), mMaterial->GetTexture()->GetHeight(), 1.f);
+			= Vector3(mMaterial->GetTexture(TEX_0)->GetWidth(), 
+				mMaterial->GetTexture(TEX_0)->GetHeight(), 1.f);
 		const Matrix& SCALE_MATRIX = Matrix::CreateScale(SCALE);
 
 		CBTransform.World = SCALE_MATRIX * GetOwner()->GetComponent<Transform>()->GetWorldMatrix();
@@ -154,6 +155,7 @@ void SpriteRenderer::render(const Camera* const camera)
 	gGraphicDevice->BindBS(mMaterial->GetShader()->GetBSType());
 	gGraphicDevice->BindDS(mMaterial->GetShader()->GetDSType());
 	gGraphicDevice->BindRS(mMaterial->GetShader()->GetRSType());	
-	gGraphicDevice->BindSRV(eShaderBindType::PS, static_cast<UINT>(eSRVTpye::Sprite2D), mMaterial->GetTexture());
+	gGraphicDevice->BindSRV(eShaderBindType::PS, static_cast<UINT>(eSRVTpye::Sprite2D), 
+		mMaterial->GetTexture(TEX_0));
 	gGraphicDevice->Draw(mMesh);
 }

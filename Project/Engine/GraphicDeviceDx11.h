@@ -59,6 +59,9 @@ public:
 	void BindSB(const eSBType SBType, const eShaderBindType stageType) const;
 	void PassSB(const eSBType SBType, const UINT dataSize, const UINT stride, const void* const data) const;
 	void BindVS(const Shader* const shader) const;
+	void BindHS(const Shader* const shader) const;
+	void BindGS(const Shader* const shader) const;
+	void BindDS(const Shader* const shader) const;
 	void BindPS(const Shader* const shader) const;
 	void BindCS(const ComputeShader* const shader) const;
 	void BindBS(const eBSType BSType) ;

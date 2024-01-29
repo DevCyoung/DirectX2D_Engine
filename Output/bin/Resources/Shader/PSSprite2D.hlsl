@@ -69,8 +69,8 @@ float4 main(tVSOut In) : SV_TARGET
 		discard;
 	}		
 	
-	color = setColor(color);
-	color = mulColor(color);
+	//color = setColor(color);
+	//color = mulColor(color);
 
 
 	//color.r = 1.f;

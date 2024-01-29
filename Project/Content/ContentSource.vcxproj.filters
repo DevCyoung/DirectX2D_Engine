@@ -109,6 +109,9 @@
     <Filter Include="Manager\Resource">
       <UniqueIdentifier>{b5760e71-803f-4f22-9af7-d44435ab071e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShaderCode\3D">
+      <UniqueIdentifier>{1b1eecd1-2066-4029-8af2-afc65023ad1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -342,6 +345,9 @@
   <ItemGroup>
     <FxCompile Include="..\..\Output\bin\Resources\Shader\VSAnimation2D.hlsl">
       <Filter>ShaderCode\Animation2D\Default</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Output\bin\Resources\Shader\std3d.hlsl">
+      <Filter>ShaderCode\3D</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

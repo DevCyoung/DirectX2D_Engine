@@ -54,9 +54,9 @@ Matrix Transform::CreateWorldMatrix(const Vector3& position, const Vector3& rota
 	Matrix scaleMatrix = Matrix::CreateScale(scale);
 
 	Matrix rotationMatrix = {};
-	rotationMatrix = Matrix::CreateRotationZ(Deg2Rad(rotation.z));
+	rotationMatrix  = Matrix::CreateRotationX(Deg2Rad(rotation.x));
 	rotationMatrix *= Matrix::CreateRotationY(Deg2Rad(rotation.y));
-	rotationMatrix *= Matrix::CreateRotationX(Deg2Rad(rotation.x));
+	rotationMatrix *= Matrix::CreateRotationZ(Deg2Rad(rotation.z));
 
 	Matrix positionMatrix = {};
 	positionMatrix.Translation(position);

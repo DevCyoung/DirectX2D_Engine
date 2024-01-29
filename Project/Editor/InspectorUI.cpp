@@ -17,6 +17,7 @@
 #include <Engine/ScriptComponent.h>
 #include <Engine/String.h>
 #include "ComponentUIRender.h"
+#include <ImGUI/imgui_filter.h>
 
 static void RenderComponentName(std::string str)
 {
@@ -76,6 +77,68 @@ void InspectorUI::drawForm()
 			RenderComponentName(str);
 			ComponentUIRender(scriptCompnent);
 		}
+
+		ImGui::Separator();
+
+		static std::vector<std::string> selectItems;
+		//selectItems.reserve(1000);
+
+		//Component
+		
+		for (UINT i = 0; i < static_cast<UINT>(eComponentType::End); ++i)
+		{
+			eComponentType type = static_cast<eComponentType>(i);
+			std::string str = helper::String::WStrToStr(GetComponentName(type));
+			selectItems.push_back(str);
+		}
+		for (UINT i = 0; i < static_cast<UINT>(eScriptComponentType::End); ++i)
+		{
+			eScriptComponentType type = static_cast<eScriptComponentType>(i);
+			std::string str = helper::String::WStrToStr(GetScriptComponentName(type));
+			selectItems.push_back(str);
+		}
+
+		static bool showComponentSelect = true;
+		int selectItem = 0;
+		std::string ComponentSelect = "Component Select##";
+		ComponentSelect += std::to_string(mGameObject->GetID());
+		ImGui::SelectComboAutoSelectDemo(ComponentSelect.c_str(),
+			selectItems, selectItem, &showComponentSelect);
+
+		if (selectItem != -1)
+		{		
+			//component
+			if (selectItem < static_cast<UINT>(eComponentType::End))				
+			{									
+				eComponentType type = static_cast<eComponentType>(selectItem);
+				if (!mGameObject->GetComponentOrNull(type))
+				{
+					mGameObject->AddComponent(CreateComponentByEnum(type));
+				}				
+			}
+			else
+			{
+				selectItem -= static_cast<UINT>(eComponentType::End);
+				eScriptComponentType type = static_cast<eScriptComponentType>(selectItem);
+				if (!mGameObject->GetComponentOrNull(type))
+				{
+					mGameObject->AddComponent(CreateScriptComponentByEnum(type));
+				}
+			}
+			//mGameObject->AddComponent(CreateCompo)
+		}
+
+		//if (ImGui::Button("Add Component"))
+		//{		
+		//}
+
+
+
+		/*bool show = true;
+		ImGui::ShowComboAutoSelectDemo(&show);
+		ImGui::ShowComboFilterDemo(&show);*/
+
+		selectItems.clear();
 	}
 
 	ImGui::End();

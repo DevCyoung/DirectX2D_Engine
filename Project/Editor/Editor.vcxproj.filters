@@ -70,6 +70,9 @@
     <Filter Include="Component\Script">
       <UniqueIdentifier>{4d2d6e39-fbac-46d8-8a86-6f76ce3b7bfb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Res">
+      <UniqueIdentifier>{953d77db-2d38-4813-b10d-37942003b543}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -140,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="ComponentUIRender.h">
       <Filter>Component\ComponentUIRender</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialUI.h">
+      <Filter>Res</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +262,9 @@
     </ClCompile>
     <ClCompile Include="LineCollider2DUI.cpp">
       <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialUI.cpp">
+      <Filter>Res</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

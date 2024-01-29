@@ -22,6 +22,7 @@ enum class eResShader
 	PSSprite2D,
 	PSUI2D,
 	PSWave,
+	std3d,
 	stdCS,
 	VSAfterImage,
 	VSAlphaTo,

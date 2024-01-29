@@ -37,8 +37,8 @@ void Camera::CalculateCamera()
 	const Vector3& POSITION = P_TRANSFORM->GetWorldMatrix().Translation();
 
 	// View Translate Matrix
-	mView = Matrix::Identity;
-	mView *= Matrix::CreateTranslation(-POSITION);
+	//mView = Matrix::Identity;
+	mView = Matrix::CreateTranslation(-POSITION);
 
 	// View Rotation Matrix
 	const Vector3& UP = P_TRANSFORM->GetUp();

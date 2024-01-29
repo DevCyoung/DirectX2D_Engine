@@ -408,6 +408,33 @@ void GraphicDeviceDX11::BindVS(const Shader* const shader) const
 	mContext->VSSetShader(shader->mVS.Get(), nullptr, 0);
 }
 
+void GraphicDeviceDX11::BindHS(const Shader* const shader) const
+{
+	Assert(false, ASSERT_MSG_NULL);
+	Assert(shader, ASSERT_MSG_NULL);
+	Assert(shader->mVS.Get(), ASSERT_MSG_NULL);
+
+	//mContext->HSSetShader(shader->mVS.Get(), nullptr, 0);
+}
+
+void GraphicDeviceDX11::BindGS(const Shader* const shader) const
+{
+	Assert(false, ASSERT_MSG_NULL);
+	Assert(shader, ASSERT_MSG_NULL);
+	Assert(shader->mVS.Get(), ASSERT_MSG_NULL);
+
+	//mContext->GSSetShader(shader->mVS.Get(), nullptr, 0);
+}
+
+void GraphicDeviceDX11::BindDS(const Shader* const shader) const
+{
+	Assert(false, ASSERT_MSG_NULL);
+	Assert(shader, ASSERT_MSG_NULL);
+	Assert(shader->mVS.Get(), ASSERT_MSG_NULL);
+
+	//mContext->DSSetShader(shader->mVS.Get(), nullptr, 0);
+}
+
 void GraphicDeviceDX11::BindPS(const Shader* const shader) const
 {
 	Assert(shader, ASSERT_MSG_NULL);

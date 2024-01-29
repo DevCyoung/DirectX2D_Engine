@@ -130,7 +130,10 @@ enum class eResTexture
 	pixel100,
 	spr_bg_neighbor_apartment_0,
 	spr_kissyface_grenade_2x,
+	sun,
 	TILE,
+	TILE_01,
+	TILE_01_N,
 	TitleHud,
 	TitleTextHud,
 	End

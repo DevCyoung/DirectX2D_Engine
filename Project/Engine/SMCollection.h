@@ -6,6 +6,7 @@
 enum class eSMType
 {
 	Default,
+	Std3D,
 	End,
 };
 

@@ -232,6 +232,9 @@
     <Filter Include="Source\01. Manager\07. Window">
       <UniqueIdentifier>{7118e619-bde9-4a0f-b1d6-4096e5e78bd4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\03. Component\03. Render\03. MeshRenderer">
+      <UniqueIdentifier>{25f86178-e7ce-4677-bd4d-d6bcaac8665e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -477,6 +480,9 @@
     <ClInclude Include="WindowManager.h">
       <Filter>Source\01. Manager\07. Window</Filter>
     </ClInclude>
+    <ClInclude Include="MeshRenderer.h">
+      <Filter>Source\03. Component\03. Render\03. MeshRenderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp">
@@ -676,6 +682,9 @@
     </ClCompile>
     <ClCompile Include="WindowManager.cpp">
       <Filter>Source\01. Manager\07. Window</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshRenderer.cpp">
+      <Filter>Source\03. Component\03. Render\03. MeshRenderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

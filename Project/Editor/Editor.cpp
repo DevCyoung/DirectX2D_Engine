@@ -7,7 +7,7 @@
 #include <d3d11.h>
 #include <Engine/Engine.h>
 #include <Engine/GraphicDeviceDx11.h>
-
+#include <ImGUI/imgui_filter.h>
 
 #ifdef _DEBUG
 #pragma comment(lib, "ImGUI/Debug/ImGUI_d")
@@ -49,6 +49,7 @@ Editor::Editor()
 		style.Colors[ImGuiCol_WindowBg].w = 1.0f;
 	}
 
+
 	// Setup Platform/Renderer backends
 	ImGui_ImplWin32_Init(hwnd);
 	ImGui_ImplDX11_Init(engine->GetGraphicDevice()->UnSafe_GetDevice(),
@@ -88,6 +89,14 @@ void Editor::run()
 		ShowExampleAppDockSpace(&show_app_dockspace);
 	}
 
+	{
+		//bool show = true;
+		//ImGui::ShowComboAutoSelectDemo(&show);
+		//ImGui::ShowComboFilterDemo(&show);
+
+
+
+	}
 	
 	PanelUIManager::GetInstance()->finalUpdate();
 	PanelUIManager::GetInstance()->render();
