@@ -10,7 +10,7 @@ public:
 	const wchar_t* GetResourcePath() const { return mResourcePath; }
 
 private: 
-	wchar_t	mResourcePath[256];
+	wchar_t	mResourcePath[MAX_PATH];
 };
 
 #define gPathManager PathManager::GetInstance()

@@ -1,9 +1,13 @@
 ﻿# include "pch.h"
 #include <Engine/Transform.h>
+class Component;
+void ComponentUI(Component* component);
 
 
 void TransformUI(Transform* component)
-{	
+{
+	ComponentUI(component);
+
 	Vector3 position = component->GetPosition();
 	Vector3 scale = component->GetScale();
 	Vector3 rotation = component->GetRotation();

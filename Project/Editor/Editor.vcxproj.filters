@@ -266,5 +266,17 @@
     <ClCompile Include="MaterialUI.cpp">
       <Filter>Res</Filter>
     </ClCompile>
+    <ClCompile Include="Animator2DUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleCollider2DUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshRendererUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

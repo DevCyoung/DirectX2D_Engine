@@ -81,6 +81,7 @@ float4 PS_Std3D(VS_OUT _in) : SV_Target
         
 		vViewNormal = mul(vNormal, vRotateMat);
 	}
+		
     
         
 	//ViewSpace 에서의
@@ -89,7 +90,7 @@ float4 PS_Std3D(VS_OUT _in) : SV_Target
 	float3 vViewLightDir = normalize(mul(float4(normalize(g_vLightDir), 0.f), g_matView)).xyz;
 	
     
-    // ViewSpace 에서의 노말벡터와 광원의 방향을 내적 (램버트 코사인 법칙)    
+    // ViewSpace 에서의 노말벡터와 광원의 방향을 내적 (램버트 코사인 법칙)
 	float fLightPow = saturate(dot(vViewNormal, -vViewLightDir));
     
     // 반사광
@@ -98,7 +99,7 @@ float4 PS_Std3D(VS_OUT _in) : SV_Target
    
     // 반사광의 세기 구하기
 	float fSpecPow = saturate(dot(vViewReflect, -vEye));
-	fSpecPow = pow(fSpecPow, 20);
+	fSpecPow = pow(fSpecPow, 20.f);
            
 	vOutColor.xyz = (vOutColor.xyz * g_vLightColor * fLightPow)
                     + (vOutColor.xyz * g_vLightColor * g_vLightAmb)

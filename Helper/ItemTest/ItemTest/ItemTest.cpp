@@ -1,12 +1,62 @@
-﻿// ItemTest.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
-//
-
+﻿#include <string>
+#include <vector>
 #include <iostream>
+
+using namespace std;
+
+int maxNum = 0;
+
+int searchMax(vector<int>& tree, vector<bool>& visited, const int pos, int d)
+{
+    if (pos >= tree.size())
+    {
+        return 0;
+    }
+    else if (visited[pos])
+    {
+        return tree[pos];
+    }
+
+    visited[pos] = true;
+    int left = pos + d;
+    int right = pos + d + 1;
+
+    int lm = searchMax(tree, visited, left, d + 1);
+    int rm = searchMax(tree, visited, right, d + 1);
+
+    int max = lm > rm ? lm : rm;
+
+    tree[pos] += max;
+
+    return tree[pos];
+}
+
+int solution(vector<vector<int>> triangle) {
+    int answer = 0;
+    vector<int> tree;
+    vector<bool> visited;
+
+    for (vector<int>& items : triangle)
+    {
+        for (int item : items)
+        {
+            tree.push_back(item);
+            visited.push_back(false);
+        }
+    }
+
+
+    searchMax(tree, visited, 0, 1);
+    return tree[0];
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
-}
+    bool a = 5;
+    long long n = reinterpret_cast<long long>(&a);
+
+    solution({ {7}, {3, 8} });
+}   
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
 // 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴

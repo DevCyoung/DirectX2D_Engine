@@ -28,7 +28,7 @@ public:
 	eCameraProjectionType GetProjectionType() const { return mProjectionType; }
 	Vector2 GetRenderTargetSize() const { return mRenderTargetSize; }
 
-	void Set3DFOV(const float fov) { mFOV = fov; }
+	void SetFOV(const float fov) { mFOV = fov; }
 	void SetNear(const float cameraNear) { mNear = cameraNear; }
 	void SetFar(const float cameraFar) { mFar = cameraFar; }
 	void Set2DSize(const float camera2DSize) { mSize = camera2DSize; }

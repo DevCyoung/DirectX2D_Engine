@@ -132,18 +132,29 @@ public class MyProgram
                 uiCpp += $"#include <Content/{node.className}.h>\r\n";
             }
 
+            if (null != node.mParent)
+            {
+                uiCpp += $"class {node.mParent.className};\r\n";
+                uiCpp += $"void {node.mParent.className}UI({node.mParent.className}* component);\r\n";
+            }
 
             uiCpp += "\r\n\r\n";
             uiCpp += $"void {node.className}UI({node.className}* component)\r\n";
             uiCpp += "{\r\n";
+
+            if (null != node.mParent)
+            {
+                uiCpp += $"\t{node.mParent.className}UI(component);\r\n";
+            }
+            
             uiCpp += "\r\n";
             uiCpp += "}\r\n";
 
             string uiPath = PATH_TARGET_DIRECTORT + "\\" + node.className + "UI.cpp";
-
+                
             if (false == File.Exists(uiPath))
             {
-                StreamWriter scriptCppReader = new StreamWriter(new FileStream(uiPath, FileMode.OpenOrCreate), Encoding.UTF8);
+                StreamWriter scriptCppReader = new StreamWriter(new FileStream(uiPath, FileMode.Open), Encoding.UTF8);
                 scriptCppReader.Write(uiCpp);
                 scriptCppReader.Close();
             }
