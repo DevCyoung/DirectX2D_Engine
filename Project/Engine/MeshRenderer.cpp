@@ -50,6 +50,6 @@ void MeshRenderer::render(const Camera* const camera)
 	//shader, Texture
 	GetMaterial()->UpdateData();
 
-	gGraphicDevice->BindMesh(mMesh);	
-	gGraphicDevice->Draw(mMesh);
+	gGraphicDevice->BindMesh(mMesh, 0);	
+	gGraphicDevice->Draw(mMesh, 0);
 }

@@ -30,8 +30,8 @@
 **/ImGUI/Debug/*
 **/ImGUI/Release/*
 
-#**/FBXSDK/Debug/*
-#**/FBXSDK/Release/*
+**/FBXSDK/Debug/*
+**/FBXSDK/Release/*
 
 
 #hlsl

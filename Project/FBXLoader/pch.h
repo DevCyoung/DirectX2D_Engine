@@ -31,11 +31,13 @@
 #include <commdlg.h>
 
 #include <Engine\DXMath.h>
+
 #include "fbxsdk.h"
 #include "define.h"
 //#include "EnumFlag.h"
 //#include "DefineMacro.h"
 //#include "SafeDelete.h"
 
+using namespace engine::math;
 
 #endif //PCH_H

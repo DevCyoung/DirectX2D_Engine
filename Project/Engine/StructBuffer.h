@@ -219,3 +219,12 @@ struct /*alignas(16)*/ tLight3DInfo
 	float	LightSpecCoeff;
 	int		pad[3];
 };
+
+// Material °è¼ö
+struct tMtrlData
+{
+	Vector4 vDiff;
+	Vector4 vSpec;
+	Vector4 vAmb;
+	Vector4 vEmv;
+};

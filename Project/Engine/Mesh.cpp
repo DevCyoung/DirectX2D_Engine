@@ -14,7 +14,7 @@ Mesh::Mesh(
 	, mVertexCount(vertexCount)
 	, mVertexSize(vertexSize)
 	, mVertexDesc{}
-	, mIndexBuffer(nullptr)
+	, mIndexBuffers()
 	, mIndexCount(indexCount)
 	, mIndexSize(indexSize)
 	, mIdexDesc{}
@@ -39,11 +39,19 @@ Mesh::Mesh(
 
 	D3D11_SUBRESOURCE_DATA tIndexSub = {};
 	tIndexSub.pSysMem = indexs;
-
-	if (FAILED(gGraphicDevice->UnSafe_GetDevice()->CreateBuffer(&mIdexDesc, &tIndexSub, mIndexBuffer.GetAddressOf())))
+	Microsoft::WRL::ComPtr<ID3D11Buffer> indexBuffer;
+	if (FAILED(gGraphicDevice->UnSafe_GetDevice()->CreateBuffer(&mIdexDesc, &tIndexSub, indexBuffer.GetAddressOf())))
 	{
 		Assert(false, ASSERT_MSG("failed to create index buffer"));
 	}
+
+	tIndexInfo info = {};
+	info.iIdxCount = static_cast<UINT>(indexCount);
+	info.pIB = indexBuffer;
+	info.tIBDesc = mIdexDesc;
+	info.pIdxSysMem = indexs;
+
+	mIndexBuffers.push_back(info);
 }
 
 Mesh::~Mesh()

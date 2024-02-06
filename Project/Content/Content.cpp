@@ -19,19 +19,14 @@
 #include <Engine/MeshRenderer.h>
 #include <Engine/Light3D.h>
 
-
-#include <FBXLoader/FBXLoadManager.h>
-#ifdef _DEBUG
-#pragma comment(lib, "FBXLoader/Debug/FBXLoader_d")
-#else
-#pragma comment(lib, "FBXLoader/Release/FBXLoader")
-#endif
-
-
+#include <Engine\FBXLoader.h>
 Content::Content()
 {
 	{
-		FBXLoadManager::Initialize();
+		//FBXLoadManager::Initialize();		
+		std::wstring relativePath = L"\\Fbx\\house.fbx";
+		FBXLoader::LoadFBX(relativePath);
+		//FBXLoadManager::GetInstance()->Load(relativePath);
 
 	}
 	Scene* testScene = new Scene;
@@ -140,7 +135,7 @@ Content::~Content()
 	//TimeManager::deleteInstance();
 	//SoundManager::deleteInstance();
 	//KatanaZeroSystem::deleteInstance();
-	FBXLoadManager::DeleteInstance();
+	//FBXLoadManager::DeleteInstance();
 }
 
 //void Content::resourceInitialize()

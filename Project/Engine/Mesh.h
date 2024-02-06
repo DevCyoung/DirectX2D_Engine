@@ -2,6 +2,16 @@
 #include <wrl.h>
 #include <d3d11.h>
 #include "Resource.h"
+using namespace Microsoft::WRL;
+
+struct tIndexInfo
+{
+	ComPtr<ID3D11Buffer>    pIB;
+	D3D11_BUFFER_DESC       tIBDesc;
+	UINT				    iIdxCount;
+	const void* pIdxSysMem;
+};
+
 
 class Mesh : public Resource
 {
@@ -33,7 +43,7 @@ private:
 	size_t mVertexCount;
 	size_t mVertexSize;
 	D3D11_BUFFER_DESC mVertexDesc;
-	Microsoft::WRL::ComPtr<ID3D11Buffer> mIndexBuffer;
+	std::vector<tIndexInfo> mIndexBuffers;
 	size_t mIndexCount;
 	size_t mIndexSize;
 	D3D11_BUFFER_DESC mIdexDesc;

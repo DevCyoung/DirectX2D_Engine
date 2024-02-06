@@ -307,7 +307,7 @@ void DebugRenderer2D::render(const Camera* const camera) const
 		gGraphicDevice->PassCB(eCBType::Transform, sizeof(CBTransform), &CBTransform);
 		gGraphicDevice->BindCB(eCBType::Transform, eShaderBindType::VS);
 
-		gGraphicDevice->BindMesh(P_MESH);
+		gGraphicDevice->BindMesh(P_MESH, 0);
 
 		gGraphicDevice->BindIA(P_SHADER);
 		gGraphicDevice->BindPS(P_SHADER);
@@ -348,7 +348,7 @@ void DebugRenderer2D::render(const Camera* const camera) const
 			break;
 		}
 
-		gGraphicDevice->Draw(P_MESH);
+		gGraphicDevice->Draw(P_MESH, 0);
 	}
 }
 

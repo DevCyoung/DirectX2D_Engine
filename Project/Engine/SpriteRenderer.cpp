@@ -148,7 +148,7 @@ void SpriteRenderer::render(const Camera* const camera)
 		gGraphicDevice->BindCB(eCBType::Sprite2D, eShaderBindType::PS);
 	}	
 
-	gGraphicDevice->BindMesh(mMesh);
+	gGraphicDevice->BindMesh(mMesh, 0);
 	gGraphicDevice->BindIA(mMaterial->GetShader());
 	gGraphicDevice->BindPS(mMaterial->GetShader());
 	gGraphicDevice->BindVS(mMaterial->GetShader());
@@ -157,5 +157,5 @@ void SpriteRenderer::render(const Camera* const camera)
 	gGraphicDevice->BindRS(mMaterial->GetShader()->GetRSType());	
 	gGraphicDevice->BindSRV(eShaderBindType::PS, static_cast<UINT>(eSRVTpye::Sprite2D), 
 		mMaterial->GetTexture(TEX_0));
-	gGraphicDevice->Draw(mMesh);
+	gGraphicDevice->Draw(mMesh, 0);
 }

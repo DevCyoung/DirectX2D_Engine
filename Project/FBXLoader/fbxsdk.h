@@ -38,17 +38,21 @@
   * files compatible with MotionBuilder version 6.0 and up. 
   */
 #ifdef _DEBUG
-#pragma comment(lib, "FBXSDK/Debug/libfbxsdk")
+//#pragma comment(lib, "FBXSDK/Debug/libfbxsdk")
+#pragma comment(lib, "FBXSDK/Debug/libfbxsdk-md")
+//#pragma comment(lib, "FBXSDK/Debug/libfbxsdk-mt")
 #pragma comment(lib, "FBXSDK/Debug/libxml2-md")
-#pragma comment(lib, "FBXSDK/Debug/libxml2-mt")
+//#pragma comment(lib, "FBXSDK/Debug/libxml2-mt")
 #pragma comment(lib, "FBXSDK/Debug/zlib-md")
-#pragma comment(lib, "FBXSDK/Debug/zlib-mt")
+//#pragma comment(lib, "FBXSDK/Debug/zlib-mt")
 #else
-#pragma comment(lib, "FBXSDK/Debug/libfbxsdk")
+//#pragma comment(lib, "FBXSDK/Debug/libfbxsdk")
+#pragma comment(lib, "FBXSDK/Debug/libfbxsdk-md")
+//#pragma comment(lib, "FBXSDK/Debug/libfbxsdk-mt")
 #pragma comment(lib, "FBXSDK/Debug/libxml2-md")
-#pragma comment(lib, "FBXSDK/Debug/libxml2-mt")
+//#pragma comment(lib, "FBXSDK/Debug/libxml2-mt")
 #pragma comment(lib, "FBXSDK/Debug/zlib-md")
-#pragma comment(lib, "FBXSDK/Debug/zlib-mt")
+//#pragma comment(lib, "FBXSDK/Debug/zlib-mt")
 #endif
 
 #include <fbxsdk/fbxsdk_def.h>

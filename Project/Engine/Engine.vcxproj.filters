@@ -238,6 +238,9 @@
     <Filter Include="Source\03. Component\06. Light3D">
       <UniqueIdentifier>{a5198506-7578-4c1c-a06b-a34eccecb9c3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FBXLoader">
+      <UniqueIdentifier>{1bdd2ffe-9056-4e12-9376-807147d6e285}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -489,6 +492,7 @@
     <ClInclude Include="Light3D.h">
       <Filter>Source\03. Component\06. Light3D</Filter>
     </ClInclude>
+    <ClInclude Include="FBXLoader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp">
@@ -695,6 +699,7 @@
     <ClCompile Include="Light3D.cpp">
       <Filter>Source\03. Component\06. Light3D</Filter>
     </ClCompile>
+    <ClCompile Include="FBXLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DirectXTex.inl">
