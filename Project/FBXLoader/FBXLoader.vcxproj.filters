@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{1e919d65-1989-4795-8041-ee375ceb8e25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="windows">
+      <UniqueIdentifier>{36f37531-1a43-48cb-87ef-497fcc4cd09b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>windows</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>windows</Filter>
+    </ClInclude>
+    <ClInclude Include="FBXLoader.h">
+      <Filter>source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FBXLoader.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>windows</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
