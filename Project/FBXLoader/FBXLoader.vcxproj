@@ -73,12 +73,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Output\Library\FBXLoader\Debug\</OutDir>
     <TargetName>$(ProjectName)_d</TargetName>
-    <IncludePath>$(SolutionDir)Project\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Project\;$(SolutionDir)Project\FBXLoader\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Output\Library\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Output\Library\FBXLoader\Release\</OutDir>
-    <IncludePath>$(SolutionDir)Project\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Project\;$(SolutionDir)Project\FBXLoader\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Output\Library\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="define.h" />
     <ClInclude Include="FBXLoadManager.h" />
+    <ClInclude Include="fbxsdk.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>

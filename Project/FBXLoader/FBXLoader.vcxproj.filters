@@ -19,6 +19,7 @@
       <Filter>source</Filter>
     </ClInclude>
     <ClInclude Include="define.h" />
+    <ClInclude Include="fbxsdk.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FBXLoadManager.cpp">

@@ -31,6 +31,7 @@
 #include <commdlg.h>
 
 #include <Engine\DXMath.h>
+#include "fbxsdk.h"
 #include "define.h"
 //#include "EnumFlag.h"
 //#include "DefineMacro.h"
