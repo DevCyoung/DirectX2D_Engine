@@ -35,16 +35,17 @@ public:
 public:
 	virtual ~Mesh();	
 	UINT GetVertexCount() const { return static_cast<UINT>(mVertexCount); }
-	UINT GetIndexCount()  const { return static_cast<UINT>(mIndexCount); }
+	//UINT GetIndexCount()  const { return static_cast<UINT>(mIndexCount); }
 	virtual HRESULT Load(const std::wstring& filePath) override;
 
+private:
+	void addIndexBuffer(const void* const indexs,const 
+		size_t indexCount, 
+		const size_t indexSize);
 private:
 	Microsoft::WRL::ComPtr<ID3D11Buffer> mVertexBuffer;
 	size_t mVertexCount;
 	size_t mVertexSize;
 	D3D11_BUFFER_DESC mVertexDesc;
-	std::vector<tIndexInfo> mIndexBuffers;
-	size_t mIndexCount;
-	size_t mIndexSize;
-	D3D11_BUFFER_DESC mIdexDesc;
+	std::vector<tIndexInfo> mIndexBuffers;	
 };
