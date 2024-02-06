@@ -18,8 +18,22 @@
 #include <Engine/SpriteRenderer.h>
 #include <Engine/MeshRenderer.h>
 #include <Engine/Light3D.h>
+
+
+#include <FBXLoader/FBXLoadManager.h>
+#ifdef _DEBUG
+#pragma comment(lib, "FBXLoader/Debug/FBXLoader_d")
+#else
+#pragma comment(lib, "FBXLoader/Release/FBXLoader")
+#endif
+
+
 Content::Content()
 {
+	{
+		FBXLoadManager::Initialize();
+
+	}
 	Scene* testScene = new Scene;
 
 	//main Camera
@@ -126,6 +140,7 @@ Content::~Content()
 	//TimeManager::deleteInstance();
 	//SoundManager::deleteInstance();
 	//KatanaZeroSystem::deleteInstance();
+	FBXLoadManager::DeleteInstance();
 }
 
 //void Content::resourceInitialize()

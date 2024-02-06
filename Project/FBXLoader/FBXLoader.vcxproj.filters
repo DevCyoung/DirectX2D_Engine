@@ -15,12 +15,13 @@
     <ClInclude Include="framework.h">
       <Filter>windows</Filter>
     </ClInclude>
-    <ClInclude Include="FBXLoader.h">
+    <ClInclude Include="FBXLoadManager.h">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="define.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FBXLoader.cpp">
+    <ClCompile Include="FBXLoadManager.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">

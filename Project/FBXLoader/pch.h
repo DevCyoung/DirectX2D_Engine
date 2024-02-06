@@ -31,7 +31,7 @@
 #include <commdlg.h>
 
 #include <Engine\DXMath.h>
-
+#include "define.h"
 //#include "EnumFlag.h"
 //#include "DefineMacro.h"
 //#include "SafeDelete.h"
