@@ -17,8 +17,22 @@
 #lib
 **/Content/Debug/*
 **/Content/Release/*
+
 **/Engine/Debug/*
 **/Engine/Release/*
+
+**/Editor/Debug/*
+**/Editor/Release/*
+
+**/FBXLoader/Debug/*
+**/FBXLoader/Release/*
+
+**/ImGUI/Debug/*
+**/ImGUI/Release/*
+
+**/FBXSDK/Debug/*
+**/FBXSDK/Release/*
+
 
 #hlsl
 *.cso
