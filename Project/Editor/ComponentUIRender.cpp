@@ -21,6 +21,8 @@ class RectCollider2D;
 void RectCollider2DUI(RectCollider2D* component);
 class Light2D;
 void Light2DUI(Light2D* component);
+class Light3D;
+void Light3DUI(Light3D* component);
 class RenderComponent;
 void RenderComponentUI(RenderComponent* component);
 class Animator2D;
@@ -65,6 +67,9 @@ void ComponentUIRender(Component* component)
 		break;
 	case eComponentType::Light2D:
 		Light2DUI((Light2D*)component);
+		break;
+	case eComponentType::Light3D:
+		Light3DUI((Light3D*)component);
 		break;
 	case eComponentType::RenderComponent:
 		RenderComponentUI((RenderComponent*)component);

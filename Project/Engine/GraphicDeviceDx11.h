@@ -55,6 +55,7 @@ public:
 	void BindUAV(const UINT startSlot, const Texture* const texture) const;
 	void UnBindUAV(const UINT startSlot) const;
 	void BindCB(const eCBType CBType, const eShaderBindType stageType) const;
+	void BindCBAllShader(const eCBType CBType) const;
 	void PassCB(const eCBType CBType, const UINT dataSize, const void* const data) const;
 	void BindSB(const eSBType SBType, const eShaderBindType stageType) const;
 	void PassSB(const eSBType SBType, const UINT dataSize, const UINT stride, const void* const data) const;

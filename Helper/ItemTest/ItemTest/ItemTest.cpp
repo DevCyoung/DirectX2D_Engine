@@ -1,61 +1,45 @@
-﻿#include <string>
-#include <vector>
+﻿//#include <WinBase.h>
+#include <Windows.h>
 #include <iostream>
 
-using namespace std;
 
-int maxNum = 0;
-
-int searchMax(vector<int>& tree, vector<bool>& visited, const int pos, int d)
+class A
 {
-    if (pos >= tree.size())
-    {
-        return 0;
-    }
-    else if (visited[pos])
-    {
-        return tree[pos];
-    }
+public:
+	int a;
+	A()
+		:a(0)
+	{
+		a = 1;
+	}
+};
 
-    visited[pos] = true;
-    int left = pos + d;
-    int right = pos + d + 1;
+class B : public A
+{
+public:
+	int b;
 
-    int lm = searchMax(tree, visited, left, d + 1);
-    int rm = searchMax(tree, visited, right, d + 1);
+	B()
+		:b(0)
+	{
+		b = 2;
+	}
+};
 
-    int max = lm > rm ? lm : rm;
+class C : public B
+{
+public:
+	C()
+	{		
+	}
 
-    tree[pos] += max;
-
-    return tree[pos];
-}
-
-int solution(vector<vector<int>> triangle) {
-    int answer = 0;
-    vector<int> tree;
-    vector<bool> visited;
-
-    for (vector<int>& items : triangle)
-    {
-        for (int item : items)
-        {
-            tree.push_back(item);
-            visited.push_back(false);
-        }
-    }
-
-
-    searchMax(tree, visited, 0, 1);
-    return tree[0];
-}
+private:
+	int c;
+};
 
 int main()
-{
-    bool a = 5;
-    long long n = reinterpret_cast<long long>(&a);
-
-    solution({ {7}, {3, 8} });
+{ 	
+	C c;
 }   
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

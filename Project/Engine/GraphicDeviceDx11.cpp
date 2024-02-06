@@ -318,6 +318,20 @@ void GraphicDeviceDX11::BindCB(const eCBType CBType, const eShaderBindType stage
 	}
 }
 
+void GraphicDeviceDX11::BindCBAllShader(const eCBType CBType) const
+{
+	Assert(eCBType::End != CBType, ASSERT_MSG_INVALID);	
+
+	const ConstantBuffer& CB = mCBCollection->GetConstantBuffer(CBType);
+	const UINT START_SLOT = static_cast<UINT>(CB.mType);
+
+	mContext->VSSetConstantBuffers(START_SLOT, 1, CB.mBuffer.GetAddressOf());
+	mContext->HSSetConstantBuffers(START_SLOT, 1, CB.mBuffer.GetAddressOf());
+	mContext->DSSetConstantBuffers(START_SLOT, 1, CB.mBuffer.GetAddressOf());
+	mContext->GSSetConstantBuffers(START_SLOT, 1, CB.mBuffer.GetAddressOf());
+	mContext->PSSetConstantBuffers(START_SLOT, 1, CB.mBuffer.GetAddressOf());
+}
+
 void GraphicDeviceDX11::PassCB(const eCBType CBType, const UINT dataSize, const void* const data) const
 {
 	Assert(eCBType::End != CBType, ASSERT_MSG_INVALID);

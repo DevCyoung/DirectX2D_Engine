@@ -235,6 +235,9 @@
     <Filter Include="Source\03. Component\03. Render\03. MeshRenderer">
       <UniqueIdentifier>{25f86178-e7ce-4677-bd4d-d6bcaac8665e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\03. Component\06. Light3D">
+      <UniqueIdentifier>{a5198506-7578-4c1c-a06b-a34eccecb9c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -483,6 +486,9 @@
     <ClInclude Include="MeshRenderer.h">
       <Filter>Source\03. Component\03. Render\03. MeshRenderer</Filter>
     </ClInclude>
+    <ClInclude Include="Light3D.h">
+      <Filter>Source\03. Component\06. Light3D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp">
@@ -685,6 +691,9 @@
     </ClCompile>
     <ClCompile Include="MeshRenderer.cpp">
       <Filter>Source\03. Component\03. Render\03. MeshRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Light3D.cpp">
+      <Filter>Source\03. Component\06. Light3D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

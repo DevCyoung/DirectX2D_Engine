@@ -154,7 +154,7 @@ public class MyProgram
                 
             if (false == File.Exists(uiPath))
             {
-                StreamWriter scriptCppReader = new StreamWriter(new FileStream(uiPath, FileMode.Open), Encoding.UTF8);
+                StreamWriter scriptCppReader = new StreamWriter(new FileStream(uiPath, FileMode.OpenOrCreate), Encoding.UTF8);
                 scriptCppReader.Write(uiCpp);
                 scriptCppReader.Close();
             }

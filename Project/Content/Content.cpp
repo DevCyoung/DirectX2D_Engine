@@ -17,6 +17,7 @@
 #include "CameraInputMoveMent.h"
 #include <Engine/SpriteRenderer.h>
 #include <Engine/MeshRenderer.h>
+#include <Engine/Light3D.h>
 Content::Content()
 {
 	Scene* testScene = new Scene;
@@ -91,6 +92,14 @@ Content::Content()
 			//obj->GetComponent<Transform>()->SetRotation(rotation);
 			testScene->AddGameObject(obj, eLayerType::TileMap);
 		}
+	}
+
+	{
+		GameObject* obj = new GameObject();
+		obj->AddComponent<Light3D>();
+		obj->SetName(L"Light3D");
+
+		testScene->AddGameObject(obj, eLayerType::Light);
 	}
 	////Material
 	//{

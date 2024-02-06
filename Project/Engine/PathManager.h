@@ -7,10 +7,10 @@ class PathManager
 	SINGLETON_DECLARE(PathManager);
 
 public:
-	const wchar_t* GetResourcePath() const { return mResourcePath; }
+	LPCWSTR	GetResourcePath() const { return mResourcePath; }
 
 private: 
-	wchar_t	mResourcePath[MAX_PATH];
+	WCHAR	mResourcePath[MAX_PATH];
 };
 
 #define gPathManager PathManager::GetInstance()

@@ -176,4 +176,17 @@ cbuffer MATERIAL : register(b7)
 	int g_iBoneCount;
 	int2 padding;
 };
+//52 + 12
+cbuffer GlobalLight3D : register(b8)
+{
+	float4	LIGHT_POS;
+	float4	LIGHT_DIR;
+
+	float4	LIGHT_COLOR;
+	float4	LIGHT_AMB;
+	
+	float	LIGHT_SPEC_COEFF;
+	int3	pad;
+};
+
 #endif

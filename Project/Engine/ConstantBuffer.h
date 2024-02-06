@@ -12,6 +12,7 @@ enum class eCBType
 	Sprite2D,
 	Wave,
 	Material,
+	Light3D,
 	End,
 };
 

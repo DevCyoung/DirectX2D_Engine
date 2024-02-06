@@ -13,6 +13,7 @@ enum class eComponentType
 	CircleCollider2D,
 	Collider2D,
 	Light2D,
+	Light3D,
 	LineCollider2D,
 	MeshRenderer,
 	ParticleSystem,

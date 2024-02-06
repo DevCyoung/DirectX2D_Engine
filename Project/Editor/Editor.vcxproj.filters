@@ -278,5 +278,8 @@
     <ClCompile Include="ParticleSystemUI.cpp">
       <Filter>Component\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Light3DUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

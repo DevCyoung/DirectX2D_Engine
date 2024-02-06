@@ -223,6 +223,7 @@ call ScriptGen.exe Component $(SolutionDir)Project\Engine $(SolutionDir)Project\
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Light3D.h" />
     <ClInclude Include="LineCollider2D.h">
       <SubType>
       </SubType>
@@ -341,6 +342,7 @@ call ScriptGen.exe Component $(SolutionDir)Project\Engine $(SolutionDir)Project\
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Light3D.cpp" />
     <ClCompile Include="LineCollider2D.cpp">
       <SubType>
       </SubType>

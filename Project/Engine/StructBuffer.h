@@ -200,3 +200,22 @@ struct alignas(16) tMaterial // b7
 	int                 g_iBoneCount;
 	int                 padding[2];
 };
+
+//static float3 g_vLightPos = float3(0.f, 0.f, 0.f);
+//static float3 g_vLightDir = float3(1.f, -1.f, 1.f);
+//
+//static float3 g_vLightColor = float3(1.f, 1.f, 1.f);
+//static float g_fLightSpecCoeff = 0.3f;
+//static float3 g_vLightAmb = float3(0.15f, 0.15f, 0.15f); // È¯°æ±¤
+//Â¦¼ö´ÜÀ§·Î
+struct /*alignas(16)*/ tLight3DInfo
+{
+	Vector4 LightPos;
+	Vector4 LightDir;
+
+	Vector4 LightColor;
+	Vector4 LightAmb;
+	
+	float	LightSpecCoeff;
+	int		pad[3];
+};
