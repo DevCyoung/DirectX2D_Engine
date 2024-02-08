@@ -22,6 +22,9 @@ struct VS_IN
 	float3 vNormal : NORMAL;
 	float3 vTangent : TANGENT;
 	float3 vBinormal : BINORMAL;
+	
+	float4 vWeights : BLENDWEIGHT;
+	float4 vIndices : BLENDINDICES;
 };
 
 struct VS_OUT
@@ -30,6 +33,7 @@ struct VS_OUT
 	float2 vUV : TEXCOORD;
     
 	float3 vViewPos : POSITION;
+	
 	float3 vViewNormal : NORMAL;
 	float3 vViewTangent : TANGENT;
 	float3 vViewBinormal : BINORMAL;
@@ -62,7 +66,7 @@ float4 PS_Std3D(VS_OUT _in) : SV_Target
     
 	if (g_btex_0)
 	{
-		vOutColor = MeshRenderer00.Sample(pointSampler, _in.vUV);
+		//vOutColor = MeshRenderer00.Sample(pointSampler, _in.vUV);
 	}
     
 	if (g_btex_1)

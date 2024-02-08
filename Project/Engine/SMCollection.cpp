@@ -43,7 +43,7 @@ SMCollection::SMCollection()
 		std::vector<D3D11_INPUT_ELEMENT_DESC>& LayoutDesc =
 			mInputElementsArray[static_cast<UINT>(eSMType::Std3D)];		
 
-		constexpr UINT MAX_INPUT_ELEMENT = 6;
+		constexpr UINT MAX_INPUT_ELEMENT = 8;
 		LayoutDesc.resize(MAX_INPUT_ELEMENT);
 
 		LayoutDesc[0].SemanticName = "POSITION";
@@ -94,6 +94,22 @@ SMCollection::SMCollection()
 		LayoutDesc[5].InstanceDataStepRate = 0;
 		LayoutDesc[5].AlignedByteOffset = 60;
 		LayoutDesc[5].Format = DXGI_FORMAT_R32G32B32_FLOAT;
+
+		LayoutDesc[6].SemanticName = "BLENDWEIGHT";
+		LayoutDesc[6].SemanticIndex = 0;
+		LayoutDesc[6].AlignedByteOffset = 72;
+		LayoutDesc[6].Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+		LayoutDesc[6].InputSlot = 0;
+		LayoutDesc[6].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+		LayoutDesc[6].InstanceDataStepRate = 0;
+
+		LayoutDesc[7].SemanticName = "BLENDINDICES";
+		LayoutDesc[7].SemanticIndex = 0;
+		LayoutDesc[7].AlignedByteOffset = 88;
+		LayoutDesc[7].Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+		LayoutDesc[7].InputSlot = 0;
+		LayoutDesc[7].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+		LayoutDesc[7].InstanceDataStepRate = 0;
 	}
 }
 

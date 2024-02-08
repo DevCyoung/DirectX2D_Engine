@@ -324,7 +324,7 @@ void Animator2D::render(const Camera* const camera)
 		gGraphicDevice->BindCB(eCBType::ColorInfo, eShaderBindType::PS);
 	}
 
-	gGraphicDevice->BindMesh(mMesh);
+	gGraphicDevice->BindMesh(mMesh, 0);
 	gGraphicDevice->BindIA(mMaterial->GetShader());
 	gGraphicDevice->BindPS(mMaterial->GetShader());
 	gGraphicDevice->BindVS(mMaterial->GetShader());
@@ -342,5 +342,5 @@ void Animator2D::render(const Camera* const camera)
 
 	gGraphicDevice->BindSRV(eShaderBindType::PS, static_cast<UINT>(eSRVTpye::AtlasAnimation2D), P_ATLAS);
 
-	gGraphicDevice->Draw(mMesh);
+	gGraphicDevice->Draw(mMesh, 0);
 }

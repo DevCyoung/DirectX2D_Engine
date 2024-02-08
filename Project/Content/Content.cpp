@@ -18,8 +18,17 @@
 #include <Engine/SpriteRenderer.h>
 #include <Engine/MeshRenderer.h>
 #include <Engine/Light3D.h>
+
+#include <Engine\FBXLoader.h>
 Content::Content()
 {
+	{
+		//FBXLoadManager::Initialize();		
+		std::wstring relativePath = L"\\Fbx\\house.fbx";
+		FBXLoader::LoadFBX(relativePath);
+		//FBXLoadManager::GetInstance()->Load(relativePath);
+
+	}
 	Scene* testScene = new Scene;
 
 	//main Camera
@@ -60,6 +69,9 @@ Content::Content()
 		Mesh* panelMesh =
 			gResourceManager->FindAndLoad<Mesh>(L"Panel");
 
+		Mesh* houseMesh =
+			gResourceManager->FindAndLoad<Mesh>(L"houseMesh");
+
 		material->SetShader(shader);
 		material->SetTexture(TEX_0, texture);
 		material->SetTexture(TEX_1, texture2);
@@ -83,7 +95,7 @@ Content::Content()
 			obj->AddComponent<MeshRenderer>();
 
 			obj->GetComponent<MeshRenderer>()->SetMaterial(material);
-			obj->GetComponent<MeshRenderer>()->SetMesh(panelMesh);
+			obj->GetComponent<MeshRenderer>()->SetMesh(houseMesh);
 
 			obj->GetComponent<Transform>()->SetPosition(100.f, 100.f, 0.f);
 			obj->SetName(L"Map");
@@ -126,6 +138,7 @@ Content::~Content()
 	//TimeManager::deleteInstance();
 	//SoundManager::deleteInstance();
 	//KatanaZeroSystem::deleteInstance();
+	//FBXLoadManager::DeleteInstance();
 }
 
 //void Content::resourceInitialize()

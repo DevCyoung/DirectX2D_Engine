@@ -12,7 +12,7 @@
 #include "EngineResourceLoader.h"
 #include "Fmod.h"
 #include "FontManager.h"
-
+#include <FBXLoader\FBXLoadManager.h>
 Engine::Engine(const HWND hWnd, const UINT renderTargetWidth, const UINT renderTargetHeight)
 	: mHwnd(hWnd)
 	, mRenderTargetWidth(renderTargetWidth)
@@ -22,8 +22,8 @@ Engine::Engine(const HWND hWnd, const UINT renderTargetWidth, const UINT renderT
 	, mGraphicDevice(new GraphicDeviceDX11(mHwnd, mRenderTargetWidth, mRenderTargetHeight))
 {
 	setWindowSize(mRenderTargetWidth, mRenderTargetHeight);
+	FBXLoadManager::Initialize();
 	Fmod::Initialize();	
-
 	TimeManager::initialize();
 	WindowManager::initialize();
 	MessageManager::initialize();
@@ -41,10 +41,10 @@ Engine::~Engine()
 	PathManager::deleteInstance();
 	MessageManager::deleteInstance();
 	WindowManager::deleteInstance();
-	TimeManager::deleteInstance();
-	
+	TimeManager::deleteInstance();	
 	FontManager::deleteInstance();
 	Fmod::Release();
+	FBXLoadManager::DeleteInstance();
 	DELETE_POINTER_NOT_NULL(mGraphicDevice);	
 }
 

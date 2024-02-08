@@ -2,6 +2,7 @@
 #include "Resource.h"
 #include "EnumRenderType.h"
 #include "StructVertex.h"
+#include "StructBuffer.h"
 
 class Shader;
 class Texture;
@@ -24,16 +25,6 @@ enum TEX_PARAM
 	TEX_ARR_1,
 
 	TEX_END,
-};
-
-
-// Material °è¼ö
-struct tMtrlData
-{
-	Vector4 vDiff;
-	Vector4 vSpec;
-	Vector4 vAmb;
-	Vector4 vEmv;
 };
 
 struct tMaterialData

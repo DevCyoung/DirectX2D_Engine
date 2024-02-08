@@ -50,7 +50,7 @@ public:
 	ID3D11DeviceContext* UnSafe_Context() const { Assert(mContext, ASSERT_MSG_NULL); return mContext.Get(); }
 
 	void BindIA(const Shader* const shader) const;
-	void BindMesh(const Mesh* const mesh) const;
+	void BindMesh(const Mesh* const mesh, const int idx) const;
 	void BindSRV(const eShaderBindType stageType, const UINT startSlot, const Texture* const texture) const;
 	void BindUAV(const UINT startSlot, const Texture* const texture) const;
 	void UnBindUAV(const UINT startSlot) const;
@@ -72,7 +72,7 @@ public:
 		ID3D11RenderTargetView* const* const ppRnderTargetView,
 		ID3D11DepthStencilView* const depthStencilView) const;
 
-	void Draw(const Mesh* const mesh) const;
+	void Draw(const Mesh* const mesh, int idx) const;
 	//void DrawIndexedInstanced(const Mesh* const mesh) const;
 	void Distpatch(const ComputeShader* const computeShader) const;
 

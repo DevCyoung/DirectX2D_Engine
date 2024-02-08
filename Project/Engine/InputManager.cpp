@@ -55,6 +55,7 @@ bool InputManager::IsWindowMouseHoverd()
 
 void InputManager::update(const HWND hWnd)
 {
+	(void)(hWnd);
 	Assert(hWnd, ASSERT_MSG_NULL);
 	HWND focusWindow = GetFocus();
 

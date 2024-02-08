@@ -74,11 +74,13 @@
     <OutDir>$(SolutionDir)Output\Library\Engine\Debug\</OutDir>
     <TargetName>$(ProjectName)_d</TargetName>
     <LibraryPath>$(SolutionDir)Output\Library\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Project\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Output\Library\Engine\Release\</OutDir>
     <TargetName>$(ProjectName)</TargetName>
     <LibraryPath>$(SolutionDir)Output\Library\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Project\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -214,6 +216,7 @@ call ScriptGen.exe Component $(SolutionDir)Project\Engine $(SolutionDir)Project\
     <ClInclude Include="EnumResource.h" />
     <ClInclude Include="EnumShaderBindStage.h" />
     <ClInclude Include="EnumSRV.h" />
+    <ClInclude Include="FBXLoader.h" />
     <ClInclude Include="Fmod.h" />
     <ClInclude Include="FontManager.h">
       <SubType>
@@ -331,6 +334,7 @@ call ScriptGen.exe Component $(SolutionDir)Project\Engine $(SolutionDir)Project\
     <ClCompile Include="EngineResourceLoader.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EnumComponent.cpp" />
+    <ClCompile Include="FBXLoader.cpp" />
     <ClCompile Include="Fmod.cpp" />
     <ClCompile Include="FontManager.cpp">
       <SubType>

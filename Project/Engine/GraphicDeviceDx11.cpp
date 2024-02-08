@@ -221,7 +221,7 @@ void GraphicDeviceDX11::BindIA(const Shader* const shader) const
 	mContext->IASetPrimitiveTopology(shader->mTopology);
 }
 
-void GraphicDeviceDX11::BindMesh(const Mesh* const mesh) const
+void GraphicDeviceDX11::BindMesh(const Mesh* const mesh, int idex) const
 {
 	Assert(mesh, ASSERT_MSG_NULL);
 	Assert(mesh->mVertexBuffer, ASSERT_MSG_NULL);
@@ -230,7 +230,7 @@ void GraphicDeviceDX11::BindMesh(const Mesh* const mesh) const
 	const UINT STRIDE = static_cast<UINT>(mesh->mVertexSize);
 
 	mContext->IASetVertexBuffers(0, 1, mesh->mVertexBuffer.GetAddressOf(), &STRIDE, &OFFSET);
-	mContext->IASetIndexBuffer(mesh->mIndexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
+	mContext->IASetIndexBuffer(mesh->mIndexBuffers[idex].pIB.Get(), DXGI_FORMAT_R32_UINT, 0);
 }
 
 void GraphicDeviceDX11::BindSRV(const eShaderBindType stageType,
@@ -428,6 +428,8 @@ void GraphicDeviceDX11::BindHS(const Shader* const shader) const
 	Assert(shader, ASSERT_MSG_NULL);
 	Assert(shader->mVS.Get(), ASSERT_MSG_NULL);
 
+	(void)shader;
+	Assert(false, ASSERT_MSG_INVALID);
 	//mContext->HSSetShader(shader->mVS.Get(), nullptr, 0);
 }
 
@@ -437,6 +439,8 @@ void GraphicDeviceDX11::BindGS(const Shader* const shader) const
 	Assert(shader, ASSERT_MSG_NULL);
 	Assert(shader->mVS.Get(), ASSERT_MSG_NULL);
 
+	(void)shader;
+	Assert(false, ASSERT_MSG_INVALID);
 	//mContext->GSSetShader(shader->mVS.Get(), nullptr, 0);
 }
 
@@ -446,6 +450,8 @@ void GraphicDeviceDX11::BindDS(const Shader* const shader) const
 	Assert(shader, ASSERT_MSG_NULL);
 	Assert(shader->mVS.Get(), ASSERT_MSG_NULL);
 
+	(void)shader;
+	Assert(false, ASSERT_MSG_INVALID);
 	//mContext->DSSetShader(shader->mVS.Get(), nullptr, 0);
 }
 
@@ -486,11 +492,13 @@ void GraphicDeviceDX11::BindRS(const eRSType RSType)
 	mContext->RSSetState(mRSCollection->mRStates[static_cast<UINT>(RSType)].Get());
 }
 
-void GraphicDeviceDX11::Draw(const Mesh* const mesh) const
+void GraphicDeviceDX11::Draw(const Mesh* const mesh, int index) const
 {
 	Assert(mesh, ASSERT_MSG_NULL);
+	Assert(!mesh->mIndexBuffers.empty(), ASSERT_MSG_NULL);
+	Assert(index < mesh->mIndexBuffers.size(), ASSERT_MSG_NULL);
 
-	const UINT INDEX_COUNT = mesh->GetIndexCount();
+	const UINT INDEX_COUNT = mesh->mIndexBuffers[index].iIdxCount;
 	const UINT START_VERTEX_LOCATION = 0;
 
 	mContext->DrawIndexed(INDEX_COUNT, START_VERTEX_LOCATION, 0);
