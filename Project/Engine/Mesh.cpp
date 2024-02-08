@@ -18,24 +18,36 @@ Mesh::Mesh(
 {	
 	(void)indexSize;
 
-	mVertexDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_VERTEX_BUFFER;
-	mVertexDesc.CPUAccessFlags = 0;
-	mVertexDesc.Usage = D3D11_USAGE_DEFAULT;
-	mVertexDesc.ByteWidth = static_cast<UINT>(mVertexCount * mVertexSize);
-
-	D3D11_SUBRESOURCE_DATA outVertexSub = {};
-	outVertexSub.pSysMem = vertexs;
-
-	if (FAILED(gGraphicDevice->UnSafe_GetDevice()->CreateBuffer(&mVertexDesc, &outVertexSub, mVertexBuffer.GetAddressOf())))
-	{
-		Assert(false, ASSERT_MSG("failed to create vertex buffer"));
-	}
+	addVertex(vertexs);
 	
 	addIndexBuffer(indexs, indexCount, indexSize);
+
+
+}
+
+Mesh::Mesh(const void* const vertexs, 
+	const size_t vertexCount, 
+	const size_t vertexSize, 
+	const std::vector<tIndexInfo>& infos)
+	: mVertexBuffer(nullptr)
+	, mVertexCount(vertexCount)
+	, mVertexSize(vertexSize)
+	, mVertexDesc{}
+	, mIndexBuffers()
+{
+	addVertex(vertexs);
+
+	for (const tIndexInfo& info : infos)
+	{
+		addIndexBuffer(info.pIdxSysMem, info.iIdxCount, sizeof(UINT));
+	}
 }
 
 Mesh::~Mesh()
 {
+
+
+	mIndexBuffers.clear();
 }
 
 HRESULT Mesh::Load(const std::wstring& filePath)
@@ -72,6 +84,24 @@ void Mesh::addIndexBuffer(const void* const indexs,
 	info.tIBDesc = indexDexc;
 	info.pIdxSysMem = indexs;
 
+	//delete info.pIdxSysMem;
+
 	mIndexBuffers.push_back(info);
+}
+
+void Mesh::addVertex(const void* const vertexs)
+{
+	mVertexDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_VERTEX_BUFFER;
+	mVertexDesc.CPUAccessFlags = 0;
+	mVertexDesc.Usage = D3D11_USAGE_DEFAULT;
+	mVertexDesc.ByteWidth = static_cast<UINT>(mVertexCount * mVertexSize);
+
+	D3D11_SUBRESOURCE_DATA outVertexSub = {};
+	outVertexSub.pSysMem = vertexs;
+
+	if (FAILED(gGraphicDevice->UnSafe_GetDevice()->CreateBuffer(&mVertexDesc, &outVertexSub, mVertexBuffer.GetAddressOf())))
+	{
+		Assert(false, ASSERT_MSG("failed to create vertex buffer"));
+	}
 }
 

@@ -29,6 +29,12 @@ public:
 		const size_t indexCount,
 		const size_t indexSize);
 
+	Mesh(
+		const void* const vertexs,
+		const size_t vertexCount,
+		const size_t vertexSize,
+		const std::vector<tIndexInfo>& infos);
+
 	Mesh(const Mesh&) = delete;
 	Mesh& operator=(const Mesh&) = delete;
 
@@ -37,11 +43,17 @@ public:
 	UINT GetVertexCount() const { return static_cast<UINT>(mVertexCount); }
 	//UINT GetIndexCount()  const { return static_cast<UINT>(mIndexCount); }
 	virtual HRESULT Load(const std::wstring& filePath) override;
+	UINT GetIndexCount() 
+	{
+		return static_cast<UINT>(mIndexBuffers.size());
+	}
 
 private:
 	void addIndexBuffer(const void* const indexs,const 
 		size_t indexCount, 
 		const size_t indexSize);
+	void addVertex(const void* const vertexs);	 
+
 private:
 	Microsoft::WRL::ComPtr<ID3D11Buffer> mVertexBuffer;
 	size_t mVertexCount;

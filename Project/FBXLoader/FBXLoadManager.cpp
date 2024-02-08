@@ -18,6 +18,10 @@ FBXLoadManager::~FBXLoadManager()
 	mIos->Destroy();
 
 	mFbxManager->Destroy();
+
+	//tContainer& info = mVecContainer.back();
+	
+	//for (info.)
 }
 
 void FBXLoadManager::triangulate(FbxNode* _pNode)
@@ -183,7 +187,13 @@ void FBXLoadManager::GetTangent(FbxMesh* _pMesh
 	, int _iVtxOrder /*폴리곤 단위로 접근하는 순서*/)
 {
 	int iTangentCnt = _pMesh->GetElementTangentCount();
-	if (1 != iTangentCnt)
+
+	if (1 > iTangentCnt)
+	{
+		return;
+	}
+
+	if (1 < iTangentCnt)
 		assert(NULL); // 정점 1개가 포함하는 탄젠트 정보가 2개 이상이다.
 
 	// 탄젠트 data 의 시작 주소
@@ -215,6 +225,11 @@ void FBXLoadManager::GetTangent(FbxMesh* _pMesh
 void FBXLoadManager::GetBinormal(FbxMesh* _pMesh, tContainer* _pContainer, int _iIdx, int _iVtxOrder)
 {
 	int iBinormalCnt = _pMesh->GetElementBinormalCount();
+	if (1 > iBinormalCnt)
+	{
+		return;
+	}
+
 	if (1 != iBinormalCnt)
 		assert(NULL); // 정점 1개가 포함하는 종법선 정보가 2개 이상이다.
 

@@ -69,6 +69,9 @@ Content::Content()
 		Mesh* panelMesh =
 			gResourceManager->FindAndLoad<Mesh>(L"Panel");
 
+		Mesh* houseMesh =
+			gResourceManager->FindAndLoad<Mesh>(L"houseMesh");
+
 		material->SetShader(shader);
 		material->SetTexture(TEX_0, texture);
 		material->SetTexture(TEX_1, texture2);
@@ -92,7 +95,7 @@ Content::Content()
 			obj->AddComponent<MeshRenderer>();
 
 			obj->GetComponent<MeshRenderer>()->SetMaterial(material);
-			obj->GetComponent<MeshRenderer>()->SetMesh(panelMesh);
+			obj->GetComponent<MeshRenderer>()->SetMesh(houseMesh);
 
 			obj->GetComponent<Transform>()->SetPosition(100.f, 100.f, 0.f);
 			obj->SetName(L"Map");

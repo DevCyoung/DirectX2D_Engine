@@ -47,11 +47,11 @@
 //#pragma comment(lib, "FBXSDK/Debug/zlib-mt")
 #else
 //#pragma comment(lib, "FBXSDK/Debug/libfbxsdk")
-#pragma comment(lib, "FBXSDK/Debug/libfbxsdk-md")
+#pragma comment(lib, "FBXSDK/Release/libfbxsdk-md")
 //#pragma comment(lib, "FBXSDK/Debug/libfbxsdk-mt")
-#pragma comment(lib, "FBXSDK/Debug/libxml2-md")
+#pragma comment(lib, "FBXSDK/Release/libxml2-md")
 //#pragma comment(lib, "FBXSDK/Debug/libxml2-mt")
-#pragma comment(lib, "FBXSDK/Debug/zlib-md")
+#pragma comment(lib, "FBXSDK/Release/zlib-md")
 //#pragma comment(lib, "FBXSDK/Debug/zlib-mt")
 #endif
 

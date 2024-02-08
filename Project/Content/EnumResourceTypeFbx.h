@@ -20,6 +20,10 @@ enum class eResFbx
 	monster.fbm_CH_NPC_MOB_Anashar_Weapon_A01_D_KGW,
 	monster.fbm_CH_NPC_MOB_Anashar_Weapon_A01_N_KGW,
 	monster.fbm_CH_NPC_MOB_Anashar_Weapon_A01_SP_KGW,
+	c7100,
+	c9520,
+	c9990,
+	Dragon_Baked_Actions_fbx_7.4_binary,
 	house,
 	monster,
 	End

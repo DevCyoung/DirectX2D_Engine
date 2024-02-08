@@ -25,14 +25,21 @@ MeshRenderer::~MeshRenderer()
 void MeshRenderer::render(const Camera* const camera)
 {
 	Assert(mMesh, ASSERT_MSG_NULL);
-	Assert(mMaterial, ASSERT_MSG_NULL);
+	//Assert(mMaterial, ASSERT_MSG_NULL);
 	Assert(camera, ASSERT_MSG_NULL);
 
 	tCBTransform CBTransform = {};
 	{
-		const Vector3& SCALE = 
-			Vector3(mMaterial->GetTexture(TEX_0)->GetWidth(),
-				mMaterial->GetTexture(TEX_0)->GetHeight(), 1.f);
+		
+		const Vector3& SCALE =
+			Vector3(100, 100, 100.f);
+		//if (mMaterial->GetTexture(TEX_0))
+		//{
+		//	
+		//}
+		
+
+
 
 		const Matrix& SCALE_MATRIX = Matrix::CreateScale(SCALE);
 
@@ -50,6 +57,9 @@ void MeshRenderer::render(const Camera* const camera)
 	//shader, Texture
 	GetMaterial()->UpdateData();
 
-	gGraphicDevice->BindMesh(mMesh, 0);	
-	gGraphicDevice->Draw(mMesh, 0);
+	for (UINT i = 0; i < mMesh->GetIndexCount(); ++i)
+	{
+		gGraphicDevice->BindMesh(mMesh, i);
+		gGraphicDevice->Draw(mMesh, i);
+	}	
 }

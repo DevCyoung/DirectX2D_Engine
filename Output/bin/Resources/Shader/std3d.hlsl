@@ -66,7 +66,7 @@ float4 PS_Std3D(VS_OUT _in) : SV_Target
     
 	if (g_btex_0)
 	{
-		vOutColor = MeshRenderer00.Sample(pointSampler, _in.vUV);
+		//vOutColor = MeshRenderer00.Sample(pointSampler, _in.vUV);
 	}
     
 	if (g_btex_1)

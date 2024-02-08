@@ -6,6 +6,7 @@
 #include "Engine.h"
 #include "GraphicDeviceDx11.h"
 #include "Mesh.h"
+#include "ResourceManager.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "FBXLoader/Debug/FBXLoader_d")
@@ -19,12 +20,89 @@ void FBXLoader::LoadFBX(const std::wstring& relativePath)
 	filePath += relativePath;
 
 	FBXLoadManager::GetInstance()->Load(filePath);
+	CreateMeshFromFBX();
 
 }
 
 void FBXLoader::CreateMeshFromFBX()
 {
+	FBXLoadManager* fbxLoadManager = FBXLoadManager::GetInstance();
+	const tContainer& container = fbxLoadManager->GetContainer(0);
 
+	UINT iVtxCount = (UINT)container.vecPos.size();
+
+	D3D11_BUFFER_DESC tVtxDesc = {};
+
+	tVtxDesc.ByteWidth = sizeof(tVertex) * iVtxCount;
+	tVtxDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+
+	tVtxDesc.Usage = D3D11_USAGE_DEFAULT;
+	if (D3D11_USAGE_DYNAMIC == tVtxDesc.Usage)
+		tVtxDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+
+	D3D11_SUBRESOURCE_DATA tSub = {};
+	tSub.pSysMem = malloc(tVtxDesc.ByteWidth);
+	tVertex* pSys = (tVertex*)tSub.pSysMem;
+	for (UINT i = 0; i < iVtxCount; ++i)
+	{
+		pSys[i].Position = container.vecPos[i];
+		pSys[i].UV = container.vecUV[i];
+		pSys[i].Color = Vector4(1.f, 0.f, 1.f, 1.f);
+		pSys[i].Normal = container.vecNormal[i];
+		pSys[i].Tangent = container.vecTangent[i];
+		pSys[i].Binormal = container.vecBinormal[i];
+		pSys[i].vWeights = container.vecWeights[i];
+		pSys[i].vIndices = container.vecIndices[i];
+	}
+
+	//Microsoft::WRL::ComPtr<ID3D11Buffer> pVB = NULL;
+	//
+	//if (FAILED(DEVICE->CreateBuffer(&tVtxDesc, &tSub, pVB.GetAddressOf())))
+	//{
+	//	return NULL;
+	//}
+
+	//Mesh* pMesh = new Mesh;
+	//pMesh->m_VB = pVB;
+	//pMesh->m_tVBDesc = tVtxDesc;
+	//pMesh->m_pVtxSys = pSys;
+
+	// 인덱스 정보
+	UINT iIdxBufferCount = (UINT)container.vecIdx.size();
+	D3D11_BUFFER_DESC tIdxDesc = {};
+	std::vector<tIndexInfo> infos;
+	for (UINT i = 0; i < iIdxBufferCount; ++i)
+	{
+		tIdxDesc.ByteWidth = (UINT)container.vecIdx[i].size() * sizeof(UINT); // Index Format 이 R32_UINT 이기 때문
+		tIdxDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+		tIdxDesc.Usage = D3D11_USAGE_DEFAULT;
+		if (D3D11_USAGE_DYNAMIC == tIdxDesc.Usage)
+			tIdxDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+
+		void* pSysMem = malloc(tIdxDesc.ByteWidth);
+		memcpy(pSysMem, container.vecIdx[i].data(), tIdxDesc.ByteWidth);
+		tSub.pSysMem = pSysMem;
+		
+
+		//ComPtr<ID3D11Buffer> pIB = nullptr;
+		//if (FAILED(DEVICE->CreateBuffer(&tIdxDesc, &tSub, pIB.GetAddressOf())))
+		//{
+		//	return NULL;
+		//}
+
+		tIndexInfo info = {};
+		info.tIBDesc = tIdxDesc;
+		info.iIdxCount = (UINT)container.vecIdx[i].size();
+		info.pIdxSysMem = pSysMem;		
+
+		//info.pIB = pIB;
+		infos.push_back(info);
+		//pMesh->m_vecIdxInfo.push_back(info);
+	}
+
+	Mesh* mesh = new Mesh(pSys, iVtxCount, sizeof(tVertex), infos);
+
+	gResourceManager->Insert(L"houseMesh", mesh);
 
 	// Animation3D
 	//if (!container->bAnimation)
