@@ -1,9 +1,9 @@
 #include "pch.h"
 #include "EditorResourceLoader.h"
-
 #include <Engine/Texture.h>
 #include <Engine/ResourceManager.h>
 #include <Engine/Shader.h>
+
 static void loadRenderTexture(const UINT width, const UINT height, const std::wstring& relativePathOrName)
 {
 	{
