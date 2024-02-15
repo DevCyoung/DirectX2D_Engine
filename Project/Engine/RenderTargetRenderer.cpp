@@ -55,9 +55,9 @@ void RenderTargetRenderer::registerRenderComponent(RenderComponent* const render
 {
 	Assert(renderComponent, ASSERT_MSG_NULL);
 
-	const eRenderPriorityType RENDER_PRIORITY_TYPE = renderComponent->GetMaterial()->GetRenderType();
+	const eRenderPriorityType RENDER_PRIORITY_TYPE = renderComponent->GetMaterial(0)->GetRenderType();
 
-	if (eRenderPriorityType::PostProcess == renderComponent->GetMaterial()->GetRenderType())
+	if (eRenderPriorityType::PostProcess == renderComponent->GetMaterial(0)->GetRenderType())
 	{
 		mPostProcessComponents.push_back(renderComponent);		
 	}

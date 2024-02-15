@@ -73,6 +73,9 @@
     <Filter Include="Res">
       <UniqueIdentifier>{953d77db-2d38-4813-b10d-37942003b543}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{1b424573-3fd1-4d5f-83e1-0137135e62f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -145,6 +148,18 @@
       <Filter>Component\ComponentUIRender</Filter>
     </ClInclude>
     <ClInclude Include="MaterialUI.h">
+      <Filter>Res</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureUI.h">
+      <Filter>Res</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderUI.h">
+      <Filter>Res</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputeShaderUI.h">
+      <Filter>Res</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshUI.h">
       <Filter>Res</Filter>
     </ClInclude>
   </ItemGroup>
@@ -280,6 +295,18 @@
     </ClCompile>
     <ClCompile Include="Light3DUI.cpp">
       <Filter>Component\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureUI.cpp">
+      <Filter>Res</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputeShaderUI.cpp">
+      <Filter>Res</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderUI.cpp">
+      <Filter>Res</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshUI.cpp">
+      <Filter>Res</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

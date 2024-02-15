@@ -4,6 +4,7 @@
 #include "PathManager.h"
 #include "Engine.h"
 #include "GraphicDeviceDx11.h"
+#include "EnumResource.h"
 
 const wchar_t* EnumResourcePath(eResShader type);
 
@@ -11,7 +12,7 @@ Shader::Shader(const D3D11_PRIMITIVE_TOPOLOGY topology,
 	const std::wstring& VSRelativePath, const std::wstring& VSFunName,
 	const std::wstring& PSRelativePath, const std::wstring& PSFunName,
 	const eSMType SMType, const eRSType RSType, const eDSType DSType, const eBSType BSType)
-	: Resource()
+	: Resource(eResourceType::Shader)
 	, mTopology(topology)
 	, mInputLayout(nullptr)
 	, mVS(nullptr)

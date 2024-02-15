@@ -1,6 +1,5 @@
 #pragma once
 
-class MaterialUI
-{
-};
+class Material;
 
+void MaterialUI(Material* material);

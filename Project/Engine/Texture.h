@@ -26,6 +26,10 @@ public:
 	{
 		Assert(mTexture.Get(), ASSERT_MSG_NULL); return mTexture.Get();
 	}
+	ID3D11ShaderResourceView* GetSRVOrNull() const
+	{
+		return mSRV.Get();
+	}
 	ID3D11ShaderResourceView* GetSRV() const 
 	{ 
 		Assert(mSRV.Get(), ASSERT_MSG_NULL); return mSRV.Get();

@@ -6,7 +6,15 @@
 #include "Engine.h"
 #include "GraphicDeviceDx11.h"
 #include "Mesh.h"
+#include "Shader.h"
 #include "ResourceManager.h"
+#include "EnumRenderType.h"
+#include "Material.h"
+#include "GameObject.h"
+#include "MeshRenderer.h"
+#include "ResourceManager.h"
+#include "Texture.h"
+#include <Shlwapi.h>
 
 #ifdef _DEBUG
 #pragma comment(lib, "FBXLoader/Debug/FBXLoader_d")
@@ -14,95 +22,27 @@
 #pragma comment(lib, "FBXLoader/Release/FBXLoader")
 #endif
 
+#pragma comment(lib, "shlwapi")
+
+//Shlwapi.lib
+
 void FBXLoader::LoadFBX(const std::wstring& relativePath)
 {
 	std::wstring filePath = PathManager::GetInstance()->GetResourcePath();
 	filePath += relativePath;
 
 	FBXLoadManager::GetInstance()->Load(filePath);
-	CreateMeshFromFBX();
+	//FbxInstantiate(relativePath);
 
+	//CreateMeshFromFBX();
+	//FBXLoader::FbxInstantiate(relativePath);
 }
 
 void FBXLoader::CreateMeshFromFBX()
-{
-	FBXLoadManager* fbxLoadManager = FBXLoadManager::GetInstance();
-	const tContainer& container = fbxLoadManager->GetContainer(0);
+{	
 
-	UINT iVtxCount = (UINT)container.vecPos.size();
 
-	D3D11_BUFFER_DESC tVtxDesc = {};
 
-	tVtxDesc.ByteWidth = sizeof(tVertex) * iVtxCount;
-	tVtxDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-
-	tVtxDesc.Usage = D3D11_USAGE_DEFAULT;
-	if (D3D11_USAGE_DYNAMIC == tVtxDesc.Usage)
-		tVtxDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-
-	D3D11_SUBRESOURCE_DATA tSub = {};
-	tSub.pSysMem = malloc(tVtxDesc.ByteWidth);
-	tVertex* pSys = (tVertex*)tSub.pSysMem;
-	for (UINT i = 0; i < iVtxCount; ++i)
-	{
-		pSys[i].Position = container.vecPos[i];
-		pSys[i].UV = container.vecUV[i];
-		pSys[i].Color = Vector4(1.f, 0.f, 1.f, 1.f);
-		pSys[i].Normal = container.vecNormal[i];
-		pSys[i].Tangent = container.vecTangent[i];
-		pSys[i].Binormal = container.vecBinormal[i];
-		pSys[i].vWeights = container.vecWeights[i];
-		pSys[i].vIndices = container.vecIndices[i];
-	}
-
-	//Microsoft::WRL::ComPtr<ID3D11Buffer> pVB = NULL;
-	//
-	//if (FAILED(DEVICE->CreateBuffer(&tVtxDesc, &tSub, pVB.GetAddressOf())))
-	//{
-	//	return NULL;
-	//}
-
-	//Mesh* pMesh = new Mesh;
-	//pMesh->m_VB = pVB;
-	//pMesh->m_tVBDesc = tVtxDesc;
-	//pMesh->m_pVtxSys = pSys;
-
-	// 인덱스 정보
-	UINT iIdxBufferCount = (UINT)container.vecIdx.size();
-	D3D11_BUFFER_DESC tIdxDesc = {};
-	std::vector<tIndexInfo> infos;
-	for (UINT i = 0; i < iIdxBufferCount; ++i)
-	{
-		tIdxDesc.ByteWidth = (UINT)container.vecIdx[i].size() * sizeof(UINT); // Index Format 이 R32_UINT 이기 때문
-		tIdxDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
-		tIdxDesc.Usage = D3D11_USAGE_DEFAULT;
-		if (D3D11_USAGE_DYNAMIC == tIdxDesc.Usage)
-			tIdxDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-
-		void* pSysMem = malloc(tIdxDesc.ByteWidth);
-		memcpy(pSysMem, container.vecIdx[i].data(), tIdxDesc.ByteWidth);
-		tSub.pSysMem = pSysMem;
-		
-
-		//ComPtr<ID3D11Buffer> pIB = nullptr;
-		//if (FAILED(DEVICE->CreateBuffer(&tIdxDesc, &tSub, pIB.GetAddressOf())))
-		//{
-		//	return NULL;
-		//}
-
-		tIndexInfo info = {};
-		info.tIBDesc = tIdxDesc;
-		info.iIdxCount = (UINT)container.vecIdx[i].size();
-		info.pIdxSysMem = pSysMem;		
-
-		//info.pIB = pIB;
-		infos.push_back(info);
-		//pMesh->m_vecIdxInfo.push_back(info);
-	}
-
-	Mesh* mesh = new Mesh(pSys, iVtxCount, sizeof(tVertex), infos);
-
-	gResourceManager->Insert(L"houseMesh", mesh);
 
 	// Animation3D
 	//if (!container->bAnimation)
@@ -194,4 +134,136 @@ void FBXLoader::CreateMeshFromFBX()
 	//}
 
 	//return nullptr;
+}
+
+GameObject* FBXLoader::FbxInstantiate(const std::wstring& relativePath)
+{
+	std::wstring filePath = PathManager::GetInstance()->GetResourcePath();
+	filePath += relativePath;
+	FBXLoadManager::GetInstance()->Load(filePath);
+
+	GameObject* obj = new GameObject();
+
+	obj->AddComponent<MeshRenderer>();
+
+	FBXLoadManager* fbxLoadManager = FBXLoadManager::GetInstance();
+
+	const tContainer& container = fbxLoadManager->GetContainer(0);
+	const UINT VERTEX_COUNT = (UINT)container.vecPos.size();
+
+	std::vector<tVertex> vertexBuffer;
+	std::vector<size_t> sizes;
+	std::vector<UINT> indexBuffers;
+
+	Assert(!container.vecPos.empty(), ASSERT_MSG_INVALID);
+	Assert(!container.vecIdx.empty(), ASSERT_MSG_INVALID);
+
+	vertexBuffer.resize(VERTEX_COUNT);
+	for (UINT i = 0; i < VERTEX_COUNT; ++i)
+	{
+		vertexBuffer[i].Position = container.vecPos[i];
+		vertexBuffer[i].UV = container.vecUV[i];
+		vertexBuffer[i].Color = Vector4(1.f, 0.f, 1.f, 1.f);
+		vertexBuffer[i].Normal = container.vecNormal[i];
+		vertexBuffer[i].Tangent = container.vecTangent[i];
+		vertexBuffer[i].Binormal = container.vecBinormal[i];
+		vertexBuffer[i].vWeights = container.vecWeights[i];
+		vertexBuffer[i].vIndices = container.vecIndices[i];
+	}
+
+	indexBuffers.reserve(VERTEX_COUNT);
+	for (const std::vector<UINT>& indexeBuffer : container.vecIdx)
+	{
+		for (UINT index : indexeBuffer)
+		{
+			indexBuffers.push_back(index);
+		}
+	}
+
+	sizes.reserve(container.vecIdx.size());
+	for (const std::vector<UINT>& indexeBuffer : container.vecIdx)
+	{
+		sizes.push_back(indexeBuffer.size());
+	}
+
+	Mesh* mesh = new Mesh(vertexBuffer.data(),
+		VERTEX_COUNT,
+		sizeof(tVertex),
+		indexBuffers.data(),
+		sizes.data(),
+		container.vecIdx.size(),
+		sizeof(UINT));
+
+	
+	std::wstring meshPath = relativePath;
+	meshPath += L"Mesh";
+	gResourceManager->Insert(meshPath, mesh);
+	obj->GetComponent<MeshRenderer>()->SetMesh(mesh);
+
+	//UINT matCount = obj->GetComponent<MeshRenderer>()->get
+	//Material
+	//diff
+	//normal
+	//spec
+	//emis
+
+	Shader* shader =
+		gResourceManager->FindAndLoad<Shader>(L"Std3D");
+
+	for (UINT i = 0; i < container.vecMtrl.size(); ++i)
+	{
+		//FIXME
+		if (mesh->GetIndexBufferCount() <= i)
+		{
+			continue;
+		}
+
+		Material* material = new Material();
+		material->SetShader(shader);
+
+		const std::wstring& resourcePath = gPathManager->GetResourcePath();
+
+		std::vector<std::wstring> paths;
+
+		paths.push_back(container.vecMtrl[i].strDiff);
+		paths.push_back(container.vecMtrl[i].strNormal);
+		paths.push_back(container.vecMtrl[i].strSpec);
+		paths.push_back(container.vecMtrl[i].strEmis);
+
+		for (int j = 0; j < paths.size(); ++j)
+		{
+			if (paths[j].empty())
+			{
+				continue;
+			}
+
+			std::wstring texRelativePath = paths[j].substr(resourcePath.size());
+			if (texRelativePath.empty())
+			{
+				continue;
+			}
+
+			LPCWSTR lpcwstr = paths[j].c_str();
+			if (!PathFileExistsW(lpcwstr))
+			{
+				continue;
+			}
+			else
+			{
+				Texture* tex = gResourceManager->FindAndLoadOrNull<Texture>(texRelativePath);
+				material->SetTexture(TEX_PARAM(TEX_0 + j), tex);
+			}			
+		}
+
+		std::wstring materialPath = relativePath;
+		materialPath += L"Material_";
+		materialPath += std::to_wstring(i);
+
+		gResourceManager->Insert(materialPath, material);
+		obj->GetComponent<MeshRenderer>()->SetMaterial(material, i);
+	}
+
+	//obj->GetComponent<MeshRenderer>()->SetMaterial()
+
+	return obj;
 }

@@ -19,6 +19,19 @@
 #include "ComponentUIRender.h"
 #include <ImGUI/imgui_filter.h>
 
+#include <Engine/Texture.h>
+#include <Engine/Material.h>
+#include <Engine/Mesh.h>
+#include <Engine/Shader.h>
+#include <Engine/ComputeShader.h>
+#include <Engine/EnumResource.h>
+
+#include "TextureUI.h"
+#include "MaterialUI.h"
+#include "MeshUI.h"
+#include "ShaderUI.h"
+#include "ComputeShaderUI.h"
+
 static void RenderComponentName(std::string str)
 {
 	ImGui::PushID(0);
@@ -32,12 +45,25 @@ static void RenderComponentName(std::string str)
 
 InspectorUI::InspectorUI()
 	: mGameObject(nullptr)
+	, mResource(nullptr)
 {
 	SetTitle("InspectorUI");
 }
 
 InspectorUI::~InspectorUI()
 {
+}
+
+void InspectorUI::Register(GameObject* Object)
+{
+	mGameObject = Object;
+	mResource = nullptr;
+}
+
+void InspectorUI::Register(Resource* resource)
+{
+	mResource = resource;
+	mGameObject = nullptr;
 }
 
 void InspectorUI::drawForm()
@@ -81,9 +107,6 @@ void InspectorUI::drawForm()
 		ImGui::Separator();
 
 		static std::vector<std::string> selectItems;
-		//selectItems.reserve(1000);
-
-		//Component
 		
 		for (UINT i = 0; i < static_cast<UINT>(eComponentType::End); ++i)
 		{
@@ -125,20 +148,47 @@ void InspectorUI::drawForm()
 					mGameObject->AddComponent(CreateScriptComponentByEnum(type));
 				}
 			}
-			//mGameObject->AddComponent(CreateCompo)
 		}
 
-		//if (ImGui::Button("Add Component"))
-		//{		
-		//}
-
-
-
-		/*bool show = true;
-		ImGui::ShowComboAutoSelectDemo(&show);
-		ImGui::ShowComboFilterDemo(&show);*/
-
 		selectItems.clear();
+	}
+	else if (mResource != nullptr)
+	{
+		eResourceType type = mResource->GetType();
+		switch (type)
+		{
+		case eResourceType::Texture:
+			TextureUI(static_cast<Texture*>(mResource));
+			break;
+		case eResourceType::Mesh:
+			MeshUI(static_cast<Mesh*>(mResource));
+			break;
+		case eResourceType::Material:
+			MaterialUI(static_cast<Material*>(mResource));
+			break;
+		case eResourceType::Shader:
+			ShaderUI(static_cast<Shader*>(mResource));
+			break;
+		case eResourceType::Animation:
+			break;
+		case eResourceType::Font:
+			break;
+		case eResourceType::Sound:
+			break;
+		case eResourceType::Scene:
+			break;
+		case eResourceType::Prefab:
+			//PreUI(static_cast<Prefab*>(mResource));
+			break;
+		case eResourceType::ComputeShader:
+			ComputeShaderUI(static_cast<ComputeShader*>(mResource));
+			break;
+		case eResourceType::AudioClip:
+			break;		
+		default:
+			Assert(false, ASSERT_MSG_INVALID);
+			break;
+		}
 	}
 
 	ImGui::End();

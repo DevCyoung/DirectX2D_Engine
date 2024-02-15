@@ -48,7 +48,7 @@ class Material : public Resource
 {	
 	friend class GraphicDeviceDX11;
 public:
-	Material() = default;
+	Material();
 	Material(const eRenderPriorityType renderPriorityType);
 	virtual ~Material();
 	Material(const Material&) = delete;
@@ -59,6 +59,20 @@ public:
 	{ 
 		Assert(mTextures[param], ASSERT_MSG_NULL); return mTextures[param];
 	}
+	const Texture* GetTextureOrNull(const TEX_PARAM param) const
+	{
+		return mTextures[param];
+	}
+
+	Texture* GetTexture(const TEX_PARAM param)
+	{
+		Assert(mTextures[param], ASSERT_MSG_NULL); return mTextures[param];
+	}
+	Texture* GetTextureOrNull(const TEX_PARAM param)
+	{
+		return mTextures[param];
+	}
+
 	const Shader* GetShader() const { Assert(mShader, ASSERT_MSG_NULL); return mShader; }
 	eRenderPriorityType GetRenderType() const { return mRenderType; }
 

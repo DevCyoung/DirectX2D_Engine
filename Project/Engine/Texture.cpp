@@ -3,6 +3,7 @@
 #include "Engine.h"
 #include "GraphicDeviceDx11.h"
 #include "String.h"
+#include "EnumResource.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "DirectXTex/Debug/DirectXTex_d.lib")
@@ -88,7 +89,8 @@ Texture::Texture(UINT _Width, UINT _Height,
 }
 
 Texture::Texture()
-	: mImage()
+	: Resource(eResourceType::Texture)
+	, mImage()
 	, mWidth(0)
 	, mHeight(0)
 	, mTexture(nullptr)

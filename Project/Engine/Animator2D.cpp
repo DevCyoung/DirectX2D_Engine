@@ -31,7 +31,7 @@ Animator2D::Animator2D()
 	, bFlipX(false)
 	, mColorInfo{}
 {
-	SetMaterial(gResourceManager->FindOrNull<Material>(L"Animation2D"));
+	SetMaterial(gResourceManager->FindOrNull<Material>(L"Animation2D"), 0);
 	SetMesh(gResourceManager->FindOrNull<Mesh>(L"FillRect2D"));
 }
 
@@ -282,7 +282,7 @@ void Animator2D::lateUpdate()
 void Animator2D::render(const Camera* const camera)
 {
 	Assert(mMesh, ASSERT_MSG_NULL);
-	Assert(mMaterial, ASSERT_MSG_NULL);
+	Assert(mMaterials[0], ASSERT_MSG_NULL);
 	Assert(camera, ASSERT_MSG_NULL);
 
 	if (nullptr == mCurAnimation)
@@ -325,12 +325,12 @@ void Animator2D::render(const Camera* const camera)
 	}
 
 	gGraphicDevice->BindMesh(mMesh, 0);
-	gGraphicDevice->BindIA(mMaterial->GetShader());
-	gGraphicDevice->BindPS(mMaterial->GetShader());
-	gGraphicDevice->BindVS(mMaterial->GetShader());
-	gGraphicDevice->BindBS(mMaterial->GetShader()->GetBSType());
-	gGraphicDevice->BindDS(mMaterial->GetShader()->GetDSType());
-	gGraphicDevice->BindRS(mMaterial->GetShader()->GetRSType());
+	gGraphicDevice->BindIA(mMaterials[0]->GetShader());
+	gGraphicDevice->BindPS(mMaterials[0]->GetShader());
+	gGraphicDevice->BindVS(mMaterials[0]->GetShader());
+	gGraphicDevice->BindBS(mMaterials[0]->GetShader()->GetBSType());
+	gGraphicDevice->BindDS(mMaterials[0]->GetShader()->GetDSType());
+	gGraphicDevice->BindRS(mMaterials[0]->GetShader()->GetRSType());
 
 
 	const Texture* const P_ATLAS = mCurAnimation->GetAtlas();

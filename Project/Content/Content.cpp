@@ -18,18 +18,27 @@
 #include <Engine/SpriteRenderer.h>
 #include <Engine/MeshRenderer.h>
 #include <Engine/Light3D.h>
-
-#include <Engine\FBXLoader.h>
+#include <Engine/Texture.h>
+#include <Engine/FBXLoader.h>
 Content::Content()
 {
 	{
 		//FBXLoadManager::Initialize();		
-		std::wstring relativePath = L"\\Fbx\\house.fbx";
-		FBXLoader::LoadFBX(relativePath);
+		//std::wstring relativePath = L"\\Fbx\\monster.fbx";
+
+		//FBXLoader::LoadFBX(relativePath);
+		//FBXLoader::FbxInstantiate(relativePath);
+
 		//FBXLoadManager::GetInstance()->Load(relativePath);
 
 	}
 	Scene* testScene = new Scene;
+
+	gResourceManager->Load<Texture>(L"\\Texture\\Dragon_Bump_Col2.jpg");
+	gResourceManager->Load<Texture>(L"\\Texture\\Dragon_ground_color.jpg");
+	gResourceManager->Load<Texture>(L"\\Texture\\Dragon_Nor.jpg");
+	gResourceManager->Load<Texture>(L"\\Texture\\Dragon_Nor_mirror2.jpg");
+
 
 	//main Camera
 	{
@@ -58,52 +67,72 @@ Content::Content()
 	{
 		Material* const material = new Material();
 		//Texture* texture =  gResourceManager->FindAndLoad<Texture>(L"\\texture\\TILE_01.tga");
-		Texture* texture = gResourceManager->FindAndLoad<Texture>(L"\\texture\\TILE_01.tga");
-
+		/*Texture* texture = gResourceManager->FindAndLoad<Texture>(L"\\texture\\TILE_01.tga");
 		Texture* texture2 =
-			gResourceManager->FindAndLoad<Texture>(L"\\texture\\TILE_01_N.tga");
+			gResourceManager->FindAndLoad<Texture>(L"\\texture\\TILE_01_N.tga");*/
 
 		Shader* shader = 
 			gResourceManager->FindAndLoad<Shader>(L"Std3D");
 
-		Mesh* panelMesh =
-			gResourceManager->FindAndLoad<Mesh>(L"Panel");
+		//Mesh* panelMesh =
+		//	gResourceManager->FindAndLoad<Mesh>(L"Panel");
 
-		Mesh* houseMesh =
-			gResourceManager->FindAndLoad<Mesh>(L"houseMesh");
+		//Mesh* houseMesh =
+		//	gResourceManager->FindAndLoad<Mesh>(L"houseMesh");
 
 		material->SetShader(shader);
-		material->SetTexture(TEX_0, texture);
-		material->SetTexture(TEX_1, texture2);
+		//material->SetTexture(TEX_0, texture);
+		//material->SetTexture(TEX_1, texture2);
 		gResourceManager->Insert<Material>(L"default mat", material);
 
 
 		{
-			GameObject* obj = new GameObject();
-			obj->AddComponent<MeshRenderer>();
-			obj->GetComponent<MeshRenderer>()->SetMaterial(material);
-			obj->GetComponent<MeshRenderer>()->SetMesh(panelMesh);
-			obj->SetName(L"Map");
+			GameObject* obj = FBXLoader::FbxInstantiate(L"\\Fbx\\house.fbx");
+			//obj->AddComponent<MeshRenderer>();
+
+			//obj->GetComponent<MeshRenderer>()->SetMaterial(material, 0);
+			//obj->GetComponent<MeshRenderer>()->SetMesh(panelMesh);
+			obj->SetName(L"House");
 			Vector3 rotation = obj->GetComponent<Transform>()->GetRotation();
-			rotation.x = 90;
+			//rotation.x = 90;
 			obj->GetComponent<Transform>()->SetRotation(rotation);
 			testScene->AddGameObject(obj, eLayerType::TileMap);
 		}		
 
 		{
-			GameObject* obj = new GameObject();
-			obj->AddComponent<MeshRenderer>();
-
-			obj->GetComponent<MeshRenderer>()->SetMaterial(material);
-			obj->GetComponent<MeshRenderer>()->SetMesh(houseMesh);
-
-			obj->GetComponent<Transform>()->SetPosition(100.f, 100.f, 0.f);
-			obj->SetName(L"Map");
-			//Vector3 rotation = obj->GetComponent<Transform>()->GetRotation();
-			//rotation.x = 90;
-			//obj->GetComponent<Transform>()->SetRotation(rotation);
+			GameObject* obj = FBXLoader::FbxInstantiate(L"\\Fbx\\monster.fbx");
+			obj->GetComponent<Transform>()->SetPosition(100.f, 1.f, 0.f);
+			obj->SetName(L"monster");
+			Vector3 rotation = obj->GetComponent<Transform>()->GetRotation();
+			//rotation.x -= 90;
+			obj->GetComponent<Transform>()->SetRotation(rotation);
+			obj->GetComponent<Transform>()->SetScale(100.f, 100.f, 100.f);
 			testScene->AddGameObject(obj, eLayerType::TileMap);
 		}
+
+		{
+			GameObject* obj = FBXLoader::FbxInstantiate(L"\\Fbx\\Dragon.fbx");
+			obj->GetComponent<Transform>()->SetPosition(100.f, 1.f, 0.f);
+			obj->SetName(L"Dragon");
+			Vector3 rotation = obj->GetComponent<Transform>()->GetRotation();
+			//rotation.x -= 90;
+			obj->GetComponent<Transform>()->SetRotation(rotation);
+			obj->GetComponent<Transform>()->SetScale(100.f, 100.f, 100.f);
+			testScene->AddGameObject(obj, eLayerType::TileMap);
+		}
+
+		{
+			GameObject* obj = FBXLoader::FbxInstantiate(L"\\Fbx\\c9990.fbx");
+			obj->GetComponent<Transform>()->SetPosition(100.f, 1.f, 0.f);
+			obj->SetName(L"Sekrio");
+			Vector3 rotation = obj->GetComponent<Transform>()->GetRotation();
+			//rotation.x -= 90;
+			obj->GetComponent<Transform>()->SetRotation(rotation);
+			obj->GetComponent<Transform>()->SetScale(100.f, 100.f, 100.f);
+			testScene->AddGameObject(obj, eLayerType::TileMap);
+		}
+
+
 	}
 
 	{

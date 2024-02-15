@@ -158,6 +158,7 @@ call EditorGen.exe $(SolutionDir)Project\Engine $(SolutionDir)Project\Content $(
   <ItemGroup>
     <ClInclude Include="AlphaHelper.h" />
     <ClInclude Include="ComponentUIRender.h" />
+    <ClInclude Include="ComputeShaderUI.h" />
     <ClInclude Include="DockSpace.h" />
     <ClInclude Include="Editor.h" />
     <ClInclude Include="EditorResourceLoader.h" />
@@ -171,14 +172,17 @@ call EditorGen.exe $(SolutionDir)Project\Engine $(SolutionDir)Project\Content $(
     <ClInclude Include="ItemUI.h" />
     <ClInclude Include="LogUI.h" />
     <ClInclude Include="MaterialUI.h" />
+    <ClInclude Include="MeshUI.h" />
     <ClInclude Include="PanelUIManager.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PanelUI.h" />
     <ClInclude Include="ResourceUI.h" />
     <ClInclude Include="GameViewUI.h" />
     <ClInclude Include="ResourceViewUI.h" />
+    <ClInclude Include="ShaderUI.h" />
     <ClInclude Include="TestUI.h" />
     <ClInclude Include="TestUI2.h" />
+    <ClInclude Include="TextureUI.h" />
     <ClInclude Include="UIHelper.h" />
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +196,7 @@ call EditorGen.exe $(SolutionDir)Project\Engine $(SolutionDir)Project\Content $(
     <ClCompile Include="Collider2DUI.cpp" />
     <ClCompile Include="ComponentUI.cpp" />
     <ClCompile Include="ComponentUIRender.cpp" />
+    <ClCompile Include="ComputeShaderUI.cpp" />
     <ClCompile Include="CursorMovementUI.cpp" />
     <ClCompile Include="DockSpace.cpp" />
     <ClCompile Include="Editor.cpp" />
@@ -209,6 +214,7 @@ call EditorGen.exe $(SolutionDir)Project\Engine $(SolutionDir)Project\Content $(
     <ClCompile Include="LogUI.cpp" />
     <ClCompile Include="MaterialUI.cpp" />
     <ClCompile Include="MeshRendererUI.cpp" />
+    <ClCompile Include="MeshUI.cpp" />
     <ClCompile Include="PanelUIManager.cpp" />
     <ClCompile Include="ParticleSystemUI.cpp" />
     <ClCompile Include="pch.cpp">
@@ -226,9 +232,11 @@ call EditorGen.exe $(SolutionDir)Project\Engine $(SolutionDir)Project\Content $(
     <ClCompile Include="Rigidbody2DUI.cpp" />
     <ClCompile Include="ScriptComponentUI.cpp" />
     <ClCompile Include="ScriptComponentUIRender.cpp" />
+    <ClCompile Include="ShaderUI.cpp" />
     <ClCompile Include="SpriteRendererUI.cpp" />
     <ClCompile Include="TestUI.cpp" />
     <ClCompile Include="TestUI2.cpp" />
+    <ClCompile Include="TextureUI.cpp" />
     <ClCompile Include="TransformUI.cpp" />
     <ClCompile Include="UIHelper.cpp" />
   </ItemGroup>

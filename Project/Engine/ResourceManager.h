@@ -34,6 +34,7 @@ public:
 	template <typename T>
 		requires (is_engine_resource<T>::value)
 	void Load(const Key& relativePathOrName);
+
 	template <typename T>
 		requires (is_engine_resource<T>::value)
 	void LoadByEnum(const typename engine_resource_type<T>::eResEnumType resNameType);
@@ -41,6 +42,10 @@ public:
 	template<typename T>
 		requires (is_engine_resource<T>::value)
 	T* FindAndLoad(const Key& relativePathOrName);
+
+	template<typename T>
+		requires (is_engine_resource<T>::value)
+	T* FindAndLoadOrNull(const Key& relativePathOrName);
 
 	template<typename T>
 		requires (is_engine_resource<T>::value)
@@ -145,14 +150,23 @@ template<typename T>
 	requires (is_engine_resource<T>::value)
 T* ResourceManager::FindAndLoad(const Key& relativePathOrName)
 {
+	T* resource = FindAndLoadOrNull<T>(relativePathOrName);
+
+	Assert(resource, ASSERT_MSG_NULL);
+
+	return resource;
+}
+
+template<typename T>
+	requires (is_engine_resource<T>::value)
+inline T* ResourceManager::FindAndLoadOrNull(const Key& relativePathOrName)
+{
 	T* resource = FindOrNull<T>(relativePathOrName);
 	if (nullptr == resource)
 	{
 		Load<T>(relativePathOrName);
 		resource = FindOrNull<T>(relativePathOrName);
 	}
-
-	Assert(resource, ASSERT_MSG_NULL);
 
 	return resource;
 }

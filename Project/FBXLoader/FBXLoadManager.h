@@ -74,12 +74,17 @@ public:
 	void loadMeshDataFromNode(FbxNode* fbxNode);
 	void lodeMesh(FbxMesh* _pFbxMesh);
 	void lodeMaterial(FbxSurfaceMaterial* _pMtrlSur);
-
+	void loadTextrue();
 	void GetBinormal(FbxMesh* _pMesh, tContainer* _pContainer, int _iIdx, int _iVtxOrder);
 	void GetTangent(FbxMesh* _pMesh, tContainer* _pContainer, int _iIdx, int _iVtxOrder);
 	void GetNormal(FbxMesh* _pMesh, tContainer* _pContainer, int _iIdx, int _iVtxOrder);
 	void GetUV(FbxMesh* _pMesh, tContainer* _pContainer, int _iIdx, int _iVtxOrder);
+	Vector4 GetMtrlData(FbxSurfaceMaterial* _pSurface, 
+		const char* _pMtrlName,
+		const char* _pMtrlFactorName);
 
+	std::wstring GetMtrlTextureName(FbxSurfaceMaterial* _pSurface, const char* _pMtrlProperty);
+	
 	const tContainer& GetContainer(const int idx) const { return mVecContainer[idx]; }
 
 	fbxsdk::FbxManager* mFbxManager;

@@ -9,7 +9,7 @@ struct tIndexInfo
 	ComPtr<ID3D11Buffer>    pIB;
 	D3D11_BUFFER_DESC       tIBDesc;
 	UINT				    iIdxCount;
-	const void* pIdxSysMem;
+	void* pIdxSysMem;
 };
 
 
@@ -25,7 +25,7 @@ public:
 		const void* const vertexs,
 		const size_t vertexCount,
 		const size_t vertexSize,
-		const void* const indexs,
+		const UINT* const index,
 		const size_t indexCount,
 		const size_t indexSize);
 
@@ -33,7 +33,10 @@ public:
 		const void* const vertexs,
 		const size_t vertexCount,
 		const size_t vertexSize,
-		const std::vector<tIndexInfo>& infos);
+		const UINT* const indexes,		
+		const size_t* const indexCounts,
+		const size_t indexesCount,
+		const size_t indexSize);
 
 	Mesh(const Mesh&) = delete;
 	Mesh& operator=(const Mesh&) = delete;
@@ -43,7 +46,7 @@ public:
 	UINT GetVertexCount() const { return static_cast<UINT>(mVertexCount); }
 	//UINT GetIndexCount()  const { return static_cast<UINT>(mIndexCount); }
 	virtual HRESULT Load(const std::wstring& filePath) override;
-	UINT GetIndexCount() 
+	UINT GetIndexBufferCount() 
 	{
 		return static_cast<UINT>(mIndexBuffers.size());
 	}

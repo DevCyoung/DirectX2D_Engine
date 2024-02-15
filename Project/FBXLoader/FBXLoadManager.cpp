@@ -2,9 +2,9 @@
 #include "framework.h"
 #include "FBXLoadManager.h"
 
-FBXLoadManager::FBXLoadManager()	
+FBXLoadManager::FBXLoadManager()
 	: mFbxManager(nullptr)
-	, mIos(nullptr)	
+	, mIos(nullptr)
 {
 	mFbxManager = FbxManager::Create();
 	Assert(mFbxManager, ASSERT_MSG_NULL);
@@ -18,10 +18,42 @@ FBXLoadManager::~FBXLoadManager()
 	mIos->Destroy();
 
 	mFbxManager->Destroy();
+}
 
-	//tContainer& info = mVecContainer.back();
-	
-	//for (info.)
+void FBXLoadManager::Load(const std::wstring& wFilePath)
+{
+	//장면가져오기
+	{
+		const std::string& FILE_PATH = std::string(wFilePath.cbegin(), wFilePath.cend()).c_str();
+
+		FbxImporter* const imposter = FbxImporter::Create(mFbxManager, "");
+		Assert(imposter, ASSERT_MSG_NULL);
+
+		// Initialize the importer.
+		bool lImportStatus = imposter->Initialize(FILE_PATH.c_str(), -1, mFbxManager->GetIOSettings());
+		Assert(lImportStatus, ASSERT_MSG_INVALID);
+
+		//장면 가져오기		
+		FbxScene* const fbxScene = FbxScene::Create(mFbxManager, "");
+		Assert(fbxScene, ASSERT_MSG_NULL);
+		imposter->Import(fbxScene);
+
+		fbxScene->GetGlobalSettings().SetAxisSystem(FbxAxisSystem::Max);
+
+		mVecContainer.clear();
+
+		//삼각화
+		triangulate(fbxScene->GetRootNode());
+
+		// 메쉬 데이터 얻기
+		loadMeshDataFromNode(fbxScene->GetRootNode());
+
+		loadTextrue();
+
+		imposter->Destroy();
+	}
+
+
 }
 
 void FBXLoadManager::triangulate(FbxNode* _pNode)
@@ -43,70 +75,168 @@ void FBXLoadManager::triangulate(FbxNode* _pNode)
 	{
 		triangulate(_pNode->GetChild(i));
 	}
-}void FBXLoadManager::lodeMesh(FbxMesh* _pFbxMesh)
-{
+}
+void FBXLoadManager::lodeMesh(FbxMesh* FbxMesh)
+{		
+	Assert(FbxMesh, ASSERT_MSG_NULL);
+
 	mVecContainer.push_back(tContainer{});
-	tContainer& Container = mVecContainer[mVecContainer.size() - 1];
+	tContainer& container = mVecContainer[mVecContainer.size() - 1];
 
-	std::string strName = _pFbxMesh->GetName();
-	Container.strName = std::wstring(strName.begin(), strName.end());
+	const std::string& MESH_NAME = FbxMesh->GetName();
+	container.strName = std::wstring(MESH_NAME.begin(), MESH_NAME.end());
 
-	int iVtxCnt = _pFbxMesh->GetControlPointsCount();
-	Container.Resize(iVtxCnt);
+	const int VERTEX_COUNT = FbxMesh->GetControlPointsCount();
+	container.Resize(VERTEX_COUNT);
 
-	FbxVector4* pFbxPos = _pFbxMesh->GetControlPoints();
+	const FbxVector4* const P_VERTEX_POS_ARRAY = FbxMesh->GetControlPoints();
 
-	for (int i = 0; i < iVtxCnt; ++i)
+	for (int i = 0; i < VERTEX_COUNT; ++i)
 	{
-		Container.vecPos[i].x = (float)pFbxPos[i].mData[0];
-		Container.vecPos[i].y = (float)pFbxPos[i].mData[2];
-		Container.vecPos[i].z = (float)pFbxPos[i].mData[1];
+		container.vecPos[i].x = static_cast<float>(P_VERTEX_POS_ARRAY[i].mData[0]);
+		container.vecPos[i].y = static_cast<float>(P_VERTEX_POS_ARRAY[i].mData[2]);
+		container.vecPos[i].z = static_cast<float>(P_VERTEX_POS_ARRAY[i].mData[1]);
 	}
-
-	// 폴리곤 개수
-	int iPolyCnt = _pFbxMesh->GetPolygonCount();
+	
+	const int POLY_COUNT = FbxMesh->GetPolygonCount();
 
 	// 재질의 개수 ( ==> SubSet 개수 ==> Index Buffer Count)
-	int iMtrlCnt = _pFbxMesh->GetNode()->GetMaterialCount();
-	Container.vecIdx.resize(iMtrlCnt);
+	const int MTRL_COUNT = FbxMesh->GetNode()->GetMaterialCount();
+	container.vecIdx.resize(MTRL_COUNT);
 
 	// 정점 정보가 속한 subset 을 알기위해서...
-	FbxGeometryElementMaterial* pMtrl = _pFbxMesh->GetElementMaterial();
+	FbxGeometryElementMaterial* mtrl = FbxMesh->GetElementMaterial();
 
 	// 폴리곤을 구성하는 정점 개수
-	int iPolySize = _pFbxMesh->GetPolygonSize(0);
-	if (3 != iPolySize)
-		assert(NULL); // Polygon 구성 정점이 3개가 아닌 경우
-
-	UINT arrIdx[3] = {};
-	UINT iVtxOrder = 0; // 폴리곤 순서로 접근하는 순번
-
-	for (int i = 0; i < iPolyCnt; ++i)
+	const int POLY_SIZE = FbxMesh->GetPolygonSize(0);
+	if (3 != POLY_SIZE)
 	{
-		for (int j = 0; j < iPolySize; ++j)
+		// Polygon 구성 정점이 3개가 아닌 경우
+		Assert(false, ASSERT_MSG_INVALID);
+	}		
+
+	UINT poly[3] = {0,};
+	UINT IndexIdx = 0; // 폴리곤 순서로 접근하는 순번
+	for (int i = 0; i < POLY_COUNT; ++i)
+	{
+		for (int j = 0; j < POLY_SIZE; ++j)
 		{
 			// i 번째 폴리곤에, j 번째 정점
-			int iIdx = _pFbxMesh->GetPolygonVertex(i, j);
-			arrIdx[j] = iIdx;
+			const int VERTEX_IDX = FbxMesh->GetPolygonVertex(i, j);
+			poly[j] = VERTEX_IDX;
 
-			GetTangent(_pFbxMesh, &Container, iIdx, iVtxOrder);
-			GetBinormal(_pFbxMesh, &Container, iIdx, iVtxOrder);
-			GetNormal(_pFbxMesh, &Container, iIdx, iVtxOrder);
-			GetUV(_pFbxMesh, &Container, iIdx, _pFbxMesh->GetTextureUVIndex(i, j));
+			GetTangent(FbxMesh, &container, VERTEX_IDX, IndexIdx);
+			GetBinormal(FbxMesh, &container, VERTEX_IDX, IndexIdx);
+			GetNormal(FbxMesh, &container, VERTEX_IDX, IndexIdx);
+			GetUV(FbxMesh, &container, VERTEX_IDX, FbxMesh->GetTextureUVIndex(i, j));
 
-			++iVtxOrder;
+			++IndexIdx;
 		}
-		UINT iSubsetIdx = pMtrl->GetIndexArray().GetAt(i);
-		Container.vecIdx[iSubsetIdx].push_back(arrIdx[0]);
-		Container.vecIdx[iSubsetIdx].push_back(arrIdx[2]);
-		Container.vecIdx[iSubsetIdx].push_back(arrIdx[1]);
+		int iSubsetIdx = mtrl->GetIndexArray().GetAt(i);
+		container.vecIdx[iSubsetIdx].push_back(poly[0]);
+		container.vecIdx[iSubsetIdx].push_back(poly[2]);
+		container.vecIdx[iSubsetIdx].push_back(poly[1]);
 	}
 
-	//LoadAnimationData(_pFbxMesh, &Container);
+	//LoadAnimationData(_pFbxMesh, &Container);	
+}
+
+Vector4 FBXLoadManager::GetMtrlData(FbxSurfaceMaterial* _pSurface,
+	const char* _pMtrlName,
+	const char* _pMtrlFactorName)
+{
+	FbxDouble3  vMtrl;
+	FbxDouble	dFactor = 0.;
+
+	FbxProperty tMtrlProperty = _pSurface->FindProperty(_pMtrlName);
+	FbxProperty tMtrlFactorProperty = _pSurface->FindProperty(_pMtrlFactorName);
+
+	if (tMtrlProperty.IsValid() && tMtrlFactorProperty.IsValid())
+	{
+		vMtrl = tMtrlProperty.Get<FbxDouble3>();
+		dFactor = tMtrlFactorProperty.Get<FbxDouble>();
+	}
+
+	Vector4 vRetVal = Vector4((float)vMtrl.mData[0] * (float)dFactor, (float)vMtrl.mData[1] * (float)dFactor, (float)vMtrl.mData[2] * (float)dFactor, (float)dFactor);
+	return vRetVal;
+}
+
+std::wstring FBXLoadManager::GetMtrlTextureName(FbxSurfaceMaterial* _pSurface, const char* _pMtrlProperty)
+{
+	std::string strName;
+
+	FbxProperty TextureProperty = _pSurface->FindProperty(_pMtrlProperty);
+	if (TextureProperty.IsValid())
+	{
+		UINT iCnt = TextureProperty.GetSrcObjectCount();
+
+		if (1 <= iCnt)
+		{
+			FbxFileTexture* pFbxTex = TextureProperty.GetSrcObject<FbxFileTexture>(0);
+			if (NULL != pFbxTex)
+				strName = pFbxTex->GetFileName();
+		}
+	}
+
+	return std::wstring(strName.begin(), strName.end());
 }
 
 void FBXLoadManager::lodeMaterial(FbxSurfaceMaterial* _pMtrlSur)
 {
+	tFbxMaterial tMtrlInfo{};
+
+	std::string str = _pMtrlSur->GetName();
+	tMtrlInfo.strMtrlName = std::wstring(str.begin(), str.end());
+
+	// Diff
+	tMtrlInfo.tMtrl.vDiff = GetMtrlData(_pMtrlSur
+		, FbxSurfaceMaterial::sDiffuse
+		, FbxSurfaceMaterial::sDiffuseFactor);
+
+	// Amb
+	tMtrlInfo.tMtrl.vAmb = GetMtrlData(_pMtrlSur
+		, FbxSurfaceMaterial::sAmbient
+		, FbxSurfaceMaterial::sAmbientFactor);
+
+	// Spec
+	tMtrlInfo.tMtrl.vSpec = GetMtrlData(_pMtrlSur
+		, FbxSurfaceMaterial::sSpecular
+		, FbxSurfaceMaterial::sSpecularFactor);
+
+	// Emisv
+	tMtrlInfo.tMtrl.vEmv = GetMtrlData(_pMtrlSur
+		, FbxSurfaceMaterial::sEmissive
+		, FbxSurfaceMaterial::sEmissiveFactor);
+
+	// Texture Name
+	tMtrlInfo.strDiff = GetMtrlTextureName(_pMtrlSur, FbxSurfaceMaterial::sDiffuse);
+	tMtrlInfo.strNormal = GetMtrlTextureName(_pMtrlSur, FbxSurfaceMaterial::sNormalMap);
+	tMtrlInfo.strSpec = GetMtrlTextureName(_pMtrlSur, FbxSurfaceMaterial::sSpecular);
+	tMtrlInfo.strEmis = GetMtrlTextureName(_pMtrlSur, FbxSurfaceMaterial::sEmissive);
+
+
+	mVecContainer.back().vecMtrl.push_back(tMtrlInfo);
+}
+
+void FBXLoadManager::loadTextrue()
+{
+	for (UINT i = 0; i < mVecContainer.size(); ++i)
+	{
+
+		for (UINT j = 0; j < mVecContainer[i].vecMtrl.size(); ++j)
+		{
+			std::vector<std::wstring> vecPath;
+			vecPath.push_back(mVecContainer[i].vecMtrl[j].strDiff.c_str());
+			vecPath.push_back(mVecContainer[i].vecMtrl[j].strNormal.c_str());
+			vecPath.push_back(mVecContainer[i].vecMtrl[j].strSpec.c_str());
+			vecPath.push_back(mVecContainer[i].vecMtrl[j].strEmis.c_str());
+
+			for (std::wstring path : vecPath)
+			{
+
+			}
+		}
+	}
 }
 
 void FBXLoadManager::loadMeshDataFromNode(FbxNode* fbxNode)
@@ -120,65 +250,27 @@ void FBXLoadManager::loadMeshDataFromNode(FbxNode* fbxNode)
 		matGlobal.GetR();
 
 		FbxMesh* pMesh = fbxNode->GetMesh();
-		if (NULL != pMesh)		
+		if (NULL != pMesh)
+		{
 			lodeMesh(pMesh);
+		}			
 	}
 
 	// 해당 노드의 재질정보 읽기
-	UINT iMtrlCnt = fbxNode->GetMaterialCount();
-	if (iMtrlCnt > 0)
+	const int MTRL_COUNT = fbxNode->GetMaterialCount();
+	for (int i = 0; i < MTRL_COUNT; ++i)
 	{
-		for (UINT i = 0; i < iMtrlCnt; ++i)
-		{
-			FbxSurfaceMaterial* pMtrlSur = fbxNode->GetMaterial(i);
-			lodeMaterial(pMtrlSur);
-		}
+		FbxSurfaceMaterial* pMtrlSur = fbxNode->GetMaterial(i);
+		lodeMaterial(pMtrlSur);
 	}
 
 	// 자식 노드 정보 읽기
-	int iChildCnt = fbxNode->GetChildCount();
-	for (int i = 0; i < iChildCnt; ++i)
+	const int CHILD_COUNT = fbxNode->GetChildCount();
+	for (int i = 0; i < CHILD_COUNT; ++i)
 	{
 		loadMeshDataFromNode(fbxNode->GetChild(i));
 	}
 }
-
-void FBXLoadManager::Load(const std::wstring& filePath)
-{
-	//장면가져오기
-	{
-		FbxImporter* imposter = FbxImporter::Create(mFbxManager, "");
-		Assert(imposter, ASSERT_MSG_NULL);
-
-		std::string cStr = std::string(filePath.cbegin(), filePath.cend()).c_str();
-		const char* cFilePath = cStr.c_str();
-
-		// Initialize the importer.
-		bool lImportStatus = imposter->Initialize(cFilePath, -1, mFbxManager->GetIOSettings());
-		Assert(lImportStatus, ASSERT_MSG_INVALID);
-
-		//장면 가져오기		
-		FbxScene* fbxScene = FbxScene::Create(mFbxManager, "");		
-		Assert(fbxScene, ASSERT_MSG_NULL);
-		imposter->Import(fbxScene);
-
-		fbxScene->GetGlobalSettings().SetAxisSystem(FbxAxisSystem::Max);
-
-		mVecContainer.clear();
-
-
-		//삼각화
-		triangulate(fbxScene->GetRootNode());
-
-		// 메쉬 데이터 얻기
-		loadMeshDataFromNode(fbxScene->GetRootNode());
-
-		imposter->Destroy();
-	}
-
-
-}
-
 
 
 void FBXLoadManager::GetTangent(FbxMesh* _pMesh
@@ -186,14 +278,14 @@ void FBXLoadManager::GetTangent(FbxMesh* _pMesh
 	, int _iIdx		 /*해당 정점의 인덱스*/
 	, int _iVtxOrder /*폴리곤 단위로 접근하는 순서*/)
 {
-	int iTangentCnt = _pMesh->GetElementTangentCount();
+	const int TANGENT_COUNT = _pMesh->GetElementTangentCount();
 
-	if (1 > iTangentCnt)
+	if (1 > TANGENT_COUNT)
 	{
 		return;
 	}
 
-	if (1 < iTangentCnt)
+	if (1 < TANGENT_COUNT)
 		assert(NULL); // 정점 1개가 포함하는 탄젠트 정보가 2개 이상이다.
 
 	// 탄젠트 data 의 시작 주소
