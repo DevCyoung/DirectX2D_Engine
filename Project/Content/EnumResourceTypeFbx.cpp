@@ -21,6 +21,7 @@ static constexpr const wchar_t* eResFbxPath[static_cast<UINT>(eResFbx::End)]
 	L"\\Fbx\\monster.fbm\\CH_NPC_MOB_Anashar_Weapon_A01_D_KGW.tga",
 	L"\\Fbx\\monster.fbm\\CH_NPC_MOB_Anashar_Weapon_A01_N_KGW.tga",
 	L"\\Fbx\\monster.fbm\\CH_NPC_MOB_Anashar_Weapon_A01_SP_KGW.tga",
+	L"\\Fbx\\black.FBX",
 	L"\\Fbx\\c7100.fbx",
 	L"\\Fbx\\c9990.fbx",
 	L"\\Fbx\\Dragon.fbx",
