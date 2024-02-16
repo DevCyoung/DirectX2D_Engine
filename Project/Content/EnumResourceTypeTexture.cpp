@@ -20,6 +20,12 @@ static constexpr const wchar_t* eResTexturePath[static_cast<UINT>(eResTexture::E
 	L"\\Texture\\Noise\\noise_03.jpg",
 	L"\\Texture\\TILE_01.tga",
 	L"\\Texture\\TILE_01_N.tga",
+	L"\\Texture\\T_Mon_BlackDragon31a_D.png",
+	L"\\Texture\\T_Mon_BlackDragon31a_M.png",
+	L"\\Texture\\T_Mon_BlackDragon31a_N.png",
+	L"\\Texture\\T_Mon_BlackDragon31b_D.png",
+	L"\\Texture\\T_Mon_BlackDragon31b_M.png",
+	L"\\Texture\\T_Mon_BlackDragon31b_N.png",
 };
 
 const wchar_t* EnumResourcePath(eResTexture type)

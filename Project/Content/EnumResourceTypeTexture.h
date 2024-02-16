@@ -19,6 +19,12 @@ enum class eResTexture
 	Noise_noise_03,
 	TILE_01,
 	TILE_01_N,
+	T_Mon_BlackDragon31a_D,
+	T_Mon_BlackDragon31a_M,
+	T_Mon_BlackDragon31a_N,
+	T_Mon_BlackDragon31b_D,
+	T_Mon_BlackDragon31b_M,
+	T_Mon_BlackDragon31b_N,
 	End
 };
 
