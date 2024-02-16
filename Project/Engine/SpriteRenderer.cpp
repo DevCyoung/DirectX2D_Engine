@@ -114,14 +114,14 @@ void SpriteRenderer::lateUpdate()
 void SpriteRenderer::render(const Camera* const camera)
 {
 	Assert(mMesh, ASSERT_MSG_NULL);
-	Assert(mMaterial, ASSERT_MSG_NULL);
+	Assert(mMaterials[0], ASSERT_MSG_NULL);
 	Assert(camera, ASSERT_MSG_NULL);
 
 	tCBTransform CBTransform = {};
 	{
 		const Vector3& SCALE 
-			= Vector3(mMaterial->GetTexture(TEX_0)->GetWidth(), 
-				mMaterial->GetTexture(TEX_0)->GetHeight(), 1.f);
+			= Vector3(mMaterials[0]->GetTexture(TEX_0)->GetWidth(),
+				mMaterials[0]->GetTexture(TEX_0)->GetHeight(), 1.f);
 		const Matrix& SCALE_MATRIX = Matrix::CreateScale(SCALE);
 
 		CBTransform.World = SCALE_MATRIX * GetOwner()->GetComponent<Transform>()->GetWorldMatrix();
@@ -149,13 +149,13 @@ void SpriteRenderer::render(const Camera* const camera)
 	}	
 
 	gGraphicDevice->BindMesh(mMesh, 0);
-	gGraphicDevice->BindIA(mMaterial->GetShader());
-	gGraphicDevice->BindPS(mMaterial->GetShader());
-	gGraphicDevice->BindVS(mMaterial->GetShader());
-	gGraphicDevice->BindBS(mMaterial->GetShader()->GetBSType());
-	gGraphicDevice->BindDS(mMaterial->GetShader()->GetDSType());
-	gGraphicDevice->BindRS(mMaterial->GetShader()->GetRSType());	
+	gGraphicDevice->BindIA(mMaterials[0]->GetShader());
+	gGraphicDevice->BindPS(mMaterials[0]->GetShader());
+	gGraphicDevice->BindVS(mMaterials[0]->GetShader());
+	gGraphicDevice->BindBS(mMaterials[0]->GetShader()->GetBSType());
+	gGraphicDevice->BindDS(mMaterials[0]->GetShader()->GetDSType());
+	gGraphicDevice->BindRS(mMaterials[0]->GetShader()->GetRSType());	
 	gGraphicDevice->BindSRV(eShaderBindType::PS, static_cast<UINT>(eSRVTpye::Sprite2D), 
-		mMaterial->GetTexture(TEX_0));
+		mMaterials[0]->GetTexture(TEX_0));
 	gGraphicDevice->Draw(mMesh, 0);
 }

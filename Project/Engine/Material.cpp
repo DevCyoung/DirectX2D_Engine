@@ -5,8 +5,18 @@
 #include "ConstantBuffer.h"
 #include "EnumShaderBindStage.h"
 #include "Shader.h"
+#include "EnumResource.h"
+
+Material::Material()
+	: Resource(eResourceType::Material)
+	, mShader(nullptr)
+	, mTextures{ 0, }
+	, mRenderType(eRenderPriorityType::Opqaue)
+{
+}
 Material::Material(const eRenderPriorityType renderPriorityType)
-	: mShader(nullptr)
+	: Resource(eResourceType::Material)
+	, mShader(nullptr)
 	, mTextures{0,}
 	, mRenderType(renderPriorityType)
 {

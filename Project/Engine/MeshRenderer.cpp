@@ -16,6 +16,7 @@
 MeshRenderer::MeshRenderer()
 	: RenderComponent(eComponentType::MeshRenderer)
 {
+	mMaterials.resize(sizeof(UINT));
 }
 
 MeshRenderer::~MeshRenderer()
@@ -32,7 +33,7 @@ void MeshRenderer::render(const Camera* const camera)
 	{
 		
 		const Vector3& SCALE =
-			Vector3(100, 100, 100.f);
+			Vector3(1, 1, 1.f);
 		//if (mMaterial->GetTexture(TEX_0))
 		//{
 		//	
@@ -55,10 +56,12 @@ void MeshRenderer::render(const Camera* const camera)
 		gGraphicDevice->BindCB(eCBType::Transform, eShaderBindType::PS);
 	}	
 	//shader, Texture
-	GetMaterial()->UpdateData();
+	//GetMaterial()->UpdateData();
 
-	for (UINT i = 0; i < mMesh->GetIndexCount(); ++i)
-	{
+	const UINT INDEX_COUNT = mMesh->GetIndexBufferCount();
+	for (UINT i = 0; i < INDEX_COUNT; ++i)
+	{		
+		GetMaterial(i)->UpdateData();
 		gGraphicDevice->BindMesh(mMesh, i);
 		gGraphicDevice->Draw(mMesh, i);
 	}	

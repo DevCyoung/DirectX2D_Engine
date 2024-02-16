@@ -2,15 +2,17 @@
 #include "Mesh.h"
 #include "Engine.h"
 #include "GraphicDeviceDx11.h"
+#include "EnumResource.h"
 
 Mesh::Mesh(
 	const void* const vertexs,
 	const size_t vertexCount,
 	const size_t vertexSize,
-	const void* const indexs,
+	const UINT* const indexs,
 	const size_t indexCount,
 	const size_t indexSize)
-	: mVertexBuffer(nullptr)
+	: Resource(eResourceType::Mesh)
+	, mVertexBuffer(nullptr)
 	, mVertexCount(vertexCount)
 	, mVertexSize(vertexSize)
 	, mVertexDesc{}
@@ -25,11 +27,15 @@ Mesh::Mesh(
 
 }
 
-Mesh::Mesh(const void* const vertexs, 
-	const size_t vertexCount, 
-	const size_t vertexSize, 
-	const std::vector<tIndexInfo>& infos)
-	: mVertexBuffer(nullptr)
+Mesh::Mesh(const void* const vertexs,
+	const size_t vertexCount,
+	const size_t vertexSize,
+	const UINT* const indexes,
+	const size_t* const indexCounts,
+	const size_t indexesCount,
+	const size_t indexSize)
+	: Resource(eResourceType::Mesh)
+	, mVertexBuffer(nullptr)
 	, mVertexCount(vertexCount)
 	, mVertexSize(vertexSize)
 	, mVertexDesc{}
@@ -37,15 +43,22 @@ Mesh::Mesh(const void* const vertexs,
 {
 	addVertex(vertexs);
 
-	for (const tIndexInfo& info : infos)
+	const UINT* temp = indexes;
+
+	for (size_t i = 0; i < indexesCount; ++i)
 	{
-		addIndexBuffer(info.pIdxSysMem, info.iIdxCount, sizeof(UINT));
+		if (indexCounts[i] <= 0)
+		{
+			continue;
+		}
+
+		addIndexBuffer(temp, indexCounts[i], indexSize);
+		temp += indexCounts[i];
 	}
 }
 
 Mesh::~Mesh()
 {
-
 
 	mIndexBuffers.clear();
 }
@@ -62,13 +75,11 @@ void Mesh::addIndexBuffer(const void* const indexs,
 	const size_t indexCount, 
 	const size_t indexSize)
 {
-	(void)indexSize;
-
 	D3D11_BUFFER_DESC indexDexc = {};
 	indexDexc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_INDEX_BUFFER;
 	indexDexc.CPUAccessFlags = 0;
 	indexDexc.Usage = D3D11_USAGE_DEFAULT;
-	indexDexc.ByteWidth = static_cast<UINT>(indexCount * 4);
+	indexDexc.ByteWidth = static_cast<UINT>(indexCount * indexSize);
 
 	D3D11_SUBRESOURCE_DATA tIndexSub = {};
 	tIndexSub.pSysMem = indexs;
@@ -82,8 +93,9 @@ void Mesh::addIndexBuffer(const void* const indexs,
 	info.iIdxCount = static_cast<UINT>(indexCount);
 	info.pIB = indexBuffer;
 	info.tIBDesc = indexDexc;
-	info.pIdxSysMem = indexs;
+	//info.pIdxSysMem = indexs;
 
+	//free(info.pIdxSysMem);
 	//delete info.pIdxSysMem;
 
 	mIndexBuffers.push_back(info);

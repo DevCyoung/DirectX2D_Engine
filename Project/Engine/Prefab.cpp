@@ -1,9 +1,12 @@
 #include "pch.h"
 #include "Prefab.h"
 #include "GameObject.h"
+#include "EnumResource.h"
+
 
 Prefab::Prefab(GameObject* gameObject)
-	: mRoot(gameObject)
+	: Resource(eResourceType::Prefab)
+	, mRoot(gameObject)
 {
 }
 

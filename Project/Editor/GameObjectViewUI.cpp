@@ -21,10 +21,6 @@ void GameObjectViewUI::update()
 void GameObjectViewUI::drawForm()
 {
 	Scene* curScene = SceneManager::GetInstance()->GetCurrentScene();
-
-	
-	
-
 	ImGui::Begin("GameObjectViewUI");
 
 	for (UINT i = 0; i < static_cast<UINT>(eLayerType::End); ++i)
@@ -44,8 +40,7 @@ void GameObjectViewUI::drawForm()
 				ImGui::SetMouseCursor(0);
 				PanelUI* inspectorUI =
 					PanelUIManager::GetInstance()->FindPanelUIOrNull("InspectorUI");
-				static_cast<InspectorUI*>(inspectorUI)->mGameObject = gameObject;
-				//LogUI::Log("click resource %s\n", mItemName.c_str());
+				static_cast<InspectorUI*>(inspectorUI)->Register(gameObject);
 			}
 		}
 

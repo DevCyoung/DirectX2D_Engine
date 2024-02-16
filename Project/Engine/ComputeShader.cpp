@@ -4,9 +4,11 @@
 #include "String.h"
 #include "Engine.h"
 #include "GraphicDeviceDx11.h"
+#include "EnumResource.h"
 
 ComputeShader::ComputeShader(const std::wstring& CSRelativePath, const std::wstring& CSFunName)
-	: mGroupX(64)
+	: Resource(eResourceType::ComputeShader)
+	, mGroupX(64)
 	, mGroupY(64)
 	, mGroupZ(1)
 	, m_iGroupPerThreadX(1)

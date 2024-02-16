@@ -91,14 +91,12 @@ void FolderUI::render()
 	{		
 		resourceUI->render();
 	}
-
+	
 	for (FolderUI* folder : mForderUIs)
-	{		
+	{						
 		if (ImGui::TreeNode(folder->mForderName.c_str()))
-		{
+		{			
 			folder->render();
-
-
 			ImGui::TreePop();
 		}		
 	}
