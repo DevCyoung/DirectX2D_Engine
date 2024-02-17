@@ -221,6 +221,16 @@ Content::Content()
 			testScene->AddGameObject(obj, eLayerType::TileMap);
 		}
 
+		{
+			GameObject* obj = FBXLoader::FbxInstantiate(L"\\Fbx\\sphere.fbx");
+			obj->GetComponent<Transform>()->SetPosition(100.f, 1.f, 0.f);
+			obj->SetName(L"Dragon2");
+			Vector3 rotation = obj->GetComponent<Transform>()->GetRotation();
+			//rotation.x -= 90;
+			obj->GetComponent<Transform>()->SetRotation(rotation);
+			obj->GetComponent<Transform>()->SetScale(100.f, 100.f, 100.f);
+			testScene->AddGameObject(obj, eLayerType::TileMap);
+		}
 
 	}
 

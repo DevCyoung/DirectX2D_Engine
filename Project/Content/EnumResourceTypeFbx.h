@@ -26,6 +26,7 @@ enum class eResFbx
 	Dragon,
 	house,
 	monster,
+	sphere,
 	End
 };
 

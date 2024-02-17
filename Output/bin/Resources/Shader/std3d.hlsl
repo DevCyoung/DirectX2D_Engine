@@ -7,12 +7,12 @@
 #include "Header//Sampler.fxh"
 #include "Header//Texture.fxh"
 
-static float3 g_vLightPos = float3(0.f, 0.f, 0.f);
-static float3 g_vLightDir = float3(1.f, -1.f, 1.f);
+//static float3 g_vLightPos = float3(0.f, 0.f, 0.f);
+//static float3 g_vLightDir = float3(1.f, -1.f, 1.f);
 
-static float3 g_vLightColor = float3(1.f, 1.f, 1.f);
-static float g_fLightSpecCoeff = 0.3f;
-static float3 g_vLightAmb = float3(0.15f, 0.15f, 0.15f); // ȯ�汤
+//static float3 g_vLightColor = float3(1.f, 1.f, 1.f);
+//static float g_fLightSpecCoeff = 0.3f;
+//static float3 g_vLightAmb = float3(0.15f, 0.15f, 0.15f); // ȯ�汤
 
 struct VS_IN
 {
@@ -80,7 +80,7 @@ float4 PS_Std3D(VS_OUT _in) : SV_Target
 		{	
 			_in.vViewTangent,
             -_in.vViewBinormal,
-            _in.vViewNormal        
+            _in.vViewNormal
 		};
         
 		vViewNormal = mul(vNormal, vRotateMat);
@@ -108,18 +108,6 @@ float4 PS_Std3D(VS_OUT _in) : SV_Target
                     + (vOutColor.xyz * LIGHT_COLOR.xyz * LIGHT_AMB.xyz)	
                     + LIGHT_COLOR.xyz * LIGHT_SPEC_COEFF * fSpecPow;
 	
-	//vOutColor.xyz = (vOutColor.xyz * LIGHT_COLOR * fLightPow)
- //                   + (vOutColor.xyz * LIGHT_COLOR * LIGHT_AMB)
- //                   + LIGHT_COLOR * LIGHT_SPEC_COEFF * fSpecPow;
-	
-	//vOutColor.xyz = (vOutColor.xyz * g_vLightColor * fLightPow);
-    
-	//vOutColor = float4(1.0f, 0.0f, 1.0f, 1.f);
-	
 	return vOutColor;
-	
 }
-
-
-
 #endif
