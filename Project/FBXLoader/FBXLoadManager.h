@@ -1,16 +1,45 @@
 #pragma once
 #include "define.h"
 #include <Engine\StructBuffer.h>
+#include <FBXLoader\fbxsdk.h>
+
+using namespace fbxsdk;
+
 //#include "fbxsdk.h"
 
 struct tFbxMaterial
 {
-	tMtrlData		tMtrl;
-	std::wstring     strMtrlName;
-	std::wstring     strDiff;
+	tMtrlData			tMtrl;
+	std::wstring		strMtrlName;
+	std::wstring		strDiff;
 	std::wstring		strNormal;
 	std::wstring		strSpec;
 	std::wstring		strEmis;
+};
+
+struct tKeyFrame
+{
+	FbxAMatrix  matTransform;
+	double		dTime;
+};
+
+struct tBone
+{
+	std::wstring			strBoneName;
+	int						iDepth;			// °èÃþ±¸Á¶ ±íÀÌ
+	int						iParentIndx;	// ºÎ¸ð Bone ÀÇ ÀÎµ¦½º
+	FbxAMatrix				matOffset;		// Offset Çà·Ä( -> »Ñ¸® -> Local)
+	FbxAMatrix				matBone;
+	std::vector<tKeyFrame>	vecKeyFrame;
+};
+
+struct tAnimClip
+{
+	std::wstring		strName;
+	FbxTime				tStartTime;
+	FbxTime				tEndTime;
+	FbxLongLong			llTimeLength;
+	FbxTime::EMode		eMode;
 };
 
 struct tWeightsAndIndices
@@ -50,17 +79,7 @@ struct tContainer
 	}
 };
 
-namespace fbxsdk
-{
-	class FbxNode;
-	class FbxMesh;
-	class FbxSurfaceMaterial;
-	class FbxManager;
-	class FbxIOSettings;
-	class FbxImporter;
-}
 
-using namespace fbxsdk;
 
 class FBXLoadManager
 {
@@ -75,6 +94,9 @@ public:
 	void lodeMesh(FbxMesh* _pFbxMesh);
 	void lodeMaterial(FbxSurfaceMaterial* _pMtrlSur);
 	void loadTextrue();
+	void loadSkeleton(FbxNode* rootNode);
+	void loadSkeletonRe(FbxNode* _pNode, int _iDepth, int _iIdx, int _iParentIdx);
+
 	void GetBinormal(FbxMesh* _pMesh, tContainer* _pContainer, int _iIdx, int _iVtxOrder);
 	void GetTangent(FbxMesh* _pMesh, tContainer* _pContainer, int _iIdx, int _iVtxOrder);
 	void GetNormal(FbxMesh* _pMesh, tContainer* _pContainer, int _iIdx, int _iVtxOrder);
@@ -86,6 +108,12 @@ public:
 	std::wstring GetMtrlTextureName(FbxSurfaceMaterial* _pSurface, const char* _pMtrlProperty);
 	
 	const tContainer& GetContainer(const int idx) const { return mVecContainer[idx]; }
+
+
+	// Animation
+	std::vector<tBone*>					m_vecBone;
+	FbxArray<FbxString*>				m_arrAnimName;
+	std::vector<tAnimClip*>				m_vecAnimClip;
 
 	fbxsdk::FbxManager* mFbxManager;
 	fbxsdk::FbxIOSettings* mIos;

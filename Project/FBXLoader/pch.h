@@ -32,7 +32,7 @@
 
 #include <Engine\DXMath.h>
 
-#include "fbxsdk.h"
+#include <FBXLoader\fbxsdk.h>
 #include "define.h"
 //#include "EnumFlag.h"
 //#include "DefineMacro.h"

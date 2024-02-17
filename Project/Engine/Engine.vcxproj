@@ -74,13 +74,13 @@
     <OutDir>$(SolutionDir)Output\Library\Engine\Debug\</OutDir>
     <TargetName>$(ProjectName)_d</TargetName>
     <LibraryPath>$(SolutionDir)Output\Library\;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)Project\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Project\;$(SolutionDir)Project\FBXLoader\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Output\Library\Engine\Release\</OutDir>
     <TargetName>$(ProjectName)</TargetName>
     <LibraryPath>$(SolutionDir)Output\Library\;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)Project\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Project\;$(SolutionDir)Project\FBXLoader\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

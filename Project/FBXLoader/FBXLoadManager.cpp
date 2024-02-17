@@ -239,6 +239,39 @@ void FBXLoadManager::loadTextrue()
 	}
 }
 
+void FBXLoadManager::loadSkeleton(FbxNode* rootNode)
+{
+	for (int childIndex = 0; childIndex < rootNode->GetChildCount(); ++childIndex)
+	{
+		FbxNode* currNode = rootNode->GetChild(childIndex);
+		loadSkeletonRe(currNode, 0, 0, -1);
+	}
+}
+
+void FBXLoadManager::loadSkeletonRe(FbxNode* _pNode, int _iDepth, int _iIdx, int _iParentIdx)
+{
+	FbxNodeAttribute* pAttr = _pNode->GetNodeAttribute();
+
+	if (pAttr && pAttr->GetAttributeType() == FbxNodeAttribute::eSkeleton)
+	{
+		tBone* pBone = new tBone;
+
+		std::string strBoneName = _pNode->GetName();
+
+		pBone->strBoneName = std::wstring(strBoneName.begin(), strBoneName.end());
+		pBone->iDepth = _iDepth++;
+		pBone->iParentIndx = _iParentIdx;
+
+		m_vecBone.push_back(pBone);
+	}
+
+	int iChildCount = _pNode->GetChildCount();
+	for (int i = 0; i < iChildCount; ++i)
+	{
+		loadSkeletonRe(_pNode->GetChild(i), _iDepth, (int)m_vecBone.size(), _iIdx);
+	}
+}
+
 void FBXLoadManager::loadMeshDataFromNode(FbxNode* fbxNode)
 {
 	// 노드의 메쉬정보 읽기
