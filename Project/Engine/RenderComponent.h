@@ -39,6 +39,11 @@ public:
 	void TurnOnVisiblelity() { mbVisible = true; }
 	void TurnOffVisiblelity() { mbVisible = false; }
 
+
+	UINT GetMaterialCount() 
+	{ 
+		return static_cast<UINT>(mMaterials.size()); 
+	}
 	
 	CLONE(RenderComponent)
 

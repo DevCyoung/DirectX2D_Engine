@@ -4,6 +4,8 @@
 #include "Resource.h"
 using namespace Microsoft::WRL;
 
+#include "FBXLoader.h"
+
 struct tIndexInfo
 {
 	ComPtr<ID3D11Buffer>    pIB;
@@ -12,6 +14,7 @@ struct tIndexInfo
 	void* pIdxSysMem;
 };
 
+class StructuredBuffer;
 
 class Mesh : public Resource
 {
@@ -50,6 +53,15 @@ public:
 	{
 		return static_cast<UINT>(mIndexBuffers.size());
 	}
+	bool IsAnimMesh() { return !m_vecAnimClip.empty(); }
+
+	StructuredBuffer* GetBoneFrameDataBuffer() { return m_pBoneFrameData; } // 전체 본 프레임 정보
+	StructuredBuffer* GetBoneOffsetBuffer() { return  m_pBoneOffset; }	   // 각 뼈의 offset 행렬
+
+	UINT GetBoneCount() { return (UINT)m_vecBones.size(); }
+
+	std::vector<tMTBone>* GetBones() { return &m_vecBones; }
+	std::vector<tMTAnimClip>* GetAnimClip() { return &m_vecAnimClip; }
 
 private:
 	void addIndexBuffer(const void* const indexs,const 
@@ -62,5 +74,20 @@ private:
 	size_t mVertexCount;
 	size_t mVertexSize;
 	D3D11_BUFFER_DESC mVertexDesc;
-	std::vector<tIndexInfo> mIndexBuffers;	
+	std::vector<tIndexInfo> mIndexBuffers;
+
+	// 하나의 버텍스버퍼에 여러개의 인덱스버퍼가 연결
+	//vector<tIndexInfo>		m_vecIdxInfo;
+
+	// Animation3D 정보
+
+
+
+public:
+	//FIXME
+	std::vector<tMTAnimClip>		m_vecAnimClip;
+	std::vector<tMTBone>			m_vecBones;
+
+	StructuredBuffer* m_pBoneFrameData;   // 전체 본 프레임 정보(크기, 이동, 회전) (프레임 개수만큼)
+	StructuredBuffer* m_pBoneOffset;	    // 각 뼈의 offset 행렬(각 뼈의 위치를 되돌리는 행렬) (1행 짜리)
 };

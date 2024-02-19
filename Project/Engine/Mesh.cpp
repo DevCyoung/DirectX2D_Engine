@@ -3,6 +3,7 @@
 #include "Engine.h"
 #include "GraphicDeviceDx11.h"
 #include "EnumResource.h"
+#include "StructuredBuffer.h"
 
 Mesh::Mesh(
 	const void* const vertexs,
@@ -17,6 +18,8 @@ Mesh::Mesh(
 	, mVertexSize(vertexSize)
 	, mVertexDesc{}
 	, mIndexBuffers()	
+	, m_pBoneFrameData(nullptr)
+	, m_pBoneOffset(nullptr)
 {	
 	(void)indexSize;
 
@@ -40,6 +43,8 @@ Mesh::Mesh(const void* const vertexs,
 	, mVertexSize(vertexSize)
 	, mVertexDesc{}
 	, mIndexBuffers()
+	, m_pBoneFrameData(nullptr)
+	, m_pBoneOffset(nullptr)
 {
 	addVertex(vertexs);
 
@@ -59,8 +64,13 @@ Mesh::Mesh(const void* const vertexs,
 
 Mesh::~Mesh()
 {
-
 	mIndexBuffers.clear();
+
+	delete m_pBoneFrameData;
+	m_pBoneFrameData = nullptr;
+
+	delete m_pBoneOffset;
+	m_pBoneOffset = nullptr;
 }
 
 HRESULT Mesh::Load(const std::wstring& filePath)

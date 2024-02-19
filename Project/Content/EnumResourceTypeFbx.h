@@ -27,6 +27,9 @@ enum class eResFbx
 	house,
 	monster,
 	sphere,
+	Spider,
+	Spider_2,
+	Spider_3,
 	End
 };
 

@@ -7,6 +7,9 @@ enum class eSBType
 {
 	Light2D,
 	Particle2D,
+	BoneOffset,
+	BoneFrameData,
+	BoneFinalBuffer,
 	End,
 };
 
@@ -24,9 +27,15 @@ public:
 	StructuredBuffer(const StructuredBuffer&) = delete;
 	StructuredBuffer& operator=(const StructuredBuffer&) = delete;
 
+	UINT GetElementSize() { return mSize; }
+	UINT GetElementCount() { return mStride; }
+	UINT GetBufferSize() { return mSize * mStride; }
+
 private:	
-	Microsoft::WRL::ComPtr<ID3D11Buffer> mBuffer;
-	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> mSRV;
+	Microsoft::WRL::ComPtr<ID3D11Buffer>				mBuffer;
+	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView>	mSRV;
+	Microsoft::WRL::ComPtr<ID3D11UnorderedAccessView>   m_UAV;
+
 	D3D11_BUFFER_DESC mDesc;
 	eSBType mType;
 	eSRVTpye mSRVType;

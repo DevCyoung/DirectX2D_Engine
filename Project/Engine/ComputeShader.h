@@ -2,6 +2,8 @@
 #include "Resource.h"
 #include <d3d11.h>
 #include <d3dcompiler.h>
+#include "StructBuffer.h"
+#include "Material.h"
 
 class ComputeShader : public Resource
 {
@@ -14,7 +16,8 @@ public:
 	virtual ~ComputeShader();
 	ComputeShader(const ComputeShader&) = delete;
 	ComputeShader& operator=(const ComputeShader&) = delete;
-
+    void SetGroupPerThread(UINT x, UINT y, UINT z) { m_iGroupPerThreadX = x, 
+        m_iGroupPerThreadY = y, m_iGroupPerThreadZ = z; };
     void Execute();
 
 
@@ -24,7 +27,7 @@ private:
 
 protected:
     // 쉐이더에 전달할 상수 데이터
-    //tMtrlConst                      m_Const;
+    tMaterialData                   m_Const;
 
     // 그룹 개수
     UINT                            mGroupX;

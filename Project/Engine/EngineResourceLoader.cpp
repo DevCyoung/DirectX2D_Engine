@@ -526,6 +526,7 @@ void EngineResourceLoader::loadShader()
 	}
 }
 
+#include "Anim3DBuuferCopyCS.h"
 void EngineResourceLoader::loadComputeShader()
 {
 	//stdCS
@@ -535,4 +536,20 @@ void EngineResourceLoader::loadComputeShader()
 
 		gResourceManager->Insert(L"StdCS", stdCS);
 	}
+
+	//Animation3D
+	{
+		Anim3DBuuferCopyCS* const anim3DCS =
+			new Anim3DBuuferCopyCS(L"\\Shader\\animation3d.hlsl", L"CS_Animation3D");
+		anim3DCS->SetGroupPerThread(256, 1, 1);
+		gResourceManager->Insert<ComputeShader>(L"Animation3DCS", anim3DCS);
+	}
+
+	//bone copy
+	//{
+	//	Anim3DBuuferCopyCS* const bone =
+	//		new Anim3DBuuferCopyCS(L"\\Shader\\animation3d.hlsl", L"CS_Animation3D");
+	//	bone->SetGroup(1024, 1, 1);
+	//	gResourceManager->Insert<ComputeShader>(L"Animation3DCS", anim3DCS);
+	//}
 }

@@ -26,7 +26,7 @@ SBCollection::~SBCollection()
 {
 	for (UINT i = 0; i < static_cast<UINT>(eSBType::End); ++i)
 	{
-		DELETE_POINTER_NOT_NULL(mStructuredBuffers[i]);
+		DELETE_POINTER(mStructuredBuffers[i]);
 	}
 }
 

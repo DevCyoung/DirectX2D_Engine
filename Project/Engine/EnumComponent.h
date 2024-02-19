@@ -7,6 +7,7 @@ enum class eComponentType
 {
 	Transform,
 	Animator2D,
+	Animator3D,
 	AudioListener,
 	AudioSource,
 	Camera,

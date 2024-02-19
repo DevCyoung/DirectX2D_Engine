@@ -25,9 +25,9 @@ struct tKeyFrame
 
 struct tBone
 {
-	std::wstring			strBoneName;
-	int						iDepth;			// °èÃþ±¸Á¶ ±íÀÌ
-	int						iParentIndx;	// ºÎ¸ð Bone ÀÇ ÀÎµ¦½º
+	std::wstring			boneName;
+	int						depth;			// °èÃþ±¸Á¶ ±íÀÌ
+	int						parentIdx;		// ºÎ¸ð Bone ÀÇ ÀÎµ¦½º
 	FbxAMatrix				matOffset;		// Offset Çà·Ä( -> »Ñ¸® -> Local)
 	FbxAMatrix				matBone;
 	std::vector<tKeyFrame>	vecKeyFrame;
@@ -90,12 +90,26 @@ public:
 	void Load(const std::wstring& filePath);
 
 	void triangulate(FbxNode* _pNode);
-	void loadMeshDataFromNode(FbxNode* fbxNode);
-	void lodeMesh(FbxMesh* _pFbxMesh);
+	void loadMeshDataFromNode(FbxScene* const fbxScene, FbxNode* fbxNode);
+	void lodeMesh(FbxScene* const fbxScene, FbxMesh* _pFbxMesh);
 	void lodeMaterial(FbxSurfaceMaterial* _pMtrlSur);
 	void loadTextrue();
 	void loadSkeleton(FbxNode* rootNode);
 	void loadSkeletonRe(FbxNode* _pNode, int _iDepth, int _iIdx, int _iParentIdx);
+	void loadAnimationClip(FbxScene* const fbxScene);
+	void loadAnimationData(FbxScene* const fbxScene, FbxMesh* _pMesh, tContainer* _pContainer);
+
+	int FindBoneIndex(std::string _strBoneName);
+	void LoadWeightsAndIndices(FbxCluster* _pCluster, int _iBoneIdx, tContainer* _pContainer);
+	void LoadOffsetMatrix(FbxCluster* _pCluster, const FbxAMatrix& _matNodeTransform, int _iBoneIdx, tContainer* _pContainer);
+	void LoadKeyframeTransform(FbxScene* const fbxScene,
+		FbxNode* _pNode, 
+		FbxCluster* _pCluster, 
+		const FbxAMatrix& _matNodeTransform
+		, int _iBoneIdx, tContainer* _pContainer);
+	void CheckWeightAndIndices(FbxMesh* _pMesh, tContainer* _pContainer);
+
+	FbxAMatrix GetTransform(FbxNode* _pNode);
 
 	void GetBinormal(FbxMesh* _pMesh, tContainer* _pContainer, int _iIdx, int _iVtxOrder);
 	void GetTangent(FbxMesh* _pMesh, tContainer* _pContainer, int _iIdx, int _iVtxOrder);
@@ -109,6 +123,8 @@ public:
 	
 	const tContainer& GetContainer(const int idx) const { return mVecContainer[idx]; }
 
+	std::vector<tBone*>& GetBones() { return m_vecBone; }
+	std::vector<tAnimClip*>& GetAnimationClips() { return m_vecAnimClip; }
 
 	// Animation
 	std::vector<tBone*>					m_vecBone;

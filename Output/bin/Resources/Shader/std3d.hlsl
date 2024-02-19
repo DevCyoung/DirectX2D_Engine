@@ -41,10 +41,60 @@ struct VS_OUT
 };
 
 
+// Animation3D Bone Matrix Buffer
+StructuredBuffer<Matrix> g_arrBoneMat : register(t30);
+
+matrix GetBoneMat(int _iBoneIdx, int _iRowIdx)
+{
+	return g_arrBoneMat[(g_iBoneCount * _iRowIdx) + _iBoneIdx];
+}
+
+struct tSkinningInfo
+{
+	float3 vPos;
+	float3 vTangent;
+	float3 vBinormal;
+	float3 vNormal;
+};
+
+void Skinning(inout float3 _vPos, inout float3 _vTangent, inout float3 _vBinormal, inout float3 _vNormal
+    , inout float4 _vWeight, inout float4 _vIndices
+    , int _iRowIdx)
+{
+	tSkinningInfo info = (tSkinningInfo) 0.f;
+
+	if (_iRowIdx == -1)
+		return;
+
+	for (int i = 0; i < 4; ++i)
+	{
+		if (0.f == _vWeight[i])
+			continue;
+
+		matrix matBone = GetBoneMat((int) _vIndices[i], _iRowIdx);
+
+		info.vPos += (mul(float4(_vPos, 1.f), matBone) * _vWeight[i]).xyz;
+		info.vTangent += (mul(float4(_vTangent, 0.f), matBone) * _vWeight[i]).xyz;
+		info.vBinormal += (mul(float4(_vBinormal, 0.f), matBone) * _vWeight[i]).xyz;
+		info.vNormal += (mul(float4(_vNormal, 0.f), matBone) * _vWeight[i]).xyz;
+	}
+
+	_vPos = info.vPos;
+	_vTangent = normalize(info.vTangent);
+	_vBinormal = normalize(info.vBinormal);
+	_vNormal = normalize(info.vNormal);
+}
+
+
 VS_OUT VS_Std3D(VS_IN _in)
 {
 	VS_OUT output = (VS_OUT) 0.f;
         
+	if (g_iAnim)
+	{
+		Skinning(_in.vPos, _in.vTangent, _in.vBinormal, _in.vNormal, _in.vWeights, _in.vIndices, 0);
+	}
+	
     // 로컬에서의 Normal 방향을 월드로 이동    
 	output.vViewPos = mul(float4(_in.vPos, 1.f), g_matWV);
     
