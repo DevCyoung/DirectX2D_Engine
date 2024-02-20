@@ -241,6 +241,9 @@
     <Filter Include="FBXLoader">
       <UniqueIdentifier>{1bdd2ffe-9056-4e12-9376-807147d6e285}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\03. Component\03. Render\Animator3D">
+      <UniqueIdentifier>{42cce8ed-ea55-4b24-91bc-515fb9b75034}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -493,6 +496,12 @@
       <Filter>Source\03. Component\06. Light3D</Filter>
     </ClInclude>
     <ClInclude Include="FBXLoader.h" />
+    <ClInclude Include="Animator3D.h">
+      <Filter>Source\03. Component\03. Render\Animator3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Anim3DBuuferCopyCS.h">
+      <Filter>Source\06. Resource\03. Shader\ComputeShader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp">
@@ -700,6 +709,12 @@
       <Filter>Source\03. Component\06. Light3D</Filter>
     </ClCompile>
     <ClCompile Include="FBXLoader.cpp" />
+    <ClCompile Include="Animator3D.cpp">
+      <Filter>Source\03. Component\03. Render\Animator3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Anim3DBuuferCopyCS.cpp">
+      <Filter>Source\06. Resource\03. Shader\ComputeShader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="DirectXTex.inl">

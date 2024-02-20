@@ -27,6 +27,10 @@ static constexpr const wchar_t* eResFbxPath[static_cast<UINT>(eResFbx::End)]
 	L"\\Fbx\\Dragon.fbx",
 	L"\\Fbx\\house.fbx",
 	L"\\Fbx\\monster.fbx",
+	L"\\Fbx\\sphere.fbx",
+	L"\\Fbx\\Spider.fbx",
+	L"\\Fbx\\Spider_2.fbx",
+	L"\\Fbx\\Spider_3.fbx",
 };
 
 const wchar_t* EnumResourcePath(eResFbx type)

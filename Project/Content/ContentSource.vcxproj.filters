@@ -349,5 +349,11 @@
     <FxCompile Include="..\..\Output\bin\Resources\Shader\std3d.hlsl">
       <Filter>ShaderCode\3D</Filter>
     </FxCompile>
+    <FxCompile Include="..\..\Output\bin\Resources\Shader\animation3d.hlsl">
+      <Filter>ShaderCode</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Output\bin\Resources\Shader\copybone.hlsl">
+      <Filter>ShaderCode</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

@@ -74,12 +74,12 @@
     <OutDir>$(SolutionDir)Output\Library\Editor\Debug\</OutDir>
     <TargetName>$(ProjectName)_d</TargetName>
     <LibraryPath>$(SolutionDir)Output\Library\;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)Project\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Project\;$(SolutionDir)Project\FBXLoader\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Output\Library\Editor\Release\</OutDir>
     <LibraryPath>$(SolutionDir)Output\Library\;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)Project\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Project\;$(SolutionDir)Project\FBXLoader\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -188,6 +188,7 @@ call EditorGen.exe $(SolutionDir)Project\Engine $(SolutionDir)Project\Content $(
   <ItemGroup>
     <ClCompile Include="AlphaHelper.cpp" />
     <ClCompile Include="Animator2DUI.cpp" />
+    <ClCompile Include="Animator3DUI.cpp" />
     <ClCompile Include="AudioListenerUI.cpp" />
     <ClCompile Include="AudioSourceUI.cpp" />
     <ClCompile Include="CameraInputMoveMentUI.cpp" />

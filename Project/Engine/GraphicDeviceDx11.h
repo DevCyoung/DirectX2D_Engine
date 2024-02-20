@@ -23,6 +23,7 @@ enum class eRSType;
 enum class eBSType;
 enum class eDSType;
 enum class eShaderBindType;
+class StructuredBuffer;
 
 struct tDx11StateData
 {
@@ -58,6 +59,8 @@ public:
 	void BindCBAllShader(const eCBType CBType) const;
 	void PassCB(const eCBType CBType, const UINT dataSize, const void* const data) const;
 	void BindSB(const eSBType SBType, const eShaderBindType stageType) const;
+	void BindSB(UINT slot, StructuredBuffer* SB, const eShaderBindType stageType) const;
+	void BindSBCS(UINT slot, StructuredBuffer* SB) const;
 	void PassSB(const eSBType SBType, const UINT dataSize, const UINT stride, const void* const data) const;
 	void BindVS(const Shader* const shader) const;
 	void BindHS(const Shader* const shader) const;

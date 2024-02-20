@@ -3,6 +3,7 @@
 
 #include "Transform.h"
 #include "Animator2D.h"
+#include "Animator3D.h"
 #include "AudioListener.h"
 #include "AudioSource.h"
 #include "Camera.h"
@@ -22,6 +23,7 @@ static constexpr const wchar_t* const ComponentNames[static_cast<UINT>(eComponen
 {
 	L"Transform",
 	L"Animator2D",
+	L"Animator3D",
 	L"AudioListener",
 	L"AudioSource",
 	L"Camera",
@@ -52,6 +54,8 @@ Component* CreateComponentByName(const std::wstring& componentName)
 		component = new Transform;
 	else if (L"Animator2D" == componentName)
 		component = new Animator2D;
+	else if (L"Animator3D" == componentName)
+		component = new Animator3D;
 	else if (L"AudioListener" == componentName)
 		component = new AudioListener;
 	else if (L"AudioSource" == componentName)
@@ -96,6 +100,9 @@ Component* CreateComponentByEnum(const eComponentType type)
 		break;
 	case eComponentType::Animator2D:
 		component = new Animator2D;
+		break;
+	case eComponentType::Animator3D:
+		component = new Animator3D;
 		break;
 	case eComponentType::AudioListener:
 		component = new AudioListener;

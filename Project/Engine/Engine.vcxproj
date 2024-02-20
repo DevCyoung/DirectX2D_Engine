@@ -74,13 +74,13 @@
     <OutDir>$(SolutionDir)Output\Library\Engine\Debug\</OutDir>
     <TargetName>$(ProjectName)_d</TargetName>
     <LibraryPath>$(SolutionDir)Output\Library\;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)Project\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Project\;$(SolutionDir)Project\FBXLoader\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Output\Library\Engine\Release\</OutDir>
     <TargetName>$(ProjectName)</TargetName>
     <LibraryPath>$(SolutionDir)Output\Library\;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)Project\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Project\;$(SolutionDir)Project\FBXLoader\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -165,11 +165,13 @@ call ScriptGen.exe Component $(SolutionDir)Project\Engine $(SolutionDir)Project\
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Anim3DBuuferCopyCS.h" />
     <ClInclude Include="Animation2D.h" />
     <ClInclude Include="Animator2D.h">
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Animator3D.h" />
     <ClInclude Include="AudioClip.h" />
     <ClInclude Include="AudioListener.h">
       <SubType>
@@ -293,11 +295,13 @@ call ScriptGen.exe Component $(SolutionDir)Project\Engine $(SolutionDir)Project\
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Anim3DBuuferCopyCS.cpp" />
     <ClCompile Include="Animation2D.cpp" />
     <ClCompile Include="Animator2D.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Animator3D.cpp" />
     <ClCompile Include="AudioClip.cpp" />
     <ClCompile Include="AudioListener.cpp">
       <SubType>

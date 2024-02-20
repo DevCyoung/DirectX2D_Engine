@@ -386,6 +386,41 @@ void GraphicDeviceDX11::BindSB(const eSBType SBType, const eShaderBindType stage
 	}	
 }
 
+void GraphicDeviceDX11::BindSB(UINT slot, StructuredBuffer* SB, const eShaderBindType stageType) const
+{
+	switch (stageType)
+	{
+	case eShaderBindType::VS:
+		mContext->VSSetShaderResources(slot, 1, SB->mSRV.GetAddressOf());
+		break;
+	case eShaderBindType::HS:
+		mContext->HSSetShaderResources(slot, 1, SB->mSRV.GetAddressOf());
+		break;
+	case eShaderBindType::DS:
+		mContext->DSSetShaderResources(slot, 1, SB->mSRV.GetAddressOf());
+		break;
+	case eShaderBindType::GS:
+		mContext->GSSetShaderResources(slot, 1, SB->mSRV.GetAddressOf());
+		break;
+	case eShaderBindType::PS:
+		mContext->PSSetShaderResources(slot, 1, SB->mSRV.GetAddressOf());
+		break;
+	case eShaderBindType::CS:
+		mContext->CSSetShaderResources(slot, 1, SB->mSRV.GetAddressOf());
+		break;
+	default:
+		Assert(false, ASSERT_MSG_SWITCH_DEFAULT);
+		break;
+	}
+}
+
+void GraphicDeviceDX11::BindSBCS(UINT slot, StructuredBuffer* SB) const
+{
+	UINT i = UINT_MAX;
+	//SB->
+	mContext->CSSetUnorderedAccessViews(slot, 1, SB->m_UAV.GetAddressOf(), &i);
+}
+
 void GraphicDeviceDX11::PassSB(const eSBType SBType, 
 	const UINT dataSize, 
 	const UINT stride, 

@@ -82,6 +82,9 @@ public:
 		Assert(texture, ASSERT_MSG_NULL); mTextures[param] = texture;
 	}
 
+	void SetAnim3D(bool _bTrue) { mData.arrAnimData[0] = (int)_bTrue; }
+	void SetBoneCount(int _iBoneCount) { mData.arrAnimData[1] = _iBoneCount; }
+
 	virtual HRESULT Load(const std::wstring& filePath) override final;
 
 	void UpdateData();

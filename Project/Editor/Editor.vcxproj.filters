@@ -308,5 +308,8 @@
     <ClCompile Include="MeshUI.cpp">
       <Filter>Res</Filter>
     </ClCompile>
+    <ClCompile Include="Animator3DUI.cpp">
+      <Filter>Component\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
