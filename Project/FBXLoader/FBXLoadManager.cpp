@@ -194,6 +194,43 @@ std::wstring FBXLoadManager::GetMtrlTextureName(FbxSurfaceMaterial* _pSurface, c
 	return std::wstring(strName.begin(), strName.end());
 }
 
+DWORD SecondThread(PVOID pvParam)
+{
+	BYTE*			pByte = reinterpret_cast<BYTE*>(pvParam);
+	FbxSkin*		pSkin = (FbxSkin*)*(unsigned long long*)(pByte);
+	FbxScene* const fbxScene = (FbxScene*)*(unsigned long long*)(pByte + 8);
+	FbxMesh*		_pMesh = (FbxMesh*)*(unsigned long long*)(pByte + 16);
+	tContainer*		_pContainer = (tContainer*)*(unsigned long long*)(pByte + 24);
+	FBXLoadManager* manager = (FBXLoadManager*)*(unsigned long long*)(pByte + 32);
+	int idx = *(int*)(pByte + 40);
+
+
+	//FbxSkin* pSkin, FbxScene* const fbxScene, FbxMesh* _pMesh, tContainer* _pContainer, int idx
+	FbxCluster* pCluster = pSkin->GetCluster(idx);
+
+	if (!pCluster->GetLink())
+		return 0;
+
+	// 현재 본 인덱스를 얻어온다.
+	std::string boneName = pCluster->GetLink()->GetName();
+	int iBoneIdx = manager->FindBoneIndex(boneName);
+	if (-1 == iBoneIdx)
+		assert(NULL);
+
+	FbxAMatrix matNodeTransform = manager->GetTransform(_pMesh->GetNode());
+
+	// Weights And Indices 정보를 읽는다.
+	manager->LoadWeightsAndIndices(pCluster, iBoneIdx, _pContainer);
+
+	// Bone 의 OffSet 행렬 구한다.
+	manager->LoadOffsetMatrix(pCluster, matNodeTransform, iBoneIdx, _pContainer);
+
+	// Bone KeyFrame 별 행렬을 구한다.
+	manager->LoadKeyframeTransform(fbxScene, _pMesh->GetNode(),
+		pCluster, matNodeTransform, iBoneIdx, _pContainer);
+	return 0;
+}
+
 void FBXLoadManager::lodeMaterial(FbxSurfaceMaterial* _pMtrlSur)
 {
 	tFbxMaterial tMtrlInfo{};
@@ -343,9 +380,28 @@ void FBXLoadManager::loadAnimationData(FbxScene* const fbxScene, FbxMesh* _pMesh
 				// Cluster 를 얻어온다
 				// Cluster == Joint == 관절
 				int iClusterCount = pSkin->GetClusterCount();
+				//CreateThread(nullptr)
+
+				//HANDLE handles[10000] = { 0, };
+				//BYTE pbs[10000][44];
 
 				for (int j = 0; j < iClusterCount; ++j)
 				{
+					//BYTE* pb = pbs[j];
+					//
+					//*(unsigned long long*)(pb)      = (unsigned long long)pSkin;
+					//*(unsigned long long*)(pb + 8)  = (unsigned long long)fbxScene;
+					//*(unsigned long long*)(pb + 16) = (unsigned long long)_pMesh;
+					//*(unsigned long long*)(pb + 24) = (unsigned long long)_pContainer;
+					//*(unsigned long long*)(pb + 32) = (unsigned long long)this;
+					//*(int*)(pb + 40)				= j;
+					//
+					////SecondThread(pb);
+					//DWORD ThreadID;
+					//handles[j] = CreateThread(nullptr, 0, SecondThread, (PVOID)pb, 0, &ThreadID);
+
+					//ThreadFunc(pb);
+					//delete pb;
 					FbxCluster* pCluster = pSkin->GetCluster(j);
 
 					if (!pCluster->GetLink())
@@ -369,6 +425,11 @@ void FBXLoadManager::loadAnimationData(FbxScene* const fbxScene, FbxMesh* _pMesh
 					LoadKeyframeTransform(fbxScene, _pMesh->GetNode(), 
 						pCluster, matNodeTransform, iBoneIdx, _pContainer);
 				}
+
+				for (int i = 0; i < iClusterCount; ++i)
+				{
+					//WaitForSingleObject(handles[i], INFINITE);
+				}
 			}
 		}
 	}
@@ -390,7 +451,7 @@ int FBXLoadManager::FindBoneIndex(std::string _strBoneName)
 	return -1;	
 }
 
-void FBXLoadManager::LoadWeightsAndIndices(FbxCluster* _pCluster, int _iBoneIdx, tContainer* _pContainer)
+void FBXLoadManager::LoadWeightsAndIndices(const FbxCluster* _pCluster, int _iBoneIdx, tContainer* _pContainer)
 {
 	int iIndicesCount = _pCluster->GetControlPointIndicesCount();
 

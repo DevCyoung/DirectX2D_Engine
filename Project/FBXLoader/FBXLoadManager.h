@@ -100,7 +100,7 @@ public:
 	void loadAnimationData(FbxScene* const fbxScene, FbxMesh* _pMesh, tContainer* _pContainer);
 
 	int FindBoneIndex(std::string _strBoneName);
-	void LoadWeightsAndIndices(FbxCluster* _pCluster, int _iBoneIdx, tContainer* _pContainer);
+	void LoadWeightsAndIndices(const FbxCluster* _pCluster, int _iBoneIdx, tContainer* _pContainer);
 	void LoadOffsetMatrix(FbxCluster* _pCluster, const FbxAMatrix& _matNodeTransform, int _iBoneIdx, tContainer* _pContainer);
 	void LoadKeyframeTransform(FbxScene* const fbxScene,
 		FbxNode* _pNode, 
@@ -125,6 +125,8 @@ public:
 
 	std::vector<tBone*>& GetBones() { return m_vecBone; }
 	std::vector<tAnimClip*>& GetAnimationClips() { return m_vecAnimClip; }
+
+	//int ThreadFunc(PVOID pvoid);
 
 	// Animation
 	std::vector<tBone*>					m_vecBone;

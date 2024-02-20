@@ -69,7 +69,7 @@ void Animator3D::UpdateData()
 		//pUpdateShader->Execute();
 		//gGraphicDevice->Distpatch(pUpdateShader);
 
-		pUpdateShader->UpdateData();
+		pUpdateShader->UpdateData();	
 		gGraphicDevice->BindCS(pUpdateShader);
 		gGraphicDevice->Distpatch(pUpdateShader);
 		pUpdateShader->Clear();
